@@ -1,0 +1,82 @@
+[
+  {
+    "id": "am_double",
+    "name": "복수전공",
+    "type": "double_major",
+    "typeLabel": "복수전공",
+    "totalMinCredits": 36,
+    "homeOverlapCap": 6,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "표준 복수전공: 총 36학점, 제1전공 중복 인정 최대 6학점(연계전공 운영규칙 3-3-6 제5조1항). 전공별로 조정 가능"
+  },
+  {
+    "id": "am_minor",
+    "name": "부전공",
+    "type": "minor",
+    "typeLabel": "부전공",
+    "totalMinCredits": 21,
+    "homeOverlapCap": 3,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "표준 부전공: 총 21학점, 제1전공 중복 인정 최대 3학점(연계전공 운영규칙 3-3-6 제5조2항). 이 21은 'SW 학생이 타 전공을 부전공'하는 축. '타 전공생이 SW를 부전공'하는 경우 2024 요람 편성표는 전필 36으로 표기됨(별도 요건 세트 미작성)"
+  },
+  {
+    "id": "am_linked_hsda",
+    "name": "인문사회데이터분석전공",
+    "type": "linked_major",
+    "typeLabel": "연계전공",
+    "totalMinCredits": 36,
+    "homeOverlapCap": 6,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "연계전공(복수전공 이수 기준): 총 36학점 이상, 제1전공 중복 최대 6학점. 부전공 기준 이수 시 총 21학점·중복 3학점. 2024 요람 SW편에 소프트웨어학과 연계전공으로 수록(상세 편성표 데이터화는 별도 추출 대상)"
+  },
+  {
+    "id": "am_linked_ict",
+    "name": "ICT융합전공",
+    "type": "linked_major",
+    "typeLabel": "연계전공",
+    "totalMinCredits": 36,
+    "homeOverlapCap": 6,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "ICT융합전공은 복수/부전공으로만 운영(복수전공 40학점/부전공 30학점, 2024 요람 별도 편성표). 총 36학점·중복 6학점은 표준 연계전공 기준값 — 상세 편성표 데이터화는 별도 추출 대상"
+  },
+  {
+    "id": "am_track",
+    "name": "융복합트랙",
+    "type": "track",
+    "typeLabel": "융복합트랙",
+    "totalMinCredits": 15,
+    "homeOverlapCap": 3,
+    "satisfiesMajorPolicy": false,
+    "sourceNote": "융복합트랙: 총 15학점, 제1전공 중복 최대 3학점(학사운영규칙 제23조의2 트랙 12~24). 일반과정 추가전공 필수 요건 충족 여부 미확인 → 기본 false"
+  },
+  {
+    "id": "am_micro",
+    "name": "마이크로전공",
+    "type": "micro_degree",
+    "typeLabel": "마이크로전공",
+    "totalMinCredits": 9,
+    "homeOverlapCap": 3,
+    "satisfiesMajorPolicy": false,
+    "sourceNote": "마이크로전공 기본 9학점(연계전공 운영규칙 제5조3항). 2024 요람 SW편 수록: AIoT·인공지능·인공지능지식재산 마이크로전공(상세 편성표 별도 추출 대상). 일반과정 추가전공 요건 충족 여부 미확인 → 기본 false"
+  },
+  {
+    "id": "am_self_designed",
+    "name": "학생설계전공",
+    "type": "self_designed",
+    "typeLabel": "학생설계전공",
+    "totalMinCredits": 36,
+    "homeOverlapCap": 6,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "학생설계전공: 학점·중복 상한 직접 입력. 여기서는 복수전공 기준(36/6)을 기본값으로 둠"
+  },
+  {
+    "id": "am_custom",
+    "name": "직접 추가한 전공",
+    "type": "custom",
+    "typeLabel": "직접 추가",
+    "totalMinCredits": 0,
+    "homeOverlapCap": 3,
+    "satisfiesMajorPolicy": false,
+    "sourceNote": "사용자가 온보딩에서 직접 정의하는 전공 템플릿. 학점·중복 상한·전공이수원칙 충족 여부 모두 입력 대상(기본값 placeholder)"
+  }
+]

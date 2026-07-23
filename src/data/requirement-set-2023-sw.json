@@ -1,0 +1,345 @@
+{
+  "advanced": {
+    "schemaVersion": 2,
+    "requirementVersion": "2023-sw-advanced-v1",
+    "id": "rs_2023_sw_advanced",
+    "name": "2023 소프트웨어학과 · 심화과정",
+    "admissionYearFrom": 2023,
+    "admissionYearTo": 2023,
+    "college": "소프트웨어융합대학",
+    "department": "소프트웨어학과",
+    "trackType": "advanced",
+    "totalCredits": 140,
+    "minGPA": 2.0,
+    "gradePoints": { "A+": 4.5, "A0": 4.0, "B+": 3.5, "B0": 3.0, "C+": 2.5, "C0": 2.0, "D+": 1.5, "D0": 1.0, "F": 0 },
+    "buckets": [
+      { "id": "ajou_character", "label": "아주인성", "group": "university_required", "minCredits": 1, "requiredCourses": ["GE-AJOU-CHARACTER"] },
+      { "id": "english", "label": "영어", "shortLabel": "영어", "group": "university_required", "minCredits": 6, "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"] },
+      { "id": "writing", "label": "글쓰기", "group": "university_required", "minCredits": 3, "requiredCourses": ["GE-WRITING"] },
+      {
+        "id": "area_liberal",
+        "label": "영역별교양",
+        "shortLabel": "영역별교양",
+        "group": "university_required",
+        "minCredits": 9,
+        "minDistinctAreas": 3,
+        "areas": [
+          { "id": "hist_phil", "label": "역사와 철학", "minCourses": 1 },
+          { "id": "lit_art", "label": "문학과 예술", "minCourses": 1 },
+          { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 }
+        ]
+      },
+      { "id": "sw_seminar", "label": "SW커리어세미나", "group": "department_required", "minCredits": 1, "requiredCourses": ["SW-CAREER-SEMINAR"] },
+      {
+        "id": "math",
+        "label": "수학",
+        "group": "department_required",
+        "minCredits": 12,
+        "requiredCourses": ["MATH-1", "MATH-2", "MATH-PROB-1"],
+        "choiceGroups": [
+          { "id": "math_choice", "label": "확률및통계2 또는 선형대수1", "pick": 1, "courses": ["MATH-PROB-2", "MATH-LINEAR-1"] }
+        ]
+      },
+      {
+        "id": "science_basic",
+        "label": "기초과학",
+        "group": "department_required",
+        "minCredits": 7,
+        "choiceGroups": [
+          { "id": "sci_main", "label": "물리학 또는 생명과학", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"] },
+          { "id": "sci_lab", "label": "해당 실험", "pick": 1, "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"], "linkedTo": "sci_main" },
+          { "id": "sci_extra", "label": "물리학/생명과학/화학 중 택1", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"] }
+        ]
+      },
+      {
+        "id": "major_required",
+        "label": "전공필수",
+        "shortLabel": "전필",
+        "group": "major",
+        "minCredits": 36,
+        "requiredCourses": [
+          "SW-PROGRAMMING", "SW-DISCRETE-MATH", "SW-AI-INTRO", "SW-DIGITAL-CIRCUIT",
+          "SW-OOP", "SW-DATA-STRUCT", "SW-COMP-ARCH", "SW-ALGORITHM",
+          "SW-SYS-PROGRAMMING", "SW-NETWORK", "SW-OS"
+        ]
+      },
+      { "id": "major_elective", "label": "전공선택", "shortLabel": "전공선택", "group": "major", "minCredits": 37 },
+      { "id": "general_elective", "label": "일반선택", "shortLabel": "일반선택", "group": "free", "minCredits": 28 }
+    ],
+    "nonCurricular": [
+      {
+        "id": "english_cert",
+        "label": "외국어(영어) 공인 성적",
+        "shortLabel": "영어 인증",
+        "type": "alternatives",
+        "pick": 1,
+        "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 2025.11.24 개정) [별표1] 소프트웨어학과 행 — NEW TEPS·IELTS 포함 11종. 2023 요람 졸업요건 표는 8종(TOEIC/TEPS/TOEFL/G-TELP/TOEIC SP/OPIc) 게재",
+        "appliesWhen": null,
+        "alternatives": [
+          { "id": "toeic", "label": "TOEIC", "type": "score", "min": 730 },
+          { "id": "teps", "label": "TEPS", "type": "score", "min": 605 },
+          { "id": "new_teps", "label": "NEW TEPS", "type": "score", "min": 329 },
+          { "id": "toefl_pbt", "label": "TOEFL PBT", "type": "score", "min": 534 },
+          { "id": "toefl_cbt", "label": "TOEFL CBT", "type": "score", "min": 200 },
+          { "id": "toefl_ibt", "label": "TOEFL iBT", "type": "score", "min": 72 },
+          { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
+          { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
+          { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
+          { "id": "toeic_sp", "label": "TOEIC Speaking", "type": "level", "min": "Lv.5", "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"] },
+          { "id": "opic", "label": "OPIc", "type": "level", "min": "IL", "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"] }
+        ]
+      },
+      {
+        "id": "major_ability",
+        "label": "전공 역량 인증",
+        "shortLabel": "전공 역량 인증",
+        "type": "count",
+        "min": 2,
+        "unit": "회",
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "sourceNote": "컴퓨터프로그래밍및실습 ABF(1학년 전공진입제) 등 2회"
+      },
+      {
+        "id": "industry_project",
+        "label": "산학프로젝트 인증",
+        "shortLabel": "산학프로젝트",
+        "type": "courseGroupPick",
+        "pick": 2,
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "sourceNote": "집중교육/자기주도프로젝트/현장실습/창업실습/캡스톤디자인/자기주도연구 과목군 내 전체과목 중 2개 이상 선택 이수(2023 요람: 심화 2개 이상, 일반 1개 이상)",
+        "groups": [
+          { "id": "intensive", "label": "집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2", "SW-AI-INTENSIVE-1", "SW-AI-INTENSIVE-2"] },
+          { "id": "selfproj", "label": "자기주도프로젝트과목군", "courses": ["SW-SELF-PROJECT"] },
+          { "id": "field", "label": "현장실습과목군", "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6"] },
+          { "id": "startup", "label": "창업실습과목군", "courses": ["SW-STARTUP-1", "SW-STARTUP-2"] },
+          { "id": "capstone", "label": "캡스톤디자인과목군", "courses": ["SW-CAPSTONE"] },
+          { "id": "selfresearch", "label": "자기주도연구과목군", "courses": ["SW-SELF-RESEARCH-1", "SW-SELF-RESEARCH-2"] }
+        ]
+      },
+      {
+        "id": "programming_cert",
+        "label": "프로그래밍 역량 인증",
+        "shortLabel": "프로그래밍 역량 인증",
+        "type": "alternatives",
+        "pick": 1,
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "sourceNote": "TOPCIT 190점 이상 또는 자체 경시대회 점수 획득(2023 요람)",
+        "alternatives": [
+          { "id": "topcit", "label": "TOPCIT", "type": "score", "min": 190, "unit": "점" },
+          { "id": "contest", "label": "자체 경시대회 점수 획득", "type": "check" }
+        ]
+      }
+    ],
+    "equivalents": [
+      { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "effectiveFrom": 2023, "note": "2023 개정으로 전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨. 구 교과 이수분(전과·편입·재수강)을 인공지능입문으로 상호 인정. from(창의소프트웨어입문)은 2023 카탈로그 밖 과목이라 의도된 dangling" }
+    ],
+    "courseGroups": [
+      {
+        "id": "field_practice",
+        "label": "현장실습 과목군",
+        "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-1", "SW-STARTUP-2", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2"],
+        "creditCap": 12,
+        "capBucket": "major_elective",
+        "overflowTo": "general_elective"
+      }
+    ],
+    "recognitionCaps": [
+      {
+        "id": "cap_recognized_credits",
+        "label": "교환·인정학점 합산 상한",
+        "states": ["transferred", "credited"],
+        "maxRatioOfTotal": 0.5,
+        "sourceNote": "학칙 제45조2항(2026.05.22 개정): 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내. 유형별 세부 상한(어학연수 12학점, 입학 전 6학점 등)은 과목 상태로 구분 불가해 합산 상한만 검사"
+      }
+    ],
+    "majorPolicy": {
+      "satisfiedBy": ["advanced_track", "additional_major"],
+      "minAdditionalMajorCount": 1,
+      "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
+      "exemptions": ["dual_degree", "linked_masters"]
+    },
+    "source": {
+      "document": "2023 아주대학교 요람 · 소프트웨어학과(소프트웨어및컴퓨터공학전공)",
+      "pages": "378-382",
+      "verified": false,
+      "notes": [
+        "전공명 표기 '소프트웨어 및 컴퓨터공학 심화전공'. 학과 정체성은 소프트웨어학과(slug sw)로 고정. college는 소프트웨어융합대학",
+        "구성 현황: 대학필수 19 / 학과필수 20(SW커리어세미나1+수학12+기초과학7) / 전공 73(전필36+전선37), 일반선택 28로 총 140 — 2022와 동일",
+        "전공필수 11과목: 2022 대비 창의소프트웨어입문(SCE192)이 인공지능입문(SCE104)으로 교체(나머지 10과목 동일). 학점 합 36",
+        "산학프로젝트 인증 과목군 6종: 집중교육(IT집중교육1,2+AI집중교육1,2)·자기주도프로젝트·현장실습(SW현장실습1~6)·창업실습·캡스톤디자인·자기주도연구(신설). 2022 대비 AI집중교육·자기주도연구과목군 추가, 현장실습군에서 해외인턴십 제외",
+        "현장실습 과목군(SW현장실습1~6·창업실습1,2·창업현장실습1,2)은 전공선택 최대 12학점까지 인정(초과분 일반선택) — 2023 요람 명시(2022 세트의 6학점 미검증 값과 달리 요람 확정값)",
+        "평점표 A+ 4.5 만점 — 학칙 제46조6항(2026.05.22). minGPA 2.0 — 학칙 제50조3항",
+        "SCE411 학수번호 중복 해소: 고급컴퓨터구조가 SCE412로 이동, 모델링시뮬레이션만 SCE411"
+      ]
+    }
+  },
+
+  "general": {
+    "schemaVersion": 2,
+    "requirementVersion": "2023-sw-general-v1",
+    "id": "rs_2023_sw_general",
+    "name": "2023 소프트웨어학과 · 일반과정",
+    "admissionYearFrom": 2023,
+    "admissionYearTo": 2023,
+    "college": "소프트웨어융합대학",
+    "department": "소프트웨어학과",
+    "trackType": "general",
+    "totalCredits": 140,
+    "minGPA": 2.0,
+    "gradePoints": { "A+": 4.5, "A0": 4.0, "B+": 3.5, "B0": 3.0, "C+": 2.5, "C0": 2.0, "D+": 1.5, "D0": 1.0, "F": 0 },
+    "buckets": [
+      { "id": "ajou_character", "label": "아주인성", "group": "university_required", "minCredits": 1, "requiredCourses": ["GE-AJOU-CHARACTER"] },
+      { "id": "english", "label": "영어", "shortLabel": "영어", "group": "university_required", "minCredits": 6, "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"] },
+      { "id": "writing", "label": "글쓰기", "group": "university_required", "minCredits": 3, "requiredCourses": ["GE-WRITING"] },
+      {
+        "id": "area_liberal",
+        "label": "영역별교양",
+        "shortLabel": "영역별교양",
+        "group": "university_required",
+        "minCredits": 9,
+        "minDistinctAreas": 3,
+        "areas": [
+          { "id": "hist_phil", "label": "역사와 철학", "minCourses": 1 },
+          { "id": "lit_art", "label": "문학과 예술", "minCourses": 1 },
+          { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 }
+        ]
+      },
+      { "id": "sw_seminar", "label": "SW커리어세미나", "group": "department_required", "minCredits": 1, "requiredCourses": ["SW-CAREER-SEMINAR"] },
+      {
+        "id": "math",
+        "label": "수학",
+        "group": "department_required",
+        "minCredits": 12,
+        "requiredCourses": ["MATH-1", "MATH-2", "MATH-PROB-1"],
+        "choiceGroups": [
+          { "id": "math_choice", "label": "확률및통계2 또는 선형대수1", "pick": 1, "courses": ["MATH-PROB-2", "MATH-LINEAR-1"] }
+        ]
+      },
+      {
+        "id": "science_basic",
+        "label": "기초과학",
+        "group": "department_required",
+        "minCredits": 7,
+        "choiceGroups": [
+          { "id": "sci_main", "label": "물리학 또는 생명과학", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"] },
+          { "id": "sci_lab", "label": "해당 실험", "pick": 1, "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"], "linkedTo": "sci_main" },
+          { "id": "sci_extra", "label": "물리학/생명과학/화학 중 택1", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"] }
+        ]
+      },
+      {
+        "id": "major_required",
+        "label": "전공필수",
+        "shortLabel": "전필",
+        "group": "major",
+        "minCredits": 36,
+        "requiredCourses": [
+          "SW-PROGRAMMING", "SW-DISCRETE-MATH", "SW-AI-INTRO", "SW-DIGITAL-CIRCUIT",
+          "SW-OOP", "SW-DATA-STRUCT", "SW-COMP-ARCH", "SW-ALGORITHM",
+          "SW-SYS-PROGRAMMING", "SW-NETWORK", "SW-OS"
+        ]
+      },
+      { "id": "major_elective", "label": "전공선택", "shortLabel": "전공선택", "group": "major", "minCredits": 10 },
+      { "id": "general_elective", "label": "일반선택", "shortLabel": "일반선택", "group": "free", "minCredits": 28 }
+    ],
+    "nonCurricular": [
+      {
+        "id": "english_cert",
+        "label": "외국어(영어) 공인 성적",
+        "shortLabel": "영어 인증",
+        "type": "alternatives",
+        "pick": 1,
+        "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 2025.11.24 개정) [별표1] 소프트웨어학과 행 — NEW TEPS·IELTS 포함 11종",
+        "appliesWhen": null,
+        "alternatives": [
+          { "id": "toeic", "label": "TOEIC", "type": "score", "min": 730 },
+          { "id": "teps", "label": "TEPS", "type": "score", "min": 605 },
+          { "id": "new_teps", "label": "NEW TEPS", "type": "score", "min": 329 },
+          { "id": "toefl_pbt", "label": "TOEFL PBT", "type": "score", "min": 534 },
+          { "id": "toefl_cbt", "label": "TOEFL CBT", "type": "score", "min": 200 },
+          { "id": "toefl_ibt", "label": "TOEFL iBT", "type": "score", "min": 72 },
+          { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
+          { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
+          { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
+          { "id": "toeic_sp", "label": "TOEIC Speaking", "type": "level", "min": "Lv.5", "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"] },
+          { "id": "opic", "label": "OPIc", "type": "level", "min": "IL", "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"] }
+        ]
+      },
+      {
+        "id": "major_ability",
+        "label": "전공 역량 인증",
+        "shortLabel": "전공 역량 인증",
+        "type": "count",
+        "min": 2,
+        "unit": "회",
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" }
+      },
+      {
+        "id": "industry_project",
+        "label": "산학프로젝트 인증",
+        "shortLabel": "산학프로젝트",
+        "type": "courseGroupPick",
+        "pick": 2,
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "groups": [
+          { "id": "intensive", "label": "집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2", "SW-AI-INTENSIVE-1", "SW-AI-INTENSIVE-2"] },
+          { "id": "selfproj", "label": "자기주도프로젝트과목군", "courses": ["SW-SELF-PROJECT"] },
+          { "id": "field", "label": "현장실습과목군", "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6"] },
+          { "id": "startup", "label": "창업실습과목군", "courses": ["SW-STARTUP-1", "SW-STARTUP-2"] },
+          { "id": "capstone", "label": "캡스톤디자인과목군", "courses": ["SW-CAPSTONE"] },
+          { "id": "selfresearch", "label": "자기주도연구과목군", "courses": ["SW-SELF-RESEARCH-1", "SW-SELF-RESEARCH-2"] }
+        ]
+      },
+      {
+        "id": "programming_cert",
+        "label": "프로그래밍 역량 인증",
+        "shortLabel": "프로그래밍 역량 인증",
+        "type": "alternatives",
+        "pick": 1,
+        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "alternatives": [
+          { "id": "topcit", "label": "TOPCIT", "type": "score", "min": 190, "unit": "점" },
+          { "id": "contest", "label": "자체 경시대회 점수 획득", "type": "check" }
+        ]
+      }
+    ],
+    "equivalents": [
+      { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "effectiveFrom": 2023, "note": "2023 개정으로 전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨. 구 교과 이수분을 인공지능입문으로 상호 인정" }
+    ],
+    "courseGroups": [
+      {
+        "id": "field_practice",
+        "label": "현장실습 과목군",
+        "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-1", "SW-STARTUP-2", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2"],
+        "creditCap": 12,
+        "capBucket": "major_elective",
+        "overflowTo": "general_elective"
+      }
+    ],
+    "recognitionCaps": [
+      {
+        "id": "cap_recognized_credits",
+        "label": "교환·인정학점 합산 상한",
+        "states": ["transferred", "credited"],
+        "maxRatioOfTotal": 0.5,
+        "sourceNote": "학칙 제45조2항(2026.05.22 개정): 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내"
+      }
+    ],
+    "majorPolicy": {
+      "satisfiedBy": ["advanced_track", "additional_major"],
+      "minAdditionalMajorCount": 1,
+      "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
+      "exemptions": ["dual_degree", "linked_masters"]
+    },
+    "source": {
+      "document": "2023 아주대학교 요람 · 소프트웨어학과(소프트웨어및컴퓨터공학전공)",
+      "pages": "378-382",
+      "verified": false,
+      "notes": [
+        "일반과정은 전공선택 최소 10학점 + 복수/부전공 1건 이상 필수(요람 명시)",
+        "전공명 표기 '소프트웨어 및 컴퓨터공학 일반전공'. 일반과정 전공 소계 46(전필36+전선10)",
+        "전공필수 11과목: 2022 대비 창의소프트웨어입문→인공지능입문 교체. 현장실습 12학점 상한은 2023 요람 명시값",
+        "평점표 A+ 4.5 만점 — 학칙 제46조6항. minGPA 2.0 — 학칙 제50조3항"
+      ]
+    }
+  }
+}

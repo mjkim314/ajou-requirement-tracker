@@ -27,6 +27,17 @@ import catalog2024Json from './catalog-2024-sw.json'
 import sets2024Json from './requirement-set-2024-sw.json'
 import amr2024Json from './additional-major-rules-2024-sw.json'
 
+// 다산학부대학 교양 카탈로그(학번별). 전 학과가 공유하는 기반 데이터로,
+// 아직 어떤 요건 세트도 참조하지 않으므로 DATA_BUNDLES·requirementSetRegistry에는
+// 넣지 않는다. 학과 세트가 교양 courseKey를 쓰기 시작하면 그때 번들에 연결한다.
+// 편제(영역·학점·계열 규칙)는 교양_편제.md 참조.
+import catalog2021GeJson from './catalog-2021-ge.json'
+import catalog2022GeJson from './catalog-2022-ge.json'
+import catalog2023GeJson from './catalog-2023-ge.json'
+import catalog2024GeJson from './catalog-2024-ge.json'
+import catalog2025GeJson from './catalog-2025-ge.json'
+import catalog2026GeJson from './catalog-2026-ge.json'
+
 export const catalog2021Sw = catalogJson as unknown as CatalogEntry[]
 
 const sets2021Sw = setsJson as unknown as {
@@ -74,6 +85,28 @@ export const reqSet2024SwGeneral = sets2024Sw.general
 
 export const additionalMajorRules2024Sw =
   amr2024Json as unknown as AdditionalMajorRule[]
+
+export const catalog2021Ge = catalog2021GeJson as unknown as CatalogEntry[]
+export const catalog2022Ge = catalog2022GeJson as unknown as CatalogEntry[]
+export const catalog2023Ge = catalog2023GeJson as unknown as CatalogEntry[]
+export const catalog2024Ge = catalog2024GeJson as unknown as CatalogEntry[]
+export const catalog2025Ge = catalog2025GeJson as unknown as CatalogEntry[]
+export const catalog2026Ge = catalog2026GeJson as unknown as CatalogEntry[]
+
+/**
+ * 학번 → 다산학부대학 교양 카탈로그.
+ * 교양은 학과 무관 공통 기반이라 학과 카탈로그와 별도로 보관한다.
+ * 2025학번부터 교양 편제가 크게 바뀌었다(영역 4→5개, 영어 6→3학점,
+ * 아주상상프로젝트 3학점 신설, 영역별교양 전 계열 12학점).
+ */
+export const geCatalogByYear: Record<number, CatalogEntry[]> = {
+  2021: catalog2021Ge,
+  2022: catalog2022Ge,
+  2023: catalog2023Ge,
+  2024: catalog2024Ge,
+  2025: catalog2025Ge,
+  2026: catalog2026Ge,
+}
 
 /** requirementSetId → 요건 세트. 프로필의 requirementSetId로 조회. */
 export const requirementSetRegistry: Record<string, RequirementSet> = {

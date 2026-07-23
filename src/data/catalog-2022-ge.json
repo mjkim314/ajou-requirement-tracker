@@ -1,0 +1,3080 @@
+[
+  {
+    "courseKey": "GE-ENGLISH-1",
+    "name": "영어1",
+    "nameEn": "Speaking and Writing in English",
+    "aliases": [
+      "영어 1"
+    ],
+    "codes": [
+      "ENG111"
+    ],
+    "credits": 3,
+    "defaultBucket": "english",
+    "note": "2025학번 신입생부터는 단일 '영어'(GE-ENGLISH)로 대체, 2024학번 이하 적용"
+  },
+  {
+    "courseKey": "GE-ENGLISH-2",
+    "name": "영어2",
+    "nameEn": "Listening and Reading in English",
+    "aliases": [
+      "영어 2"
+    ],
+    "codes": [
+      "ENG112"
+    ],
+    "credits": 3,
+    "defaultBucket": "english",
+    "note": "2025학번 신입생부터는 단일 '영어'(GE-ENGLISH)로 대체, 2024학번 이하 적용"
+  },
+  {
+    "courseKey": "GE-ENGLISH-ADV-1",
+    "name": "고급영어1",
+    "nameEn": "Advanced Speaking and Writing in English",
+    "aliases": [
+      "고급영어 1"
+    ],
+    "codes": [
+      "ENG110"
+    ],
+    "credits": 3,
+    "defaultBucket": "english",
+    "note": "일정 수준 이상 학생이 수강해 영어1 이수로 대체 인정"
+  },
+  {
+    "courseKey": "GE-ENGLISH-ADV-2",
+    "name": "고급영어2",
+    "nameEn": "Advanced Listening and Reading in English",
+    "codes": [
+      "ENG114"
+    ],
+    "credits": 3,
+    "defaultBucket": "english",
+    "note": "일정 수준 이상 학생이 수강해 영어2 이수로 대체 인정"
+  },
+  {
+    "courseKey": "GE-WRITING",
+    "name": "글쓰기",
+    "nameEn": "Korean Writing",
+    "aliases": [
+      "대학글쓰기"
+    ],
+    "codes": [
+      "KOR101"
+    ],
+    "credits": 3,
+    "defaultBucket": "writing",
+    "note": "2025학년도부터 '대학글쓰기'로 개칭(학수번호 KOR101 동일) — 동일 과목으로 통합"
+  },
+  {
+    "courseKey": "GE-AJOU-CHARACTER",
+    "name": "아주인성",
+    "nameEn": "Ajou Virtues:Ethics, Responsilbility and Sustainability",
+    "codes": [
+      "CAJO113",
+      "CAJ0113"
+    ],
+    "credits": 1,
+    "defaultBucket": "ajou_character",
+    "note": "2022 과목개요 인쇄 코드는 알파벳 O의 'CAJO113' — 코드체계상 숫자 0의 'CAJ0113' 추정이라 양쪽 병기. 요람에 평가방식 미기재(P/F 여부 미확인). 2025학번 신입생은 '아주인을 위한 마중물'(GE-AJOU-IN-PRIMER)이 대체, 2024학번 이하는 아주인성 유지"
+  },
+  {
+    "courseKey": "GE-AJOU-HOPE",
+    "name": "아주희망",
+    "nameEn": "Ajou Dream",
+    "aliases": [
+      "아주희망전공진로탐색"
+    ],
+    "codes": [
+      "CAJ0114"
+    ],
+    "credits": 1,
+    "defaultBucket": "ajou_hope",
+    "gradingType": "PF",
+    "note": "2022 교양필수 편성표 원문 '학점부여는 급, 낙(Pass, Fail)으로 평가'. 학과별 대체 인정(경영·e-biz·금융공학 '경력설계와 창업입문1' / 소프트웨어학과 'SW커리어세미나' / 사이버보안학과 '보안진로탐색1'). 2025학년도부터 '아주희망전공진로탐색'으로 개칭(CAJ0114 동일)"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-20TH-CENTURIES",
+    "name": "20세기란 무엇인가",
+    "nameEn": "What is 20th Centuries?",
+    "aliases": [
+      "20세기란 무엇인가?"
+    ],
+    "codes": [
+      "CGEX1030"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "2022 편성표 '20세기란 무엇인가', 과목개요 '20세기란 무엇인가?'"
+  },
+  {
+    "courseKey": "GE-HP-HISTORY-OF-PRE-MODERN-AGE",
+    "name": "고대문명사",
+    "nameEn": "History of Pre-Modern Age",
+    "codes": [
+      "HIST111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-SCIENCE-AND-PHILOSOPHY",
+    "name": "과학과 철학",
+    "nameEn": "Science and Philosophy",
+    "codes": [
+      "PHIL120"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-LOGIC",
+    "name": "논리란 무엇인가",
+    "nameEn": "What is Logic?",
+    "codes": [
+      "CPHI103"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-CLASSICS-OF-EASTERN-PHILOSOPHY",
+    "name": "동양고전철학",
+    "nameEn": "Classics of Eastern Philosophy",
+    "codes": [
+      "PHIL101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WESTERN-INTELLECTUAL-HISTORY",
+    "name": "서양사상과 지성사",
+    "nameEn": "Western Intellectual History",
+    "codes": [
+      "HIST117"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-LIFE-AND-RELIGION",
+    "name": "삶과 종교",
+    "nameEn": "Life and Religion",
+    "codes": [
+      "CHUM103"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-CLASSICS-OF-WESTERN-PHILOSOPHY",
+    "name": "서양고전철학",
+    "nameEn": "Classics of Western Philosophy",
+    "codes": [
+      "PHIL102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-HISTORY-OF-WESTERN-PHILOSOPHY",
+    "name": "서양철학사",
+    "nameEn": "History of Western Philosophy",
+    "codes": [
+      "CPH101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "2022 과목개요 원문 인쇄 'CPH101', CPHI101 오탈자 추정·미확인 — 추정값은 codes에 넣지 않음"
+  },
+  {
+    "courseKey": "GE-HP-MYTHS-AND-HISTORY",
+    "name": "역사와 신화",
+    "nameEn": "Myths and History",
+    "codes": [
+      "HIST119"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-ETHICS",
+    "name": "윤리란 무엇인가",
+    "nameEn": "What Is Ethics?",
+    "codes": [
+      "CHUM101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-MORAL-REASONING",
+    "name": "윤리적 추론",
+    "nameEn": "Moral Reasoning",
+    "codes": [
+      "PHIL124"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-ANTHROPOLOGY",
+    "name": "인류학이란 무엇인가",
+    "nameEn": "What is Anthropology",
+    "codes": [
+      "CHIS104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-SURVEY-OF-MODERN-HISTORY",
+    "name": "전환기 근대사의 조명",
+    "nameEn": "Survey of Modern History",
+    "aliases": [
+      "전환기근대사의 조명"
+    ],
+    "codes": [
+      "HIST113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-POLITICAL-TRANSFORMATION-WORLD-HISTORY",
+    "name": "정치변혁의 세계사",
+    "nameEn": "Political Transformation in World History",
+    "codes": [
+      "HIST112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-CHOSON-OFFICIAL-AND-CIVILIAN-HISTORY",
+    "name": "조선실록과 민간역사",
+    "nameEn": "Official History and Civilian History in Choson Dynasty",
+    "aliases": [
+      "조설실록과 민간역사"
+    ],
+    "codes": [
+      "HIST114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "2022 편성표 원문 '조설실록과 민간역사'(오식), 과목개요는 '조선실록과 민간역사'"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-PHILOSOPHY",
+    "name": "철학이란 무엇인가",
+    "nameEn": "What is Philosophy?",
+    "codes": [
+      "CPHI104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-KOREAN-HISTORY-AND-PEOPLE",
+    "name": "한국사와 민족의 발전",
+    "nameEn": "Korean History and the Development of Korean People",
+    "codes": [
+      "HIST115"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-KOREAN-THOUGHT-AND-TRADITIONAL-CULTURE",
+    "name": "한국의 사상과 전통",
+    "nameEn": "Korean Thought and Traditional Culture",
+    "codes": [
+      "HIST116"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-ETHICS-OF-CONTEMPORARY-SOCIETY",
+    "name": "현대사회의 윤리",
+    "nameEn": "Ethics of Contemporary Society",
+    "codes": [
+      "PHIL125"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-FORMAL-LOGIC",
+    "name": "형식논리학",
+    "nameEn": "Formal Logic",
+    "codes": [
+      "PHIL111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WHAT-IS-HISTORY",
+    "name": "역사란 무엇인가",
+    "nameEn": "What is History?",
+    "codes": [
+      "HIS111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "2022 과목개요 원문 인쇄 'HIS111', HIST111(고대문명사)과 별개 과목 — HIST 계열 T 누락 추정·미확인"
+  },
+  {
+    "courseKey": "GE-HP-SOCIAL-PHILOSOPHY",
+    "name": "사회철학",
+    "nameEn": "Social Philosophy",
+    "codes": [
+      "CPHI105"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-HISTORY-OF-CITY",
+    "name": "도시의 역사",
+    "nameEn": "History of City",
+    "codes": [
+      "CHIS105"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-CULTURAL-HISTORY-OF-MODERN-EUROPE",
+    "name": "유럽근대문화사",
+    "nameEn": "Cultural History of Modern Europe",
+    "codes": [
+      "CFRE104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-INTRODUCTION-TO-POST-MODERNISM",
+    "name": "포스트모더니즘",
+    "nameEn": "Introduction to Post-modernism",
+    "codes": [
+      "CPHI106"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-CHINESE-RELIGIONS-AND-PEOPLES",
+    "name": "중국의 종교와 민족",
+    "nameEn": "Chinese Religions and Peoples",
+    "codes": [
+      "CPHI107"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil"
+  },
+  {
+    "courseKey": "GE-HP-WESTERN-ARCHITECTURE-HISTORY",
+    "name": "서양건축사",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HP-INTRO-WESTERN-HISTORY",
+    "name": "서양사입문",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HP-INTRO-KOREAN-HISTORY",
+    "name": "한국입문사",
+    "aliases": [
+      "한국사입문"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 편성표 원문 표기 '*한국입문사'(한국사입문의 어순 오식으로 추정). 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HP-INTRO-ASIAN-HISTORY",
+    "name": "아시아사 입문",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "hist_phil",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-CLASSIC-LITERATURE-OF-EAST-ASIAN",
+    "name": "동양고전문학",
+    "nameEn": "Classic literature of East Asian",
+    "codes": [
+      "LIT111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-HISTORY-OF-EAST-ASIAN-ART",
+    "name": "동양미술사",
+    "nameEn": "History of East Asian Art",
+    "codes": [
+      "CART109"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-LITERATURE-AND-MEDIA",
+    "name": "문학과 미디어",
+    "nameEn": "Literature and Media",
+    "codes": [
+      "LIT113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-CULTURE-AND-ART-CRITICISM",
+    "name": "문화예술비평",
+    "nameEn": "A Criticism of Culture&Art",
+    "aliases": [
+      "한국문화예술비평"
+    ],
+    "codes": [
+      "LIT112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "2022 원문 'LIT112 문화예술비평', 영문명 원문 인쇄 'A Criticism of Culture&Art'. 2026 요람에서 '한국문화예술비평'(CLIT007)으로 개칭·재코드"
+  },
+  {
+    "courseKey": "GE-LA-ARTISTIC-EXPRESSION-OF-THOUGHT",
+    "name": "생각의 예술적 표현",
+    "nameEn": "Artistic Expression of Thought",
+    "codes": [
+      "CART1011"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WESTERN-CLASSICAL-LITERATURE",
+    "name": "서양 고전문학",
+    "nameEn": "Western Classical Literature",
+    "codes": [
+      "LIT114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WESTERN-ART-HISTORY",
+    "name": "서양미술사",
+    "nameEn": "Western Art History",
+    "codes": [
+      "ART112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WESTERN-CONTEMPORARY-LITERATURE",
+    "name": "서양 현대문학",
+    "nameEn": "Western Contemporary Literature",
+    "codes": [
+      "LIT115"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-HISTORY-OF-WESTERN-THEATER",
+    "name": "서양연극사",
+    "nameEn": "History of Western Theater",
+    "codes": [
+      "ART113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WESTERN-CINEMA-HISTORY",
+    "name": "서양영화사",
+    "nameEn": "Western Cinema History",
+    "codes": [
+      "CART106"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WESTERN-MUSIC-HISTORY",
+    "name": "서양음악사",
+    "nameEn": "Western Music History",
+    "aliases": [
+      "서양음악사(영/한)"
+    ],
+    "codes": [
+      "ART115"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "2022 편성표 표기 '서양음악사(영/한)' — 영어·한국어 분반 운영"
+  },
+  {
+    "courseKey": "GE-LA-UNDERSTANDING-ASIAN-FILMS",
+    "name": "아시아영화의 이해",
+    "nameEn": "Understanding Asian Films",
+    "codes": [
+      "ART114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-LANGUAGE-AND-MODERN-CULTURE",
+    "name": "언어와 현대문화",
+    "nameEn": "Language and Modern Culture",
+    "codes": [
+      "LIT119"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WHAT-IS-ART",
+    "name": "예술이란 무엇인가",
+    "nameEn": "What is Art?",
+    "codes": [
+      "CART105"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-CLASSICAL-KOREAN-LITERATURE",
+    "name": "한국의 고전문학",
+    "nameEn": "Classical Korean Literature",
+    "codes": [
+      "LIT116"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-MODERN-KOREAN-LITERATURE",
+    "name": "한국의 현대문학",
+    "nameEn": "Modern Korean Literature",
+    "codes": [
+      "LIT117"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-CONTEMPORARY-THEATRE",
+    "name": "현대연극의 이해",
+    "nameEn": "Understanding and Practice of Contemporary Theatre",
+    "codes": [
+      "CART1015"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-CONTEMPORARY-DRAMA-AND-PERFORMANCE",
+    "name": "Contemporary Drama and Performance",
+    "nameEn": "Contemporary Drama and Performance",
+    "codes": [
+      "CART108"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "영어강의. 2022 편성표·과목개요 모두 영문명으로 등재(한글명 없음). 2022 요람 내 학수번호 중복(CART108: Contemporary Drama and Performance/드로잉연습) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-LA-POPULAR-CULTURE",
+    "name": "대중문화",
+    "nameEn": "Popular Culture",
+    "codes": [
+      "ART111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-GEN-DESIGN-AND-SOCIETY",
+    "name": "디자인과 사회",
+    "nameEn": "Design and Society",
+    "codes": [
+      "CART1012"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "2022 「영역별 교양과목」 편성표 기준 문학과 예술 영역. 영역이 학번마다 바뀌는 과목이라 courseKey는 영역중립(GE-GEN-)으로 두고 area 필드가 학번별 진실 — 2025 요람부터 연결과 통합 영역"
+  },
+  {
+    "courseKey": "GE-LA-MYTHOLOGY-AND-FOLKTALE",
+    "name": "세계의 신화와 민담",
+    "nameEn": "Mythology and Folktale",
+    "codes": [
+      "CGEX1044"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WHAT-IS-LANGUAGE",
+    "name": "언어란 무엇인가",
+    "nameEn": "What is Language?",
+    "codes": [
+      "CHUM104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-HISTORY-OF-KOREAN-ART",
+    "name": "한국미술사",
+    "nameEn": "History of Korean Art",
+    "codes": [
+      "CART1010"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-KOREAN-FILM-HISTORY",
+    "name": "한국영화사",
+    "nameEn": "Korean Film History",
+    "codes": [
+      "CART1013"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-COMPARING-NOVELS-WITH-FILMS",
+    "name": "Comparing Novels with Films",
+    "nameEn": "Comparing Novels with Films",
+    "codes": [
+      "CART107"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "영어강의. 2022 편성표·과목개요 모두 영문명으로 등재(한글명 없음)"
+  },
+  {
+    "courseKey": "GE-LA-EAST-ASIAN-MODERN-LITERATURE",
+    "name": "동아시아 현대문학",
+    "nameEn": "East Asian Modern Literature",
+    "aliases": [
+      "동아시아현대문학"
+    ],
+    "codes": [
+      "CLIT201"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-UNDERSTANDING-OF-ASIAN-THEATRE",
+    "name": "동양연극의 이해",
+    "nameEn": "Understanding of Asian Theatre",
+    "codes": [
+      "CART1014"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-DISCOURSE-ON-LOVE",
+    "name": "사랑의 담론",
+    "nameEn": "Discourse on Love",
+    "aliases": [
+      "현대인의 사랑과 문학"
+    ],
+    "codes": [
+      "LIT118"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "2022 편성표 표기 '사랑의 담론(舊 현대인의 사랑과 문학)'"
+  },
+  {
+    "courseKey": "GE-LA-WHAT-IS-LITERATURE",
+    "name": "문학이란 무엇인가",
+    "nameEn": "What is Literature?",
+    "codes": [
+      "CLIT101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-WHAT-IS-STORYTELLING",
+    "name": "스토리텔링이란 무엇인가",
+    "nameEn": "What is Storytelling?",
+    "codes": [
+      "CHUM102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art"
+  },
+  {
+    "courseKey": "GE-LA-INTRO-ARCHITECTURE",
+    "name": "건축학개론",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-PHOTO-VIDEO-VISUAL-DESIGN",
+    "name": "사진영상과 시각디자인",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-ARCHITECTURE-AND-CULTURE",
+    "name": "건축과 문화",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-CHINESE-THOUGHT-AND-ART",
+    "name": "중국 사상과 예술",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-CONTEMPORARY-ARCHITECTURE",
+    "name": "현대건축",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-LA-JAPANESE-THOUGHT-AND-ART",
+    "name": "일본 사상과 예술",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "lit_art",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-SCIENCE-TECHNOLOGY-AND-LAW",
+    "name": "과학기술과 법",
+    "nameEn": "Science Technology and Law",
+    "codes": [
+      "SCI114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 요람 내 학수번호 중복(SCI114: 과학기술과 법/에너지와 사회) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-HS-MASS-COMMUNICATION-AND-MODERN-SOCIETY",
+    "name": "매스콤과 현대사회",
+    "nameEn": "Mass Communication and Modern Society",
+    "codes": [
+      "SOC11"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 과목개요 원문 인쇄 'SOC11', SOC111 오탈자 추정·미확인 — 추정값은 codes에 넣지 않음"
+  },
+  {
+    "courseKey": "GE-HS-FUTURE-REVOLUTION-AND-STARTUP",
+    "name": "미래 산업혁명과 기술창업론",
+    "nameEn": "Future Industrial Revolution and Technology Start-Up",
+    "aliases": [
+      "미래산업혁명과 기술창업론"
+    ],
+    "codes": [
+      "ENBS100"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 「영역별 교양과목」 편성표·과목개요 원문 표기 '미래 산업혁명과 기술창업론'(교양필수 안내문에는 '미래산업혁명과 기술창업론'). 사이버보안학과는 인간과 사회 영역에서 이 과목을 지정 이수"
+  },
+  {
+    "courseKey": "GE-HS-UNDERSTANDING-ON-NORTH-KOREA-SOCIETY",
+    "name": "북한사회의 이해",
+    "nameEn": "Understanding on North Korea Society",
+    "codes": [
+      "POL112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-PSYCHOLOGY-OF-THINKING-AND-LEARNING",
+    "name": "사고와 학습의 심리학",
+    "nameEn": "Psychology of Thinking and Learning",
+    "codes": [
+      "CPHI109"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WHAT-IS-SOCIOLOGY",
+    "name": "사회학이란 무엇인가",
+    "nameEn": "What is Sociciology?",
+    "codes": [
+      "CSOC103"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 과목개요 영문명 원문 인쇄 'What is Sociciology?'(Sociology 오기)"
+  },
+  {
+    "courseKey": "GE-HS-SEXUALITY-AND-CONTEMPORARY-SOCIETY",
+    "name": "섹슈얼리티와 현대사회",
+    "nameEn": "Sexuality and Contemporary Society",
+    "codes": [
+      "CWS102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WHAT-IS-PSYCHOLOGY",
+    "name": "심리학이란 무엇인가",
+    "nameEn": "What is Psychology?",
+    "codes": [
+      "CPSY101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WOMENS-STUDIES",
+    "name": "여성학",
+    "nameEn": "Psychology of Women",
+    "codes": [
+      "WS101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 과목개요 영문명 원문 'Psychology of Women'(과목명과 불일치). 2026 요람에서 'Women's Studies'로 정정"
+  },
+  {
+    "courseKey": "GE-HS-PSYCHOLOGY-OF-INTERPERSONAL-RELATIONS",
+    "name": "인간관계 심리학",
+    "nameEn": "Psychology of Interpersonal Relations",
+    "codes": [
+      "SOC102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-HUMAN-BEHAVIOR-AND-SOCIAL-PSYCHOLOGY",
+    "name": "인간행동과 사회심리",
+    "nameEn": "Human Behavior and Social Psychology",
+    "codes": [
+      "PSY111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-HUMAN-RIGHTS-AND-CONSTITUTION",
+    "name": "인권과 헌법",
+    "nameEn": "Human Rights & Constitution",
+    "codes": [
+      "CLAW104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WHAT-IS-POLITICAL-SCIENCE",
+    "name": "정치학이란 무엇인가",
+    "nameEn": "What Is Political Science?",
+    "codes": [
+      "CPOL101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-CREATIVE-THINKING",
+    "name": "창의적 사고",
+    "nameEn": "Creative Thinking",
+    "codes": [
+      "CKOR104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 요람 내 학수번호 중복(CKOR104: 창의적 사고/창의적 글쓰기) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-HS-UNDERSTANDING-OF-KOREA-UNIFICATION",
+    "name": "통일 한국의 이해",
+    "nameEn": "Understanding of Kore Unification",
+    "aliases": [
+      "통일한국의 이해"
+    ],
+    "codes": [
+      "CPOL102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 과목개요 영문명 원문 인쇄 'Understanding of Kore Unification'(Korea 오기)"
+  },
+  {
+    "courseKey": "GE-HS-UNDERSTANDING-KOREAN-SOCIETY",
+    "name": "한국사회의 이해",
+    "nameEn": "Understanding Korean Society",
+    "codes": [
+      "CLAW108"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "외국인 대상, 영어강의"
+  },
+  {
+    "courseKey": "GE-HS-CURRENT-ISSUES-IN-KOREAN-SOCIETY",
+    "name": "한국사회의 현실과 쟁점",
+    "nameEn": "Current Issues in Korean Society",
+    "codes": [
+      "SOC113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-ISSUES-IN-KOREAN-POLITICS",
+    "name": "한국정치의 쟁점과 과제",
+    "nameEn": "The Reality and Issues in Contemporary Korean Society",
+    "codes": [
+      "POL113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-MODERN-SOCIETY-AND-LAW",
+    "name": "현대의 시민생활과 법",
+    "nameEn": "Modern Society and Law",
+    "codes": [
+      "LAW111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-MENTAL-HEALTH-OF-MODERN-LIFE",
+    "name": "현대인의 정신건강",
+    "nameEn": "Mental Health of Modern Life",
+    "codes": [
+      "SOC114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-EVOLUTION-OF-MODERN-POLITICAL-IDEOLOGIES",
+    "name": "현대정치사조의 흐름",
+    "nameEn": "Evolution of Modern Political Ideologies",
+    "codes": [
+      "POL111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WHAT-IS-ECONOMICS-ALL-ABOUT",
+    "name": "경제학이란 무엇인가",
+    "nameEn": "What Is Economics All About?",
+    "codes": [
+      "CEC0101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-PLAY-AND-HUMAN",
+    "name": "놀이와 인간",
+    "nameEn": "Play & Human",
+    "codes": [
+      "CGEX1045"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-GEN-ART-AND-PSYCHOLOGICAL-HEALING",
+    "name": "예술과 심리치유",
+    "nameEn": "Art and Psycholosical Healing",
+    "codes": [
+      "CPSY102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 「영역별 교양과목」 편성표 기준 인간과 사회 영역. 영역이 학번마다 바뀌는 과목이라 courseKey는 영역중립(GE-GEN-)으로 두고 area 필드가 학번별 진실 — 2026 요람부터 연결과 통합 영역. 과목개요 영문명 원문 인쇄 'Art and Psycholosical Healing'(Psychological 오기)"
+  },
+  {
+    "courseKey": "GE-HS-INTRODUCTION-TO-COGNITIVE-SCIENCE",
+    "name": "인지과학개설",
+    "nameEn": "Introduction to Cognitive Science",
+    "codes": [
+      "PHIL119"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-CHINESE-LIFE-AND-CULTURE",
+    "name": "중국인의 삶과 문화",
+    "nameEn": "Chinese Life and Culture",
+    "codes": [
+      "CCHI102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-WHAT-IS-EDUCATION",
+    "name": "교육이란 무엇인가",
+    "nameEn": "What is Education?",
+    "codes": [
+      "CHUM105"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-INTL-COOPERATION-AND-SUSTAINABLE-DEV",
+    "name": "국제협력과 지속가능한 발전",
+    "nameEn": "International Cooperation and Sustainable Development",
+    "codes": [
+      "CGEX1043"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-ENTERPRISE-AND-SOCIETY",
+    "name": "기업과 사회",
+    "nameEn": "Enterprise and Society",
+    "codes": [
+      "BIZ111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc"
+  },
+  {
+    "courseKey": "GE-HS-UNDERSTANDING-MULTICULTURALISM-IN-KOREA",
+    "name": "한국사회 다문화현상의 이해",
+    "nameEn": "Understanding Multiculturalism in Korea",
+    "aliases": [
+      "한국사회 다문화 현상의 이해"
+    ],
+    "codes": [
+      "CSOC102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "2022 요람 내 학수번호 중복(CSOC102: 한국사회 다문화현상의 이해/일, 가족, 행복) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-HS-INTRO-EAST-ASIA",
+    "name": "동아시아입문",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-INTRO-JAPAN",
+    "name": "일본입문",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-INTRO-CHINA",
+    "name": "중국입문",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-HOUSING-ENVIRONMENT-PLANNING",
+    "name": "주거환경계획론",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-JAPANESE-SOCIETY-AND-CULTURE",
+    "name": "일본사회와 문화",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-HS-CHINESE-SOCIETY-AND-CULTURE",
+    "name": "중국 사회와 문화",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "human_soc",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 영어강의. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-NS-SCIENCE-AND-RELIGION",
+    "name": "과학과 종교",
+    "nameEn": "Science and Religion",
+    "codes": [
+      "CPHI102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-HISTORY-OF-SCIENCE",
+    "name": "과학사",
+    "nameEn": "History of Science",
+    "codes": [
+      "SCI112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-SCIENTIFIC-REASONING",
+    "name": "과학적 추론",
+    "nameEn": "Scientific Reasoning",
+    "codes": [
+      "CSCI103"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-TECHNOLOGY-DEVELOPMENT-AND-SOCIETY",
+    "name": "기술과 사회",
+    "nameEn": "Technology Development and Society",
+    "codes": [
+      "SCI113"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-PHYSICS",
+    "name": "물리학이란 무엇인가",
+    "nameEn": "What is Physics?",
+    "codes": [
+      "CPHY101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-BIOLOGY",
+    "name": "생물학이란 무엇인가",
+    "nameEn": "What is Biology?",
+    "codes": [
+      "CBIO101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-MATHEMATICS",
+    "name": "수학이란 무엇인가",
+    "nameEn": "What is Mathematics?",
+    "codes": [
+      "CMAT102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-ENERGY-AND-SOCIETY",
+    "name": "에너지와 사회",
+    "nameEn": "Energy and Society",
+    "codes": [
+      "SCI114"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci",
+    "note": "2022 요람 내 학수번호 중복(SCI114: 과학기술과 법/에너지와 사회) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-THE-UNIVERSE",
+    "name": "우주란 무엇인가",
+    "nameEn": "What is the Universe?",
+    "codes": [
+      "CSC101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci",
+    "note": "2022 과목개요 원문 인쇄 'CSC101'('컴퓨터란 무엇인가'는 CSC1101) — 원문 표기 그대로"
+  },
+  {
+    "courseKey": "GE-NS-MYSTIQUE-OF-THE-HUMAN-BRAIN",
+    "name": "인간과 두뇌의 신비",
+    "nameEn": "Mystique of the Human Brain",
+    "codes": [
+      "PSY112"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-INTRODUCTION-TO-NATURAL-SCIENCE",
+    "name": "자연과학의 이해",
+    "nameEn": "Introduction to Natural Science",
+    "codes": [
+      "CSCI104"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-COMPUTER",
+    "name": "컴퓨터란 무엇인가",
+    "nameEn": "What is Computer?",
+    "codes": [
+      "CSC1101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-INTRODUCTION-TO-MODERN-PHYSICS",
+    "name": "현대물리의 이해",
+    "nameEn": "Introduction to Modern Physics",
+    "codes": [
+      "PHYS111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-WHAT-IS-CHEMISTRY",
+    "name": "화학이란 무엇인가",
+    "nameEn": "What is Chemistry?",
+    "codes": [
+      "CCHE101"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-ENVIRONMENT-AND-HUMAN",
+    "name": "환경과 인간",
+    "nameEn": "Environment and Human",
+    "codes": [
+      "ENV111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-BIODIVERSITY-AND-EVOLUTION",
+    "name": "생물다양성과 진화",
+    "nameEn": "Biodiversity and Evolution",
+    "codes": [
+      "CBIO103"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-STATISTICS-AND-THE-WORLD-WE-LIVE-IN",
+    "name": "현실세계와 통계",
+    "nameEn": "Statistics and the World We Live in",
+    "codes": [
+      "MATH111"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-INTRODUCTORY-MICROBIOLOGY",
+    "name": "미생물학 입문",
+    "nameEn": "Introductory Microbiology",
+    "codes": [
+      "CBIO102"
+    ],
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci"
+  },
+  {
+    "courseKey": "GE-NS-PROBABILITY-STATISTICS-1",
+    "name": "확률 및 통계1",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 편성표 원문 '*확률 및 통계1,2' 묶음 표기에서 개별 과목으로 전개. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-NS-PROBABILITY-STATISTICS-2",
+    "name": "확률 및 통계2",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 편성표 원문 '*확률 및 통계1,2' 묶음 표기에서 개별 과목으로 전개. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-NS-INTRO-ENVIRONMENTAL-PSYCHOLOGY",
+    "name": "환경심리개론",
+    "credits": 3,
+    "defaultBucket": "area_liberal",
+    "area": "nat_sci",
+    "note": "「*」표 과목 — 전공과목이나 해당 전공 외 학생이 수강하면 영역별 교양으로 인정. 2022 다산학부대학 요람 과목개요 미수록 — 학수번호 원문 미기재(개설 전공 요람 소관)"
+  },
+  {
+    "courseKey": "GE-SEL-CURRENT-EVENTS-ENGLISH",
+    "name": "시사영어",
+    "nameEn": "Current Events in English Publications",
+    "codes": [
+      "ENG201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어)"
+  },
+  {
+    "courseKey": "GE-SEL-PRACTICAL-ENGLISH",
+    "name": "실용영어연습",
+    "nameEn": "Practical English Grammar",
+    "codes": [
+      "ENG204"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어)"
+  },
+  {
+    "courseKey": "GE-SEL-ENGLISH-STRUCTURE-AND-WRITING",
+    "name": "영어구문 및 작문",
+    "nameEn": "English Proficiency in Structure and Writing",
+    "codes": [
+      "ENG212"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어)"
+  },
+  {
+    "courseKey": "GE-SEL-ENGLISH-READING-AND-LISTENING",
+    "name": "영어독해 및 청해",
+    "nameEn": "English Reading and Listening",
+    "codes": [
+      "ENG213"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어)"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-ENGLISH",
+    "name": "기초영어",
+    "nameEn": "Basic English",
+    "codes": [
+      "CENG101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어). 융합시스템공학과(재직자전형) 대상"
+  },
+  {
+    "courseKey": "GE-SEL-BUSINESS-ENGLISH",
+    "name": "실무영어",
+    "nameEn": "Business English",
+    "codes": [
+      "CENG201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(영어). 융합시스템공학과(재직자전형) 대상"
+  },
+  {
+    "courseKey": "GE-SEL-JAPANESE-1",
+    "name": "일본어1",
+    "nameEn": "Japanese 1",
+    "aliases": [
+      "일본어 1"
+    ],
+    "codes": [
+      "JAP101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-JAPANESE-2",
+    "name": "일본어2",
+    "nameEn": "Japanese 2",
+    "aliases": [
+      "일본어 2"
+    ],
+    "codes": [
+      "JAP102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-JAPANESE-3",
+    "name": "일본어3",
+    "nameEn": "Japanese 3",
+    "aliases": [
+      "일본어 3"
+    ],
+    "codes": [
+      "JAP201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-JAPANESE-4",
+    "name": "일본어4",
+    "nameEn": "Japanese 4",
+    "codes": [
+      "JAP202"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-JAPANESE-CONVERSATION",
+    "name": "일본어회화",
+    "nameEn": "Japanese Conversation",
+    "aliases": [
+      "일본어 회화"
+    ],
+    "codes": [
+      "JAP203"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어). 2022 편성표·과목개요 원문 표기 '일본어회화'(붙여쓰기)"
+  },
+  {
+    "courseKey": "GE-SEL-CHINESE-1",
+    "name": "중국어1",
+    "nameEn": "Chinese 1",
+    "aliases": [
+      "중국어 1"
+    ],
+    "codes": [
+      "CHI101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-CHINESE-2",
+    "name": "중국어2",
+    "nameEn": "Chinese 2",
+    "aliases": [
+      "중국어 2"
+    ],
+    "codes": [
+      "CHI102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-CHINESE-3",
+    "name": "중국어3",
+    "nameEn": "Chinese 3",
+    "aliases": [
+      "중국어 3"
+    ],
+    "codes": [
+      "CHI201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-CHINESE-4",
+    "name": "중국어4",
+    "nameEn": "Chinese 4",
+    "aliases": [
+      "중국어 4"
+    ],
+    "codes": [
+      "CHI202"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-VIETNAMESE-LANGUAGE",
+    "name": "베트남어",
+    "nameEn": "Vietnamese Language",
+    "codes": [
+      "CGEX203"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-UNDERSTANDING-FOR-GERMAN-LITERATURE",
+    "name": "독일 명작의 이해",
+    "nameEn": "Understanding for German Literature",
+    "codes": [
+      "CGER101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-GERMAN-LANGUAGE",
+    "name": "독일어",
+    "nameEn": "German Language",
+    "codes": [
+      "CGEX201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-SPEAKING-GERMAN",
+    "name": "독일어 회화",
+    "nameEn": "Speaking German",
+    "codes": [
+      "GER204"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-FRENCH",
+    "name": "프랑스어",
+    "nameEn": "French",
+    "codes": [
+      "FREN101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-SPEAKING-FRENCH",
+    "name": "프랑스어 회화",
+    "nameEn": "Speaking French",
+    "codes": [
+      "FREN203"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-SPANISH-LANGUAGE",
+    "name": "스페인어",
+    "nameEn": "Spanish Language",
+    "codes": [
+      "CGEX202"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(제2외국어)"
+  },
+  {
+    "courseKey": "GE-SEL-SCIENTIFIC-COMPUTING-PROGRAMMING",
+    "name": "과학계산프로그래밍",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터). 학과 기초로만 개설. 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-OFFICE-DATA-PROCESSING",
+    "name": "사무데이터처리",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터). 학과 기초로만 개설. 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-WEB-AUTHORING",
+    "name": "웹저작기초",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터). 학과 기초로만 개설. 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-PROGRAMMING",
+    "name": "프로그래밍기초",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터). 학과 기초로만 개설. 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-COMPUTATIONAL-THINKING",
+    "name": "컴퓨팅 사고",
+    "nameEn": "Computational Thinking",
+    "codes": [
+      "CCMP1013"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터). 다산학부대학 개설(나머지 컴퓨터 과목은 학과 기초로만 개설)"
+  },
+  {
+    "courseKey": "GE-SEL-UNDERSTANDING-ARTIFICIAL-INTELLIGENCE",
+    "name": "인공지능의 이해",
+    "nameEn": "Understanding Artificial Intelligence",
+    "codes": [
+      "GCEX0019"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(컴퓨터)"
+  },
+  {
+    "courseKey": "GE-SEL-GOLF",
+    "name": "골프",
+    "nameEn": "Golf",
+    "codes": [
+      "PE104"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육)"
+  },
+  {
+    "courseKey": "GE-SEL-SWIMMING",
+    "name": "수영",
+    "nameEn": "Swimming",
+    "codes": [
+      "PR102"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육)"
+  },
+  {
+    "courseKey": "GE-SEL-CONTEMPORARY-DANCE",
+    "name": "에어로빅과 째즈댄스",
+    "nameEn": "Aerobic & Jazz Dance",
+    "aliases": [
+      "에어로빅과 재즈댄스",
+      "컨템포러리댄스"
+    ],
+    "codes": [
+      "PE105"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육). 2022 편성표·과목개요 원문 표기는 '에어로빅과 째즈댄스'(PE105). 2025 요람에서 '컨템포러리댄스'로 개칭"
+  },
+  {
+    "courseKey": "GE-SEL-TAEKWONDO",
+    "name": "태권도",
+    "nameEn": "Taekwondo",
+    "codes": [
+      "PE101"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육)"
+  },
+  {
+    "courseKey": "GE-SEL-TENNIS-1",
+    "name": "테니스1",
+    "nameEn": "Tennis 1",
+    "aliases": [
+      "테니스 1"
+    ],
+    "codes": [
+      "PE111"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육)"
+  },
+  {
+    "courseKey": "GE-SEL-TENNIS-2",
+    "name": "테니스2",
+    "nameEn": "Tennis 2",
+    "aliases": [
+      "테니스 2"
+    ],
+    "codes": [
+      "PE112"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(체육)"
+  },
+  {
+    "courseKey": "GE-SEL-PRECALCULUS",
+    "name": "Precalculus",
+    "nameEn": "Precalculus",
+    "codes": [
+      "CMAT103"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(교량과목)"
+  },
+  {
+    "courseKey": "GE-SEL-INTRO-COMPUTER-SCIENCE",
+    "name": "컴퓨터과학입문",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(교량과목). 신입생 예비대학 과목. 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-PREPHYSICS",
+    "name": "Prephysics",
+    "nameEn": "Prephysics",
+    "codes": [
+      "CPHY102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(교량과목)"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-KOREAN1",
+    "name": "기초한국어1",
+    "nameEn": "Basic Korean1",
+    "codes": [
+      "CHAN106"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-KOREAN2",
+    "name": "기초한국어2",
+    "nameEn": "Basic Korean2",
+    "codes": [
+      "CHAN001"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-SPEAKING-LISTENING-1",
+    "name": "한국어 말하기와 듣기1",
+    "nameEn": "Academic Korean Speaking & Listening1",
+    "codes": [
+      "CHAN109"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-SPEAKING-LISTENING-2",
+    "name": "한국어 말하기와 듣기2",
+    "nameEn": "Academic Korean Speaking & Listening2",
+    "codes": [
+      "CHAN107"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-GRAMMAR1",
+    "name": "한국어 문법1",
+    "nameEn": "Academic Korean Grammar1",
+    "codes": [
+      "CHAN102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-GRAMMAR2",
+    "name": "한국어 문법2",
+    "nameEn": "Academic Korean Grammar2",
+    "codes": [
+      "CHAN103"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-WRITING1",
+    "name": "한국어 쓰기1",
+    "nameEn": "Academic Korean Writing1",
+    "codes": [
+      "CHAN002"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-WRITING2",
+    "name": "한국어 쓰기2",
+    "nameEn": "Academic Korean Writing2",
+    "codes": [
+      "CHAN105"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-READING-1",
+    "name": "한국어 읽기1",
+    "nameEn": "Academic Korean Reading and Comprehension1",
+    "codes": [
+      "CHAN108"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-ACADEMIC-KOREAN-READING-2",
+    "name": "한국어 읽기2",
+    "nameEn": "Academic Korean Reading and Comprehension2",
+    "codes": [
+      "CHAN104"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(한국어). 외국인 학생 대상"
+  },
+  {
+    "courseKey": "GE-SEL-LECTURE-PAIRING-1",
+    "name": "강의페어링1",
+    "nameEn": "Lecture-paring 1,2,3",
+    "codes": [
+      "COLT103"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 편성표는 강의페어링1·2·3을 개별 표기, 과목개요는 'COLT103 강의페어링 1,2,3'로 묶어 인쇄(세 과목 공통 코드). 과목개요 영문명 원문 인쇄 'Lecture-paring 1,2,3'(Lecture-pairing 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-LECTURE-PAIRING-2",
+    "name": "강의페어링2",
+    "nameEn": "Lecture-paring 1,2,3",
+    "codes": [
+      "COLT103"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 편성표는 강의페어링1·2·3을 개별 표기, 과목개요는 'COLT103 강의페어링 1,2,3'로 묶어 인쇄(세 과목 공통 코드)"
+  },
+  {
+    "courseKey": "GE-SEL-LECTURE-PAIRING-3",
+    "name": "강의페어링3",
+    "nameEn": "Lecture-paring 1,2,3",
+    "codes": [
+      "COLT103"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 편성표는 강의페어링1·2·3을 개별 표기, 과목개요는 'COLT103 강의페어링 1,2,3'로 묶어 인쇄(세 과목 공통 코드)"
+  },
+  {
+    "courseKey": "GE-SEL-DATA-MATH-BASICS",
+    "name": "데이터입문 수리기초",
+    "nameEn": "Mathematical preliminaries: a gateway to data",
+    "codes": [
+      "CMAT108"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 이공계열(공대·정통대·자연대·의대·간호대·약대)·금융공학과 수강불가. 2022 요람 내 학수번호 중복(CMAT108: 데이터입문 수리기초/드론 비즈니스 모델 개발) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-SEL-FREE-DRAWING-EXERCISE",
+    "name": "드로잉연습",
+    "nameEn": "Free Drawig Exercise",
+    "aliases": [
+      "드로잉 연습"
+    ],
+    "codes": [
+      "CART108"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 요람 내 학수번호 중복(CART108: Contemporary Drama and Performance/드로잉연습) — 코드로 식별 불가, courseKey 기준. 과목개요 영문명 원문 인쇄 'Free Drawig Exercise'(Drawing 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-DIGITAL-PHOTOGRAPHY-EXERCISES",
+    "name": "디지털 사진 실습",
+    "nameEn": "Digital Photography Exercises",
+    "codes": [
+      "CART102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-INVENTION-AND-PATENT",
+    "name": "발명과 특허",
+    "nameEn": "Invention and Patent",
+    "codes": [
+      "SCI115"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-SPEECH-AND-DISCUSSION",
+    "name": "발표와 토의",
+    "nameEn": "Speech and Discussion",
+    "codes": [
+      "KOR201"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CRIMES-IN-MODERN-SOCIETY",
+    "name": "범죄와 현대사회",
+    "nameEn": "Crimes in Modern Society",
+    "codes": [
+      "CLAW105"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-VISITING-ART-MUSEUMS",
+    "name": "살아있는 미술관",
+    "nameEn": "Visiting Art Museums",
+    "codes": [
+      "CART104"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-VISITING-MUSEUMS",
+    "name": "살아있는 박물관",
+    "nameEn": "Visiting Museums",
+    "aliases": [
+      "살아 있는 박물관"
+    ],
+    "codes": [
+      "CHIS103"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 편성표·과목개요 원문 표기 '살아있는 박물관'(붙여쓰기)"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-LEADERSHIP",
+    "name": "셀프리더십",
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 과목개요 미수록 — 학수번호 원문 미기재"
+  },
+  {
+    "courseKey": "GE-SEL-MEDIA-PRODUCTION-EXERCISES",
+    "name": "영상콘텐츠 제작 실습",
+    "nameEn": "Media Production Exercises",
+    "codes": [
+      "CART101"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-WORK-FAMILY-AND-SOCIAL-WELLBEING",
+    "name": "일, 가족, 행복",
+    "nameEn": "Work, Family and Social Wellbeing",
+    "codes": [
+      "CSOC102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 요람 내 학수번호 중복(CSOC102: 한국사회 다문화현상의 이해/일, 가족, 행복) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-SEL-PROPERTY-AND-FAMILY-AND-LAW",
+    "name": "재산, 가족 그리고 법",
+    "nameEn": "Property & Family & Law",
+    "aliases": [
+      "재산·가족 그리고 법"
+    ],
+    "codes": [
+      "SAW103"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CRITICAL-WRITING",
+    "name": "비판적 글쓰기",
+    "nameEn": "Critical Writing",
+    "codes": [
+      "CKOR103"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CLASSICAL-CHINESE-FOR-LIVING",
+    "name": "생활한문",
+    "nameEn": "Classical Chinese Writing For Living",
+    "codes": [
+      "KOR202"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-CALCULUS",
+    "name": "수학기초",
+    "nameEn": "Basic Calculus",
+    "codes": [
+      "CMAT105"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 융합시스템공학과(재직자전형) 대상"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-LECTURE-SERIES-1",
+    "name": "아주강좌1",
+    "nameEn": "Ajou Lecture Series 1, 2",
+    "codes": [
+      "AJOU102"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "gradingType": "PF",
+    "note": "요람 구분: 교양선택(기타). 2022 과목개요 'AJOU102 아주강좌 1, 2'로 묶여 인쇄(두 과목 공통 코드). 원문 '성적은 Pass 또는 Fail로 부여된다'"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-LECTURE-SERIES-2",
+    "name": "아주강좌2",
+    "nameEn": "Ajou Lecture Series 1, 2",
+    "codes": [
+      "AJOU102"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "gradingType": "PF",
+    "note": "요람 구분: 교양선택(기타). 2022 과목개요 'AJOU102 아주강좌 1, 2'로 묶여 인쇄(두 과목 공통 코드). 원문 '성적은 Pass 또는 Fail로 부여된다'"
+  },
+  {
+    "courseKey": "GE-SEL-OPERA-AND-MUSICAL",
+    "name": "오페라와 뮤지컬",
+    "nameEn": "Opera and Musical",
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 과목개요에 과목명·영문명·설명만 인쇄되고 학수번호가 비어 있음"
+  },
+  {
+    "courseKey": "GE-SEL-NORMS-OF-KOREAN-IN-DAILY-LIFE",
+    "name": "생활 속 한국어 규범",
+    "nameEn": "Norms of Korean language in daily life",
+    "codes": [
+      "KOR102"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-INTRODUCTION-TO-SUWON",
+    "name": "수원의 이해",
+    "nameEn": "Introduction to Suwon",
+    "codes": [
+      "CGEX1028"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CALCULUS",
+    "name": "수학",
+    "nameEn": "Calculus",
+    "codes": [
+      "CMAT104"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 융합시스템공학과(재직자전형) 대상"
+  },
+  {
+    "courseKey": "GE-SEL-JUDGMENT-AND-DECISION-MAKING",
+    "name": "인간의 판단과 의사결정",
+    "nameEn": "Judgment and Decision Making in Human",
+    "codes": [
+      "CPSY202"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CREATIVE-WRITING",
+    "name": "창의적 글쓰기",
+    "nameEn": "Creative Writing",
+    "codes": [
+      "CKOR104"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 교양선택(기타). 2022 요람 내 학수번호 중복(CKOR104: 창의적 사고/창의적 글쓰기) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-PHILOSOPHY-AND-HISTORY",
+    "name": "교육철학 및 교육사",
+    "nameEn": "Educational Philosophy & Educational History",
+    "codes": [
+      "TEA221"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-PRINCIPLES-OF-EDUCATION",
+    "name": "교육학 개론",
+    "nameEn": "Principles of Education",
+    "aliases": [
+      "교육학개론"
+    ],
+    "codes": [
+      "TEA214"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-CURRICULUM",
+    "name": "교육과정",
+    "nameEn": "Educational Curriculum",
+    "codes": [
+      "CTEA106"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-METHOD-AND-TECHNOLOGY",
+    "name": "교육방법 및 교육공학",
+    "nameEn": "Educational Methodology and Educational Technology",
+    "codes": [
+      "TEA213"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-EVALUATION",
+    "name": "교육평가",
+    "nameEn": "Educational Evaluation",
+    "codes": [
+      "CTEA105"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-SEMINAR-FOR-PRE-SERVICE-TEACHERS",
+    "name": "교직세미나",
+    "nameEn": "A Seminar for pre-service teachers",
+    "codes": [
+      "CTEA201"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-TEACHING-PROFESSION-PRACTICE",
+    "name": "교직실무",
+    "nameEn": "Teacher Preparation for Student Management",
+    "codes": [
+      "CTEA104"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-SCHOOL-VIOLENCE-PREVENTION",
+    "name": "학교폭력 예방 및 학생의 이해",
+    "nameEn": "School Violence Prevention and Understanding Students",
+    "aliases": [
+      "학교폭력예방 및 학생의 이해"
+    ],
+    "codes": [
+      "CTEA203"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-TEACHING-PRACTICUM",
+    "name": "학교현장실습",
+    "nameEn": "Teaching Practicum",
+    "codes": [
+      "TEA402"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-VOLUNTEERING-IN-EDUCATION",
+    "name": "교육봉사활동",
+    "nameEn": "Volunteering in Education",
+    "codes": [
+      "CTEA103"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-SOCIOLOGY",
+    "name": "교육사회",
+    "nameEn": "Educational Sociology",
+    "codes": [
+      "TEA222"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-PSYCHOLOGY",
+    "name": "교육심리",
+    "nameEn": "Educational Psychology",
+    "codes": [
+      "TEA223"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-EDUCATIONAL-ADMIN-AND-MANAGEMENT",
+    "name": "교육행정 및 교육경영",
+    "nameEn": "Educational Administration & School Management",
+    "codes": [
+      "TEA224"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-GUIDANCE-AND-COUNSELING",
+    "name": "생활지도 및 상담",
+    "nameEn": "Guidance and Counseling",
+    "codes": [
+      "CTEA108"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-SPECIAL-EDUCATION",
+    "name": "특수교육학 개론",
+    "nameEn": "Education for students with special needs",
+    "aliases": [
+      "특수교육학개론"
+    ],
+    "codes": [
+      "CTEA107"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(교직과정)"
+  },
+  {
+    "courseKey": "GE-SEL-SECURITY-STUDIES",
+    "name": "안보학",
+    "nameEn": "Security Studies",
+    "codes": [
+      "MIL301"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(군사학). 2022 과목개요는 한글명 괄호 안에 영문명을 인쇄(———— 줄 없음)"
+  },
+  {
+    "courseKey": "GE-SEL-SECURITY-ORG-MANAGEMENT-CASE-STUDY",
+    "name": "안전 및 조직관리 사례연구",
+    "nameEn": "Security and Organization Management Case Study Research",
+    "codes": [
+      "MIL302"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(군사학). 2022 과목개요는 한글명 괄호 안에 영문명을 인쇄(———— 줄 없음)"
+  },
+  {
+    "courseKey": "GE-SEL-ORGANIZATION-LEADERSHIP",
+    "name": "조직리더십",
+    "nameEn": "Organization Leadership",
+    "codes": [
+      "MIL401"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(군사학). 2022 과목개요는 한글명 괄호 안에 영문명을 인쇄(———— 줄 없음)"
+  },
+  {
+    "courseKey": "GE-SEL-ORG-LEADERSHIP-CASE-STUDY",
+    "name": "조직리더십 사례연구",
+    "nameEn": "Organization Leadership Cas Study Research",
+    "codes": [
+      "MIL402"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(군사학). 2022 과목개요 영문명 원문 인쇄 'Organization Leadership Cas Study Research'('Case' 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-VOLUNTEER-SERVICE-LEADERSHIP",
+    "name": "사회봉사 리더십",
+    "nameEn": "Volunteer Service Leadership",
+    "aliases": [
+      "사회봉사리더십"
+    ],
+    "codes": [
+      "SERV212"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(사회봉사)"
+  },
+  {
+    "courseKey": "GE-SEL-PUBLIC-SERVICE-PRACTICUM-1",
+    "name": "사회봉사실천1",
+    "nameEn": "Public Service Practicum 1, 2",
+    "codes": [
+      "SERV111"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(사회봉사). 2022 과목개요 'SERV111, 112 사회봉사실천1, 2'로 묶여 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-PUBLIC-SERVICE-PRACTICUM-2",
+    "name": "사회봉사실천2",
+    "nameEn": "Public Service Practicum 1, 2",
+    "codes": [
+      "SERV112"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(사회봉사). 2022 과목개요 'SERV111, 112 사회봉사실천1, 2'로 묶여 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-BASIC-OF-PUBLIC-SERVICE",
+    "name": "사회봉사이론",
+    "nameEn": "The Basic of Public Service",
+    "codes": [
+      "SERV101"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(사회봉사)"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-1",
+    "name": "아주도전1",
+    "nameEn": "Ajou Challenge 1",
+    "codes": [
+      "CGEX1033"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-2",
+    "name": "아주도전2",
+    "nameEn": "Ajou Challenge 2",
+    "codes": [
+      "CGEX1034"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-3",
+    "name": "아주도전3",
+    "nameEn": "Ajou Challenge 3",
+    "codes": [
+      "CGEX1035"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-4",
+    "name": "아주도전4",
+    "nameEn": "Ajou Challenge 4",
+    "codes": [
+      "CGEX1036"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-5",
+    "name": "아주도전5",
+    "nameEn": "Ajou Challenge 5",
+    "codes": [
+      "CGEX1037"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-6",
+    "name": "아주도전6",
+    "nameEn": "Ajou Challenge 6",
+    "codes": [
+      "CGEX1038"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전1~아주도전6(3/3)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-7",
+    "name": "아주도전7",
+    "nameEn": "Ajou Challenge 7",
+    "codes": [
+      "CGEX1039"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전7~아주도전8(2/2)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-8",
+    "name": "아주도전8",
+    "nameEn": "Ajou Challenge 8",
+    "codes": [
+      "CGEX1040"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전7~아주도전8(2/2)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-9",
+    "name": "아주도전9",
+    "nameEn": "Ajou Challenge 9",
+    "codes": [
+      "CGEX1041"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전9~아주도전10(1/1)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-10",
+    "name": "아주도전10",
+    "nameEn": "Ajou Challenge 10",
+    "codes": [
+      "CGEX1042"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전). 2022 편성표는 '아주도전9~아주도전10(1/1)'로 묶어 표기, 과목개요는 개별 학수번호 인쇄"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-M1",
+    "name": "아주도전M1",
+    "nameEn": "Ajou Challenge M1",
+    "aliases": [
+      "아주도전 M1"
+    ],
+    "codes": [
+      "GCEX0020"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전)"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-M2",
+    "name": "아주도전M2",
+    "nameEn": "Ajou Challenge M2",
+    "aliases": [
+      "아주도전 M2"
+    ],
+    "codes": [
+      "GCEX0021"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전)"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-M3",
+    "name": "아주도전M3",
+    "nameEn": "Ajou Challenge M3",
+    "aliases": [
+      "아주도전 M3"
+    ],
+    "codes": [
+      "GCEX0022"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전)"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-M4",
+    "name": "아주도전M4",
+    "nameEn": "Ajou Challenge M4",
+    "aliases": [
+      "아주도전 M4"
+    ],
+    "codes": [
+      "GCEX0023"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전)"
+  },
+  {
+    "courseKey": "GE-SEL-AJOU-CHALLENGE-M5",
+    "name": "아주도전M5",
+    "nameEn": "Ajou Challenge M5",
+    "aliases": [
+      "아주도전 M5"
+    ],
+    "codes": [
+      "GCEX0024"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(아주도전)"
+  },
+  {
+    "courseKey": "GE-SEL-JOB-COMPETENCY-SCIENCE-ENGINEERING",
+    "name": "이공계열 취업역량개발",
+    "nameEn": "Job Competency Development for Students in Science and Engineering",
+    "codes": [
+      "CGEX303"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도). 2022 과목개요 CGEX303(인문사회계열 취업역량개발은 CGEX302)"
+  },
+  {
+    "courseKey": "GE-SEL-JOB-COMPETENCY-HUMANITIES-SOCIAL",
+    "name": "인문사회계열 취업역량개발",
+    "nameEn": "Job Competency Development for Students in Business, Humanities and Social Sciences",
+    "codes": [
+      "CGEX302"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도). 2022 과목개요 CGEX302(이공계열 취업역량개발은 CGEX303) — 2열 레이아웃 오정렬 주의"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-UNDERSTANDING-AND-CAREER-SEARCH",
+    "name": "자기이해와 진로탐색",
+    "nameEn": "Self-Understanding and Career Search",
+    "codes": [
+      "GEX106"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도)"
+  },
+  {
+    "courseKey": "GE-SEL-UNDERSTANDING-MEDIUM-INDUSTRIES",
+    "name": "중견기업의 이해",
+    "nameEn": "Understanding Medium Industries",
+    "aliases": [
+      "중견 기업의 이해"
+    ],
+    "codes": [
+      "GEX302"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도)"
+  },
+  {
+    "courseKey": "GE-SEL-WOMENS-CAREER-DEVELOPMENT-I",
+    "name": "여대생 커리어개발1",
+    "nameEn": "Womens Carrer DevelopmentⅠ",
+    "aliases": [
+      "여대생의 커리어 개발Ⅰ"
+    ],
+    "codes": [
+      "WS104"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도). 과목개요 영문명 원문 인쇄 'Womens Carrer DevelopmentⅠ'(Career 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-WOMENS-CAREER-DEVELOPMENT-II",
+    "name": "여대생 커리어개발2",
+    "nameEn": "Womens Carrer DevelopmentⅡ",
+    "aliases": [
+      "여대생의 커리어 개발Ⅱ"
+    ],
+    "codes": [
+      "WS105"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도). 과목개요 영문명 원문 인쇄 'Womens Carrer DevelopmentⅡ'(Career 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-DIRECTED-CAREER-EXPLORATION",
+    "name": "자기주도 진로탐색",
+    "nameEn": "Self-directed Career Exploration",
+    "codes": [
+      "CAJ0011"
+    ],
+    "credits": 0,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(진로지도). 0학점 과목(편성표 표기 0/2)"
+  },
+  {
+    "courseKey": "GE-SEL-START-UP-PRACTICE-1",
+    "name": "창업실습1",
+    "nameEn": "Start-up Practice 1",
+    "codes": [
+      "COLT107"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-START-UP-PRACTICE-2",
+    "name": "창업실습2",
+    "nameEn": "Start-up Practice 2",
+    "codes": [
+      "COLT108"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-START-UP-FIELD-PRACTICE-1",
+    "name": "창업현장실습1",
+    "nameEn": "Start-up Field Practice 1",
+    "codes": [
+      "COLT109"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-START-UP-FIELD-PRACTICE-2",
+    "name": "창업현장실습2",
+    "nameEn": "Start-up Field Practice 2",
+    "codes": [
+      "COLT1010"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-FIELD-PRACTICE-4",
+    "name": "현장실습4",
+    "nameEn": "Field Practice 4",
+    "codes": [
+      "COLT301"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-FIELD-PRACTICE-5",
+    "name": "현장실습5",
+    "nameEn": "Field Practice 5",
+    "codes": [
+      "COLT302"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-FIELD-PRACTICE-6",
+    "name": "현장실습6",
+    "nameEn": "Field Practice 6",
+    "codes": [
+      "COLT303"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-CULTURE-AND-ARTS-STARTUP",
+    "name": "문화예술 스타트업",
+    "nameEn": "Culture and Arts Startup",
+    "codes": [
+      "GCEX0018"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-STARTUP-IDEA-EXPLORATION",
+    "name": "창업 아이디어 탐색 및 실습",
+    "nameEn": "Exploring and Practicing Start-up Ideas",
+    "codes": [
+      "GCEX0017"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-DRONE-BUSINESS-MODEL",
+    "name": "드론 비즈니스 모델 개발",
+    "nameEn": "Development of Drone Business Model",
+    "codes": [
+      "CMAT108"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업). 2022 요람 내 학수번호 중복(CMAT108: 데이터입문 수리기초/드론 비즈니스 모델 개발) — 코드로 식별 불가, courseKey 기준"
+  },
+  {
+    "courseKey": "GE-SEL-IP-FOR-STARTUPS",
+    "name": "벤처창업과 지식재산",
+    "nameEn": "Intellectual property for start-ups",
+    "codes": [
+      "GCEX1047"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(창업)"
+  },
+  {
+    "courseKey": "GE-SEL-MINDFULNESS-AND-SELF-REGULATION",
+    "name": "마음챙김과 자기조절",
+    "nameEn": "Mindfulness & self-regulation",
+    "codes": [
+      "CGEX1027"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-INTRO-KOREAN-CULTURE",
+    "name": "한국의 문화",
+    "nameEn": "An Intoduction to Korean Culture",
+    "codes": [
+      "CGEX1031"
+    ],
+    "credits": 2,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(기타). 외국인 대상, 한국어 강의. 과목개요 영문명 원문 인쇄 'An Intoduction to Korean Culture'(Introduction 오기)"
+  },
+  {
+    "courseKey": "GE-SEL-INTERNATIONAL-ACADEMY-3",
+    "name": "해외연수3",
+    "nameEn": "International Academy 3",
+    "codes": [
+      "CPBA101"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-CHORUS",
+    "name": "합창",
+    "nameEn": "Chorus",
+    "codes": [
+      "GEX103"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-INTERDISCIPLINARY-CAPSTONE-DESIGN",
+    "name": "다학제캡스톤 디자인",
+    "nameEn": "Interdisciplinary Capstone Design",
+    "codes": [
+      "CGEX301"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "요람 구분: 일반선택(기타)"
+  },
+  {
+    "courseKey": "GE-SEL-GLOBAL-FRESHMAN-SEMINAR1",
+    "name": "글로벌 신입생 세미나1",
+    "nameEn": "Global Freshman Seminar1",
+    "aliases": [
+      "글로벌신입생세미나1"
+    ],
+    "codes": [
+      "CAJ0115"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(외국인 유학생 대상). 학점 2022 원문 미표기 — 2024 요람 편성표 '글로벌신입생세미나1~2(1/1)' 기준 1학점 기재"
+  },
+  {
+    "courseKey": "GE-SEL-GLOBAL-FRESHMAN-SEMINAR2",
+    "name": "글로벌 신입생 세미나2",
+    "nameEn": "Global Freshman Seminar2",
+    "aliases": [
+      "글로벌신입생세미나2"
+    ],
+    "codes": [
+      "CAJ0116"
+    ],
+    "credits": 1,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(외국인 유학생 대상). 학점 2022 원문 미표기 — 2024 요람 편성표 '글로벌신입생세미나1~2(1/1)' 기준 1학점 기재"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-DIRECTED-PRACTICE-1",
+    "name": "자기주도실습1",
+    "nameEn": "Self-directed Practice 1",
+    "codes": [
+      "CAJ0012"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(현장실습 대체 과목). 과목개요 공통 설명 '4주 160시간 활동에 대해 3학점을 인정한다', '활동 계획서 대비 성취 수준에 근거하여 Pass/Fail 방식으로 성적을 부여한다' / 자기주도실습 P/F 근거 없음 — 요람 과목개요에 평가방식 미기재(현장실습 대체과목, 4주 160시간=3학점만 명시)"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-DIRECTED-PRACTICE-2",
+    "name": "자기주도실습2",
+    "nameEn": "Self-directed Practice 2",
+    "codes": [
+      "CAJ0013"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(현장실습 대체 과목). 과목개요 공통 설명 '4주 160시간 활동에 대해 3학점을 인정한다', '활동 계획서 대비 성취 수준에 근거하여 Pass/Fail 방식으로 성적을 부여한다' / 자기주도실습 P/F 근거 없음 — 요람 과목개요에 평가방식 미기재(현장실습 대체과목, 4주 160시간=3학점만 명시)"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-DIRECTED-PRACTICE-3",
+    "name": "자기주도실습3",
+    "nameEn": "Self-directed Practice 3",
+    "codes": [
+      "CAJ0311"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(현장실습 대체 과목). 과목개요 공통 설명 '4주 160시간 활동에 대해 3학점을 인정한다', '활동 계획서 대비 성취 수준에 근거하여 Pass/Fail 방식으로 성적을 부여한다' / 자기주도실습 P/F 근거 없음 — 요람 과목개요에 평가방식 미기재(현장실습 대체과목, 4주 160시간=3학점만 명시)"
+  },
+  {
+    "courseKey": "GE-SEL-SELF-DIRECTED-PRACTICE-4",
+    "name": "자기주도실습4",
+    "nameEn": "Self-directed Practice 4",
+    "codes": [
+      "CAJ0312"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록(현장실습 대체 과목). 과목개요 공통 설명 '4주 160시간 활동에 대해 3학점을 인정한다', '활동 계획서 대비 성취 수준에 근거하여 Pass/Fail 방식으로 성적을 부여한다' / 자기주도실습 P/F 근거 없음 — 요람 과목개요에 평가방식 미기재(현장실습 대체과목, 4주 160시간=3학점만 명시)"
+  },
+  {
+    "courseKey": "GE-SEL-KOREAN-PENINSULA-READING-THROUGH-MOVIES",
+    "name": "영화로 보는 한반도",
+    "nameEn": "Korean Peninsula Reading Through Movies",
+    "codes": [
+      "CGEX1048"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록. 학점 2022 원문 미표기 — 2024 요람 3학점 기준으로 기재"
+  },
+  {
+    "courseKey": "GE-SEL-KOREAS-PROPAGANDA",
+    "name": "한반도 정치선전",
+    "nameEn": "Korea‘s Propaganda",
+    "codes": [
+      "CGEX1049"
+    ],
+    "credits": 3,
+    "defaultBucket": "general_elective",
+    "note": "2022 교양선택·일반선택 편성표 미기재, 과목개요만 수록. 과목개요는 ———— 줄 없이 한글명 뒤에 영문명 'Korea‘s Propaganda'를 이어 인쇄(따옴표도 원문 그대로). 학점 2022 원문 미표기 — 2024 요람 3학점 기준으로 기재"
+  }
+]

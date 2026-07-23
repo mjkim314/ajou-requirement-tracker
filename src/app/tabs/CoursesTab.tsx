@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useAppState } from '../AppState'
 import { Button, Card, Icon, Modal } from '../ui'
 import { supersededIds, type Course } from '../../engine/index'
+import { areaPolicyOf, excludedAreaOf } from '../../data/merge'
 import { groupBySemester, type CourseDraft } from '../courses'
 import { CourseList, type CourseMeta } from './courses/CourseList'
 import { CourseFormModal } from './courses/CourseFormModal'
@@ -36,6 +37,8 @@ export function CoursesTab() {
 
   const courses = state.courses
   const superseded = useMemo(() => supersededIds(courses), [courses])
+  // 세트가 인정하는 영역별교양 영역(계열 제외 영역 판별용). 세트가 바뀔 때만 다시 만든다.
+  const areaPolicy = useMemo(() => (reqSet ? areaPolicyOf(reqSet) : null), [reqSet])
   const metaById = useMemo(() => {
     const m = new Map<string, CourseMeta>()
     for (const r of result?.resolved ?? []) {
@@ -44,10 +47,11 @@ export function CoursesTab() {
         unmatched: r.unmatched,
         ambiguous: !!r.ambiguousCandidates,
         countsForCredit: r.countsForCredit,
+        excludedArea: excludedAreaOf(r.catalog, areaPolicy),
       })
     }
     return m
-  }, [result])
+  }, [result, areaPolicy])
   // 학기 학점 합은 엔진의 이수 인정(countsForCredit)만 더한다 — 앱에서 재판정하지 않는다(규칙 1).
   const groups = useMemo(
     () => groupBySemester(courses, (c) => metaById.get(c.id)?.countsForCredit ?? false),

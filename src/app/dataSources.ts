@@ -25,6 +25,7 @@ import {
   catalog2024Sw,
   requirementSetRegistry,
 } from '../data/index'
+import { catalogFor } from '../data/merge'
 import type { PersistedState } from '../storage/schema'
 
 interface DataBundle {
@@ -84,6 +85,41 @@ export function bundleFor(set: RequirementSet): DataBundle {
     return DEFAULT_BUNDLE
   }
   return EMPTY_BUNDLE
+}
+
+// ────────────────────────────────────────────────────────────
+// 학과 + 교양 카탈로그 합성
+// ────────────────────────────────────────────────────────────
+
+/**
+ * 세트 객체 → (학번 → 합성 카탈로그) 캐시.
+ *
+ * 합성 자체는 순수 함수지만 매번 새 배열을 만들면 화면의 검색 인덱스(useMemo[catalog])가
+ * 상태가 바뀔 때마다 300여 항목을 다시 색인한다. 세트 객체 동일성으로 캐시하면
+ * 프리셋은 계속 같은 객체, 커스텀 세트는 편집될 때만 새 객체라 무효화가 정확하다.
+ */
+const mergedCatalogCache = new WeakMap<RequirementSet, Map<number, CatalogEntry[]>>()
+
+/**
+ * 요건 세트가 실제로 쓰는 카탈로그 — 학과 과목 + **학번에 맞는 다산학부대학 교양**.
+ * 교양 영역 인정 범위(계열 제외 영역)는 세트의 영역별교양 버킷이 정한다(merge.ts).
+ */
+export function catalogForSet(
+  set: RequirementSet,
+  admissionYear: number | null | undefined,
+): CatalogEntry[] {
+  const year = admissionYear ?? set.admissionYearFrom ?? null
+  const key = year ?? 0
+  let byYear = mergedCatalogCache.get(set)
+  if (!byYear) {
+    byYear = new Map()
+    mergedCatalogCache.set(set, byYear)
+  }
+  const hit = byYear.get(key)
+  if (hit) return hit
+  const merged = catalogFor(bundleFor(set).catalog, year, set)
+  byYear.set(key, merged)
+  return merged
 }
 
 /**
@@ -173,7 +209,8 @@ export function resolveInput(state: PersistedState): EvaluationInput | null {
     profile: state.profile,
     courses: state.courses,
     requirementSet,
-    catalog: bundle.catalog,
+    // 학과 카탈로그 + 학번에 맞는 교양 카탈로그. 화면(자동완성·영역 편집기)도 이 값을 쓴다.
+    catalog: catalogForSet(requirementSet, state.profile.admissionYear),
     additionalMajorRules,
     nonCurricularState: state.noncurricular,
   }

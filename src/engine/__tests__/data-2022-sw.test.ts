@@ -20,6 +20,7 @@ import {
   reqSet2022SwGeneral,
   additionalMajorRules2022Sw,
 } from '../../data/index.js'
+import { catalogFor } from '../../data/merge.js'
 import {
   mk,
   commonRequired,
@@ -27,6 +28,7 @@ import {
   generalProfile,
   advancedNonCurricular,
   generalNonCurricular,
+  AREA_TRIO_REAL,
 } from './fixtures/builders.js'
 
 const SETS: [string, RequirementSet][] = [
@@ -46,6 +48,13 @@ const AM_TYPES = new Set([
 
 const catalogKeys = new Set(catalog2022Sw.map((e) => e.courseKey))
 const index = buildCatalogIndex(catalog2022Sw)
+
+/**
+ * 앱이 실제로 평가에 쓰는 카탈로그 — 학과 + 학번(2022)에 맞는 다산학부대학 교양.
+ * 교양 키(GE-*)는 전부 여기서 온다. 두 세트는 영역별교양 영역 정의가 같아 하나로 쓴다.
+ */
+const mergedCatalog = catalogFor(catalog2022Sw, 2022, reqSet2022SwAdvanced)
+const mergedKeys = new Set(mergedCatalog.map((e) => e.courseKey))
 
 function getBucket(set: RequirementSet, id: string): Bucket {
   const b = set.buckets.find((x) => x.id === id)
@@ -72,7 +81,7 @@ describe('A. 참조 무결성 (2022 SW)', () => {
     it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재', () => {
       for (const b of set.buckets) {
         for (const key of b.requiredCourses ?? []) {
-          expect(catalogKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
+          expect(mergedKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
         }
       }
     })
@@ -81,7 +90,7 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       for (const b of set.buckets) {
         for (const g of b.choiceGroups ?? []) {
           for (const key of g.courses) {
-            expect(catalogKeys, `${g.id} ${key}`).toContain(key)
+            expect(mergedKeys, `${g.id} ${key}`).toContain(key)
           }
         }
       }
@@ -96,11 +105,18 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       }
     })
 
-    it('A-05 카탈로그 area 값이 area_liberal.areas id 집합에 포함', () => {
+    it('A-05 영역별교양에 남은 과목의 area는 세트가 인정하는 영역뿐(제외 영역은 일반선택행)', () => {
       const areaIds = new Set((getBucket(set, 'area_liberal').areas ?? []).map((a) => a.id))
-      for (const e of catalog2022Sw) {
-        if (e.area != null) expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
+      const merged = catalogFor(catalog2022Sw, 2022, set)
+      const excluded = merged.filter((e) => e.area != null && !areaIds.has(e.area))
+      for (const e of merged) {
+        if (e.defaultBucket !== 'area_liberal') continue
+        expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
       }
+      // 이공계(SW)는 자연과 과학이 소속 영역 → 제외. 제외 과목은 사라지지 않고 일반선택으로 간다.
+      expect(excluded.length).toBeGreaterThan(0)
+      for (const e of excluded) expect(e.defaultBucket, e.courseKey).toBe('general_elective')
+      expect(new Set(excluded.map((e) => e.area))).toEqual(new Set(['nat_sci']))
     })
 
     it('A-06 카탈로그 defaultBucket이 모두 유효 bucket id', () => {
@@ -139,8 +155,17 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       }
     })
 
-    it('A-11 equivalents: 2022 세트는 비어 있음(학번 개정·교차과목 미발동)', () => {
-      expect(set.equivalents ?? []).toHaveLength(0)
+    it('A-11 equivalents: 교양 대체 3건뿐(학번 개정·ICT 교차과목은 2022에 없음)', () => {
+      // 고급영어1/2 → 영어1/2, 아주희망 → SW커리어세미나. 전공 대체는 2022 세트에 없다.
+      expect((set.equivalents ?? []).map((e) => e.id).sort()).toEqual([
+        'eq_adv_english_1',
+        'eq_adv_english_2',
+        'eq_ajou_hope_sw',
+      ])
+      for (const eq of set.equivalents ?? []) {
+        expect(mergedKeys, `equivalent.to ${eq.to}`).toContain(eq.to)
+        expect(mergedKeys, `equivalent.from ${eq.from}`).toContain(eq.from)
+      }
     })
 
     it('A-13 gradePoints 9키 존재, A+ === 4.5', () => {
@@ -290,7 +315,7 @@ describe('B. 심화 대표 성적표 (2022 SW)', () => {
   // 일반선택 28 = 3학점 9 + 1학점 1
   function baseCourses(): Course[] {
     return [
-      ...commonRequired(),
+      ...commonRequired(AREA_TRIO_REAL),
       mk('SW-CAPSTONE', { credits: 6 }),
       mk('SW-SELF-PROJECT', { credits: 3 }),
       ...ADV_ELECTIVES_3.map((k) => advElective(k)),
@@ -302,7 +327,7 @@ describe('B. 심화 대표 성적표 (2022 SW)', () => {
   const base = {
     profile: advProfile2022(),
     requirementSet: reqSet2022SwAdvanced,
-    catalog: catalog2022Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2022Sw,
     nonCurricularState: advancedNonCurricular(),
   }
@@ -340,7 +365,7 @@ describe('B. 심화 대표 성적표 (2022 SW)', () => {
 describe('B. 일반 대표 성적표 (2022 SW)', () => {
   // 필수(75) + 전공선택 10(SW-DB,SW-SW-ENG,SW-AI,SW산업세미나) + 교양 34 + 부전공 21
   const genCommon: Course[] = [
-    ...commonRequired(),
+    ...commonRequired(AREA_TRIO_REAL),
     advElective('SW-DB'),
     advElective('SW-SW-ENG'),
     advElective('SW-AI'),
@@ -351,7 +376,7 @@ describe('B. 일반 대표 성적표 (2022 SW)', () => {
   const base = {
     profile: genProfile2022({ additionalMajors: [{ ruleId: 'am_minor', active: true }] }),
     requirementSet: reqSet2022SwGeneral,
-    catalog: catalog2022Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2022Sw,
     nonCurricularState: generalNonCurricular(),
   }

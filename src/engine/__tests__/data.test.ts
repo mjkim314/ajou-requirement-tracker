@@ -17,6 +17,7 @@ import {
   reqSet2021SwGeneral,
   additionalMajorRules2021Sw,
 } from '../../data/index.js'
+import { catalogFor } from '../../data/merge.js'
 import {
   mk,
   commonRequired,
@@ -24,6 +25,7 @@ import {
   generalProfile,
   advancedNonCurricular,
   generalNonCurricular,
+  AREA_TRIO_REAL,
 } from './fixtures/builders.js'
 
 const SETS: [string, RequirementSet][] = [
@@ -44,6 +46,13 @@ const AM_TYPES = new Set([
 const catalogKeys = new Set(catalog2021Sw.map((e) => e.courseKey))
 const index = buildCatalogIndex(catalog2021Sw)
 
+/**
+ * 앱이 실제로 평가에 쓰는 카탈로그 — 학과 + 학번(2021)에 맞는 다산학부대학 교양.
+ * 교양 키(GE-*)는 전부 여기서 온다. 두 세트는 영역별교양 영역 정의가 같아 하나로 쓴다.
+ */
+const mergedCatalog = catalogFor(catalog2021Sw, 2021, reqSet2021SwAdvanced)
+const mergedKeys = new Set(mergedCatalog.map((e) => e.courseKey))
+
 function getBucket(set: RequirementSet, id: string): Bucket {
   const b = set.buckets.find((x) => x.id === id)
   if (!b) throw new Error(`bucket ${id} 없음`)
@@ -60,10 +69,10 @@ describe('A. 참조 무결성', () => {
   })
 
   describe.each(SETS)('세트=%s', (_name, set) => {
-    it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재', () => {
+    it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재(학과+교양 합성)', () => {
       for (const b of set.buckets) {
         for (const key of b.requiredCourses ?? []) {
-          expect(catalogKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
+          expect(mergedKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
         }
       }
     })
@@ -72,7 +81,7 @@ describe('A. 참조 무결성', () => {
       for (const b of set.buckets) {
         for (const g of b.choiceGroups ?? []) {
           for (const key of g.courses) {
-            expect(catalogKeys, `${g.id} ${key}`).toContain(key)
+            expect(mergedKeys, `${g.id} ${key}`).toContain(key)
           }
         }
       }
@@ -87,11 +96,18 @@ describe('A. 참조 무결성', () => {
       }
     })
 
-    it('A-05 카탈로그 area 값이 area_liberal.areas id 집합에 포함', () => {
+    it('A-05 영역별교양에 남은 과목의 area는 세트가 인정하는 영역뿐(제외 영역은 일반선택행)', () => {
       const areaIds = new Set((getBucket(set, 'area_liberal').areas ?? []).map((a) => a.id))
-      for (const e of catalog2021Sw) {
-        if (e.area != null) expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
+      const merged = catalogFor(catalog2021Sw, 2021, set)
+      const excluded = merged.filter((e) => e.area != null && !areaIds.has(e.area))
+      for (const e of merged) {
+        if (e.defaultBucket !== 'area_liberal') continue
+        expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
       }
+      // 이공계(SW)는 자연과 과학이 소속 영역 → 제외. 제외 과목은 사라지지 않고 일반선택으로 간다.
+      expect(excluded.length).toBeGreaterThan(0)
+      for (const e of excluded) expect(e.defaultBucket, e.courseKey).toBe('general_elective')
+      expect(new Set(excluded.map((e) => e.area))).toEqual(new Set(['nat_sci']))
     })
 
     it('A-06 카탈로그 defaultBucket이 모두 유효 bucket id', () => {
@@ -134,8 +150,8 @@ describe('A. 참조 무결성', () => {
     it('A-11 equivalents: to는 카탈로그에 존재, from 미존재는 의도된 집합만', () => {
       const danglingFrom: string[] = []
       for (const eq of set.equivalents ?? []) {
-        expect(catalogKeys, `equivalent ${eq.id} to ${eq.to}`).toContain(eq.to)
-        if (!catalogKeys.has(eq.from)) danglingFrom.push(eq.from)
+        expect(mergedKeys, `equivalent ${eq.id} to ${eq.to}`).toContain(eq.to)
+        if (!mergedKeys.has(eq.from)) danglingFrom.push(eq.from)
       }
       // ICT 교차 과목은 완결형 SW 카탈로그 밖이라 의도적으로 미발동
       expect(danglingFrom.sort()).toEqual(['ICT-DATA-STRUCT', 'ICT-OSS-INTRO'])
@@ -231,7 +247,7 @@ describe('B. 심화 대표 성적표', () => {
   // 전공선택 37 = 캡스톤3 + 자기주도3 + 3학점 전선 10과목(30) + 산업세미나1
   // 일반선택 28 = 3학점 9 + 1학점 1
   const courses: Course[] = [
-    ...commonRequired(),
+    ...commonRequired(AREA_TRIO_REAL),
     mk('SW-CAPSTONE'),
     mk('SW-SELF-PROJECT'),
     ...ADV_ELECTIVES.map((k) => mk(k)),
@@ -243,7 +259,7 @@ describe('B. 심화 대표 성적표', () => {
     profile: advancedProfile(),
     courses,
     requirementSet: reqSet2021SwAdvanced,
-    catalog: catalog2021Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2021Sw,
     nonCurricularState: advancedNonCurricular(),
   })
@@ -269,7 +285,7 @@ describe('B. 심화 대표 성적표', () => {
 describe('B. 일반 대표 성적표', () => {
   // 필수(75) + 전공선택 10(SW-DB,SW-SW-ENG,SW-AI,SW산업세미나) + 교양 34
   const genCommon: Course[] = [
-    ...commonRequired(),
+    ...commonRequired(AREA_TRIO_REAL),
     mk('SW-DB'),
     mk('SW-SW-ENG'),
     mk('SW-AI'),
@@ -283,7 +299,7 @@ describe('B. 일반 대표 성적표', () => {
   const base = {
     profile,
     requirementSet: reqSet2021SwGeneral,
-    catalog: catalog2021Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2021Sw,
     nonCurricularState: generalNonCurricular(),
   }

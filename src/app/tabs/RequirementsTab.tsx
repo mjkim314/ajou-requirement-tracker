@@ -3,6 +3,8 @@ import { useAppState } from '../AppState'
 import { requirementSetRegistry } from '../../data/index'
 import { BUCKET_GROUPS, customIdFor, startEdit } from '../reqset-editor'
 import { normalizeReqSetGroups } from '../dataSources'
+import { areaPolicyOf, excludedAreaOf } from '../../data/merge'
+import { AreaExcludedBadge } from './courses/AreaExcludedBadge'
 import { supersededIds, type BucketResult, type Course, type RequirementSet } from '../../engine/index'
 import { semesterSortKey } from '../courses'
 import { Button, Card, Icon, Modal } from '../ui'
@@ -61,6 +63,18 @@ export function RequirementsTab() {
     }
     return map
   }, [result, state.courses])
+
+  // 소속 계열 제외 영역 과목(일반선택으로 귀속된 교양)에 사유를 붙이기 위한 과목 id → 영역 id.
+  const excludedAreaById = useMemo(() => {
+    const policy = reqSet ? areaPolicyOf(reqSet) : null
+    const map = new Map<string, string>()
+    if (!policy) return map
+    for (const rc of result?.resolved ?? []) {
+      const area = excludedAreaOf(rc.catalog, policy)
+      if (area) map.set(rc.course.id, area)
+    }
+    return map
+  }, [result, reqSet])
 
   if (!reqSet || !result || !input) return null
 
@@ -140,6 +154,7 @@ export function RequirementsTab() {
         <CreditRequirements
           buckets={result.buckets}
           coursesByBucket={coursesByBucket}
+          excludedAreaById={excludedAreaById}
           onEdit={openEditor}
         />
 
@@ -257,10 +272,12 @@ function groupByCategory(buckets: BucketResult[]): CategoryGroup[] {
 function CreditRequirements({
   buckets,
   coursesByBucket,
+  excludedAreaById,
   onEdit,
 }: {
   buckets: BucketResult[]
   coursesByBucket: Map<string, Course[]>
+  excludedAreaById: Map<string, string>
   onEdit: () => void
 }) {
   const categories = useMemo(() => groupByCategory(buckets), [buckets])
@@ -293,7 +310,12 @@ function CreditRequirements({
       ) : (
         <div className="flex flex-col divide-y divide-line-2">
           {categories.map((cat) => (
-            <CategoryRow key={cat.group} cat={cat} coursesByBucket={coursesByBucket} />
+            <CategoryRow
+              key={cat.group}
+              cat={cat}
+              coursesByBucket={coursesByBucket}
+              excludedAreaById={excludedAreaById}
+            />
           ))}
         </div>
       )}
@@ -308,9 +330,11 @@ function CreditRequirements({
 function CategoryRow({
   cat,
   coursesByBucket,
+  excludedAreaById,
 }: {
   cat: CategoryGroup
   coursesByBucket: Map<string, Course[]>
+  excludedAreaById: Map<string, string>
 }) {
   const [open, setOpen] = useState(false)
   const pct = Math.round(Math.min(cat.rate, 1) * 100)
@@ -366,7 +390,12 @@ function CategoryRow({
       {open && (
         <div id={panelId} className="mt-3 flex flex-col gap-3 border-l-2 border-line-2 pl-3">
           {cat.buckets.map((b) => (
-            <SubBucket key={b.id} b={b} courses={coursesByBucket.get(b.id) ?? []} />
+            <SubBucket
+              key={b.id}
+              b={b}
+              courses={coursesByBucket.get(b.id) ?? []}
+              excludedAreaById={excludedAreaById}
+            />
           ))}
         </div>
       )}
@@ -375,7 +404,15 @@ function CategoryRow({
 }
 
 /** 카테고리 안 하위 영역 하나 — 진행률·미충족 사유·귀속 과목. */
-function SubBucket({ b, courses }: { b: BucketResult; courses: Course[] }) {
+function SubBucket({
+  b,
+  courses,
+  excludedAreaById,
+}: {
+  b: BucketResult
+  courses: Course[]
+  excludedAreaById: Map<string, string>
+}) {
   const pct = Math.round(Math.min(b.rate, 1) * 100)
   const barColor = b.satisfied ? 'bg-green' : b.rate < 0.5 ? 'bg-orange' : 'bg-navy'
   const reasons = b.reasons.filter((r) => r.trim().length > 0)
@@ -408,15 +445,21 @@ function SubBucket({ b, courses }: { b: BucketResult; courses: Course[] }) {
       )}
       {courses.length > 0 && (
         <ul className="mt-1.5 flex flex-col gap-1">
-          {courses.map((c) => (
-            <li key={c.id} className="flex items-center gap-2">
-              <span className="min-w-0 flex-1 truncate text-[11.5px] text-ink-3">
-                {c.nameSnapshot}
-              </span>
-              <span className="shrink-0 text-[10.5px] tabular-nums text-muted-2">{c.credits}학점</span>
-              <StatusBadge course={c} dead={false} />
-            </li>
-          ))}
+          {courses.map((c) => {
+            const excludedArea = excludedAreaById.get(c.id)
+            return (
+              <li key={c.id} className="flex items-center gap-2">
+                <span className="min-w-0 flex-1 truncate text-[11.5px] text-ink-3">
+                  {c.nameSnapshot}
+                </span>
+                {excludedArea && <AreaExcludedBadge areaId={excludedArea} compact />}
+                <span className="shrink-0 text-[10.5px] tabular-nums text-muted-2">
+                  {c.credits}학점
+                </span>
+                <StatusBadge course={c} dead={false} />
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>

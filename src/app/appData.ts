@@ -1,5 +1,6 @@
 import type { Course, Profile } from '../engine/index'
-import { catalog2021Sw, requirementSetRegistry } from '../data/index'
+import { requirementSetRegistry } from '../data/index'
+import { catalogForSet } from './dataSources'
 import { defaultSettings, type PersistedState } from '../storage/schema'
 
 /*
@@ -9,10 +10,13 @@ import { defaultSettings, type PersistedState } from '../storage/schema'
  */
 
 const DEMO_SET_ID = 'rs_2021_sw_advanced'
+const DEMO_ADMISSION_YEAR = 2021
 const demoReqSet = requirementSetRegistry[DEMO_SET_ID]
 
-const creditByKey = new Map(catalog2021Sw.map((e) => [e.courseKey, e.credits]))
-const nameByKey = new Map(catalog2021Sw.map((e) => [e.courseKey, e.name]))
+// 학과 + 2021 교양 합성 카탈로그 — 데모도 실제 앱과 같은 카탈로그를 본다.
+const demoCatalog = demoReqSet ? catalogForSet(demoReqSet, DEMO_ADMISSION_YEAR) : []
+const creditByKey = new Map(demoCatalog.map((e) => [e.courseKey, e.credits]))
+const nameByKey = new Map(demoCatalog.map((e) => [e.courseKey, e.name]))
 
 let seq = 0
 function course(courseKey: string, grade: Course['grade'], semester: string): Course {
@@ -37,11 +41,11 @@ function demoCourses(): Course[] {
     course('MATH-1', 'B0', '2021-1'),
     course('SW-PROGRAMMING', 'A+', '2021-1'),
     course('GE-ENGLISH-2', 'A0', '2021-2'),
-    course('GE-AREA-HIST', 'B+', '2021-2'),
+    course('GE-HP-WHAT-IS-HISTORY', 'B+', '2021-2'), // 역사와 철학
     course('MATH-2', 'B0', '2021-2'),
     course('SW-DISCRETE-MATH', 'A0', '2021-2'),
     course('SW-CREATIVE-SW-INTRO', 'A+', '2021-2'),
-    course('GE-AREA-SOC', 'A0', '2022-1'),
+    course('GE-HS-WHAT-IS-SOCIOLOGY', 'A0', '2022-1'), // 인간과 사회
     course('SW-OOP', 'A0', '2022-1'),
     course('SW-DATA-STRUCT', 'B+', '2022-1'),
     course('SW-DIGITAL-CIRCUIT', 'B0', '2022-1'),

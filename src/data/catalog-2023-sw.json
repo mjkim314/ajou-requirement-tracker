@@ -1,17 +1,4 @@
 [
-  { "courseKey": "GE-AJOU-CHARACTER", "name": "아주인성", "credits": 1, "defaultBucket": "ajou_character" },
-  { "courseKey": "GE-ENGLISH-1", "name": "영어1", "credits": 3, "defaultBucket": "english", "codes": ["GEB101"] },
-  { "courseKey": "GE-ENGLISH-2", "name": "영어2", "credits": 3, "defaultBucket": "english", "codes": ["GEB102"] },
-  { "courseKey": "GE-WRITING", "name": "글쓰기", "credits": 3, "defaultBucket": "writing" },
-
-  { "courseKey": "GE-AREA-HIST", "name": "서양사의이해", "credits": 3, "defaultBucket": "area_liberal", "area": "hist_phil" },
-  { "courseKey": "GE-AREA-HIST-2", "name": "동양철학산책", "credits": 3, "defaultBucket": "area_liberal", "area": "hist_phil" },
-  { "courseKey": "GE-AREA-HIST-3", "name": "한국사탐구", "credits": 3, "defaultBucket": "area_liberal", "area": "hist_phil" },
-  { "courseKey": "GE-AREA-ART", "name": "음악의이해", "credits": 3, "defaultBucket": "area_liberal", "area": "lit_art" },
-  { "courseKey": "GE-AREA-ART-2", "name": "문학과영화", "credits": 3, "defaultBucket": "area_liberal", "area": "lit_art" },
-  { "courseKey": "GE-AREA-SOC", "name": "사회학입문", "credits": 3, "defaultBucket": "area_liberal", "area": "human_soc" },
-  { "courseKey": "GE-AREA-SOC-2", "name": "경제학의이해", "credits": 3, "defaultBucket": "area_liberal", "area": "human_soc" },
-
   { "courseKey": "SW-CAREER-SEMINAR", "name": "SW커리어세미나", "credits": 1, "defaultBucket": "sw_seminar", "codes": ["SCE191"], "gradingType": "PF", "note": "과목개요상 pass-fail 운영. 전과(전입)생·편입학생은 이수 의무 없음(2023 요람 유의사항)" },
   { "courseKey": "MATH-1", "name": "수학1", "credits": 3, "defaultBucket": "math" },
   { "courseKey": "MATH-2", "name": "수학2", "credits": 3, "defaultBucket": "math" },

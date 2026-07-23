@@ -22,12 +22,14 @@ import {
   reqSet2023SwGeneral,
   additionalMajorRules2023Sw,
 } from '../../data/index.js'
+import { catalogFor } from '../../data/merge.js'
 import {
   mk,
   advancedProfile,
   generalProfile,
   advancedNonCurricular,
   generalNonCurricular,
+  AREA_TRIO_REAL,
 } from './fixtures/builders.js'
 
 const SETS: [string, RequirementSet][] = [
@@ -50,6 +52,13 @@ const INTENDED_DANGLING_FROM = new Set(['SW-CREATIVE-SW-INTRO'])
 
 const catalogKeys = new Set(catalog2023Sw.map((e) => e.courseKey))
 const index = buildCatalogIndex(catalog2023Sw)
+
+/**
+ * 앱이 실제로 평가에 쓰는 카탈로그 — 학과 + 학번(2023)에 맞는 다산학부대학 교양.
+ * 교양 키(GE-*)는 전부 여기서 온다. 두 세트는 영역별교양 영역 정의가 같아 하나로 쓴다.
+ */
+const mergedCatalog = catalogFor(catalog2023Sw, 2023, reqSet2023SwAdvanced)
+const mergedKeys = new Set(mergedCatalog.map((e) => e.courseKey))
 
 function getBucket(set: RequirementSet, id: string): Bucket {
   const b = set.buckets.find((x) => x.id === id)
@@ -76,7 +85,7 @@ describe('A. 참조 무결성 (2023 SW)', () => {
     it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재', () => {
       for (const b of set.buckets) {
         for (const key of b.requiredCourses ?? []) {
-          expect(catalogKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
+          expect(mergedKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
         }
       }
     })
@@ -85,7 +94,7 @@ describe('A. 참조 무결성 (2023 SW)', () => {
       for (const b of set.buckets) {
         for (const g of b.choiceGroups ?? []) {
           for (const key of g.courses) {
-            expect(catalogKeys, `${g.id} ${key}`).toContain(key)
+            expect(mergedKeys, `${g.id} ${key}`).toContain(key)
           }
         }
       }
@@ -100,11 +109,18 @@ describe('A. 참조 무결성 (2023 SW)', () => {
       }
     })
 
-    it('A-05 카탈로그 area 값이 area_liberal.areas id 집합에 포함', () => {
+    it('A-05 영역별교양에 남은 과목의 area는 세트가 인정하는 영역뿐(제외 영역은 일반선택행)', () => {
       const areaIds = new Set((getBucket(set, 'area_liberal').areas ?? []).map((a) => a.id))
-      for (const e of catalog2023Sw) {
-        if (e.area != null) expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
+      const merged = catalogFor(catalog2023Sw, 2023, set)
+      const excluded = merged.filter((e) => e.area != null && !areaIds.has(e.area))
+      for (const e of merged) {
+        if (e.defaultBucket !== 'area_liberal') continue
+        expect(areaIds, `${e.courseKey} area ${e.area}`).toContain(e.area)
       }
+      // 이공계(SW)는 자연과 과학이 소속 영역 → 제외. 제외 과목은 사라지지 않고 일반선택으로 간다.
+      expect(excluded.length).toBeGreaterThan(0)
+      for (const e of excluded) expect(e.defaultBucket, e.courseKey).toBe('general_elective')
+      expect(new Set(excluded.map((e) => e.area))).toEqual(new Set(['nat_sci']))
     })
 
     it('A-06 카탈로그 defaultBucket이 모두 유효 bucket id', () => {
@@ -145,8 +161,8 @@ describe('A. 참조 무결성 (2023 SW)', () => {
 
     it('A-11 equivalents: to는 카탈로그 존재, from은 의도된 dangling만 허용', () => {
       for (const eq of set.equivalents ?? []) {
-        expect(catalogKeys, `equivalent.to ${eq.to}`).toContain(eq.to)
-        if (!catalogKeys.has(eq.from)) {
+        expect(mergedKeys, `equivalent.to ${eq.to}`).toContain(eq.to)
+        if (!mergedKeys.has(eq.from)) {
           expect(INTENDED_DANGLING_FROM, `dangling from ${eq.from}`).toContain(eq.from)
         }
       }
@@ -284,9 +300,7 @@ function commonRequired2023(): Course[] {
     mk('GE-ENGLISH-1'),
     mk('GE-ENGLISH-2'),
     mk('GE-WRITING'),
-    mk('GE-AREA-HIST'),
-    mk('GE-AREA-ART'),
-    mk('GE-AREA-SOC'),
+    ...AREA_TRIO_REAL.map((k) => mk(k)),
     mk('SW-CAREER-SEMINAR'),
     mk('MATH-1'),
     mk('MATH-2'),
@@ -372,7 +386,7 @@ describe('B. 심화 대표 성적표 (2023 SW)', () => {
   const base = {
     profile: advProfile2023(),
     requirementSet: reqSet2023SwAdvanced,
-    catalog: catalog2023Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2023Sw,
     nonCurricularState: advancedNonCurricular(),
   }
@@ -426,7 +440,7 @@ describe('B. 일반 대표 성적표 (2023 SW)', () => {
   const base = {
     profile: genProfile2023({ additionalMajors: [{ ruleId: 'am_minor', active: true }] }),
     requirementSet: reqSet2023SwGeneral,
-    catalog: catalog2023Sw,
+    catalog: mergedCatalog,
     additionalMajorRules: additionalMajorRules2023Sw,
     nonCurricularState: generalNonCurricular(),
   }

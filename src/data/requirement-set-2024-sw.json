@@ -131,6 +131,9 @@
       }
     ],
     "equivalents": [
+      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" },
       { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "effectiveFrom": 2023, "note": "전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨(2023 개정 유지). 구 교과 이수분을 인공지능입문으로 상호 인정. from(창의소프트웨어입문)은 2024 카탈로그 밖 과목이라 의도된 dangling" }
     ],
     "courseGroups": [
@@ -303,6 +306,9 @@
       }
     ],
     "equivalents": [
+      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" },
       { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "effectiveFrom": 2023, "note": "전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨(2023 개정 유지). 구 교과 이수분을 인공지능입문으로 상호 인정" }
     ],
     "courseGroups": [

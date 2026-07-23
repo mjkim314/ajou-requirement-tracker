@@ -2,6 +2,7 @@ import { useId, useMemo, useRef, useState } from 'react'
 import type { CatalogEntry } from '../../../engine/index'
 import { searchDocs, type SearchDoc } from '../../search'
 import { Icon } from '../../ui'
+import { AreaExcludedBadge } from './AreaExcludedBadge'
 
 const INPUT_CLASS =
   'w-full rounded-block border border-line bg-surface px-3.5 py-3 text-[14px] font-medium text-ink outline-none transition-colors placeholder:text-muted-2 focus:border-blue focus:ring-2 focus:ring-blue/20'
@@ -17,6 +18,8 @@ interface Props {
   onPick: (entry: CatalogEntry) => void
   /** 자유 입력 — 카탈로그 미확인(courseKey=null). */
   onType: (text: string) => void
+  /** 이 과목이 소속 계열 제외 영역이면 영역 id(아니면 null). 후보에 "영역별교양 미인정"을 붙인다. */
+  excludedAreaOf?: (entry: CatalogEntry) => string | null
   id?: string
   describedBy?: string
 }
@@ -25,7 +28,16 @@ interface Props {
  * 과목명 검색 자동완성(콤보박스). 과목명·학수번호·초성으로 카탈로그를 찾는다.
  * 키보드: ↑/↓ 이동, Enter 선택, Esc 닫기. 접근성은 combobox/listbox/option 역할로.
  */
-export function CourseAutocomplete({ value, resolved, docs, onPick, onType, id, describedBy }: Props) {
+export function CourseAutocomplete({
+  value,
+  resolved,
+  docs,
+  onPick,
+  onType,
+  excludedAreaOf,
+  id,
+  describedBy,
+}: Props) {
   const autoId = useId()
   const listId = `${autoId}-list`
   const inputId = id ?? autoId
@@ -122,6 +134,7 @@ export function CourseAutocomplete({ value, resolved, docs, onPick, onType, id, 
           {suggestions.map((entry, i) => {
             const isActive = i === active
             const code = entry.codes?.[0]
+            const excludedArea = excludedAreaOf?.(entry) ?? null
             return (
               <li
                 key={entry.courseKey}
@@ -140,6 +153,7 @@ export function CourseAutocomplete({ value, resolved, docs, onPick, onType, id, 
                 onMouseEnter={() => setActive(i)}
               >
                 <span className="flex-1 truncate font-medium text-ink">{entry.name}</span>
+                {excludedArea && <AreaExcludedBadge areaId={excludedArea} compact />}
                 {code && (
                   <span className="shrink-0 rounded-chip bg-bg-soft px-1.5 py-0.5 text-[10.5px] font-semibold text-muted">
                     {code}

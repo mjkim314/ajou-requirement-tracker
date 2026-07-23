@@ -1,11 +1,14 @@
 /**
- * bundleFor / additionalMajorTemplates 폴백 검증 — 데이터_정정_백로그.md #2.
+ * bundleFor / catalogForSet / additionalMajorTemplates 검증.
  *
- * 핵심 계약: 비SW 학과 세트에 SW 카탈로그를 조용히 물려주지 않는다(빈 번들 = 카탈로그
- * 미지정). SW 세트·학과 미기재 레거시 세트는 기존처럼 학번으로 카탈로그 연도를 고른다.
+ * 핵심 계약:
+ * - 비SW 학과 세트에 SW 카탈로그를 조용히 물려주지 않는다(빈 번들 = 카탈로그 미지정).
+ *   SW 세트·학과 미기재 레거시 세트는 학번으로 카탈로그 연도를 고른다(데이터_정정_백로그.md #2).
+ * - 앱이 실제로 쓰는 카탈로그는 학과 + **학번에 맞는 교양**의 합성이다(merge.ts).
  */
 
 import { describe, it, expect } from 'vitest'
+import { evaluate } from '../engine/index'
 import type { RequirementSet } from '../engine/types'
 import {
   additionalMajorRules2021Sw,
@@ -16,7 +19,14 @@ import {
   catalog2024Sw,
   reqSet2021SwAdvanced,
 } from '../data/index'
-import { additionalMajorTemplates, bundleFor, normalizeReqSetGroups } from './dataSources'
+import { demoPersistedState } from './appData'
+import {
+  additionalMajorTemplates,
+  bundleFor,
+  catalogForSet,
+  normalizeReqSetGroups,
+  resolveInput,
+} from './dataSources'
 
 function mkSet(over: Partial<RequirementSet>): RequirementSet {
   return {
@@ -63,6 +73,58 @@ describe('bundleFor', () => {
     const s = mkSet({ id: 'custom_5', department: '기계공학과', admissionYearFrom: 2023 })
     expect(bundleFor(s).catalog).toHaveLength(0)
     expect(bundleFor(s).rules).toHaveLength(0)
+  })
+})
+
+describe('catalogForSet (학과 + 학번별 교양)', () => {
+  it('학과 과목과 교양 과목이 한 카탈로그로 합쳐진다', () => {
+    const keys = new Set(catalogForSet(reqSet2021SwAdvanced, 2021).map((e) => e.courseKey))
+    expect(keys.has('SW-ALGORITHM')).toBe(true) // 학과
+    expect(keys.has('GE-WRITING')).toBe(true) // 교양필수
+    expect(keys.has('GE-HP-WHAT-IS-HISTORY')).toBe(true) // 영역별교양
+  })
+
+  it('학번이 다르면 그 학번의 교양 편제가 걸린다', () => {
+    const y2021 = new Set(catalogForSet(reqSet2021SwAdvanced, 2021).map((e) => e.courseKey))
+    const y2025 = new Set(catalogForSet(reqSet2021SwAdvanced, 2025).map((e) => e.courseKey))
+    expect(y2021.has('GE-AJOU-SANGSANG-HEALTH')).toBe(false)
+    expect(y2025.has('GE-AJOU-SANGSANG-HEALTH')).toBe(true)
+  })
+
+  it('학번을 모르면 세트의 admissionYearFrom으로 고른다', () => {
+    expect(catalogForSet(reqSet2021SwAdvanced, null)).toBe(
+      catalogForSet(reqSet2021SwAdvanced, 2021),
+    )
+  })
+
+  it('같은 (세트, 학번)이면 같은 배열을 재사용한다(검색 인덱스 재생성 방지)', () => {
+    expect(catalogForSet(reqSet2021SwAdvanced, 2022)).toBe(
+      catalogForSet(reqSet2021SwAdvanced, 2022),
+    )
+  })
+
+  it('비SW 학과 세트는 카탈로그 미지정이어도 교양은 붙는다', () => {
+    const s = mkSet({ id: 'custom_ge', department: '기계공학과', admissionYearFrom: 2023 })
+    const keys = new Set(catalogForSet(s, 2023).map((e) => e.courseKey))
+    expect(keys.has('SW-ALGORITHM')).toBe(false)
+    expect(keys.has('GE-WRITING')).toBe(true)
+  })
+})
+
+describe('resolveInput (데모 상태 통합)', () => {
+  const input = resolveInput(demoPersistedState())!
+
+  it('데모 과목이 전부 카탈로그에 잡힌다', () => {
+    const r = evaluate(input)
+    expect(r.diagnostics.unmatched).toHaveLength(0)
+    expect(r.diagnostics.ambiguous).toHaveLength(0)
+  })
+
+  it('데모의 교양 2과목이 영역별교양 6학점으로 집계된다', () => {
+    const r = evaluate(input)
+    const area = r.buckets.find((b) => b.id === 'area_liberal')!
+    expect(area.earned).toBe(6)
+    expect(area.required).toBe(9)
   })
 })
 

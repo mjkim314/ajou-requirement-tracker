@@ -128,7 +128,11 @@
         ]
       }
     ],
-    "equivalents": [],
+    "equivalents": [
+      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" }
+    ],
     "courseGroups": [
       {
         "id": "field_practice",
@@ -296,7 +300,11 @@
         ]
       }
     ],
-    "equivalents": [],
+    "equivalents": [
+      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
+      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" }
+    ],
     "courseGroups": [
       {
         "id": "field_practice",

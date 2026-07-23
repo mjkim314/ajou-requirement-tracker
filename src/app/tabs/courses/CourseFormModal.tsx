@@ -15,9 +15,11 @@ import {
   validateDraft,
   type CourseDraft,
 } from '../../courses'
+import { areaPolicyOf, excludedAreaOf } from '../../../data/merge'
 import { buildSearchDocs } from '../../search'
 import { Button, Icon, Modal } from '../../ui'
 import { Field, NumberField, SelectField, TextField } from '../../onboarding/fields'
+import { areaExcludedHint } from './AreaExcludedBadge'
 import { CourseAutocomplete } from './CourseAutocomplete'
 
 interface Props {
@@ -67,6 +69,13 @@ export function CourseFormModal({
 
   const docs = useMemo(() => buildSearchDocs(catalog), [catalog])
   const catMap = useMemo(() => catalogByKey(catalog), [catalog])
+
+  // 소속 계열이라 영역별교양으로 인정되지 않는 영역 — 후보 목록과 선택 결과에 함께 알린다.
+  const areaPolicy = useMemo(() => areaPolicyOf(reqSet), [reqSet])
+  const pickedExcludedArea = excludedAreaOf(
+    draft.courseKey ? catMap.get(draft.courseKey) : null,
+    areaPolicy,
+  )
 
   const autoBucketId = previewBucketId(
     { courseKey: draft.courseKey, bucketOverride: null },
@@ -176,8 +185,15 @@ export function CourseFormModal({
             docs={docs}
             onPick={onPickCatalog}
             onType={(text) => patch({ nameSnapshot: text, courseKey: null })}
+            excludedAreaOf={(entry) => excludedAreaOf(entry, areaPolicy)}
           />
         </Field>
+        {pickedExcludedArea && (
+          <p className="-mt-1 flex items-start gap-1.5 rounded-block bg-orange/[0.06] px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+            <Icon name="do_not_disturb_on" className="mt-px shrink-0 text-[14px] text-orange" />
+            {areaExcludedHint(pickedExcludedArea)}
+          </p>
+        )}
         {showNameHint && (
           <p id={nameHintId} className="-mt-1 text-[11.5px] leading-relaxed text-ink-3">
             카탈로그에 없는 과목이에요. 학점과 영역을 직접 정해주세요.

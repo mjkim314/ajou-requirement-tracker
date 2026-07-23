@@ -1,6 +1,7 @@
 import type { Course, RequirementSet } from '../../../engine/index'
 import { bucketLabel, type SemesterGroup } from '../../courses'
 import { Icon } from '../../ui'
+import { AreaExcludedBadge } from './AreaExcludedBadge'
 import { StatusBadge } from './StatusBadge'
 
 /** 엔진이 확정한 과목별 부가정보(귀속 영역·미확인·중복·이수인정). result.resolved에서 뽑는다. */
@@ -10,6 +11,8 @@ export interface CourseMeta {
   ambiguous: boolean
   /** 엔진이 이수학점으로 인정하는지(학기 합·표시에 사용). */
   countsForCredit: boolean
+  /** 소속 계열이라 영역별교양으로 인정되지 않는 영역 id(아니면 null). */
+  excludedArea?: string | null
 }
 
 interface Props {
@@ -130,9 +133,12 @@ export function CourseList({ groups, metaById, reqSet, superseded, onEdit, onDel
 
 // ────────────────────────────────────────────────────────────
 
-/** 카탈로그 미확인·중복 후보 표시. */
+/** 카탈로그 미확인·중복 후보·영역별교양 미인정 표시. */
 function Flags({ meta, dead }: { meta: CourseMeta | undefined; dead: boolean }) {
   if (dead || !meta) return null
+  if (meta.excludedArea) {
+    return <AreaExcludedBadge areaId={meta.excludedArea} />
+  }
   if (meta.ambiguous) {
     return (
       <span

@@ -113,16 +113,27 @@ export function generalNonCurricular(): NonCurricularState {
 // 기준 transcript
 // ────────────────────────────────────────────────────────────
 
-/** 대학필수 + 학과필수 + 전공필수(공통). */
-export function commonRequired(): Course[] {
+/**
+ * 영역별교양 3과목(역사와 철학 · 문학과 예술 · 인간과 사회).
+ * - FIXTURE: 엔진 픽스처 카탈로그(fixtures/catalog.ts)의 가상 과목.
+ * - REAL: 실제 다산학부대학 교양 카탈로그의 과목 — 2021~2026 전 학번에 존재한다.
+ *   src/data의 정식 카탈로그로 판정하는 테스트(data*.test.ts)는 이쪽을 쓴다.
+ */
+export const AREA_TRIO_FIXTURE = ['GE-AREA-HIST', 'GE-AREA-ART', 'GE-AREA-SOC']
+export const AREA_TRIO_REAL = [
+  'GE-HP-WHAT-IS-HISTORY',
+  'GE-LA-WHAT-IS-LITERATURE',
+  'GE-HS-WHAT-IS-SOCIOLOGY',
+]
+
+/** 대학필수 + 학과필수 + 전공필수(공통). 영역별교양 3과목은 카탈로그에 맞춰 갈아끼운다. */
+export function commonRequired(areaKeys: string[] = AREA_TRIO_FIXTURE): Course[] {
   return [
     mk('GE-AJOU-CHARACTER'),
     mk('GE-ENGLISH-1'),
     mk('GE-ENGLISH-2'),
     mk('GE-WRITING'),
-    mk('GE-AREA-HIST'),
-    mk('GE-AREA-ART'),
-    mk('GE-AREA-SOC'),
+    ...areaKeys.map((k) => mk(k)),
     mk('SW-CAREER-SEMINAR'),
     mk('MATH-1'),
     mk('MATH-2'),

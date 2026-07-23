@@ -26,6 +26,7 @@ import {
   removeBucket,
   removeChoiceGroup,
   removeRequiredCourse,
+  removeNcAlternative,
   removeRequirement,
   setNcAlternative,
   setNcEntry,
@@ -337,6 +338,22 @@ describe('비교과 진행 상태 입력', () => {
     s = setNcAlternative(s, 'eng', 'opic', { level: 'IM' })
     expect(s.eng!.alternatives!.toeic!.score).toBe(800)
     expect(s.eng!.alternatives!.opic!.level).toBe('IM')
+  })
+
+  it('removeNcAlternative는 고른 시험만 지우고, 마지막이면 alternatives를 정리', () => {
+    let s = setNcAlternative({}, 'eng', 'toeic', { score: 800 })
+    s = setNcAlternative(s, 'eng', 'opic', { level: 'IM' })
+    s = removeNcAlternative(s, 'eng', 'toeic')
+    expect(s.eng!.alternatives!.toeic).toBeUndefined()
+    expect(s.eng!.alternatives!.opic!.level).toBe('IM')
+    s = removeNcAlternative(s, 'eng', 'opic')
+    expect(s.eng!.alternatives).toBeUndefined()
+  })
+
+  it('removeNcAlternative는 없는 항목엔 상태를 그대로 반환', () => {
+    const s = setNcAlternative({}, 'eng', 'toeic', { score: 800 })
+    expect(removeNcAlternative(s, 'eng', 'opic')).toBe(s)
+    expect(removeNcAlternative(s, 'other', 'toeic')).toBe(s)
   })
 })
 

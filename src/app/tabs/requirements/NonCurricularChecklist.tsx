@@ -4,7 +4,7 @@ import type {
   Requirement,
   RequirementAlternative,
 } from '../../../engine/index'
-import { setNcAlternative, setNcEntry } from '../../reqset-editor'
+import { removeNcAlternative, setNcAlternative, setNcEntry } from '../../reqset-editor'
 import { Card, Icon } from '../../ui'
 import { NumberField, SelectField, TextField } from '../../onboarding/fields'
 
@@ -86,6 +86,7 @@ export function NonCurricularChecklist({ requirements, results, state, onChange 
                       entry={entry}
                       onEntry={(patch) => onChange(setNcEntry(state, req.id, patch))}
                       onAlt={(altId, patch) => onChange(setNcAlternative(state, req.id, altId, patch))}
+                      onRemoveAlt={(altId) => onChange(removeNcAlternative(state, req.id, altId))}
                     />
                   </div>
                 ) : (
@@ -106,14 +107,17 @@ export function NonCurricularChecklist({ requirements, results, state, onChange 
 // 유형별 입력
 // ────────────────────────────────────────────────────────────
 
+type AltPatch = { done?: boolean; score?: number; level?: string }
+
 interface InputProps {
   req: Requirement
   entry: Entry
   onEntry: (patch: Partial<Entry>) => void
-  onAlt: (altId: string, patch: { done?: boolean; score?: number; level?: string }) => void
+  onAlt: (altId: string, patch: AltPatch) => void
+  onRemoveAlt: (altId: string) => void
 }
 
-function RequirementInput({ req, entry, onEntry, onAlt }: InputProps) {
+function RequirementInput({ req, entry, onEntry, onAlt, onRemoveAlt }: InputProps) {
   switch (req.type) {
     case 'check':
       return (
@@ -156,19 +160,7 @@ function RequirementInput({ req, entry, onEntry, onAlt }: InputProps) {
 
     case 'alternatives':
       return (
-        <div className="flex flex-col gap-2.5">
-          <p className="text-[11px] text-muted-2">
-            아래 중 {req.pick ?? 1}개만 충족하면 돼요. 가진 것만 입력하세요.
-          </p>
-          {(req.alternatives ?? []).map((alt) => (
-            <AlternativeInput
-              key={alt.id}
-              alt={alt}
-              st={entry.alternatives?.[alt.id] ?? {}}
-              onChange={(patch) => onAlt(alt.id, patch)}
-            />
-          ))}
-        </div>
+        <AlternativesInput req={req} entry={entry} onAlt={onAlt} onRemoveAlt={onRemoveAlt} />
       )
 
     case 'courseGroupPick':
@@ -198,43 +190,156 @@ function RequirementInput({ req, entry, onEntry, onAlt }: InputProps) {
   }
 }
 
-function AlternativeInput({
+/**
+ * alternatives(택N) 요건 입력. 모든 시험 칸을 늘어놓지 않고, 사용자가 **가진 시험을 골라**
+ * 성적을 입력하게 한다. 여러 어학을 딴 경우 아래 선택으로 계속 **추가**할 수 있고, 각 줄은
+ * 지울 수 있다. 상태는 entry.alternatives[altId]에 그대로 저장돼 엔진 판정(pick개 충족)과 일치한다.
+ */
+function AlternativesInput({
+  req,
+  entry,
+  onAlt,
+  onRemoveAlt,
+}: {
+  req: Requirement
+  entry: Entry
+  onAlt: (altId: string, patch: AltPatch) => void
+  onRemoveAlt: (altId: string) => void
+}) {
+  const alternatives = req.alternatives ?? []
+  const altById = new Map(alternatives.map((a) => [a.id, a]))
+  // 고른 시험 = 상태에 존재하는 altId(요건 정의에 남아 있는 것만).
+  const chosen = Object.keys(entry.alternatives ?? {})
+    .map((id) => altById.get(id))
+    .filter((a): a is RequirementAlternative => a != null)
+  const chosenIds = new Set(chosen.map((a) => a.id))
+  const unused = alternatives.filter((a) => !chosenIds.has(a.id))
+
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="text-[11px] text-muted-2">
+        {req.pick ?? 1}개만 충족하면 돼요. 가진 시험을 골라 성적을 입력하세요.
+      </p>
+
+      {chosen.map((alt) => (
+        <ChosenAltRow
+          key={alt.id}
+          alt={alt}
+          st={entry.alternatives?.[alt.id] ?? {}}
+          onChange={(patch) => onAlt(alt.id, patch)}
+          onRemove={() => onRemoveAlt(alt.id)}
+        />
+      ))}
+
+      {unused.length > 0 ? (
+        <AddAltSelect
+          options={unused}
+          hasChosen={chosen.length > 0}
+          onPick={(altId) => onAlt(altId, {})}
+        />
+      ) : (
+        <p className="text-[10.5px] text-muted-2">추가할 수 있는 시험을 모두 넣었어요.</p>
+      )}
+    </div>
+  )
+}
+
+/** 사용자가 고른 시험 한 줄: 라벨 + (점수/등급/보유) 입력 + 기준 + 삭제. */
+function ChosenAltRow({
   alt,
   st,
   onChange,
+  onRemove,
 }: {
   alt: RequirementAlternative
-  st: { done?: boolean; score?: number; level?: string }
-  onChange: (patch: { done?: boolean; score?: number; level?: string }) => void
+  st: AltPatch
+  onChange: (patch: AltPatch) => void
+  onRemove: () => void
 }) {
   return (
-    <div className="flex items-center gap-2.5">
-      <span className="w-28 shrink-0 truncate text-[12px] font-medium text-ink-2" title={alt.label}>
-        {alt.label}
-      </span>
-      <div className="flex-1">
-        {alt.type === 'check' ? (
-          <ToggleRow checked={st.done === true} onChange={(v) => onChange({ done: v })} label="보유" />
-        ) : alt.type === 'score' ? (
-          <SmallNumber
-            value={st.score ?? null}
-            onChange={(v) => onChange({ score: v ?? undefined })}
-            suffix={alt.unit ?? '점'}
-          />
-        ) : (
-          <LevelInput
-            scale={alt.scale}
-            value={st.level ?? ''}
-            onChange={(v) => onChange({ level: v || undefined })}
-          />
+    <div className="rounded-block bg-bg-soft px-3 py-2.5">
+      <div className="mb-1.5 flex items-center justify-between gap-2">
+        <span className="min-w-0 truncate text-[12px] font-semibold text-ink-2" title={alt.label}>
+          {alt.label}
+        </span>
+        <button
+          type="button"
+          onClick={onRemove}
+          aria-label={`${alt.label} 제거`}
+          className="-mr-1 shrink-0 rounded-chip p-1 text-muted-2 transition-colors hover:bg-orange/10 hover:text-orange"
+        >
+          <Icon name="close" className="text-[16px]" />
+        </button>
+      </div>
+      <div className="flex items-center gap-2">
+        <div className="min-w-0 flex-1">
+          {alt.type === 'check' ? (
+            <ToggleRow checked={st.done === true} onChange={(v) => onChange({ done: v })} label="보유" />
+          ) : alt.type === 'score' ? (
+            <NumberField
+              value={st.score ?? null}
+              onChange={(v) => onChange({ score: v ?? undefined })}
+              min={0}
+              suffix={alt.unit ?? '점'}
+              ariaLabel={`${alt.label} 점수`}
+            />
+          ) : (
+            <SelectField
+              value={st.level ?? ''}
+              onChange={(v) => onChange({ level: v || undefined })}
+              ariaLabel={`${alt.label} 등급`}
+            >
+              <option value="">선택…</option>
+              {(alt.scale ?? []).map((lv) => (
+                <option key={lv} value={lv}>
+                  {lv}
+                </option>
+              ))}
+            </SelectField>
+          )}
+        </div>
+        {alt.min != null && (
+          <span className="shrink-0 text-[10.5px] text-muted-2">
+            {alt.min}
+            {alt.unit ?? ''}+
+          </span>
         )}
       </div>
-      {alt.min != null && (
-        <span className="shrink-0 text-[10.5px] text-muted-2">
-          {alt.min}
-          {alt.unit ?? ''}+
-        </span>
-      )}
+    </div>
+  )
+}
+
+/** 아직 고르지 않은 시험을 추가하는 선택. 고르면 그 시험이 위 목록에 한 줄로 붙는다. */
+function AddAltSelect({
+  options,
+  hasChosen,
+  onPick,
+}: {
+  options: RequirementAlternative[]
+  hasChosen: boolean
+  onPick: (altId: string) => void
+}) {
+  return (
+    <div className="relative">
+      <select
+        value=""
+        onChange={(e) => {
+          if (e.target.value) onPick(e.target.value)
+        }}
+        aria-label="시험 추가"
+        className="w-full cursor-pointer appearance-none rounded-block border border-dashed border-line bg-surface py-2 pl-3 pr-9 text-[12px] font-semibold text-ink-3 outline-none transition-colors hover:bg-bg-soft focus:border-blue focus:ring-2 focus:ring-blue/20"
+      >
+        <option value="">{hasChosen ? '다른 시험 추가…' : '가진 시험 선택…'}</option>
+        {options.map((a) => (
+          <option key={a.id} value={a.id}>
+            {a.label}
+          </option>
+        ))}
+      </select>
+      <Icon
+        name="add"
+        className="pointer-events-none absolute inset-y-0 right-3 my-auto h-5 text-[16px] text-muted-2"
+      />
     </div>
   )
 }

@@ -684,3 +684,23 @@ export function setNcAlternative(
     },
   }
 }
+
+/**
+ * alternatives 요건에서 하위 항목(시험) 하나를 통째로 제거.
+ * 남는 항목이 없으면 alternatives 키 자체를 지워 빈 객체가 쌓이지 않게 한다.
+ * (사용자가 고른 어학 시험 한 줄을 삭제하는 데 쓴다.)
+ */
+export function removeNcAlternative(
+  state: NonCurricularState,
+  reqId: string,
+  altId: string,
+): NonCurricularState {
+  const entry = state[reqId]
+  if (!entry?.alternatives || !(altId in entry.alternatives)) return state
+  const rest = { ...entry.alternatives }
+  delete rest[altId]
+  const nextEntry = { ...entry }
+  if (Object.keys(rest).length > 0) nextEntry.alternatives = rest
+  else delete nextEntry.alternatives
+  return { ...state, [reqId]: nextEntry }
+}

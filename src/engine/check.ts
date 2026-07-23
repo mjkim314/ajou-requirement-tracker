@@ -25,6 +25,9 @@ import type {
 
 const EPS = 1e-9
 
+/** 전공 평점 대상 영역 그룹(전공필수 + 전공선택). */
+const MAJOR_GROUPS: ReadonlySet<Bucket['group']> = new Set(['major_required', 'major_elective'])
+
 /** 4.5 만점 기본 평점표(요건 세트에 gradePoints가 없을 때만 사용). */
 export const DEFAULT_GRADE_POINTS: GradePointTable = {
   'A+': 4.5,
@@ -185,7 +188,7 @@ export function checkGPA(
 ): GpaResult {
   const table = reqSet.gradePoints ?? DEFAULT_GRADE_POINTS
   const majorBucketIds = new Set(
-    reqSet.buckets.filter((b) => b.group === 'major').map((b) => b.id)
+    reqSet.buckets.filter((b) => MAJOR_GROUPS.has(b.group)).map((b) => b.id)
   )
 
   let allPoints = 0

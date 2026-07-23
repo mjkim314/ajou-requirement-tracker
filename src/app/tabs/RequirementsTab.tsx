@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useAppState } from '../AppState'
 import { requirementSetRegistry } from '../../data/index'
-import { BUCKET_GROUP_LABEL, customIdFor, startEdit } from '../reqset-editor'
+import { BUCKET_GROUPS, customIdFor, startEdit } from '../reqset-editor'
+import { normalizeReqSetGroups } from '../dataSources'
 import { supersededIds, type BucketResult, type Course, type RequirementSet } from '../../engine/index'
 import { semesterSortKey } from '../courses'
 import { Button, Card, Icon, Modal } from '../ui'
@@ -86,7 +87,8 @@ export function RequirementsTab() {
       return src?.['customizedInEditor'] === true && src?.['basePresetId'] === active.id
     })
     if (existing) {
-      setEditorSet(startEdit(existing, false, existing.id, now))
+      // 구버전 그룹 값(major/free)이 편집기 그룹 셀렉트와 어긋나지 않게 정규화 후 편집.
+      setEditorSet(startEdit(normalizeReqSetGroups(existing), false, existing.id, now))
       return
     }
     const newId = customIdFor(active.id, state.customSets.map((s) => s.id))
@@ -202,6 +204,56 @@ export function RequirementsTab() {
 // 학점 요건(읽기)
 // ────────────────────────────────────────────────────────────
 
+// 카테고리(영역 그룹) 정렬 순서·라벨 — 편집기 그룹 정의(단일 출처)에서 파생.
+const GROUP_ORDER: string[] = BUCKET_GROUPS.map((g) => g.value)
+const GROUP_LABEL: Record<string, string> = Object.fromEntries(
+  BUCKET_GROUPS.map((g) => [g.value, g.label]),
+)
+
+interface CategoryGroup {
+  group: string
+  label: string
+  buckets: BucketResult[]
+  earned: number
+  required: number
+  rate: number
+  satisfied: boolean
+}
+
+/**
+ * 영역을 카테고리(대학필수·학과필수·전공필수·전공선택·일반선택)로 묶는다.
+ * 카테고리 순서는 편집기 그룹 정의를 따르고, 미등록 그룹은 뒤에 선언 순서대로 붙인다.
+ * 학점은 합산, 충족은 하위 영역이 모두 충족일 때만 참(부분 충족은 미충족으로 보수적 표시).
+ */
+function groupByCategory(buckets: BucketResult[]): CategoryGroup[] {
+  const byGroup = new Map<string, BucketResult[]>()
+  for (const b of buckets) {
+    const list = byGroup.get(b.group)
+    if (list) list.push(b)
+    else byGroup.set(b.group, [b])
+  }
+  const rank = (g: string) => {
+    const i = GROUP_ORDER.indexOf(g)
+    return i < 0 ? GROUP_ORDER.length : i
+  }
+  return [...byGroup.keys()]
+    .sort((a, b) => rank(a) - rank(b))
+    .map((group) => {
+      const list = byGroup.get(group)!
+      const earned = list.reduce((s, b) => s + b.earned, 0)
+      const required = list.reduce((s, b) => s + b.required, 0)
+      return {
+        group,
+        label: GROUP_LABEL[group] ?? group,
+        buckets: list,
+        earned,
+        required,
+        rate: required > 0 ? Math.min(earned / required, 1) : 1,
+        satisfied: list.every((b) => b.satisfied),
+      }
+    })
+}
+
 function CreditRequirements({
   buckets,
   coursesByBucket,
@@ -211,6 +263,7 @@ function CreditRequirements({
   coursesByBucket: Map<string, Course[]>
   onEdit: () => void
 }) {
+  const categories = useMemo(() => groupByCategory(buckets), [buckets])
   return (
     <Card className="p-5">
       <div className="mb-3 flex items-center justify-between">
@@ -225,7 +278,7 @@ function CreditRequirements({
         </button>
       </div>
 
-      {buckets.length === 0 ? (
+      {categories.length === 0 ? (
         <div className="rounded-block border border-dashed border-line px-4 py-8 text-center">
           <p className="text-[13px] font-semibold text-ink-2">아직 영역이 없어요</p>
           <p className="mt-1 text-[11.5px] leading-relaxed text-ink-3">
@@ -239,8 +292,8 @@ function CreditRequirements({
         </div>
       ) : (
         <div className="flex flex-col divide-y divide-line-2">
-          {buckets.map((b) => (
-            <BucketRow key={b.id} b={b} courses={coursesByBucket.get(b.id) ?? []} />
+          {categories.map((cat) => (
+            <CategoryRow key={cat.group} cat={cat} coursesByBucket={coursesByBucket} />
           ))}
         </div>
       )}
@@ -248,60 +301,99 @@ function CreditRequirements({
   )
 }
 
-function BucketRow({ b, courses }: { b: BucketResult; courses: Course[] }) {
+/**
+ * 카테고리 한 줄 — 합산 진행률만 보이고, 펼치면 하위 영역(영역별교양 규칙·과목 포함)을 편다.
+ * 색 단독 금지 → 라벨·수치·아이콘 병기. 충족=green / 저조(<50%)=orange / 그 외=navy.
+ */
+function CategoryRow({
+  cat,
+  coursesByBucket,
+}: {
+  cat: CategoryGroup
+  coursesByBucket: Map<string, Course[]>
+}) {
   const [open, setOpen] = useState(false)
-  const pct = Math.round(Math.min(b.rate, 1) * 100)
-  // 색 단독 금지 → 라벨·수치·아이콘 병기. 충족=green / 저조(<50%)=orange / 그 외=navy.
-  const barColor = b.satisfied ? 'bg-green' : b.rate < 0.5 ? 'bg-orange' : 'bg-navy'
-  const reasons = b.reasons.filter((r) => r.trim().length > 0)
-  // 이 영역에 귀속된 과목이 있으면 펼쳐서 어떤 과목인지 확인할 수 있게 한다.
-  const expandable = courses.length > 0
-  const panelId = `bucket-courses-${b.id}`
+  const pct = Math.round(Math.min(cat.rate, 1) * 100)
+  const barColor = cat.satisfied ? 'bg-green' : cat.rate < 0.5 ? 'bg-orange' : 'bg-navy'
+  const panelId = `category-${cat.group}`
+  // 펼치기 전에도 어떤 영역이 묶였는지 미리보기(라벨 나열) + 남은 영역 수.
+  const subLabels = cat.buckets.map((b) => b.label).join(' · ')
+  const unmet = cat.buckets.filter((b) => !b.satisfied).length
 
-  const header = (
-    <>
-      <div className="min-w-0">
-        <div className="flex items-center gap-1">
-          <span className="truncate text-[13px] font-semibold text-ink-2">{b.label}</span>
-          {b.satisfied && <Icon name="check_circle" className="shrink-0 text-[14px] text-green" />}
+  return (
+    <div className="py-3 first:pt-0 last:pb-0">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="mb-1.5 flex w-full items-start justify-between gap-2 rounded-block text-left transition-colors hover:text-ink"
+      >
+        <div className="min-w-0">
+          <div className="flex items-center gap-1">
+            <span className="truncate text-[13px] font-bold text-ink-2">{cat.label}</span>
+            {cat.satisfied && <Icon name="check_circle" className="shrink-0 text-[14px] text-green" />}
+          </div>
+          <div className="truncate text-[10.5px] text-muted-2">{subLabels}</div>
         </div>
-        <div className="text-[10.5px] text-muted-2">
-          {BUCKET_GROUP_LABEL[b.group] ?? b.group}
-          {expandable && <> · {courses.length}과목</>}
-        </div>
-      </div>
-      <div className="flex shrink-0 items-center gap-1.5">
-        <span className={`text-[12px] ${b.satisfied ? 'font-semibold text-green' : 'text-muted'}`}>
-          <b className="text-ink-2">{b.earned}</b> / {b.required}
-        </span>
-        {expandable && (
+        <div className="flex shrink-0 items-center gap-1.5">
+          <span className={`text-[12px] ${cat.satisfied ? 'font-semibold text-green' : 'text-muted'}`}>
+            <b className="text-ink-2">{cat.earned}</b> / {cat.required}
+          </span>
           <Icon
             name="expand_more"
             className={`text-[18px] text-muted-2 transition-transform ${open ? 'rotate-180' : ''}`}
           />
-        )}
-      </div>
-    </>
-  )
-
-  return (
-    <div className="py-3 first:pt-0 last:pb-0">
-      {expandable ? (
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          aria-controls={panelId}
-          className="mb-1.5 flex w-full items-start justify-between gap-2 rounded-block text-left transition-colors hover:text-ink"
-        >
-          {header}
-        </button>
-      ) : (
-        <div className="mb-1.5 flex items-start justify-between gap-2">{header}</div>
-      )}
+        </div>
+      </button>
 
       <div
         className="h-[7px] overflow-hidden rounded-full bg-line-2"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={pct}
+        aria-valuetext={`${cat.earned} / ${cat.required}학점`}
+        aria-label={`${cat.label} 진행률`}
+      >
+        <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
+      </div>
+
+      {!open && !cat.satisfied && unmet > 0 && (
+        <p className="mt-1.5 text-[11px] text-ink-3">{unmet}개 영역 남음 · 펼쳐서 확인</p>
+      )}
+
+      {open && (
+        <div id={panelId} className="mt-3 flex flex-col gap-3 border-l-2 border-line-2 pl-3">
+          {cat.buckets.map((b) => (
+            <SubBucket key={b.id} b={b} courses={coursesByBucket.get(b.id) ?? []} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/** 카테고리 안 하위 영역 하나 — 진행률·미충족 사유·귀속 과목. */
+function SubBucket({ b, courses }: { b: BucketResult; courses: Course[] }) {
+  const pct = Math.round(Math.min(b.rate, 1) * 100)
+  const barColor = b.satisfied ? 'bg-green' : b.rate < 0.5 ? 'bg-orange' : 'bg-navy'
+  const reasons = b.reasons.filter((r) => r.trim().length > 0)
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between gap-2">
+        <span className="flex min-w-0 items-center gap-1">
+          <span className="truncate text-[12.5px] font-semibold text-ink-2">{b.label}</span>
+          {b.satisfied && <Icon name="check_circle" className="shrink-0 text-[13px] text-green" />}
+        </span>
+        <span
+          className={`shrink-0 text-[11.5px] ${b.satisfied ? 'font-semibold text-green' : 'text-muted'}`}
+        >
+          <b className="text-ink-2">{b.earned}</b> / {b.required}
+        </span>
+      </div>
+      <div
+        className="h-[6px] overflow-hidden rounded-full bg-line-2"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={100}
@@ -311,19 +403,17 @@ function BucketRow({ b, courses }: { b: BucketResult; courses: Course[] }) {
       >
         <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
       </div>
-
       {!b.satisfied && reasons.length > 0 && (
-        <p className="mt-1.5 text-[11px] leading-relaxed text-ink-3">{reasons.join(' · ')}</p>
+        <p className="mt-1 text-[11px] leading-relaxed text-ink-3">{reasons.join(' · ')}</p>
       )}
-
-      {expandable && open && (
-        <ul id={panelId} className="mt-2.5 flex flex-col gap-1.5 border-l-2 border-line-2 pl-3">
+      {courses.length > 0 && (
+        <ul className="mt-1.5 flex flex-col gap-1">
           {courses.map((c) => (
             <li key={c.id} className="flex items-center gap-2">
-              <span className="min-w-0 flex-1 truncate text-[12px] text-ink-2">
+              <span className="min-w-0 flex-1 truncate text-[11.5px] text-ink-3">
                 {c.nameSnapshot}
               </span>
-              <span className="shrink-0 text-[11px] tabular-nums text-muted-2">{c.credits}학점</span>
+              <span className="shrink-0 text-[10.5px] tabular-nums text-muted-2">{c.credits}학점</span>
               <StatusBadge course={c} dead={false} />
             </li>
           ))}

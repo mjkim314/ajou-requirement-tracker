@@ -29,8 +29,9 @@ export type GradePointTable = Partial<Record<Grade, number>>
 export type BucketGroup =
   | 'university_required' // 대학필수
   | 'department_required' // 학과필수
-  | 'major' // 전공 (전공 평점 대상)
-  | 'free' // 자유 이수
+  | 'major_required' // 전공필수 (전공 평점 대상)
+  | 'major_elective' // 전공선택 (전공 평점 대상)
+  | 'general_elective' // 일반선택 (자유 이수)
 
 export interface CatalogEntry {
   /** 앱 내부 불변 기본키. 모든 참조가 이 값을 쓴다. */

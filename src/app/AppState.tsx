@@ -27,7 +27,7 @@ import {
   downloadJson,
   serialize,
 } from '../storage/backup'
-import { resolveInput, resolveReqSet } from './dataSources'
+import { normalizeReqSetGroups, resolveInput, resolveReqSet } from './dataSources'
 import { requirementSetRegistry } from '../data/index'
 import { demoPersistedState } from './appData'
 import { draftToCourse, type CourseDraft } from './courses'
@@ -279,7 +279,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const exportActiveReqset = useCallback(() => {
     const active = resolveReqSet(state)
-    const sets = active ? [active] : state.customSets
+    // 활성 세트는 resolveReqSet가 이미 정규화. 폴백(활성 없음)의 커스텀 세트도 정규화해
+    // 구버전 그룹 값(major/free)이 공유 파일에 새어 나가지 않게 한다.
+    const sets = active ? [active] : state.customSets.map(normalizeReqSetGroups)
     if (sets.length === 0) return
     const now = new Date()
     downloadJson(

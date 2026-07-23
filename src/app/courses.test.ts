@@ -29,15 +29,15 @@ const REQ_SET: RequirementSet = {
   totalCredits: 130,
   minGPA: 2,
   buckets: [
-    { id: 'major_required', label: '전공필수', group: 'major', minCredits: 36, requiredCourses: ['SW-OOP'] },
+    { id: 'major_required', label: '전공필수', group: 'major_required', minCredits: 36, requiredCourses: ['SW-OOP'] },
     {
       id: 'major_elective',
       label: '전공선택',
-      group: 'major',
+      group: 'major_elective',
       minCredits: 30,
       choiceGroups: [{ id: 'g1', label: '택1', pick: 1, courses: ['SW-DB'] }],
     },
-    { id: 'general_elective', label: '일반선택', group: 'free', minCredits: 20 },
+    { id: 'general_elective', label: '일반선택', group: 'general_elective', minCredits: 20 },
   ],
   nonCurricular: [],
 }

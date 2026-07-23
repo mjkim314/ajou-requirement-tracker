@@ -16,7 +16,7 @@ import {
   catalog2024Sw,
   reqSet2021SwAdvanced,
 } from '../data/index'
-import { additionalMajorTemplates, bundleFor } from './dataSources'
+import { additionalMajorTemplates, bundleFor, normalizeReqSetGroups } from './dataSources'
 
 function mkSet(over: Partial<RequirementSet>): RequirementSet {
   return {
@@ -63,6 +63,35 @@ describe('bundleFor', () => {
     const s = mkSet({ id: 'custom_5', department: '기계공학과', admissionYearFrom: 2023 })
     expect(bundleFor(s).catalog).toHaveLength(0)
     expect(bundleFor(s).rules).toHaveLength(0)
+  })
+})
+
+describe('normalizeReqSetGroups (구버전 영역 그룹 호환)', () => {
+  // 온보딩 clone-on-edit 이전에 저장된 커스텀 세트: 옛 'major'/'free' 그룹.
+  const legacy = mkSet({
+    id: 'custom_legacy',
+    buckets: [
+      { id: 'major_required', label: '전공필수', group: 'major' as never, minCredits: 36 },
+      { id: 'major_elective', label: '전공선택', group: 'major' as never, minCredits: 37 },
+      { id: 'bucket_custom_1', label: '내 전공선택', group: 'major' as never, minCredits: 3 },
+      { id: 'general_elective', label: '일반선택', group: 'free' as never, minCredits: 28 },
+    ],
+  })
+
+  it("옛 'major'는 영역 id로 전공필수/전공선택 구분(임의 영역은 전공선택)", () => {
+    const g = new Map(normalizeReqSetGroups(legacy).buckets.map((b) => [b.id, b.group]))
+    expect(g.get('major_required')).toBe('major_required')
+    expect(g.get('major_elective')).toBe('major_elective')
+    expect(g.get('bucket_custom_1')).toBe('major_elective')
+  })
+
+  it("옛 'free'는 일반선택(general_elective)으로 → 폴백 영역 유지", () => {
+    const g = new Map(normalizeReqSetGroups(legacy).buckets.map((b) => [b.id, b.group]))
+    expect(g.get('general_elective')).toBe('general_elective')
+  })
+
+  it('현행 값만 있는 세트는 원본 참조를 그대로 반환(불필요한 복제 없음)', () => {
+    expect(normalizeReqSetGroups(reqSet2021SwAdvanced)).toBe(reqSet2021SwAdvanced)
   })
 })
 

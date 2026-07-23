@@ -7,7 +7,7 @@
  *   3 요건 세트 choiceGroups (직접 키)
  *   4 대체 규칙(equivalents)으로 도달한 requiredCourses/choiceGroups
  *   5 카탈로그 defaultBucket
- *   6 폴백 → 일반선택(group === 'free')
+ *   6 폴백 → 일반선택(group === 'general_elective')
  *
  * 동률(2~4순위에서 여러 영역 지목): minCredits 미달 영역 우선 → buckets 선언 순서.
  * 순수 함수 — 결정론적 출력을 보장한다.
@@ -129,9 +129,9 @@ export interface BucketCandidate {
   candidates: string[]
 }
 
-/** group === 'free'인 첫 영역을 일반선택 폴백으로 쓴다(선언 순서 기준, 결정론). */
+/** group === 'general_elective'인 첫 영역을 일반선택 폴백으로 쓴다(선언 순서 기준, 결정론). */
 export function findFallbackBucketId(reqSet: RequirementSet): string | undefined {
-  return reqSet.buckets.find((b) => b.group === 'free')?.id
+  return reqSet.buckets.find((b) => b.group === 'general_elective')?.id
 }
 
 /** 하나의 과목에 대해 우선순위별 후보 영역을 계산한다. */

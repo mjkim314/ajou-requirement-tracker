@@ -551,9 +551,9 @@ describe('L — 귀속 우선순위', () => {
     totalCredits: 12,
     minGPA: 0,
     buckets: [
-      { id: 'lb1', label: 'L1', group: 'major', minCredits: 6, requiredCourses: ['LA', 'LZ', 'LX'] },
-      { id: 'lb2', label: 'L2', group: 'major', minCredits: 6, requiredCourses: ['LZ'] },
-      { id: 'lfree', label: '자유', group: 'free', minCredits: 0 },
+      { id: 'lb1', label: 'L1', group: 'major_required', minCredits: 6, requiredCourses: ['LA', 'LZ', 'LX'] },
+      { id: 'lb2', label: 'L2', group: 'major_required', minCredits: 6, requiredCourses: ['LZ'] },
+      { id: 'lfree', label: '자유', group: 'general_elective', minCredits: 0 },
     ],
     nonCurricular: [],
   }

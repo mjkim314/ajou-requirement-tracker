@@ -8,6 +8,8 @@
 
 import type {
   AdditionalMajorRule,
+  Bucket,
+  BucketGroup,
   CatalogEntry,
   EvaluationInput,
   RequirementSet,
@@ -84,13 +86,40 @@ export function bundleFor(set: RequirementSet): DataBundle {
   return EMPTY_BUNDLE
 }
 
+/**
+ * 구버전 영역 그룹 값을 현행 5분류로 정규화한다.
+ * 온보딩 clone-on-edit 등으로 저장된 커스텀 세트에는 옛 'major'/'free'가 남아 있을 수 있는데,
+ * 이를 두면 전공 평점(전공필수·전공선택 합집합)·일반선택 폴백이 조용히 어긋난다.
+ * - 'major'  → 영역 id로 전공필수/전공선택 구분(임의 영역은 전공선택으로; 어느 쪽이든 전공 평점에 포함돼 결과 동일)
+ * - 'free'   → 일반선택
+ * 저장을 건드리지 않고 해석 시점에만 바로잡는다(변경 없으면 원본 참조 유지).
+ */
+function normalizeBucketGroup(b: Bucket): BucketGroup {
+  const g = b.group as string
+  if (g === 'major') return b.id === 'major_required' ? 'major_required' : 'major_elective'
+  if (g === 'free') return 'general_elective'
+  return b.group
+}
+
+export function normalizeReqSetGroups(set: RequirementSet): RequirementSet {
+  let changed = false
+  const buckets = set.buckets.map((b) => {
+    const group = normalizeBucketGroup(b)
+    if (group === b.group) return b
+    changed = true
+    return { ...b, group }
+  })
+  return changed ? { ...set, buckets } : set
+}
+
 /** 프로필이 가리키는 요건 세트를 찾는다(커스텀 우선). */
 export function resolveReqSet(state: PersistedState): RequirementSet | null {
   const id = state.profile?.requirementSetId
   if (!id) return null
   const custom = state.customSets.find((s) => s.id === id)
-  if (custom) return custom
-  return requirementSetRegistry[id] ?? null
+  if (custom) return normalizeReqSetGroups(custom)
+  const preset = requirementSetRegistry[id]
+  return preset ? normalizeReqSetGroups(preset) : null
 }
 
 /**

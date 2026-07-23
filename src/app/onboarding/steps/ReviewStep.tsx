@@ -8,6 +8,7 @@ import {
   type ReqEdits,
 } from '../model'
 import { requirementSetRegistry } from '../../../data/index'
+import { BUCKET_GROUPS } from '../../reqset-editor'
 import type { Bucket } from '../../../engine/index'
 
 interface Props {
@@ -18,8 +19,34 @@ interface Props {
 const GROUP_LABEL: Record<string, string> = {
   university_required: '대학필수',
   department_required: '학과필수',
+  major_required: '전공필수',
+  major_elective: '전공선택',
+  general_elective: '일반선택',
+  // 구버전 세트 호환(온보딩 clone-on-edit 이전 값)
   major: '전공',
-  free: '자유이수',
+  free: '일반선택',
+}
+
+// 카테고리 정렬 순서 — 편집기 그룹 정의(단일 출처)를 따른다.
+const GROUP_ORDER: string[] = BUCKET_GROUPS.map((g) => g.value)
+
+/** 영역을 카테고리로 묶는다(대학필수·학과필수·전공필수·전공선택·일반선택 순, 미등록 그룹은 뒤). */
+function groupBucketsByCategory(
+  buckets: Bucket[],
+): { group: string; label: string; buckets: Bucket[] }[] {
+  const byGroup = new Map<string, Bucket[]>()
+  for (const b of buckets) {
+    const list = byGroup.get(b.group)
+    if (list) list.push(b)
+    else byGroup.set(b.group, [b])
+  }
+  const rank = (g: string) => {
+    const i = GROUP_ORDER.indexOf(g)
+    return i < 0 ? GROUP_ORDER.length : i
+  }
+  return [...byGroup.keys()]
+    .sort((a, b) => rank(a) - rank(b))
+    .map((group) => ({ group, label: GROUP_LABEL[group] ?? group, buckets: byGroup.get(group)! }))
 }
 
 export function ReviewStep({ draft, patch }: Props) {
@@ -106,14 +133,23 @@ export function ReviewStep({ draft, patch }: Props) {
               영역별 최소 학점
               {unverified && <UnverifiedBadge />}
             </div>
-            <div className="flex flex-col divide-y divide-line-2 overflow-hidden rounded-block border border-line">
-              {reqSet.buckets.map((b) => (
-                <BucketRow
-                  key={b.id}
-                  bucket={b}
-                  value={edits.bucketMinCredits[b.id] ?? b.minCredits}
-                  onChange={(v) => setBucket(b.id, v)}
-                />
+            <div className="flex flex-col gap-3">
+              {groupBucketsByCategory(reqSet.buckets).map((cat) => (
+                <div key={cat.group} className="overflow-hidden rounded-block border border-line">
+                  <div className="bg-bg-soft px-3.5 py-2 text-[11px] font-bold uppercase tracking-wide text-ink-3">
+                    {cat.label}
+                  </div>
+                  <div className="flex flex-col divide-y divide-line-2 border-t border-line">
+                    {cat.buckets.map((b) => (
+                      <BucketRow
+                        key={b.id}
+                        bucket={b}
+                        value={edits.bucketMinCredits[b.id] ?? b.minCredits}
+                        onChange={(v) => setBucket(b.id, v)}
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -143,10 +179,7 @@ function BucketRow({
 }) {
   return (
     <div className="flex items-center justify-between gap-3 bg-surface px-3.5 py-2.5">
-      <div className="min-w-0">
-        <div className="truncate text-[13px] font-semibold text-ink-2">{bucket.label}</div>
-        <div className="text-[10.5px] text-ink-3">{GROUP_LABEL[bucket.group] ?? bucket.group}</div>
-      </div>
+      <div className="min-w-0 truncate text-[13px] font-semibold text-ink-2">{bucket.label}</div>
       <div className="w-28 shrink-0">
         <NumberField value={value} onChange={onChange} min={0} suffix="학점" ariaLabel={`${bucket.label} 최소 학점`} />
       </div>

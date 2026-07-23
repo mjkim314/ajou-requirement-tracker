@@ -116,9 +116,9 @@ describe('A. 참조 무결성 (2023 SW)', () => {
       }
     })
 
-    it("A-07 group:'free' bucket이 정확히 1개", () => {
-      const free = set.buckets.filter((b) => b.group === 'free')
-      expect(free).toHaveLength(1)
+    it("A-07 group:'general_elective' bucket이 정확히 1개", () => {
+      const general = set.buckets.filter((b) => b.group === 'general_elective')
+      expect(general).toHaveLength(1)
     })
 
     it('A-08 industry_project field 그룹 === 카탈로그 field 태그 집합', () => {

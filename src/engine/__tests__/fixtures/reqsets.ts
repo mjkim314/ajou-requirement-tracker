@@ -77,7 +77,7 @@ function buildBuckets(majorElectiveMin: number): Bucket[] {
       id: 'major_required',
       label: '전공필수',
       shortLabel: '전필',
-      group: 'major',
+      group: 'major_required',
       minCredits: 36,
       requiredCourses: [
         'SW-PROGRAMMING', 'SW-DISCRETE-MATH', 'SW-CREATIVE-SW-INTRO', 'SW-DIGITAL-CIRCUIT',
@@ -85,9 +85,9 @@ function buildBuckets(majorElectiveMin: number): Bucket[] {
         'SW-ALGORITHM', 'SW-NETWORK', 'SW-OS',
       ],
     },
-    { id: 'major_elective', label: '전공선택', shortLabel: '전공선택', group: 'major', minCredits: majorElectiveMin },
-    // 자유 이수 (폴백 대상)
-    { id: 'general_elective', label: '일반선택', shortLabel: '일반선택', group: 'free', minCredits: 28 },
+    { id: 'major_elective', label: '전공선택', shortLabel: '전공선택', group: 'major_elective', minCredits: majorElectiveMin },
+    // 일반선택 (폴백 대상)
+    { id: 'general_elective', label: '일반선택', shortLabel: '일반선택', group: 'general_elective', minCredits: 28 },
   ]
 }
 

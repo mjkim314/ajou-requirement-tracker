@@ -60,15 +60,17 @@ export function customIdFor(baseId: string, existing: Iterable<string>): string 
 export const BUCKET_GROUPS: { value: BucketGroup; label: string; desc: string }[] = [
   { value: 'university_required', label: '대학필수', desc: '아주인성·영어·글쓰기·영역별교양 등 대학 공통' },
   { value: 'department_required', label: '학과필수', desc: '수학·기초과학·학과 세미나 등 학과 공통' },
-  { value: 'major', label: '전공', desc: '전공필수·전공선택 — 전공 평점 대상' },
-  { value: 'free', label: '자유이수', desc: '일반선택 등 자유 이수 학점' },
+  { value: 'major_required', label: '전공필수', desc: '전공 필수 과목 — 전공 평점 대상' },
+  { value: 'major_elective', label: '전공선택', desc: '전공 선택 과목 — 전공 평점 대상' },
+  { value: 'general_elective', label: '일반선택', desc: '자유 이수 학점' },
 ]
 
 export const BUCKET_GROUP_LABEL: Record<BucketGroup, string> = {
   university_required: '대학필수',
   department_required: '학과필수',
-  major: '전공',
-  free: '자유이수',
+  major_required: '전공필수',
+  major_elective: '전공선택',
+  general_elective: '일반선택',
 }
 
 export const REQUIREMENT_TYPES: { value: RequirementType; label: string; hint: string }[] = [
@@ -231,7 +233,7 @@ export function blankBucket(set: RequirementSet): Bucket {
   return {
     id: uniqueId('bucket_custom', set.buckets.map((b) => b.id)),
     label: '',
-    group: 'major',
+    group: 'major_elective',
     minCredits: 0,
   }
 }

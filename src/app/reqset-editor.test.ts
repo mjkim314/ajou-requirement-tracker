@@ -384,7 +384,7 @@ describe('편집한 세트는 엔진이 그대로 씹는다', () => {
     const withBucket = addBucket({ ...s0, id: 'rs_edit' }, {
       ...blankBucket(s0),
       label: '새 영역',
-      group: 'free',
+      group: 'general_elective',
       minCredits: 3,
     })
     const res = evaluate(run(withBucket))

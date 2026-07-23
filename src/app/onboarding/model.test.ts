@@ -63,8 +63,8 @@ describe('프리셋 조회', () => {
     expect(departmentHasPreset(requirementSetRegistry, null, '소프트웨어학과')).toBe(true)
   })
 
-  it('presetOptions는 레지스트리 8종을 노출(2021~2024 × 심화/일반)', () => {
-    expect(presetOptions(requirementSetRegistry)).toHaveLength(8)
+  it('presetOptions는 레지스트리 12종을 노출(2021~2026 × 심화/일반)', () => {
+    expect(presetOptions(requirementSetRegistry)).toHaveLength(12)
   })
 })
 

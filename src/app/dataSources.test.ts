@@ -17,6 +17,8 @@ import {
   catalog2022Sw,
   catalog2023Sw,
   catalog2024Sw,
+  catalog2025Sw,
+  catalog2026Sw,
   reqSet2021SwAdvanced,
 } from '../data/index'
 import { demoPersistedState } from './appData'
@@ -53,8 +55,12 @@ describe('bundleFor', () => {
     expect(bundleFor(s).catalog).toBe(catalog2022Sw)
   })
 
-  it('SW 세트는 학번으로 폴백(2024+ → 2024, 2023 → 2023, 2022 → 2022, 그 외 → 2021)', () => {
-    const s24 = mkSet({ id: 'custom_2a', department: '소프트웨어학과', admissionYearFrom: 2025 })
+  it('SW 세트는 학번으로 폴백(2026+ → 2026, 2025 → 2025, 2024 → 2024, 2023 → 2023, 2022 → 2022, 그 외 → 2021)', () => {
+    const s26 = mkSet({ id: 'custom_2c', department: '소프트웨어학과', admissionYearFrom: 2027 })
+    expect(bundleFor(s26).catalog).toBe(catalog2026Sw)
+    const s25 = mkSet({ id: 'custom_2d', department: '소프트웨어학과', admissionYearFrom: 2025 })
+    expect(bundleFor(s25).catalog).toBe(catalog2025Sw)
+    const s24 = mkSet({ id: 'custom_2a', department: '소프트웨어학과', admissionYearFrom: 2024 })
     expect(bundleFor(s24).catalog).toBe(catalog2024Sw)
     const s23 = mkSet({ id: 'custom_2', department: '소프트웨어학과', admissionYearFrom: 2023 })
     expect(bundleFor(s23).catalog).toBe(catalog2023Sw)

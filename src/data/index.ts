@@ -26,6 +26,12 @@ import amr2023Json from './additional-major-rules-2023-sw.json'
 import catalog2024Json from './catalog-2024-sw.json'
 import sets2024Json from './requirement-set-2024-sw.json'
 import amr2024Json from './additional-major-rules-2024-sw.json'
+import catalog2025Json from './catalog-2025-sw.json'
+import sets2025Json from './requirement-set-2025-sw.json'
+import amr2025Json from './additional-major-rules-2025-sw.json'
+import catalog2026Json from './catalog-2026-sw.json'
+import sets2026Json from './requirement-set-2026-sw.json'
+import amr2026Json from './additional-major-rules-2026-sw.json'
 
 // 다산학부대학 교양 카탈로그(학번별). 전 학과가 공유하는 기반 데이터로,
 // 아직 어떤 요건 세트도 참조하지 않으므로 DATA_BUNDLES·requirementSetRegistry에는
@@ -86,6 +92,30 @@ export const reqSet2024SwGeneral = sets2024Sw.general
 export const additionalMajorRules2024Sw =
   amr2024Json as unknown as AdditionalMajorRule[]
 
+export const catalog2025Sw = catalog2025Json as unknown as CatalogEntry[]
+
+const sets2025Sw = sets2025Json as unknown as {
+  advanced: RequirementSet
+  general: RequirementSet
+}
+export const reqSet2025SwAdvanced = sets2025Sw.advanced
+export const reqSet2025SwGeneral = sets2025Sw.general
+
+export const additionalMajorRules2025Sw =
+  amr2025Json as unknown as AdditionalMajorRule[]
+
+export const catalog2026Sw = catalog2026Json as unknown as CatalogEntry[]
+
+const sets2026Sw = sets2026Json as unknown as {
+  advanced: RequirementSet
+  general: RequirementSet
+}
+export const reqSet2026SwAdvanced = sets2026Sw.advanced
+export const reqSet2026SwGeneral = sets2026Sw.general
+
+export const additionalMajorRules2026Sw =
+  amr2026Json as unknown as AdditionalMajorRule[]
+
 export const catalog2021Ge = catalog2021GeJson as unknown as CatalogEntry[]
 export const catalog2022Ge = catalog2022GeJson as unknown as CatalogEntry[]
 export const catalog2023Ge = catalog2023GeJson as unknown as CatalogEntry[]
@@ -118,4 +148,8 @@ export const requirementSetRegistry: Record<string, RequirementSet> = {
   [reqSet2023SwGeneral.id]: reqSet2023SwGeneral,
   [reqSet2024SwAdvanced.id]: reqSet2024SwAdvanced,
   [reqSet2024SwGeneral.id]: reqSet2024SwGeneral,
+  [reqSet2025SwAdvanced.id]: reqSet2025SwAdvanced,
+  [reqSet2025SwGeneral.id]: reqSet2025SwGeneral,
+  [reqSet2026SwAdvanced.id]: reqSet2026SwAdvanced,
+  [reqSet2026SwGeneral.id]: reqSet2026SwGeneral,
 }

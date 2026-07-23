@@ -16,6 +16,7 @@ import {
   profileStepValid,
   reqsetStepValid,
   requiresAdditionalMajor,
+  gradeSemesterLabel,
   semesterLabel,
   semesterOptions,
   type OnboardingDraft,
@@ -321,5 +322,14 @@ describe('화면 보조값', () => {
   it('semesterOptions / semesterLabel', () => {
     expect(semesterOptions(2021, 1)).toEqual(['2021-1', '2021-2'])
     expect(semesterLabel('2021-2')).toBe('2021년 2학기')
+  })
+  it('gradeSemesterLabel — 입학연도 기준 학년 환산', () => {
+    // 2021 입학: 2021-1=1학년 1학기, 2023-2=3학년 2학기
+    expect(gradeSemesterLabel('2021-1', 2021)).toBe('1학년 1학기')
+    expect(gradeSemesterLabel('2023-2', 2021)).toBe('3학년 2학기')
+    // 입학연도 없으면 연도 라벨로 폴백
+    expect(gradeSemesterLabel('2023-2', null)).toBe('2023년 2학기')
+    // 학년이 1 미만(입학 전 학기)이면 연도 라벨로 폴백
+    expect(gradeSemesterLabel('2020-1', 2021)).toBe('2020년 1학기')
   })
 })

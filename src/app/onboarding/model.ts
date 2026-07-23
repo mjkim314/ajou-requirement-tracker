@@ -424,6 +424,18 @@ export function semesterLabel(v: string): string {
   return `${m[1]}년 ${m[2] === '1' ? '1학기' : '2학기'}`
 }
 
+/**
+ * 'YYYY-1'|'YYYY-2' → 'N학년 M학기'(입학연도 기준). 저장값은 그대로 'YYYY-S'를 쓰고 표시만 학년으로 환산한다.
+ * 입학연도가 없거나(학번 미선택) 학년이 1 미만이면 연도 라벨로 폴백한다.
+ */
+export function gradeSemesterLabel(v: string, admissionYear: number | null): string {
+  const m = v.match(/^(\d{4})-([12])$/)
+  if (!m || admissionYear == null) return semesterLabel(v)
+  const grade = Number(m[1]) - admissionYear + 1
+  if (grade < 1) return semesterLabel(v)
+  return `${grade}학년 ${m[2] === '1' ? '1학기' : '2학기'}`
+}
+
 /** 학번~+span년의 정규학기 옵션. */
 export function semesterOptions(fromYear: number | null, span = 8): string[] {
   if (fromYear == null) return []

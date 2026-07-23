@@ -4,6 +4,7 @@ import { CheckRow, Field, SelectField, StepIntro } from '../fields'
 import {
   EXEMPTION_LABELS,
   baseReqSet,
+  gradeSemesterLabel,
   semesterLabel,
   semesterOptions,
   type OnboardingDraft,
@@ -48,7 +49,7 @@ export function ExceptionsStep({ draft, patch }: Props) {
             <option value="">선택 안 함</option>
             {options.map((s) => (
               <option key={s} value={s}>
-                {semesterLabel(s)}
+                {gradeSemesterLabel(s, draft.admissionYear)}
               </option>
             ))}
           </SelectField>
@@ -68,6 +69,16 @@ export function ExceptionsStep({ draft, patch }: Props) {
             ))}
           </SelectField>
         </Field>
+      </div>
+
+      <div className="flex items-start gap-2 rounded-block bg-bg-soft px-3.5 py-2.5 text-[11.5px] leading-relaxed text-ink-3">
+        <Icon name="info" className="mt-px shrink-0 text-[14px] text-blue" />
+        <p>
+          <b className="text-ink-2">현재 학기</b>는 지금 다니고 있는, 아직 끝나지 않은{' '}
+          <b className="text-ink-2">진행 중인 학기</b>예요. 예를 들어 3학년 1학기에 재학 중이라면 3학년
+          1학기를 고르면 돼요. 남은 학기와 학기당 권장 학점을 계산하는 기준이 되고, 과목을 추가할 때 기본
+          학기로도 쓰여요.
+        </p>
       </div>
 
       <Field label="학적">

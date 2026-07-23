@@ -63,8 +63,13 @@ describe('프리셋 조회', () => {
     expect(departmentHasPreset(requirementSetRegistry, null, '소프트웨어학과')).toBe(true)
   })
 
-  it('presetOptions는 레지스트리 12종을 노출(2021~2026 × 심화/일반)', () => {
-    expect(presetOptions(requirementSetRegistry)).toHaveLength(12)
+  it('presetOptions는 레지스트리 전체를 노출(SW 12종 + 기계공학과 4종)', () => {
+    const opts = presetOptions(requirementSetRegistry)
+    // 소프트웨어학과 2021~2026 × 심화/일반 = 12
+    expect(opts.filter((o) => o.department === '소프트웨어학과')).toHaveLength(12)
+    // 기계공학과 2021~2022 × 공학인증/일반 = 4
+    expect(opts.filter((o) => o.department === '기계공학과')).toHaveLength(4)
+    expect(opts).toHaveLength(16)
   })
 })
 

@@ -33,6 +33,15 @@ import catalog2026Json from './catalog-2026-sw.json'
 import sets2026Json from './requirement-set-2026-sw.json'
 import amr2026Json from './additional-major-rules-2026-sw.json'
 
+// 공과대학 기계공학과(학번별). 과정 구분이 SW(심화/일반)와 달라
+// 공학인증(accredited)/일반(general) 두 벌이다.
+import catalog2021MeJson from './catalog-2021-me.json'
+import sets2021MeJson from './requirement-set-2021-me.json'
+import amr2021MeJson from './additional-major-rules-2021-me.json'
+import catalog2022MeJson from './catalog-2022-me.json'
+import sets2022MeJson from './requirement-set-2022-me.json'
+import amr2022MeJson from './additional-major-rules-2022-me.json'
+
 // 다산학부대학 교양 카탈로그(학번별). 전 학과가 공유하는 기반 데이터로,
 // 아직 어떤 요건 세트도 참조하지 않으므로 DATA_BUNDLES·requirementSetRegistry에는
 // 넣지 않는다. 학과 세트가 교양 courseKey를 쓰기 시작하면 그때 번들에 연결한다.
@@ -116,6 +125,31 @@ export const reqSet2026SwGeneral = sets2026Sw.general
 export const additionalMajorRules2026Sw =
   amr2026Json as unknown as AdditionalMajorRule[]
 
+// ── 공과대학 기계공학과 ──
+export const catalog2021Me = catalog2021MeJson as unknown as CatalogEntry[]
+
+const sets2021Me = sets2021MeJson as unknown as {
+  accredited: RequirementSet
+  general: RequirementSet
+}
+export const reqSet2021MeAccredited = sets2021Me.accredited
+export const reqSet2021MeGeneral = sets2021Me.general
+
+export const additionalMajorRules2021Me =
+  amr2021MeJson as unknown as AdditionalMajorRule[]
+
+export const catalog2022Me = catalog2022MeJson as unknown as CatalogEntry[]
+
+const sets2022Me = sets2022MeJson as unknown as {
+  accredited: RequirementSet
+  general: RequirementSet
+}
+export const reqSet2022MeAccredited = sets2022Me.accredited
+export const reqSet2022MeGeneral = sets2022Me.general
+
+export const additionalMajorRules2022Me =
+  amr2022MeJson as unknown as AdditionalMajorRule[]
+
 export const catalog2021Ge = catalog2021GeJson as unknown as CatalogEntry[]
 export const catalog2022Ge = catalog2022GeJson as unknown as CatalogEntry[]
 export const catalog2023Ge = catalog2023GeJson as unknown as CatalogEntry[]
@@ -152,4 +186,8 @@ export const requirementSetRegistry: Record<string, RequirementSet> = {
   [reqSet2025SwGeneral.id]: reqSet2025SwGeneral,
   [reqSet2026SwAdvanced.id]: reqSet2026SwAdvanced,
   [reqSet2026SwGeneral.id]: reqSet2026SwGeneral,
+  [reqSet2021MeAccredited.id]: reqSet2021MeAccredited,
+  [reqSet2021MeGeneral.id]: reqSet2021MeGeneral,
+  [reqSet2022MeAccredited.id]: reqSet2022MeAccredited,
+  [reqSet2022MeGeneral.id]: reqSet2022MeGeneral,
 }

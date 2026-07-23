@@ -15,13 +15,17 @@ import type {
   RequirementSet,
 } from '../engine/index'
 import {
+  additionalMajorRules2021Me,
   additionalMajorRules2021Sw,
+  additionalMajorRules2022Me,
   additionalMajorRules2022Sw,
   additionalMajorRules2023Sw,
   additionalMajorRules2024Sw,
   additionalMajorRules2025Sw,
   additionalMajorRules2026Sw,
+  catalog2021Me,
   catalog2021Sw,
+  catalog2022Me,
   catalog2022Sw,
   catalog2023Sw,
   catalog2024Sw,
@@ -51,10 +55,21 @@ const DATA_BUNDLES: Record<string, DataBundle> = {
   rs_2025_sw_general: { catalog: catalog2025Sw, rules: additionalMajorRules2025Sw },
   rs_2026_sw_advanced: { catalog: catalog2026Sw, rules: additionalMajorRules2026Sw },
   rs_2026_sw_general: { catalog: catalog2026Sw, rules: additionalMajorRules2026Sw },
+  rs_2021_me_accredited: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
+  rs_2021_me_general: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
+  rs_2022_me_accredited: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
+  rs_2022_me_general: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
 }
 
 /** 카탈로그를 보유한 학과(현재 SW뿐). 폴백은 이 학과의 세트일 때만 학번으로 고른다. */
 const SW_DEPARTMENT = '소프트웨어학과'
+
+/** 기계공학과는 보유 학번(2021·2022)만 폴백한다 — SW와 달리 연속 데이터가 아니라 이웃 연도를 물려주지 않는다. */
+const ME_DEPARTMENT = '기계공학과'
+const ME_BUNDLES: Record<number, DataBundle> = {
+  2021: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
+  2022: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
+}
 
 /** SW 세트 학번 폴백용 기본 번들(2021). */
 const DEFAULT_BUNDLE: DataBundle = { catalog: catalog2021Sw, rules: additionalMajorRules2021Sw }
@@ -85,6 +100,10 @@ export function bundleFor(set: RequirementSet): DataBundle {
   if (DATA_BUNDLES[set.id]) return DATA_BUNDLES[set.id]!
   const base = basePresetId(set)
   if (base && DATA_BUNDLES[base]) return DATA_BUNDLES[base]!
+  if (set.department === ME_DEPARTMENT) {
+    const year = set.admissionYearFrom
+    return (year != null ? ME_BUNDLES[year] : undefined) ?? EMPTY_BUNDLE
+  }
   if (set.department == null || set.department === SW_DEPARTMENT) {
     const year = set.admissionYearFrom
     if (year != null) {

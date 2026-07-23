@@ -1,0 +1,1236 @@
+[
+  {
+    "courseKey": "MATH-1",
+    "name": "수학1",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "math",
+    "offeredSemesters": [
+      "1-1"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "MATH-2",
+    "name": "수학2",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "math",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "MATH-ENG-A",
+    "name": "공업수학A",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "math",
+    "offeredSemesters": [
+      "2-1"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "MATH-ENG-E",
+    "name": "공업수학E",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "math",
+    "offeredSemesters": [
+      "2-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-PHYSICS-1",
+    "name": "물리학1",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-1"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-PHYSICS-LAB-1",
+    "name": "물리학실험1",
+    "credits": 1,
+    "creditBreakdown": {
+      "lab": 1
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-1"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-CHEMISTRY",
+    "name": "화학",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-CHEMISTRY-LAB",
+    "name": "화학실험",
+    "credits": 1,
+    "creditBreakdown": {
+      "lab": 1
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-PHYSICS-2",
+    "name": "물리학2",
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "SCI-PHYSICS-LAB-2",
+    "name": "물리학실험2",
+    "credits": 1,
+    "creditBreakdown": {
+      "lab": 1
+    },
+    "defaultBucket": "science_basic",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "요람 MSC(수학·기초과학) 편성 — 학수번호 미기재"
+  },
+  {
+    "courseKey": "ME-PYTHON-PROG",
+    "name": "Python프로그래밍",
+    "aliases": [
+      "융합프로그래밍1"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "computing",
+    "offeredSemesters": [
+      "2-1"
+    ],
+    "note": "2021학번 계열별필수(SW)의 융합프로그래밍1을 대체 — 두 과목 모두 요람에 학수번호가 없어 동일 과목인지 확정 불가(별도 courseKey로 분리)"
+  },
+  {
+    "courseKey": "ME-NUMERICAL",
+    "name": "수치해석과 기계학습",
+    "aliases": [
+      "공학수치해석"
+    ],
+    "codes": [
+      "MECH3312"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2.5,
+      "lab": 0.5
+    },
+    "defaultBucket": "computing",
+    "offeredSemesters": [
+      "3-1"
+    ],
+    "note": "2021학번 공학수치해석(MECH3311)이 2022학번부터 수치해석과 기계학습(MECH3312)으로 개편 — 과목개요 본문 동일"
+  },
+  {
+    "courseKey": "ME-ADVENTURE-DESIGN",
+    "name": "Adventure Design",
+    "codes": [
+      "MECH162"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "design": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "1-1"
+    ]
+  },
+  {
+    "courseKey": "ME-DRAWING",
+    "name": "공학제도및그래픽실습",
+    "codes": [
+      "MECH102"
+    ],
+    "credits": 1,
+    "creditBreakdown": {
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "1-2"
+    ]
+  },
+  {
+    "courseKey": "ME-STATICS",
+    "name": "정역학",
+    "aliases": [
+      "공업역학1"
+    ],
+    "codes": [
+      "MECH104"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_required",
+    "offeredSemesters": [
+      "1-2"
+    ],
+    "note": "2021학번 교육과정의 공업역학1(MECH112)이 2022학번부터 정역학(MECH104)으로 개칭 — 과목개요 본문 동일"
+  },
+  {
+    "courseKey": "ME-SOLID-MECH",
+    "name": "고체역학",
+    "codes": [
+      "MECH211"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_required",
+    "prerequisites": [
+      "ME-STATICS"
+    ],
+    "offeredSemesters": [
+      "2-1"
+    ]
+  },
+  {
+    "courseKey": "ME-THERMO",
+    "name": "열역학",
+    "codes": [
+      "MECH204"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_required",
+    "offeredSemesters": [
+      "2-1"
+    ]
+  },
+  {
+    "courseKey": "ME-DYNAMICS",
+    "name": "동역학",
+    "aliases": [
+      "공업역학2"
+    ],
+    "codes": [
+      "MECH2013"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_required",
+    "prerequisites": [
+      "ME-STATICS"
+    ],
+    "offeredSemesters": [
+      "2-2"
+    ],
+    "note": "2021학번 교육과정의 공업역학2(MECH203)가 2022학번부터 동역학(MECH2013)으로 개칭 — 과목개요 본문 동일"
+  },
+  {
+    "courseKey": "ME-FLUID-MECH",
+    "name": "유체역학",
+    "codes": [
+      "MECH212"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_required",
+    "prerequisites": [
+      "ME-STATICS"
+    ],
+    "offeredSemesters": [
+      "2-2"
+    ]
+  },
+  {
+    "courseKey": "ME-LAB-BASIC",
+    "name": "기계공학기초실험",
+    "codes": [
+      "MECH274"
+    ],
+    "credits": 1,
+    "creditBreakdown": {
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "2-2"
+    ]
+  },
+  {
+    "courseKey": "ME-CONV-DESIGN-IP",
+    "name": "융합설계및지식재산권",
+    "codes": [
+      "MECH3620"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "design": 3
+    },
+    "defaultBucket": "major_elective",
+    "prerequisites": [
+      "ME-ADVENTURE-DESIGN"
+    ],
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "note": "학수번호 변경 MECH3615(2021) → MECH3620(2022), 과목명 동일"
+  },
+  {
+    "courseKey": "ME-LAB-ADVANCED",
+    "name": "기계공학응용실험",
+    "codes": [
+      "MECH4710"
+    ],
+    "credits": 2,
+    "creditBreakdown": {
+      "lab": 2
+    },
+    "defaultBucket": "major_elective",
+    "prerequisites": [
+      "ME-LAB-BASIC"
+    ],
+    "offeredSemesters": [
+      "4-1"
+    ],
+    "note": "학수번호 변경 MECH378(2021) → MECH4710(2022), 과목명 동일"
+  },
+  {
+    "courseKey": "ME-CAPSTONE",
+    "name": "융합캡스톤디자인",
+    "codes": [
+      "MECH479"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "design": 3
+    },
+    "defaultBucket": "major_elective",
+    "prerequisites": [
+      "ME-CONV-DESIGN-IP"
+    ],
+    "offeredSemesters": [
+      "4-1"
+    ],
+    "note": "학수번호 변경 MECH474(2021) → MECH479(2022), 과목명 동일"
+  },
+  {
+    "courseKey": "ME-MATERIALS",
+    "name": "기계재료학",
+    "codes": [
+      "MECH2010"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "2-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MANUFACTURING",
+    "name": "생산제조공학",
+    "codes": [
+      "MECH253"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "2-2"
+    ]
+  },
+  {
+    "courseKey": "ME-HEAT-TRANSFER",
+    "name": "열전달",
+    "codes": [
+      "MECH321"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-VIBRATION",
+    "name": "진동학",
+    "codes": [
+      "MECH3410"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MECHANISM-DESIGN",
+    "name": "기구설계",
+    "codes": [
+      "MECH3613"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MACHINE-DESIGN",
+    "name": "기계설계",
+    "codes": [
+      "MECH3614"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-SYSTEM-DYNAMICS",
+    "name": "시스템동역학",
+    "codes": [
+      "MECH342"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-FEM",
+    "name": "기초유한요소법",
+    "codes": [
+      "MECH3011"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-ENGINE",
+    "name": "엔진공학",
+    "codes": [
+      "MECH3310"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-FLUID-POWER",
+    "name": "유공압제어",
+    "codes": [
+      "MECH353"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 1.5,
+      "design": 1,
+      "lab": 0.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MEASUREMENT",
+    "name": "기계계측공학",
+    "codes": [
+      "MECH3412"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ]
+  },
+  {
+    "courseKey": "ME-NUMERICAL-HEAT",
+    "name": "수치열전달",
+    "codes": [
+      "MECH324"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "note": "2022학번 신설(MECH324)"
+  },
+  {
+    "courseKey": "ME-ADV-NUMERICAL",
+    "name": "고급수치해석",
+    "codes": [
+      "MECH325"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "note": "2022학번 신설(MECH325)"
+  },
+  {
+    "courseKey": "ME-APPLIED-SOLID",
+    "name": "응용고체역학",
+    "codes": [
+      "MECH3618"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-REFRIGERATION",
+    "name": "냉동공조",
+    "codes": [
+      "MECH323"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2.5,
+      "lab": 0.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-MICROPROCESSOR",
+    "name": "마이크로프로세서응용",
+    "codes": [
+      "MECH3012"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-AUTOMOTIVE",
+    "name": "자동차공학",
+    "codes": [
+      "MECH331"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-VIBRATION-SIGNAL",
+    "name": "진동신호분석법",
+    "codes": [
+      "MECH348"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-ROBOTICS",
+    "name": "로봇공학",
+    "codes": [
+      "MECH3411"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2.5,
+      "lab": 0.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-SMART-SOUND",
+    "name": "스마트음향시스템설계",
+    "codes": [
+      "MECH3619"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ]
+  },
+  {
+    "courseKey": "ME-AI-SYSTEM",
+    "name": "인공지능시스템",
+    "codes": [
+      "MECH3015"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 1.5,
+      "lab": 1.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "note": "학수번호 변경 MECH408(2021) → MECH3015(2022), 과목명 동일 / 융합시스템공학과 인공지능시스템과 동일 학수번호 — 융합시스템공학과 개설분을 수강하면 기계공학과 과목으로 인정하지 않음(중복 수강 시 재수강 처리)"
+  },
+  {
+    "courseKey": "ME-3D-PRINTING",
+    "name": "3D프린팅활용설계",
+    "codes": [
+      "MECH4514"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 1.5,
+      "design": 1,
+      "lab": 0.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MOLD-DESIGN",
+    "name": "금형설계",
+    "codes": [
+      "MECH4510"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MOTOR-GENERATOR",
+    "name": "모터와발전기",
+    "codes": [
+      "MECH459"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-APPLIED-THERMO",
+    "name": "응용열역학",
+    "codes": [
+      "MECH431"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-APPLIED-FLUID",
+    "name": "응용유체역학",
+    "codes": [
+      "MECH426"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-AUTO-CONTROL",
+    "name": "자동제어설계",
+    "codes": [
+      "MECH448"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-AUTO-ELECTRONICS",
+    "name": "자동차전자제어",
+    "codes": [
+      "MECH4419"
+    ],
+    "credits": 2,
+    "creditBreakdown": {
+      "theory": 2
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-VEHICLE-DESIGN",
+    "name": "차량설계",
+    "codes": [
+      "MECH4618"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-MICRONANO-INTRO",
+    "name": "마이크로-나노기계공학입문",
+    "aliases": [
+      "마이크로/나노기계공학입문"
+    ],
+    "codes": [
+      "MECH4511"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ]
+  },
+  {
+    "courseKey": "ME-VEHICLE-POWERTRAIN-SW",
+    "name": "자동차동력시스템S/W응용",
+    "aliases": [
+      "자동차동력시스템S/W응용 및 실습"
+    ],
+    "codes": [
+      "MECH4616"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-VIRTUAL-MANUFACTURING",
+    "name": "가상생산시스템설계",
+    "codes": [
+      "MECH4515"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 1.5,
+      "design": 1,
+      "lab": 0.5
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-HYBRID-MANUFACTURING",
+    "name": "하이브리드생산시스템",
+    "codes": [
+      "MECH4516"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ],
+    "note": "학수번호 변경 MECH4513(2021) → MECH4516(2022), 과목명 동일"
+  },
+  {
+    "courseKey": "ME-DIGITAL-CONTROL",
+    "name": "디지털제어시스템",
+    "codes": [
+      "MECH4421"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-ENERGY",
+    "name": "에너지공학",
+    "codes": [
+      "MECH433"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-CFD",
+    "name": "전산열유체역학",
+    "codes": [
+      "MECH427"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "lab": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-AUTONOMOUS-VEHICLE",
+    "name": "자동차인공지능",
+    "aliases": [
+      "자율주행자동차"
+    ],
+    "codes": [
+      "MECH4424"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ],
+    "note": "2021학번 자율주행자동차(MECH4423)가 2022학번부터 자동차인공지능(MECH4424)으로 개칭 — 과목개요 본문 동일"
+  },
+  {
+    "courseKey": "ME-PLANT",
+    "name": "플랜트공학",
+    "codes": [
+      "MECH4612"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-APPLIED-HEAT",
+    "name": "응용열전달",
+    "codes": [
+      "MECH428"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-MICRONANO-APP",
+    "name": "마이크로-나노기계공학응용",
+    "aliases": [
+      "마이크로/나노기계공학응용"
+    ],
+    "codes": [
+      "MECH4512"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-BIO-ROBOT",
+    "name": "생체모방로봇",
+    "codes": [
+      "MECH4619"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 2,
+      "design": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-BIO-TRANSPORT",
+    "name": "생체전달현상",
+    "codes": [
+      "MECH429"
+    ],
+    "credits": 3,
+    "creditBreakdown": {
+      "theory": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ]
+  },
+  {
+    "courseKey": "ME-STARTUP-1",
+    "name": "창업실습1",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1"
+    ],
+    "note": "요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키 / 현장실습수업 운영규칙 제7조3항: 창업현장실습·창업실습은 재학 중 통산 6학점 이내 취득 — 요람 편성(4과목 12학점)은 개설 슬롯이며 취득 상한이 아님"
+  },
+  {
+    "courseKey": "ME-STARTUP-2",
+    "name": "창업실습2",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "note": "요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키 / 현장실습수업 운영규칙 제7조3항: 창업현장실습·창업실습은 재학 중 통산 6학점 이내 취득 — 요람 편성(4과목 12학점)은 개설 슬롯이며 취득 상한이 아님"
+  },
+  {
+    "courseKey": "ME-STARTUP-FIELD-1",
+    "name": "창업현장실습1",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ],
+    "note": "요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키 / 현장실습수업 운영규칙 제7조3항: 창업현장실습·창업실습은 재학 중 통산 6학점 이내 취득 — 요람 편성(4과목 12학점)은 개설 슬롯이며 취득 상한이 아님"
+  },
+  {
+    "courseKey": "ME-STARTUP-FIELD-2",
+    "name": "창업현장실습2",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ],
+    "note": "요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키 / 현장실습수업 운영규칙 제7조3항: 창업현장실습·창업실습은 재학 중 통산 6학점 이내 취득 — 요람 편성(4과목 12학점)은 개설 슬롯이며 취득 상한이 아님"
+  },
+  {
+    "courseKey": "ME-INTERN-1",
+    "name": "공학인턴십1",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-INTERN-2",
+    "name": "공학인턴십2",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-INTERN-3",
+    "name": "공학인턴십3",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-INTERN-4",
+    "name": "공학인턴십4",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-INTERN-5",
+    "name": "공학인턴십5",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-INTERN-6",
+    "name": "공학인턴십6",
+    "credits": 3,
+    "creditBreakdown": {
+      "lab": 3
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-1",
+      "3-2",
+      "4-1",
+      "4-2"
+    ],
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  {
+    "courseKey": "ME-UG-RESEARCH-1",
+    "name": "학부연구프로젝트1",
+    "codes": [
+      "MECH3611"
+    ],
+    "credits": 1,
+    "creditBreakdown": {
+      "theory": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "3-2"
+    ],
+    "gradingType": "PF",
+    "note": "공학인증(인증과정) 학생은 교양 1학점, 일반과정은 전공선택 1학점으로 인정 — 인증과정 세트는 courseGroups로 전액 일반선택 이월. 평가는 지도교수 Pass/Not Pass"
+  },
+  {
+    "courseKey": "ME-UG-RESEARCH-2",
+    "name": "학부연구프로젝트2",
+    "codes": [
+      "MECH4613"
+    ],
+    "credits": 1,
+    "creditBreakdown": {
+      "theory": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-1"
+    ],
+    "gradingType": "PF",
+    "note": "공학인증(인증과정) 학생은 교양 1학점, 일반과정은 전공선택 1학점으로 인정 — 인증과정 세트는 courseGroups로 전액 일반선택 이월. 평가는 지도교수 Pass/Not Pass"
+  },
+  {
+    "courseKey": "ME-UG-RESEARCH-3",
+    "name": "학부연구프로젝트3",
+    "codes": [
+      "MECH4614"
+    ],
+    "credits": 1,
+    "creditBreakdown": {
+      "theory": 1
+    },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": [
+      "4-2"
+    ],
+    "gradingType": "PF",
+    "note": "공학인증(인증과정) 학생은 교양 1학점, 일반과정은 전공선택 1학점으로 인정 — 인증과정 세트는 courseGroups로 전액 일반선택 이월. 평가는 지도교수 Pass/Not Pass"
+  }
+]

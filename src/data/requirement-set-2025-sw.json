@@ -186,6 +186,7 @@
     "majorPolicy": {
       "satisfiedBy": ["advanced_track", "additional_major"],
       "minAdditionalMajorCount": 1,
+      "countsByType": { "micro_degree": 2 },
       "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
       "exemptions": ["dual_degree", "linked_masters"]
     },
@@ -205,7 +206,7 @@
         "요람 편성표 전공기초 소계는 10으로 인쇄되나 이는 택1 두 과목을 모두 더한 값이고, 구성현황표의 필수 이수학점은 7",
         "웹시스템설계(SCE338) 4학점 → 3학점(이론 3)",
         "오픈소스SW입문 선수과목이 객체지향프로그래밍및실습 → 컴퓨터프로그래밍및실습으로 변경",
-        "전공 이수원칙에 '마이크로전공 2개 이상 이수'가 추가됐으나 엔진 majorPolicy는 단일 minAdditionalMajorCount만 지원해 정확히 표현 불가 — am_micro.satisfiesMajorPolicy는 2024와 동일하게 false 유지(보수적). 데이터_정정_백로그.md 참조",
+        "전공 이수원칙에 '마이크로전공 2개 이상 이수'가 추가됨 — majorPolicy.countsByType { micro_degree: 2 }가 판정한다(R3d, 2026-07-24). am_micro.satisfiesMajorPolicy는 false 유지: 마이크로전공 1개만으로는 원칙을 충족하지 못한다",
         "선수과목표에만 남아 있는 네트워크보안및실습·시스템소프트웨어보안은 편성표·과목개요에 없어 카탈로그 미등재",
         "평점표 A+ 4.5 만점 — 학칙 제46조6항(항 개정 2024.01.18). minGPA 2.0 — 학칙 제50조3항"
       ]
@@ -396,6 +397,7 @@
     "majorPolicy": {
       "satisfiedBy": ["advanced_track", "additional_major"],
       "minAdditionalMajorCount": 1,
+      "countsByType": { "micro_degree": 2 },
       "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
       "exemptions": ["dual_degree", "linked_masters"]
     },

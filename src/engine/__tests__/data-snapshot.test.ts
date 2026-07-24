@@ -50,8 +50,8 @@ const EXPECTED_HASHES: Record<string, string> = {
   'additional-major-rules-2022-sw.json': 'e32a500a780bfd231b8ec84b90f2671551560bf30d381c5f37defc8c561cdcd7',
   'additional-major-rules-2023-sw.json': '65e4e99d94c8eb5ba29fae55f9031e390403df20a5824dbeef9dd7013f2e5f75',
   'additional-major-rules-2024-sw.json': '95f587a0b53b812f6093edc7416f01d46f383f35afde430f5c368f7661e25e88',
-  'additional-major-rules-2025-sw.json': '1f9fa87350e5dc053b444f273138a7da1bceab144e79eed453702236b5b8ee06',
-  'additional-major-rules-2026-sw.json': '47a4b9c02c1fa13fb4dad4ee1d8e5c1c946753025c40810b509cdddc62536dd6',
+  'additional-major-rules-2025-sw.json': '8e9caabd874c416ac3ab5d97171b257b23a5262f1f7e32ee235e8c80a4fb9472',
+  'additional-major-rules-2026-sw.json': 'e751b33ff710dd4c6a4814df4d3c01683c8ce84ffae3e2ff6fa2203c4e0724ae',
   'catalog-2021-ge.json': '16b0fedce94ccd6d65abaadc358de8ae6e5d8b7cacbc8028b8c8cdf86f51d979',
   'catalog-2021-me.json': '90a91a4d97eece0a760d7dc0a8761cf6c9366a344ee050dec7caca6aea84bb08',
   'catalog-2021-sw.json': '91ea687b4cc670bbfe6c7f3b663e9c009cfe9867515650dd23508a62e566dbd3',
@@ -72,8 +72,8 @@ const EXPECTED_HASHES: Record<string, string> = {
   'requirement-set-2022-sw.json': '35b8e6d7d16163bf580af710ba3c1ae8c589dabc5039b3f7475768983b1e5fa1',
   'requirement-set-2023-sw.json': '80f79908561caf8ba9f44d199a129fd4e34b48fd03e875565c257224ff829dee',
   'requirement-set-2024-sw.json': '8cf1e6d0378717f1aa5e1f885d8c11cc1a4123bbf86fca691a24bb8417ea015f',
-  'requirement-set-2025-sw.json': '2c3d58d8c08995f98264b7f603498913533bdc617673b064959c5278e9cfac22',
-  'requirement-set-2026-sw.json': '39c61721cb5e3888a68348712c1efe4938c3dbc4bb547c716fd0868007c40f1d',
+  'requirement-set-2025-sw.json': 'f6254ae644459a8cf4de38e4a1d1074787c1e784fb157be013f80422c97433ed',
+  'requirement-set-2026-sw.json': '2e894830c2df7c82b3b8ad8324a3f2f4312ef1cef648daeb5b968e85a67c8458',
 }
 
 describe('R0 데이터 산출물 스냅샷', () => {

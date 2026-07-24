@@ -184,6 +184,7 @@
     "majorPolicy": {
       "satisfiedBy": ["advanced_track", "additional_major"],
       "minAdditionalMajorCount": 1,
+      "countsByType": { "micro_degree": 2 },
       "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
       "exemptions": ["dual_degree", "linked_masters"]
     },
@@ -202,7 +203,7 @@
         "전공선택 신규 6과목: 인공지능수학(SCE241)·AI와윤리(SCE3321)·음성인식(SCE438)·언어모델의이해및활용(SCE4310)·강화학습기초(SCE439)·계산복잡도이론(SCE437). 편성표 전공선택 소계 172 → 190",
         "현장실습 과목군 전공선택 인정 상한 6학점(2025와 동일)",
         "외국어 표의 TEPS 값이 2025의 605에서 329로 바뀜 — NEW TEPS 척도 교체(어학졸업인증제 [별표1]이 두 척도를 모두 등재). 세트에는 두 항목을 병기",
-        "전공 이수원칙에 '마이크로전공 2개 이상 이수'가 포함되나 엔진 majorPolicy는 단일 minAdditionalMajorCount만 지원해 정확히 표현 불가 — am_micro.satisfiesMajorPolicy는 false 유지(보수적). 데이터_정정_백로그.md 참조",
+        "전공 이수원칙에 '마이크로전공 2개 이상 이수'가 포함됨 — majorPolicy.countsByType { micro_degree: 2 }가 판정한다(R3d, 2026-07-24). am_micro.satisfiesMajorPolicy는 false 유지: 마이크로전공 1개만으로는 원칙을 충족하지 못한다",
         "심화과정 추가 졸업요건 제목에 '(본 전공을 제1전공 또는 복수전공으로 이수 시 필수)' 단서 추가(2025에는 없음). 부전공 배제 여부는 명시 없음",
         "선수과목표에만 남아 있는 네트워크보안및실습·시스템소프트웨어보안은 편성표·과목개요에 없어 카탈로그 미등재",
         "평점표 A+ 4.5 만점 — 학칙 제46조6항(항 개정 2024.01.18). minGPA 2.0 — 학칙 제50조3항"
@@ -392,6 +393,7 @@
     "majorPolicy": {
       "satisfiedBy": ["advanced_track", "additional_major"],
       "minAdditionalMajorCount": 1,
+      "countsByType": { "micro_degree": 2 },
       "requiredWhen": { "field": "trackType", "op": "neq", "value": "advanced" },
       "exemptions": ["dual_degree", "linked_masters"]
     },

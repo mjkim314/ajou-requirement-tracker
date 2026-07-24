@@ -528,6 +528,11 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
       expect(Array.isArray(set.majorPolicy.satisfiedBy)).toBe(true)
       expect(set.majorPolicy.minAdditionalMajorCount).toBeGreaterThanOrEqual(0)
       expect(Array.isArray(set.majorPolicy.exemptions)).toBe(true)
+      // countsByType(유형별 대안 경로, R3d): 키는 유효한 추가전공 유형, 값은 1 이상.
+      for (const [type, n] of Object.entries(set.majorPolicy.countsByType ?? {})) {
+        expect(AM_TYPES.has(type), `countsByType 키 '${type}'`).toBe(true)
+        expect(Number.isFinite(n) && n >= 1, `countsByType['${type}'] = ${n}`).toBe(true)
+      }
     }
     // 출처 표기: 어느 요람에서 왔는지는 모든 프리셋의 최소 의무.
     expect(isNonEmptyString(set.source?.['document']), 'source.document 없음').toBe(true)

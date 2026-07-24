@@ -192,6 +192,12 @@ export interface RecognitionCap {
 export interface MajorPolicy {
   satisfiedBy: string[]
   minAdditionalMajorCount: number
+  /**
+   * 유형별 최소 개수 대안 경로(예: { micro_degree: 2 } — 2025~ "마이크로전공 2개 이상").
+   * 어느 한 유형이라도 충족하면 원칙 충족. satisfiesMajorPolicy 플래그와 무관하게
+   * 해당 유형의 완성된 추가전공(서로 다른 규칙 id) 개수를 센다.
+   */
+  countsByType?: Record<string, number>
   /** 이 조건이 참일 때만 추가전공이 필수. */
   requiredWhen?: Condition | null
   /** 이 예외를 보유하면 정책 면제. */
@@ -417,6 +423,8 @@ export interface NonCurricularResult {
 export interface AdditionalMajorResult {
   id: string
   name: string
+  /** 규칙 유형 — majorPolicy.countsByType 판정용. */
+  type: AdditionalMajorRule['type']
   typeLabel: string
   earned: number
   required: number

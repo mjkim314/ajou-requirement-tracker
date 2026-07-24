@@ -57,7 +57,7 @@
     "totalMinCredits": 9,
     "homeOverlapCap": 3,
     "satisfiesMajorPolicy": false,
-    "sourceNote": "마이크로전공 기본 9학점(연계전공 운영규칙 제5조3항). 2025 요람 SW편 수록: AIoT·인공지능·인공지능지식재산 마이크로전공(상세 편성표 별도 추출 대상). ⚠ 2025 요람부터 전공 이수원칙이 '마이크로전공 2개 이상 이수'도 인정하나, 엔진 majorPolicy는 단일 minAdditionalMajorCount만 지원해 '2개 이상'을 표현할 수 없다. satisfiesMajorPolicy를 true로 두면 1개만 이수해도 충족으로 잘못 판정되므로 보수적으로 false 유지(2024와 동일). 데이터_정정_백로그.md 참조"
+    "sourceNote": "마이크로전공 기본 9학점(연계전공 운영규칙 제5조3항). 2025 요람 SW편 수록: AIoT·인공지능·인공지능지식재산 마이크로전공(상세 편성표 별도 추출 대상). 2025 요람부터 전공 이수원칙이 '마이크로전공 2개 이상 이수'도 인정 — 세트 majorPolicy.countsByType { micro_degree: 2 }가 이를 판정한다(R3d, 2026-07-24). satisfiesMajorPolicy는 false 유지: 마이크로전공 1개만으로는 원칙을 충족하지 못한다"
   },
   {
     "id": "am_self_designed",

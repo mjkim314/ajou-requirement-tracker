@@ -388,6 +388,7 @@ export function checkAdditionalMajors(
     results.push({
       id: rule.id,
       name: rule.name,
+      type: rule.type,
       typeLabel: rule.typeLabel,
       earned,
       required: rule.totalMinCredits,
@@ -429,13 +430,34 @@ export function checkMajorPolicy(
   const completeSatisfying = additionalMajors.filter(
     (r) => r.satisfiesMajorPolicy && r.satisfied
   ).length
-  const satisfied = completeSatisfying >= policy.minAdditionalMajorCount
+  const byCount = completeSatisfying >= policy.minAdditionalMajorCount
+
+  // 유형별 대안 경로(countsByType — 2025~ "마이크로전공 2개 이상 이수" 등).
+  // satisfiesMajorPolicy와 무관하게 센다: 단일 이수로는 원칙을 못 채우는 유형은
+  // 그 플래그가 false인 것이 맞다. 같은 규칙 id의 중복 등록은 1개로 센다
+  // (같은 전공을 두 번 등록해도 2개가 되지 않도록).
+  let typeHit: { label: string; min: number } | null = null
+  for (const [type, min] of Object.entries(policy.countsByType ?? {})) {
+    if (min <= 0) continue
+    const done = new Set(
+      additionalMajors.filter((r) => r.satisfied && r.type === type).map((r) => r.id)
+    )
+    if (done.size >= min) {
+      const label = additionalMajors.find((r) => r.type === type)?.typeLabel ?? type
+      typeHit = { label, min }
+      break
+    }
+  }
+
+  const satisfied = byCount || typeHit != null
 
   return {
     satisfied,
     required: true,
     reason: satisfied
-      ? '복수/부전공 이수로 충족'
+      ? typeHit && !byCount
+        ? `${typeHit.label} ${typeHit.min}개 이상 이수로 충족`
+        : '복수/부전공 이수로 충족'
       : '복수/부전공 등 추가 전공 이수 필요',
   }
 }

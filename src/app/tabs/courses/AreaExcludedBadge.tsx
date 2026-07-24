@@ -4,10 +4,11 @@ import { Icon } from '../../ui'
 /**
  * "영역별교양 미인정" 배지.
  *
- * 소속 계열의 영역(이공계=자연과 과학) 과목은 목록·자동완성에 그대로 보이되,
- * 영역별교양으로는 집계되지 않는다는 걸 여기서 알린다. 겁주지 않고 사실만:
- * 학점이 사라지는 게 아니라 일반선택으로 들어간다.
- * 색 단독 금지 — 아이콘·텍스트 병기(색맹 대응).
+ * 요건 세트가 인정하지 않는 영역의 과목은 목록·자동완성에 그대로 보이되,
+ * 영역별교양으로는 집계되지 않는다는 걸 여기서 알린다. 제외 이유는 세트마다
+ * 다르므로(이공계 소속 계열 제외, 기계 인증과정 ABEEK 미지정 등) 이유를
+ * 단정하지 않는다(백로그 #11). 겁주지 않고 사실만: 학점이 사라지는 게 아니라
+ * 일반선택으로 들어간다. 색 단독 금지 — 아이콘·텍스트 병기(색맹 대응).
  */
 export function AreaExcludedBadge({ areaId, compact }: { areaId: string; compact?: boolean }) {
   return (
@@ -23,7 +24,7 @@ export function AreaExcludedBadge({ areaId, compact }: { areaId: string; compact
 
 /** 폼·툴팁에서 쓰는 한 줄 설명. */
 export function areaExcludedHint(areaId: string): string {
-  return `${topicParticle(areaLabel(areaId))} 소속 계열 영역이라 영역별교양으로 인정되지 않아요. 학점은 일반선택으로 집계돼요.`
+  return `${topicParticle(areaLabel(areaId))} 이 요건 세트가 인정하는 영역별교양 영역이 아니에요. 학점은 일반선택으로 집계돼요.`
 }
 
 /** 한국어 주제 조사(은/는)를 받침 유무로 붙인다 — "자연과 과학은(는)" 같은 표기를 피한다. */

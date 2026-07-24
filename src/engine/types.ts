@@ -172,6 +172,8 @@ export interface RequirementCourseGroup {
   capBucket?: string | null
   /** 초과분 이월 대상 영역 ID. */
   overflowTo?: string | null
+  /** 상한·이월 안내에 덧붙일 사유(요람 문구 등). 데이터가 사유를 소유한다. */
+  note?: string | null
 }
 
 /** 인정학점(교환·현장실습·입학 전 이수 등) 합산 상한. 초과는 경고로만 알린다(판정 불변). */

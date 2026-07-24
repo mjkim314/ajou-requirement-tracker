@@ -611,6 +611,12 @@ describe.each(YEARS)('B. 대표 성적표 (기계공학과 $year)', (Y) => {
       expect(r.buckets.find((b) => b.id === 'major_elective')?.earned).toBe(32)
       expect(r.buckets.find((b) => b.id === 'general_elective')?.earned).toBe(19)
       expect(r.credits.earned).toBe(129)
+      // R3c(백로그 #11): 상한 0 안내가 "최대 0학점까지 인정"으로 읽히지 않고,
+      // 사유는 세트 데이터(courseGroups[].note)의 요람 문구에서 온다.
+      const w = r.warnings.find((x) => x.shortText === '1학점 일반선택 이월')
+      expect(w?.detail).toContain('전공선택(으)로 인정되지 않아')
+      expect(w?.detail).toContain('교양 1학점으로 인정')
+      expect(w?.detail).not.toContain('최대 0학점')
     })
 
     it('B-06b 「최소 택3 필수」 미충족 — 학점을 다 채워도 전공선택 미충족', () => {

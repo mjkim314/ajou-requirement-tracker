@@ -122,6 +122,10 @@ export function mergeCatalogs(
   const deptNames = new Set(deptCatalog.map((e) => normalizeText(e.name)))
   const policy = set ? areaPolicyOf(set) : null
   const fallbackBucketId = set ? findFallbackBucketId(set) : undefined
+  const fallbackLabel =
+    (set && fallbackBucketId
+      ? set.buckets.find((b) => b.id === fallbackBucketId)?.label
+      : undefined) ?? '일반선택'
 
   const out: CatalogEntry[] = [...deptCatalog]
   const seen = new Set(deptKeys)
@@ -129,14 +133,14 @@ export function mergeCatalogs(
   for (const entry of geCatalog) {
     if (seen.has(entry.courseKey) || deptNames.has(normalizeText(entry.name))) continue
     seen.add(entry.courseKey)
-    out.push(applyAreaPolicy(entry, policy, fallbackBucketId))
+    out.push(applyAreaPolicy(entry, policy, fallbackBucketId, fallbackLabel))
   }
 
   // 옛 자리표시자는 맨 뒤에. 같은 키가 이미 있으면(있을 리 없지만) 건너뛴다.
   for (const entry of LEGACY_GE_PLACEHOLDERS) {
     if (seen.has(entry.courseKey)) continue
     seen.add(entry.courseKey)
-    out.push(applyAreaPolicy(entry, policy, fallbackBucketId))
+    out.push(applyAreaPolicy(entry, policy, fallbackBucketId, fallbackLabel))
   }
 
   return out
@@ -145,17 +149,20 @@ export function mergeCatalogs(
 /**
  * 제외 영역 과목을 일반선택으로 돌린다.
  * 일반선택 버킷이 없는 세트에서는 원본을 그대로 둔다(돌릴 곳이 없다).
+ * 사유는 "세트가 인정하지 않는 영역"이라는 중립 사실만 적는다 — 제외 이유는
+ * 세트마다 다르다(이공계 소속 계열 제외, 기계 인증과정 ABEEK 미지정 등, 백로그 #11).
  */
 function applyAreaPolicy(
   entry: CatalogEntry,
   policy: AreaPolicy | null,
   fallbackBucketId: string | undefined,
+  fallbackLabel: string,
 ): CatalogEntry {
   const excluded = excludedAreaOf(entry, policy)
   if (!excluded || !policy) return entry
   if (entry.defaultBucket !== policy.bucketId) return entry
   if (!fallbackBucketId) return entry
-  const reason = `영역별교양 미인정 — ${areaLabel(excluded)}: 소속 계열 영역이라 일반선택으로 집계.`
+  const reason = `영역별교양 미인정 — ${areaLabel(excluded)}: 이 요건 세트의 인정 영역이 아니라 ${fallbackLabel}(으)로 집계.`
   return {
     ...entry,
     defaultBucket: fallbackBucketId,

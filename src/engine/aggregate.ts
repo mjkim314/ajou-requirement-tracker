@@ -158,10 +158,17 @@ export function buildContext(
         group.overflowTo,
         (bucketEarned.get(group.overflowTo) ?? 0) + overflow
       )
+      // 이월 대상·사유는 전부 데이터에서 읽는다(백로그 #11) — overflowTo가
+      // 일반선택이 아닌 세트에서도, 상한 0(전량 이월)에서도 거짓말하지 않는 문구.
       const capLabel = getBucket(reqSet, group.capBucket)?.label ?? group.capBucket
+      const overflowLabel = getBucket(reqSet, group.overflowTo)?.label ?? group.overflowTo
+      const base =
+        group.creditCap === 0
+          ? `${group.label}은(는) ${capLabel}(으)로 인정되지 않아 ${overflow}학점을 ${overflowLabel}(으)로 집계했어요.`
+          : `${group.label}은(는) ${capLabel}(으)로 최대 ${group.creditCap}학점까지 인정돼요. 초과 ${overflow}학점은 ${overflowLabel}(으)로 이월했어요.`
       overflowWarnings.push({
-        shortText: `${overflow}학점 일반선택 이월`,
-        detail: `${group.label}은(는) ${capLabel}(으)로 최대 ${group.creditCap}학점까지 인정됩니다. 초과 ${overflow}학점은 일반선택으로 이월됐습니다.`,
+        shortText: `${overflow}학점 ${overflowLabel} 이월`,
+        detail: group.note ? `${base} ${group.note}` : base,
       })
     }
   }

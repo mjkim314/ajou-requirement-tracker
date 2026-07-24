@@ -364,7 +364,8 @@
         ],
         "creditCap": 0,
         "capBucket": "major_elective",
-        "overflowTo": "general_elective"
+        "overflowTo": "general_elective",
+        "note": "요람: 학부연구프로젝트 1·2·3은 공학교육인증 학생에게 교양 1학점으로 인정(일반과정은 전공선택 1학점)."
       },
       {
         "id": "engineering_internship",

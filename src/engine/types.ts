@@ -395,9 +395,13 @@ export interface BucketResult {
   required: number
   rate: number
   satisfied: boolean
+  /** 암묵 이월 — 타 영역 minCredits 초과분 중 이 영역 충족 계산에 합산된 학점. */
+  carriedIn: number
   missingCourses: string[]
   /** 미충족 사유(택1 미이수, 영역 부족 등). */
   reasons: string[]
+  /** 충족 여부와 무관한 안내(암묵 이월 사유 등). */
+  notes: string[]
 }
 
 export interface NonCurricularResult {

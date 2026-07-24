@@ -311,7 +311,8 @@ function buildBlockers(c: BlockerCtx): Blocker[] {
   for (const b of c.bucketResults) {
     if (b.satisfied) continue
     const bucketDef = c.reqSet.buckets.find((x) => x.id === b.id)!
-    const short = Math.max(0, b.required - b.earned)
+    // 암묵 이월분(carriedIn)은 이미 이 영역 충족 계산에 합산돼 있다 — 부족분에서 뺀다.
+    const short = Math.max(0, b.required - b.earned - b.carriedIn)
     const resolvedProj = c.projBucketSatisfied.get(b.id) ?? false
     const name = bucketDef.shortLabel ?? b.label
 

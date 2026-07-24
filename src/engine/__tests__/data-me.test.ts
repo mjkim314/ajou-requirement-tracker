@@ -639,6 +639,25 @@ describe.each(YEARS)('B. 대표 성적표 (기계공학과 $year)', (Y) => {
       expect(r.verdict).toBe('graduatable')
     })
 
+    it('B-06d 전공선택 41학점 초과 이수 — 초과 9학점이 잔여(일반선택)로 집계돼 졸업 가능(백로그 #10)', () => {
+      // 개편 R3a 재현 케이스: 전공선택 32 대신 41을 채우고 일반선택은 9만 이수(총 128 유지).
+      // 암묵 이월 전에는 "일반선택 9학점 부족"으로 졸업 불가 오판이 났다.
+      const courses = [
+        ...baseCourses().filter((c) => !['교양4', '교양5', '교양6'].includes(c.nameSnapshot)),
+        ...NON_PICK3_ELECTIVES.slice(0, 3).map((k) => take(k)),
+      ]
+      const r = evaluate({ ...base, courses })
+      expect(r.credits.earned).toBe(128)
+      const me = r.buckets.find((b) => b.id === 'major_elective')!
+      const ge = r.buckets.find((b) => b.id === 'general_elective')!
+      expect(me.earned).toBe(41)
+      expect(ge.earned).toBe(9) // earned는 실제 귀속 학점 그대로
+      expect(ge.carriedIn).toBe(9)
+      expect(ge.satisfied).toBe(true)
+      expect(ge.notes[0]).toContain('전공선택 초과 9학점')
+      expect(r.verdict).toBe('graduatable')
+    })
+
     it('B-07 어학인증 미충족이면 학점을 다 채워도 졸업 불가(학칙 제50조3항4호)', () => {
       const r = evaluate({
         ...base,

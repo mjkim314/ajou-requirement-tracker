@@ -443,6 +443,9 @@ function SubBucket({
       {!b.satisfied && reasons.length > 0 && (
         <p className="mt-1 text-[11px] leading-relaxed text-ink-3">{reasons.join(' · ')}</p>
       )}
+      {b.notes.length > 0 && (
+        <p className="mt-1 text-[11px] leading-relaxed text-ink-3">{b.notes.join(' · ')}</p>
+      )}
       {courses.length > 0 && (
         <ul className="mt-1.5 flex flex-col gap-1">
           {courses.map((c) => {

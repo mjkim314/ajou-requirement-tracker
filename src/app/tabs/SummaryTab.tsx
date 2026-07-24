@@ -316,6 +316,9 @@ function BucketBar({ bucket }: { bucket: BucketResult }) {
       >
         <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
       </div>
+      {bucket.notes.length > 0 && (
+        <p className="mt-1 text-[11px] leading-relaxed text-ink-3">{bucket.notes.join(' · ')}</p>
+      )}
     </div>
   )
 }

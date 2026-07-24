@@ -94,9 +94,17 @@ export function checkBucket(
   const earned = ctx.bucketEarned.get(bucket.id) ?? 0
   const required = bucket.minCredits
   const reasons: string[] = []
+  const notes: string[] = []
   const warnings: { shortText: string; detail: string }[] = []
 
-  const creditOK = earned + EPS >= required
+  // 암묵 이월(백로그 #10) — 일반선택 충족 계산에만 타 영역 초과분을 합산한다.
+  // earned에는 더하지 않는다(화면·카테고리 합계가 실제 귀속 학점을 유지하도록).
+  const carriedIn = ctx.implicitCarry?.bucketId === bucket.id ? ctx.implicitCarry.credits : 0
+  const creditOK = earned + carriedIn + EPS >= required
+  if (carriedIn > 0 && earned + EPS < required) {
+    const parts = ctx.implicitCarry!.sources.map((s) => `${s.label} 초과 ${s.credits}학점`)
+    notes.push(`${parts.join(' · ')}이 잔여 학점으로 집계됐어요`)
+  }
 
   // 지정 필수 과목
   const missingKeys = (bucket.requiredCourses ?? []).filter(
@@ -150,7 +158,7 @@ export function checkBucket(
     }
   }
 
-  if (!creditOK) reasons.push(`${(required - earned).toFixed(0)}학점 부족`)
+  if (!creditOK) reasons.push(`${(required - earned - carriedIn).toFixed(0)}학점 부족`)
   if (!requiredOK) reasons.push(`필수 과목 ${missingKeys.length}개 미이수`)
 
   const satisfied = creditOK && requiredOK && choiceOK && areaOK
@@ -162,10 +170,12 @@ export function checkBucket(
       group: bucket.group,
       earned,
       required,
-      rate: required > 0 ? Math.min(earned / required, 1) : 1,
+      rate: required > 0 ? Math.min((earned + carriedIn) / required, 1) : 1,
       satisfied,
+      carriedIn,
       missingCourses,
       reasons,
+      notes,
     },
     warnings,
   }

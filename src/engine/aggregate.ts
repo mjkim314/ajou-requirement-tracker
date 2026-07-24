@@ -80,6 +80,24 @@ export interface AggContext {
   areaCountsByBucket: Map<string, Map<string, number>>
   /** 이월로 발생한 경고 문구. */
   overflowWarnings: { shortText: string; detail: string }[]
+  /** 암묵 이월 — 일반선택(free) 버킷 충족 계산에 합산되는 타 버킷 초과분. */
+  implicitCarry: ImplicitCarry | null
+}
+
+/**
+ * 암묵 이월(데이터_정정_백로그 #10).
+ * 전 세트가 Σ버킷 minCredits = totalCredits 구조라, 한 영역을 초과 이수하면 그만큼
+ * 일반선택이 비어 "일반선택 부족"으로 오판된다. 실제 학사처럼 초과분을 잔여 학점으로
+ * 흡수시키되 bucketEarned·totalEarned는 건드리지 않는다 — checkBucket이 일반선택
+ * 충족 계산에서만 합산한다.
+ */
+export interface ImplicitCarry {
+  /** 이월을 받는 일반선택 버킷 id. */
+  bucketId: string
+  /** 합산 초과 학점 합계. */
+  credits: number
+  /** 출처 영역별 초과 학점(사유 문구용). */
+  sources: { bucketId: string; label: string; credits: number }[]
 }
 
 /**
@@ -162,6 +180,29 @@ export function buildContext(
     }
   }
 
+  // ── 암묵 이월 — 일반선택(free) 충족 계산용 ──
+  // 명시 creditCap/overflowTo로 이동한 분은 위에서 이미 bucketEarned에서 빠져
+  // 여기 초과분에 다시 잡히지 않는다(이중 계산 없음).
+  const freeBucket = reqSet.buckets.find((b) => b.group === 'general_elective')
+  let implicitCarry: ImplicitCarry | null = null
+  if (freeBucket) {
+    const sources: ImplicitCarry['sources'] = []
+    for (const bucket of reqSet.buckets) {
+      if (bucket.group === 'general_elective') continue
+      // 총학점에 안 세는 영역의 초과분은 잔여 학점으로도 흐르지 않는다.
+      if (bucket.countsTowardTotal === false) continue
+      const excess = (bucketEarned.get(bucket.id) ?? 0) - bucket.minCredits
+      if (excess > 0) sources.push({ bucketId: bucket.id, label: bucket.label, credits: excess })
+    }
+    if (sources.length > 0) {
+      implicitCarry = {
+        bucketId: freeBucket.id,
+        credits: sources.reduce((s, x) => s + x.credits, 0),
+        sources,
+      }
+    }
+  }
+
   // ── 총 이수학점(countsTowardTotal 영역만) ──
   let totalEarned = 0
   for (const [bucketId, credits] of bucketEarned) {
@@ -184,6 +225,7 @@ export function buildContext(
     earnedCourseKeys,
     areaCountsByBucket,
     overflowWarnings,
+    implicitCarry,
   }
 }
 

@@ -13,7 +13,10 @@
  *  - 두 과정의 버킷 집합이 다르다. 요람이 인증과정에선 전산학 6학점을 한 칸으로,
  *    일반과정에선 계열별필수(SW) 3 + 전산학(SW) 3으로 쪼개 인쇄하기 때문이다.
  *    따라서 "과정별 bucket id 집합 동일" 검사는 하지 않고, 대신 두 과정 각각에
- *    대해 defaultBucket 유효성을 검사한다(A-06).
+ *    대해 defaultBucket 유효성을 검사한다(범용 스위트 B-04).
+ *
+ * 구조 무결성 A-계열(구 A-01·A-06·A-07·A-08·A-13)은 data-invariants.test.ts
+ * (범용 스위트)로 이관했다. 남은 A-절은 요람에서 읽은 학과·학번 고유 값 검증이다.
  */
 
 import { describe, it, expect } from 'vitest'
@@ -185,10 +188,6 @@ describe.each(YEARS)('A. 참조 무결성 (기계공학과 $year)', (Y) => {
   const catalogKeys = new Set(Y.catalog.map((e) => e.courseKey))
   const index = buildCatalogIndex(Y.catalog)
 
-  it('A-01 catalog courseKey 유일성', () => {
-    expect(catalogKeys.size).toBe(Y.catalog.length)
-  })
-
   it('A-02 세트 id·학과·대학·학번이 온보딩 매칭 값과 일치', () => {
     for (const [name, set] of sets) {
       expect(set.id).toBe(`rs_${Y.year}_me_${name}`)
@@ -255,62 +254,6 @@ describe.each(YEARS)('A. 참조 무결성 (기계공학과 $year)', (Y) => {
     ).toBe(27)
     expect(bucketOf(gen, 'major_required').minCredits).toBe(15)
     expect(bucketOf(gen, 'major_elective').minCredits).toBe(27)
-  })
-
-  it('A-06 카탈로그 defaultBucket이 두 과정 모두에서 유효 bucket id', () => {
-    for (const [name, set] of sets) {
-      const ids = new Set(set.buckets.map((b) => b.id))
-      for (const e of Y.catalog) {
-        expect(ids, `${name} / ${e.courseKey} defaultBucket ${e.defaultBucket}`).toContain(
-          e.defaultBucket
-        )
-      }
-    }
-  })
-
-  it('A-07 requiredCourses·choiceGroups 키가 합성 카탈로그(학과+교양)에 존재', () => {
-    for (const [name, set] of sets) {
-      const merged = new Set(catalogFor(Y.catalog, Y.year, set).map((e) => e.courseKey))
-      for (const b of set.buckets) {
-        for (const key of b.requiredCourses ?? []) {
-          expect(merged, `${name} ${b.id}.requiredCourses ${key}`).toContain(key)
-        }
-        for (const g of b.choiceGroups ?? []) {
-          for (const key of g.courses) {
-            expect(merged, `${name} ${g.id} ${key}`).toContain(key)
-          }
-          expect(g.pick, `${name} ${g.id} pick`).toBeGreaterThan(0)
-          if (g.linkedTo != null) {
-            expect(new Set((b.choiceGroups ?? []).map((x) => x.id))).toContain(g.linkedTo)
-          }
-        }
-      }
-    }
-  })
-
-  it('A-08 group:general_elective 버킷이 정확히 1개, overflowTo·capBucket 유효', () => {
-    for (const [name, set] of sets) {
-      const ids = new Set(set.buckets.map((b) => b.id))
-      expect(
-        set.buckets.filter((b) => b.group === 'general_elective'),
-        `${name} 폴백 버킷`
-      ).toHaveLength(1)
-      for (const b of set.buckets) {
-        if (b.overflowTo != null) expect(ids, `${name} ${b.id}.overflowTo`).toContain(b.overflowTo)
-      }
-      for (const g of set.courseGroups ?? []) {
-        if (g.capBucket != null) expect(ids, `${name} ${g.id}.capBucket`).toContain(g.capBucket)
-        if (g.overflowTo != null) expect(ids, `${name} ${g.id}.overflowTo`).toContain(g.overflowTo)
-        // creditCap만 걸고 capBucket/overflowTo가 없으면 엔진이 조용히 무시한다.
-        if (g.creditCap != null) {
-          expect(g.capBucket, `${name} ${g.id} capBucket 필요`).toBeTruthy()
-          expect(g.overflowTo, `${name} ${g.id} overflowTo 필요`).toBeTruthy()
-        }
-        for (const key of g.courses) {
-          expect(catalogKeys, `${name} ${g.id} ${key}`).toContain(key)
-        }
-      }
-    }
   })
 
   it('A-09 영역별교양: 인정 영역만 남고 제외 영역은 일반선택으로 이동', () => {
@@ -390,15 +333,6 @@ describe.each(YEARS)('A. 참조 무결성 (기계공학과 $year)', (Y) => {
     // 일반과정은 같은 6학점이 계열별필수(SW) 3 + 전산학(SW) 3으로 갈린다.
     expect(bucketOf(Y.general, 'sw_required').requiredCourses).toEqual([Y.progKey])
     expect(bucketOf(Y.general, 'computing').requiredCourses).toEqual(['ME-NUMERICAL'])
-  })
-
-  it('A-13 학점구성(이론+설계+실험실습)이 학점과 일치', () => {
-    for (const e of Y.catalog) {
-      const bd = e.creditBreakdown
-      if (!bd) continue
-      const sum = (bd.theory ?? 0) + (bd.design ?? 0) + (bd.lab ?? 0)
-      expect(sum, `${e.courseKey} ${e.name}`).toBeCloseTo(e.credits, 5)
-    }
   })
 
   it('A-14 인증필수 설계학점 9 — 요람 「설계 12학점 이상」의 출발점', () => {

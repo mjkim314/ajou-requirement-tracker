@@ -2,6 +2,8 @@
  * 2단계 번들 데이터(2025 SW) 검증.
  *
  * (A) 참조 무결성 — src/data JSON이 엔진 규칙을 만족하는지(런타임 가드).
+ *     구조 무결성 A-계열(키 유일·참조 존재·타입 유효 등)은 data-invariants.test.ts
+ *     (범용 스위트)로 이관 — 여기에는 2025 고유 수치(cohort) 검증만 남긴다.
  * (B) 심화·일반 대표 성적표로 evaluate() 3-verdict 전이 확인.
  *
  * 2025 실질 변경(2024 대비) — 학번 개편이 커서 항목별로 못 박아 둔다:
@@ -80,38 +82,7 @@ function catEntry(key: string) {
 // ────────────────────────────────────────────────────────────
 
 describe('A. 참조 무결성 (2025 SW)', () => {
-  it('A-01 catalog courseKey 유일성', () => {
-    expect(catalogKeys.size).toBe(catalog2025Sw.length)
-  })
-
   describe.each(SETS)('세트=%s', (_name, set) => {
-    it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재(학과+교양 합성)', () => {
-      for (const b of set.buckets) {
-        for (const key of b.requiredCourses ?? []) {
-          expect(mergedKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
-        }
-      }
-    })
-
-    it('A-03 choiceGroups[].courses[] 키가 모두 카탈로그에 존재', () => {
-      for (const b of set.buckets) {
-        for (const g of b.choiceGroups ?? []) {
-          for (const key of g.courses) {
-            expect(mergedKeys, `${g.id} ${key}`).toContain(key)
-          }
-        }
-      }
-    })
-
-    it('A-04 choiceGroups[].linkedTo가 같은 bucket 내 그룹 id를 가리킴', () => {
-      for (const b of set.buckets) {
-        const ids = new Set((b.choiceGroups ?? []).map((g) => g.id))
-        for (const g of b.choiceGroups ?? []) {
-          if (g.linkedTo != null) expect(ids).toContain(g.linkedTo)
-        }
-      }
-    })
-
     it('A-05 영역별교양 4영역 + 제외 영역(nat_sci)은 일반선택행', () => {
       const areaIds = new Set((getBucket(set, 'area_liberal').areas ?? []).map((a) => a.id))
       expect(areaIds).toEqual(new Set(['hist_phil', 'lit_art', 'human_soc', 'conn_integ']))
@@ -124,19 +95,6 @@ describe('A. 참조 무결성 (2025 SW)', () => {
       expect(excluded.length).toBeGreaterThan(0)
       for (const e of excluded) expect(e.defaultBucket, e.courseKey).toBe('general_elective')
       expect(new Set(excluded.map((e) => e.area))).toEqual(new Set(['nat_sci']))
-    })
-
-    it('A-06 카탈로그 defaultBucket이 모두 유효 bucket id', () => {
-      const bucketIds = new Set(set.buckets.map((b) => b.id))
-      for (const e of catalog2025Sw) {
-        expect(bucketIds, `${e.courseKey} defaultBucket ${e.defaultBucket}`).toContain(
-          e.defaultBucket
-        )
-      }
-    })
-
-    it("A-07 group:'general_elective' bucket이 정확히 1개", () => {
-      expect(set.buckets.filter((b) => b.group === 'general_elective')).toHaveLength(1)
     })
 
     it('A-08 industry_project field 그룹 === 카탈로그 field 태그 집합', () => {
@@ -152,15 +110,6 @@ describe('A. 참조 무결성 (2025 SW)', () => {
       }
     })
 
-    it('A-09 courseGroups(field_practice) 키 존재 + capBucket/overflowTo 유효', () => {
-      const bucketIds = new Set(set.buckets.map((b) => b.id))
-      for (const cg of set.courseGroups ?? []) {
-        for (const key of cg.courses) expect(catalogKeys, `${cg.id} ${key}`).toContain(key)
-        if (cg.capBucket != null) expect(bucketIds).toContain(cg.capBucket)
-        if (cg.overflowTo != null) expect(bucketIds).toContain(cg.overflowTo)
-      }
-    })
-
     it('A-11 equivalents: from/to 모두 합성 카탈로그에 존재(dangling 없음)', () => {
       for (const eq of set.equivalents ?? []) {
         expect(mergedKeys, `equivalent.to ${eq.to}`).toContain(eq.to)
@@ -168,14 +117,6 @@ describe('A. 참조 무결성 (2025 SW)', () => {
       }
       // 2025는 창의소프트웨어입문 대체규칙(eq_creative_to_ai)을 더 이상 싣지 않는다
       expect((set.equivalents ?? []).map((e) => e.id)).not.toContain('eq_creative_to_ai')
-    })
-
-    it('A-13 gradePoints 9키 존재, A+ === 4.5', () => {
-      const gp = set.gradePoints ?? {}
-      for (const g of ['A+', 'A0', 'B+', 'B0', 'C+', 'C0', 'D+', 'D0', 'F'] as const) {
-        expect(gp[g], `gradePoint ${g}`).toBeTypeOf('number')
-      }
-      expect(gp['A+']).toBe(4.5)
     })
 
     it('A-14 totalCredits 128 / minGPA 2.0', () => {

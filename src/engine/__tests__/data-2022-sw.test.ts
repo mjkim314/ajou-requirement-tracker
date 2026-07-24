@@ -1,8 +1,8 @@
 /**
  * 2단계 번들 데이터(2022 SW) 검증.
  *
- * (A) 참조 무결성 — src/data JSON이 엔진 규칙을 만족하는지(런타임 가드. 컴파일
- *     타입체크는 resolveJsonModule 넓힘 때문에 무결성을 보장하지 못한다).
+ * (A) 참조 무결성 — 학번 고유 사실(요람 수치·중복 인코딩·산학 과목군)만 남긴다.
+ *     구조 무결성 A-계열은 data-invariants.test.ts(범용 스위트)로 이관.
  * (B) 심화·일반 대표 성적표로 evaluate() 3-verdict 전이 확인.
  *
  * 2021 data.test.ts와 독립. 2022는 캡스톤디자인·IT집중교육1/2가 6학점, 임베디드
@@ -36,16 +36,6 @@ const SETS: [string, RequirementSet][] = [
   ['general', reqSet2022SwGeneral],
 ]
 
-const AM_TYPES = new Set([
-  'double_major',
-  'minor',
-  'linked_major',
-  'track',
-  'micro_degree',
-  'self_designed',
-  'custom',
-])
-
 const catalogKeys = new Set(catalog2022Sw.map((e) => e.courseKey))
 const index = buildCatalogIndex(catalog2022Sw)
 
@@ -73,38 +63,7 @@ function catEntry(key: string) {
 // ────────────────────────────────────────────────────────────
 
 describe('A. 참조 무결성 (2022 SW)', () => {
-  it('A-01 catalog courseKey 유일성', () => {
-    expect(catalogKeys.size).toBe(catalog2022Sw.length)
-  })
-
   describe.each(SETS)('세트=%s', (_name, set) => {
-    it('A-02 requiredCourses[] 키가 모두 카탈로그에 존재', () => {
-      for (const b of set.buckets) {
-        for (const key of b.requiredCourses ?? []) {
-          expect(mergedKeys, `${b.id}.requiredCourses ${key}`).toContain(key)
-        }
-      }
-    })
-
-    it('A-03 choiceGroups[].courses[] 키가 모두 카탈로그에 존재', () => {
-      for (const b of set.buckets) {
-        for (const g of b.choiceGroups ?? []) {
-          for (const key of g.courses) {
-            expect(mergedKeys, `${g.id} ${key}`).toContain(key)
-          }
-        }
-      }
-    })
-
-    it('A-04 choiceGroups[].linkedTo가 같은 bucket 내 그룹 id를 가리킴', () => {
-      for (const b of set.buckets) {
-        const ids = new Set((b.choiceGroups ?? []).map((g) => g.id))
-        for (const g of b.choiceGroups ?? []) {
-          if (g.linkedTo != null) expect(ids).toContain(g.linkedTo)
-        }
-      }
-    })
-
     it('A-05 영역별교양에 남은 과목의 area는 세트가 인정하는 영역뿐(제외 영역은 일반선택행)', () => {
       const areaIds = new Set((getBucket(set, 'area_liberal').areas ?? []).map((a) => a.id))
       const merged = catalogFor(catalog2022Sw, 2022, set)
@@ -119,20 +78,6 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       expect(new Set(excluded.map((e) => e.area))).toEqual(new Set(['nat_sci']))
     })
 
-    it('A-06 카탈로그 defaultBucket이 모두 유효 bucket id', () => {
-      const bucketIds = new Set(set.buckets.map((b) => b.id))
-      for (const e of catalog2022Sw) {
-        expect(bucketIds, `${e.courseKey} defaultBucket ${e.defaultBucket}`).toContain(
-          e.defaultBucket
-        )
-      }
-    })
-
-    it("A-07 group:'general_elective' bucket이 정확히 1개", () => {
-      const general = set.buckets.filter((b) => b.group === 'general_elective')
-      expect(general).toHaveLength(1)
-    })
-
     it('A-08 industry_project field 그룹 === 카탈로그 field 태그 집합', () => {
       const catalogField = catalog2022Sw
         .filter((e) => (e.courseGroups ?? []).includes('field'))
@@ -143,15 +88,6 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       expect([...fieldGroup].sort()).toEqual(catalogField)
       for (const g of ip?.groups ?? []) {
         for (const key of g.courses) expect(catalogKeys, `${g.id} ${key}`).toContain(key)
-      }
-    })
-
-    it('A-09 courseGroups(field_practice) 키 존재 + capBucket/overflowTo 유효', () => {
-      const bucketIds = new Set(set.buckets.map((b) => b.id))
-      for (const cg of set.courseGroups ?? []) {
-        for (const key of cg.courses) expect(catalogKeys, `${cg.id} ${key}`).toContain(key)
-        if (cg.capBucket != null) expect(bucketIds).toContain(cg.capBucket)
-        if (cg.overflowTo != null) expect(bucketIds).toContain(cg.overflowTo)
       }
     })
 
@@ -168,22 +104,9 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       }
     })
 
-    it('A-13 gradePoints 9키 존재, A+ === 4.5', () => {
-      const gp = set.gradePoints ?? {}
-      for (const g of ['A+', 'A0', 'B+', 'B0', 'C+', 'C0', 'D+', 'D0', 'F'] as const) {
-        expect(gp[g], `gradePoint ${g}`).toBeTypeOf('number')
-      }
-      expect(gp['A+']).toBe(4.5)
-    })
-
     it('A-14 totalCredits 140 / minGPA 2.0', () => {
       expect(set.totalCredits).toBe(140)
       expect(set.minGPA).toBe(2.0)
-    })
-
-    it('A-15 bucket minCredits 합 ≤ totalCredits', () => {
-      const sum = set.buckets.reduce((s, b) => s + b.minCredits, 0)
-      expect(sum).toBeLessThanOrEqual(set.totalCredits)
     })
   })
 
@@ -203,14 +126,6 @@ describe('A. 참조 무결성 (2022 SW)', () => {
       } else {
         expect(gb.minCredits, `${b.id}`).toBe(b.minCredits)
       }
-    }
-  })
-
-  it('A-10 추가전공 규칙: type 유효 + homeOverlapCap 숫자 + requiredCourses 키 존재', () => {
-    for (const r of additionalMajorRules2022Sw) {
-      expect(AM_TYPES, `${r.id} type`).toContain(r.type)
-      expect(r.homeOverlapCap).toBeTypeOf('number')
-      for (const key of r.requiredCourses ?? []) expect(catalogKeys).toContain(key)
     }
   })
 

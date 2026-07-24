@@ -4,6 +4,8 @@
  * 교양은 학과가 아니라 **전 학과가 공유하는 기반 데이터**라, 요건 세트 없이
  * 카탈로그만 존재한다. 따라서 판정 전이 테스트 대신
  * (A) 스키마·참조 무결성 (B) 학번간 courseKey 일관성 (C) 편제 대조를 가드로 둔다.
+ * 구조 무결성 A-계열(키 유일·필수 필드·gradingType·색인)은
+ * data-invariants.test.ts(범용 스위트)로 이관 — 여기엔 GE 고유 계약만 남긴다.
  *
  * 편제 정본: 교양_편제.md
  * 컴파일 타입체크는 resolveJsonModule 넓힘 때문에 JSON 무결성을 못 잡으므로
@@ -11,7 +13,6 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { buildCatalogIndex } from '../index.js'
 import type { CatalogEntry } from '../types.js'
 import { geCatalogByYear } from '../../data/index.js'
 
@@ -30,8 +31,6 @@ const BUCKETS = new Set([
   'area_liberal',
   'general_elective',
 ])
-
-const GRADING = new Set(['ABCDF', 'ABF', 'ABCF', 'PF'])
 
 /** 학과 카탈로그(catalog-*-sw.json)와 공유하는 고정키 — 바뀌면 학과 세트가 깨진다. */
 const CANONICAL_KEYS = [
@@ -55,23 +54,6 @@ const ALL: CatalogEntry[] = YEARS.flatMap((y) => entries(y))
 // ────────────────────────────────────────────────────────────
 
 describe('A. 교양 카탈로그 스키마 무결성', () => {
-  it.each(YEARS)('A-01 %d courseKey 유일성', (year) => {
-    const keys = entries(year).map((e) => e.courseKey)
-    expect(new Set(keys).size).toBe(keys.length)
-  })
-
-  it.each(YEARS)('A-02 %d 필수 필드 존재·타입', (year) => {
-    for (const e of entries(year)) {
-      expect(typeof e.courseKey, `${e.courseKey} courseKey`).toBe('string')
-      expect(e.courseKey.length, `${e.courseKey} 빈 키`).toBeGreaterThan(0)
-      expect(typeof e.name, `${e.courseKey} name`).toBe('string')
-      expect(e.name.length, `${e.courseKey} 빈 이름`).toBeGreaterThan(0)
-      expect(typeof e.credits, `${e.courseKey} credits`).toBe('number')
-      expect(e.credits, `${e.courseKey} credits 음수`).toBeGreaterThanOrEqual(0)
-      expect(typeof e.defaultBucket, `${e.courseKey} defaultBucket`).toBe('string')
-    }
-  })
-
   it.each(YEARS)('A-03 %d defaultBucket 화이트리스트', (year) => {
     for (const e of entries(year)) {
       expect(BUCKETS.has(e.defaultBucket), `${e.courseKey} bucket=${e.defaultBucket}`).toBe(true)
@@ -89,21 +71,6 @@ describe('A. 교양 카탈로그 스키마 무결성', () => {
         expect(e.area, `${e.courseKey} area_liberal인데 area 없음`).toBeTruthy()
       }
     }
-  })
-
-  it.each(YEARS)('A-05 %d gradingType 유효값', (year) => {
-    for (const e of entries(year)) {
-      if (e.gradingType != null) {
-        expect(GRADING.has(e.gradingType), `${e.courseKey} gradingType=${e.gradingType}`).toBe(true)
-      }
-    }
-  })
-
-  it.each(YEARS)('A-06 %d buildCatalogIndex가 전 과목을 색인', (year) => {
-    const cat = entries(year)
-    const index = buildCatalogIndex(cat)
-    expect(index.byKey.size).toBe(cat.length)
-    expect(index.entries.length).toBe(cat.length)
   })
 })
 

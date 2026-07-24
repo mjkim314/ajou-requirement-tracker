@@ -232,6 +232,8 @@ describe('B. 일반 대표 성적표', () => {
   })
 
   it('B-07 일반과정은 인증 3종 비활성(영어만 적용)', () => {
+    // 2021 요람 원문: "기타 졸업요건 (심화과정 이수 시 필수)" — 3종 전부 심화 전용이 맞다.
+    // 2023·2024만 "일반과정 1개 이상"으로 바뀐다(R3b에서 해당 학번만 정정, 백로그 #4).
     const courses = [...genCommon, ...Array.from({ length: 7 }, (_, i) => minorCourse(i + 1))]
     const r = evaluate({ ...base, courses })
     for (const id of ['major_ability', 'industry_project', 'programming_cert']) {

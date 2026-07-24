@@ -281,8 +281,9 @@
         "label": "산학프로젝트 인증",
         "shortLabel": "산학프로젝트",
         "type": "courseGroupPick",
-        "pick": 2,
-        "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
+        "pick": 1,
+        "appliesWhen": null,
+        "sourceNote": "2024 요람 「2. 졸업요건 — 기타 졸업요건」: 일반과정 이수자는 1개 이상, 심화과정 이수자는 2개 이상 선택 이수 의무. 2021·2022 요람의 심화과정 한정 문구가 2024에는 없다. 종전 데이터는 심화 전용으로 게이팅돼 일반과정이 미검사였음 — R3b(2026-07-24) 정정.",
         "groups": [
           { "id": "intensive", "label": "집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2", "SW-AI-INTENSIVE-1", "SW-AI-INTENSIVE-2"] },
           { "id": "selfproj", "label": "자기주도프로젝트과목군", "courses": ["SW-SELF-PROJECT"] },

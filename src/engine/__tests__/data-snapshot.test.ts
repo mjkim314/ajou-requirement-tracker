@@ -70,8 +70,8 @@ const EXPECTED_HASHES: Record<string, string> = {
   'requirement-set-2021-sw.json': '035fda13160fced590f17ef5f462a7f2a96a11e56b5e0a0a076bf6bf956943ed',
   'requirement-set-2022-me.json': 'c0a78af7d16d17168dda174a0fe8357daccf8e6106720f20f98bf2fe6e6e7737',
   'requirement-set-2022-sw.json': '35b8e6d7d16163bf580af710ba3c1ae8c589dabc5039b3f7475768983b1e5fa1',
-  'requirement-set-2023-sw.json': '8fa09b03d8a4b5b172a1906303851a3baa76f0b406162ececd60fbfaa644cd9a',
-  'requirement-set-2024-sw.json': 'afe28468688f95bd36673c7feabebed35d53c0bd096f6cf4d9ce6ca61beea0c7',
+  'requirement-set-2023-sw.json': '80f79908561caf8ba9f44d199a129fd4e34b48fd03e875565c257224ff829dee',
+  'requirement-set-2024-sw.json': '8cf1e6d0378717f1aa5e1f885d8c11cc1a4123bbf86fca691a24bb8417ea015f',
   'requirement-set-2025-sw.json': '2c3d58d8c08995f98264b7f603498913533bdc617673b064959c5278e9cfac22',
   'requirement-set-2026-sw.json': '39c61721cb5e3888a68348712c1efe4938c3dbc4bb547c716fd0868007c40f1d',
 }

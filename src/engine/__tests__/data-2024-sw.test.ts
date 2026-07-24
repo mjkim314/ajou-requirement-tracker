@@ -337,7 +337,8 @@ describe('B. 일반 대표 성적표 (2024 SW)', () => {
   const genCommon: Course[] = [
     ...commonRequired2024(),
     advElective('SW-DB'),
-    advElective('SW-SW-ENG'),
+    // 산학프로젝트 인증(2024 요람: 일반과정 1개 이상) 충족을 겸하는 전공선택
+    mk('SW-SELF-PROJECT', { credits: 3 }),
     advElective('SW-AI'),
     mk('SW-IND-SEMINAR', { credits: 1 }),
     ...Array.from({ length: 11 }, (_, i) => filler(`교양${i + 1}`)),
@@ -361,13 +362,35 @@ describe('B. 일반 대표 성적표 (2024 SW)', () => {
     expect(r.additionalMajors.find((m) => m.id === 'am_minor')?.satisfied).toBe(true)
   })
 
-  it('B-05 일반과정은 인증 3종 비활성(영어만 적용)', () => {
+  it('B-05 일반과정 산학프로젝트 인증 활성·1개로 충족 — 심화 전용 2종은 비활성 (2024 요람 기타 졸업요건)', () => {
+    // 2024 요람은 2021·2022와 달리 "일반과정 이수자는 1개 이상"을 명시한다(R3b 정정).
     const courses = [...genCommon, ...Array.from({ length: 7 }, (_, i) => minorCourse(i + 1))]
     const r = evaluate({ ...base, courses })
-    for (const id of ['major_ability', 'industry_project', 'programming_cert']) {
+    const ip = r.nonCurricular.find((n) => n.id === 'industry_project')
+    expect(ip?.active).toBe(true)
+    expect(ip?.satisfied).toBe(true) // genCommon의 자기주도프로젝트 1개
+    for (const id of ['major_ability', 'programming_cert']) {
       expect(r.nonCurricular.find((n) => n.id === id)?.active, id).toBe(false)
     }
     expect(r.nonCurricular.find((n) => n.id === 'english_cert')?.active).toBe(true)
+  })
+
+  it('B-05b 일반과정 산학 과목군 0개 → 산학프로젝트 미충족으로 졸업 불가', () => {
+    // 자기주도프로젝트를 산학 그룹 밖 전공선택으로 바꾸면 학점 축은 그대로, 인증만 실패한다.
+    const courses = [
+      ...genCommon.filter((c) => c.courseKey !== 'SW-SELF-PROJECT'),
+      advElective('SW-SW-ENG'),
+      ...Array.from({ length: 7 }, (_, i) => minorCourse(i + 1)),
+    ]
+    const r = evaluate({ ...base, courses })
+    expect(r.credits.earned).toBe(140)
+    const ip = r.nonCurricular.find((n) => n.id === 'industry_project')
+    expect(ip?.active).toBe(true)
+    expect(ip?.satisfied).toBe(false)
+    expect(r.verdict).toBe('not_graduatable')
+    expect(
+      r.blockers.some((b) => b.category === 'non_curricular' && b.requirementId === 'industry_project')
+    ).toBe(true)
   })
 
   it('B-06 부전공 18학점(미완성) → 졸업 불가(전공 이수원칙 미충족)', () => {

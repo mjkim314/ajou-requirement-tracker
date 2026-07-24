@@ -1,193 +1,75 @@
 /**
- * 번들 데이터 로더 (2021 소프트웨어학과).
+ * 번들 데이터의 유일한 import 표면.
  *
- * JSON 프리셋·카탈로그를 엔진 타입으로 노출하는 유일한 import 표면.
- * resolveJsonModule은 JSON 리터럴 타입을 넓히므로(예: bucket.group이 'free'가
- * 아니라 string으로 추론) 컴파일 타입체크로는 구조 무결성을 보장하지 못한다.
- * 따라서 여기서는 `as unknown as`로만 캐스팅하고, 무결성 검증은
- * src/engine/__tests__/data.test.ts(런타임)가 담당한다.
+ * 실제 열거·등록은 파일명 규약 기반 매니페스트(manifest.ts)가 자동으로 한다 —
+ * JSON 파일을 규약대로 추가하기만 하면 레지스트리·번들에 등록된다(R1, 손 등록 없음).
+ * 여기서는 기존 소비처(테스트·앱) 호환을 위한 named export 를 매니페스트 조회로
+ * 재구성해 유지한다.
+ *
+ * resolveJsonModule 은 JSON 리터럴 타입을 넓히므로(예: bucket.group 이 'free'가
+ * 아니라 string 으로 추론) 컴파일 타입체크로는 구조 무결성을 보장하지 못한다.
+ * 무결성 검증은 런타임 테스트(data-invariants·data-*.test.ts)가 담당한다.
  */
 
-import type {
-  AdditionalMajorRule,
-  CatalogEntry,
-  RequirementSet,
-} from '../engine/types.js'
+export {
+  DATA_BUNDLES,
+  DATASETS,
+  MANIFEST_FILES,
+  bundlesByDepartment,
+  geCatalogByYear,
+  geYears,
+  requirementSetRegistry,
+} from './manifest.js'
+export type { DataBundle, Dataset, ManifestFile } from './manifest.js'
 
-import catalogJson from './catalog-2021-sw.json'
-import setsJson from './requirement-set-2021-sw.json'
-import amrJson from './additional-major-rules-2021-sw.json'
-import catalog2022Json from './catalog-2022-sw.json'
-import sets2022Json from './requirement-set-2022-sw.json'
-import amr2022Json from './additional-major-rules-2022-sw.json'
-import catalog2023Json from './catalog-2023-sw.json'
-import sets2023Json from './requirement-set-2023-sw.json'
-import amr2023Json from './additional-major-rules-2023-sw.json'
-import catalog2024Json from './catalog-2024-sw.json'
-import sets2024Json from './requirement-set-2024-sw.json'
-import amr2024Json from './additional-major-rules-2024-sw.json'
-import catalog2025Json from './catalog-2025-sw.json'
-import sets2025Json from './requirement-set-2025-sw.json'
-import amr2025Json from './additional-major-rules-2025-sw.json'
-import catalog2026Json from './catalog-2026-sw.json'
-import sets2026Json from './requirement-set-2026-sw.json'
-import amr2026Json from './additional-major-rules-2026-sw.json'
+import { catalogOf, geCatalogOf, rulesOf, setOf } from './manifest.js'
 
-// 공과대학 기계공학과(학번별). 과정 구분이 SW(심화/일반)와 달라
-// 공학인증(accredited)/일반(general) 두 벌이다.
-import catalog2021MeJson from './catalog-2021-me.json'
-import sets2021MeJson from './requirement-set-2021-me.json'
-import amr2021MeJson from './additional-major-rules-2021-me.json'
-import catalog2022MeJson from './catalog-2022-me.json'
-import sets2022MeJson from './requirement-set-2022-me.json'
-import amr2022MeJson from './additional-major-rules-2022-me.json'
+// ── 소프트웨어융합대학 소프트웨어학과 (심화/일반) ──
+export const catalog2021Sw = catalogOf(2021, 'sw')
+export const reqSet2021SwAdvanced = setOf(2021, 'sw', 'advanced')
+export const reqSet2021SwGeneral = setOf(2021, 'sw', 'general')
+export const additionalMajorRules2021Sw = rulesOf(2021, 'sw')
 
-// 다산학부대학 교양 카탈로그(학번별). 전 학과가 공유하는 기반 데이터로,
-// 아직 어떤 요건 세트도 참조하지 않으므로 DATA_BUNDLES·requirementSetRegistry에는
-// 넣지 않는다. 학과 세트가 교양 courseKey를 쓰기 시작하면 그때 번들에 연결한다.
-// 편제(영역·학점·계열 규칙)는 교양_편제.md 참조.
-import catalog2021GeJson from './catalog-2021-ge.json'
-import catalog2022GeJson from './catalog-2022-ge.json'
-import catalog2023GeJson from './catalog-2023-ge.json'
-import catalog2024GeJson from './catalog-2024-ge.json'
-import catalog2025GeJson from './catalog-2025-ge.json'
-import catalog2026GeJson from './catalog-2026-ge.json'
+export const catalog2022Sw = catalogOf(2022, 'sw')
+export const reqSet2022SwAdvanced = setOf(2022, 'sw', 'advanced')
+export const reqSet2022SwGeneral = setOf(2022, 'sw', 'general')
+export const additionalMajorRules2022Sw = rulesOf(2022, 'sw')
 
-export const catalog2021Sw = catalogJson as unknown as CatalogEntry[]
+export const catalog2023Sw = catalogOf(2023, 'sw')
+export const reqSet2023SwAdvanced = setOf(2023, 'sw', 'advanced')
+export const reqSet2023SwGeneral = setOf(2023, 'sw', 'general')
+export const additionalMajorRules2023Sw = rulesOf(2023, 'sw')
 
-const sets2021Sw = setsJson as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2021SwAdvanced = sets2021Sw.advanced
-export const reqSet2021SwGeneral = sets2021Sw.general
+export const catalog2024Sw = catalogOf(2024, 'sw')
+export const reqSet2024SwAdvanced = setOf(2024, 'sw', 'advanced')
+export const reqSet2024SwGeneral = setOf(2024, 'sw', 'general')
+export const additionalMajorRules2024Sw = rulesOf(2024, 'sw')
 
-export const additionalMajorRules2021Sw =
-  amrJson as unknown as AdditionalMajorRule[]
+export const catalog2025Sw = catalogOf(2025, 'sw')
+export const reqSet2025SwAdvanced = setOf(2025, 'sw', 'advanced')
+export const reqSet2025SwGeneral = setOf(2025, 'sw', 'general')
+export const additionalMajorRules2025Sw = rulesOf(2025, 'sw')
 
-export const catalog2022Sw = catalog2022Json as unknown as CatalogEntry[]
+export const catalog2026Sw = catalogOf(2026, 'sw')
+export const reqSet2026SwAdvanced = setOf(2026, 'sw', 'advanced')
+export const reqSet2026SwGeneral = setOf(2026, 'sw', 'general')
+export const additionalMajorRules2026Sw = rulesOf(2026, 'sw')
 
-const sets2022Sw = sets2022Json as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2022SwAdvanced = sets2022Sw.advanced
-export const reqSet2022SwGeneral = sets2022Sw.general
+// ── 공과대학 기계공학과 (공학인증/일반) ──
+export const catalog2021Me = catalogOf(2021, 'me')
+export const reqSet2021MeAccredited = setOf(2021, 'me', 'accredited')
+export const reqSet2021MeGeneral = setOf(2021, 'me', 'general')
+export const additionalMajorRules2021Me = rulesOf(2021, 'me')
 
-export const additionalMajorRules2022Sw =
-  amr2022Json as unknown as AdditionalMajorRule[]
+export const catalog2022Me = catalogOf(2022, 'me')
+export const reqSet2022MeAccredited = setOf(2022, 'me', 'accredited')
+export const reqSet2022MeGeneral = setOf(2022, 'me', 'general')
+export const additionalMajorRules2022Me = rulesOf(2022, 'me')
 
-export const catalog2023Sw = catalog2023Json as unknown as CatalogEntry[]
-
-const sets2023Sw = sets2023Json as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2023SwAdvanced = sets2023Sw.advanced
-export const reqSet2023SwGeneral = sets2023Sw.general
-
-export const additionalMajorRules2023Sw =
-  amr2023Json as unknown as AdditionalMajorRule[]
-
-export const catalog2024Sw = catalog2024Json as unknown as CatalogEntry[]
-
-const sets2024Sw = sets2024Json as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2024SwAdvanced = sets2024Sw.advanced
-export const reqSet2024SwGeneral = sets2024Sw.general
-
-export const additionalMajorRules2024Sw =
-  amr2024Json as unknown as AdditionalMajorRule[]
-
-export const catalog2025Sw = catalog2025Json as unknown as CatalogEntry[]
-
-const sets2025Sw = sets2025Json as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2025SwAdvanced = sets2025Sw.advanced
-export const reqSet2025SwGeneral = sets2025Sw.general
-
-export const additionalMajorRules2025Sw =
-  amr2025Json as unknown as AdditionalMajorRule[]
-
-export const catalog2026Sw = catalog2026Json as unknown as CatalogEntry[]
-
-const sets2026Sw = sets2026Json as unknown as {
-  advanced: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2026SwAdvanced = sets2026Sw.advanced
-export const reqSet2026SwGeneral = sets2026Sw.general
-
-export const additionalMajorRules2026Sw =
-  amr2026Json as unknown as AdditionalMajorRule[]
-
-// ── 공과대학 기계공학과 ──
-export const catalog2021Me = catalog2021MeJson as unknown as CatalogEntry[]
-
-const sets2021Me = sets2021MeJson as unknown as {
-  accredited: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2021MeAccredited = sets2021Me.accredited
-export const reqSet2021MeGeneral = sets2021Me.general
-
-export const additionalMajorRules2021Me =
-  amr2021MeJson as unknown as AdditionalMajorRule[]
-
-export const catalog2022Me = catalog2022MeJson as unknown as CatalogEntry[]
-
-const sets2022Me = sets2022MeJson as unknown as {
-  accredited: RequirementSet
-  general: RequirementSet
-}
-export const reqSet2022MeAccredited = sets2022Me.accredited
-export const reqSet2022MeGeneral = sets2022Me.general
-
-export const additionalMajorRules2022Me =
-  amr2022MeJson as unknown as AdditionalMajorRule[]
-
-export const catalog2021Ge = catalog2021GeJson as unknown as CatalogEntry[]
-export const catalog2022Ge = catalog2022GeJson as unknown as CatalogEntry[]
-export const catalog2023Ge = catalog2023GeJson as unknown as CatalogEntry[]
-export const catalog2024Ge = catalog2024GeJson as unknown as CatalogEntry[]
-export const catalog2025Ge = catalog2025GeJson as unknown as CatalogEntry[]
-export const catalog2026Ge = catalog2026GeJson as unknown as CatalogEntry[]
-
-/**
- * 학번 → 다산학부대학 교양 카탈로그.
- * 교양은 학과 무관 공통 기반이라 학과 카탈로그와 별도로 보관한다.
- * 2025학번부터 교양 편제가 크게 바뀌었다(영역 4→5개, 영어 6→3학점,
- * 아주상상프로젝트 3학점 신설, 영역별교양 전 계열 12학점).
- */
-export const geCatalogByYear: Record<number, CatalogEntry[]> = {
-  2021: catalog2021Ge,
-  2022: catalog2022Ge,
-  2023: catalog2023Ge,
-  2024: catalog2024Ge,
-  2025: catalog2025Ge,
-  2026: catalog2026Ge,
-}
-
-/** requirementSetId → 요건 세트. 프로필의 requirementSetId로 조회. */
-export const requirementSetRegistry: Record<string, RequirementSet> = {
-  [reqSet2021SwAdvanced.id]: reqSet2021SwAdvanced,
-  [reqSet2021SwGeneral.id]: reqSet2021SwGeneral,
-  [reqSet2022SwAdvanced.id]: reqSet2022SwAdvanced,
-  [reqSet2022SwGeneral.id]: reqSet2022SwGeneral,
-  [reqSet2023SwAdvanced.id]: reqSet2023SwAdvanced,
-  [reqSet2023SwGeneral.id]: reqSet2023SwGeneral,
-  [reqSet2024SwAdvanced.id]: reqSet2024SwAdvanced,
-  [reqSet2024SwGeneral.id]: reqSet2024SwGeneral,
-  [reqSet2025SwAdvanced.id]: reqSet2025SwAdvanced,
-  [reqSet2025SwGeneral.id]: reqSet2025SwGeneral,
-  [reqSet2026SwAdvanced.id]: reqSet2026SwAdvanced,
-  [reqSet2026SwGeneral.id]: reqSet2026SwGeneral,
-  [reqSet2021MeAccredited.id]: reqSet2021MeAccredited,
-  [reqSet2021MeGeneral.id]: reqSet2021MeGeneral,
-  [reqSet2022MeAccredited.id]: reqSet2022MeAccredited,
-  [reqSet2022MeGeneral.id]: reqSet2022MeGeneral,
-}
+// ── 다산학부대학 교양 카탈로그 (학번별, 전 학과 공유) ──
+export const catalog2021Ge = geCatalogOf(2021)
+export const catalog2022Ge = geCatalogOf(2022)
+export const catalog2023Ge = geCatalogOf(2023)
+export const catalog2024Ge = geCatalogOf(2024)
+export const catalog2025Ge = geCatalogOf(2025)
+export const catalog2026Ge = geCatalogOf(2026)

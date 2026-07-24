@@ -19,7 +19,7 @@
 import type { CatalogEntry, RequirementSet } from '../engine/types.js'
 import { findFallbackBucketId } from '../engine/resolve.js'
 import { normalizeText } from '../engine/normalize.js'
-import { geCatalogByYear } from './index.js'
+import { geCatalogByYear, geYears } from './index.js'
 
 /** 다산학부대학 영역별교양 영역 이름. 세트에서 제외된 영역도 화면에 이름을 보여줘야 해서 여기 둔다. */
 export const GE_AREA_LABEL: Record<string, string> = {
@@ -30,11 +30,11 @@ export const GE_AREA_LABEL: Record<string, string> = {
   conn_integ: '연결과 통합',
 }
 
-/** 교양 카탈로그를 보유한 학번. */
-export const GE_CATALOG_YEARS = [2021, 2022, 2023, 2024, 2025, 2026] as const
+/** 교양 카탈로그를 보유한 학번(매니페스트에서 자동 도출, 오름차순·연속 — manifest.test.ts 가 검증). */
+export const GE_CATALOG_YEARS: readonly number[] = geYears
 
-const GE_YEAR_MIN = 2021
-const GE_YEAR_MAX = 2026
+const GE_YEAR_MIN = geYears[0] ?? 0
+const GE_YEAR_MAX = geYears[geYears.length - 1] ?? 0
 
 /**
  * 학번 → 교양 카탈로그. 범위 밖 학번은 가장 가까운 해로 붙인다

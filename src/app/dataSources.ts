@@ -15,64 +15,20 @@ import type {
   RequirementSet,
 } from '../engine/index'
 import {
-  additionalMajorRules2021Me,
-  additionalMajorRules2021Sw,
-  additionalMajorRules2022Me,
-  additionalMajorRules2022Sw,
-  additionalMajorRules2023Sw,
-  additionalMajorRules2024Sw,
-  additionalMajorRules2025Sw,
-  additionalMajorRules2026Sw,
-  catalog2021Me,
-  catalog2021Sw,
-  catalog2022Me,
-  catalog2022Sw,
-  catalog2023Sw,
-  catalog2024Sw,
-  catalog2025Sw,
-  catalog2026Sw,
+  DATA_BUNDLES,
+  bundlesByDepartment,
   requirementSetRegistry,
 } from '../data/index'
+import type { DataBundle } from '../data/index'
 import { catalogFor } from '../data/merge'
 import type { PersistedState } from '../storage/schema'
 
-interface DataBundle {
-  catalog: CatalogEntry[]
-  rules: AdditionalMajorRule[]
-}
-
-/** 요건 세트 id → 매칭 카탈로그·추가전공 규칙. */
-const DATA_BUNDLES: Record<string, DataBundle> = {
-  rs_2021_sw_advanced: { catalog: catalog2021Sw, rules: additionalMajorRules2021Sw },
-  rs_2021_sw_general: { catalog: catalog2021Sw, rules: additionalMajorRules2021Sw },
-  rs_2022_sw_advanced: { catalog: catalog2022Sw, rules: additionalMajorRules2022Sw },
-  rs_2022_sw_general: { catalog: catalog2022Sw, rules: additionalMajorRules2022Sw },
-  rs_2023_sw_advanced: { catalog: catalog2023Sw, rules: additionalMajorRules2023Sw },
-  rs_2023_sw_general: { catalog: catalog2023Sw, rules: additionalMajorRules2023Sw },
-  rs_2024_sw_advanced: { catalog: catalog2024Sw, rules: additionalMajorRules2024Sw },
-  rs_2024_sw_general: { catalog: catalog2024Sw, rules: additionalMajorRules2024Sw },
-  rs_2025_sw_advanced: { catalog: catalog2025Sw, rules: additionalMajorRules2025Sw },
-  rs_2025_sw_general: { catalog: catalog2025Sw, rules: additionalMajorRules2025Sw },
-  rs_2026_sw_advanced: { catalog: catalog2026Sw, rules: additionalMajorRules2026Sw },
-  rs_2026_sw_general: { catalog: catalog2026Sw, rules: additionalMajorRules2026Sw },
-  rs_2021_me_accredited: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
-  rs_2021_me_general: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
-  rs_2022_me_accredited: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
-  rs_2022_me_general: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
-}
-
-/** 카탈로그를 보유한 학과(현재 SW뿐). 폴백은 이 학과의 세트일 때만 학번으로 고른다. */
+/**
+ * 학번 연속 데이터를 가진 학과(현재 SW뿐)는 보유 학번이 아니어도 "그 이하 가장
+ * 가까운 학번"으로 폴백한다. 다른 학과는 보유 학번 정확 일치만 인정한다 —
+ * 연속성이 확인되지 않은 데이터를 이웃 연도에 물려주지 않는다.
+ */
 const SW_DEPARTMENT = '소프트웨어학과'
-
-/** 기계공학과는 보유 학번(2021·2022)만 폴백한다 — SW와 달리 연속 데이터가 아니라 이웃 연도를 물려주지 않는다. */
-const ME_DEPARTMENT = '기계공학과'
-const ME_BUNDLES: Record<number, DataBundle> = {
-  2021: { catalog: catalog2021Me, rules: additionalMajorRules2021Me },
-  2022: { catalog: catalog2022Me, rules: additionalMajorRules2022Me },
-}
-
-/** SW 세트 학번 폴백용 기본 번들(2021). */
-const DEFAULT_BUNDLE: DataBundle = { catalog: catalog2021Sw, rules: additionalMajorRules2021Sw }
 
 /** 매칭 카탈로그가 없는 세트의 명시적 "카탈로그 미지정" 번들. */
 const EMPTY_BUNDLE: DataBundle = { catalog: [], rules: [] }
@@ -83,11 +39,23 @@ function basePresetId(set: RequirementSet): string | null {
   return typeof v === 'string' ? v : null
 }
 
-const BUNDLE_2022: DataBundle = { catalog: catalog2022Sw, rules: additionalMajorRules2022Sw }
-const BUNDLE_2023: DataBundle = { catalog: catalog2023Sw, rules: additionalMajorRules2023Sw }
-const BUNDLE_2024: DataBundle = { catalog: catalog2024Sw, rules: additionalMajorRules2024Sw }
-const BUNDLE_2025: DataBundle = { catalog: catalog2025Sw, rules: additionalMajorRules2025Sw }
-const BUNDLE_2026: DataBundle = { catalog: catalog2026Sw, rules: additionalMajorRules2026Sw }
+/**
+ * SW 학번 폴백: 보유 학번 중 `year` 이하의 최댓값, 그보다 어리면(또는 학번 미상이면)
+ * 가장 이른 학번. 보유 학번은 매니페스트에서 오므로 새 학번 파일을 추가하면
+ * 사다리가 자동으로 늘어난다.
+ */
+function swBundleForYear(year: number | null | undefined): DataBundle {
+  const byYear = bundlesByDepartment[SW_DEPARTMENT] ?? {}
+  const years = Object.keys(byYear)
+    .map(Number)
+    .sort((a, b) => a - b)
+  if (years.length === 0) return EMPTY_BUNDLE
+  let chosen = years[0]!
+  if (year != null) {
+    for (const y of years) if (y <= year) chosen = y
+  }
+  return byYear[chosen] ?? EMPTY_BUNDLE
+}
 
 /**
  * 요건 세트가 쓸 카탈로그·추가전공 규칙 번들. 커스텀 세트는 원본 프리셋 번들로 되돌아간다.
@@ -100,22 +68,12 @@ export function bundleFor(set: RequirementSet): DataBundle {
   if (DATA_BUNDLES[set.id]) return DATA_BUNDLES[set.id]!
   const base = basePresetId(set)
   if (base && DATA_BUNDLES[base]) return DATA_BUNDLES[base]!
-  if (set.department === ME_DEPARTMENT) {
-    const year = set.admissionYearFrom
-    return (year != null ? ME_BUNDLES[year] : undefined) ?? EMPTY_BUNDLE
-  }
   if (set.department == null || set.department === SW_DEPARTMENT) {
-    const year = set.admissionYearFrom
-    if (year != null) {
-      if (year >= 2026) return BUNDLE_2026
-      if (year >= 2025) return BUNDLE_2025
-      if (year >= 2024) return BUNDLE_2024
-      if (year >= 2023) return BUNDLE_2023
-      if (year >= 2022) return BUNDLE_2022
-    }
-    return DEFAULT_BUNDLE
+    return swBundleForYear(set.admissionYearFrom)
   }
-  return EMPTY_BUNDLE
+  const byYear = bundlesByDepartment[set.department]
+  const year = set.admissionYearFrom
+  return (year != null ? byYear?.[year] : undefined) ?? EMPTY_BUNDLE
 }
 
 // ────────────────────────────────────────────────────────────
@@ -204,20 +162,8 @@ export function additionalMajorTemplates(
   }
   const year = admissionYear ?? reqSet?.admissionYearFrom ?? null
   const dept = department ?? reqSet?.department ?? null
-  const base =
-    year == null
-      ? additionalMajorRules2021Sw
-      : year >= 2026
-        ? additionalMajorRules2026Sw
-        : year >= 2025
-          ? additionalMajorRules2025Sw
-          : year >= 2024
-            ? additionalMajorRules2024Sw
-            : year >= 2023
-              ? additionalMajorRules2023Sw
-              : year >= 2022
-                ? additionalMajorRules2022Sw
-                : additionalMajorRules2021Sw
+  // 전학교 공통 유형(복수·부·트랙 등)의 템플릿은 SW 규칙을 학번 폴백으로 빌려 쓴다.
+  const base = swBundleForYear(year).rules
   // 연계전공 목록은 SW 참여분 — 다른 학과에는 전학교 공통 유형(복수·부·트랙 등)만 보여준다.
   if (dept != null && dept !== SW_DEPARTMENT) {
     return base.filter((r) => r.type !== 'linked_major')

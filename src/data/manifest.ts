@@ -23,6 +23,7 @@ import type {
   CatalogEntry,
   RequirementSet,
 } from '../engine/types.js'
+import { AJOU_DEPARTMENTS } from './ajou-departments.js'
 
 /** 요건 세트 1개가 쓰는 카탈로그·추가전공 규칙 묶음. */
 export interface DataBundle {
@@ -121,6 +122,15 @@ export const DATA_BUNDLES: Record<string, DataBundle> = {}
 /** 학과명 → (학번 → 번들). dataSources 의 학번 폴백 정책이 이 위에서 동작한다. */
 export const bundlesByDepartment: Record<string, Record<number, DataBundle>> = {}
 
+/**
+ * 데이터셋 노출 순서 = 학과 큐레이션(ajou-departments) 순서 → 학번 순.
+ * registry 삽입 순서가 곧 `Object.values(requirementSetRegistry)` 순서이고,
+ * 요건 탭 세트 전환 모달의 "기본 제공" 목록이 그 순서로 렌더된다 —
+ * 파일명 정렬의 우연(me < sw)이 아니라 명시적 결정으로 둔다.
+ */
+const deptOrder = new Map(AJOU_DEPARTMENTS.map((d, i) => [d.slug, i] as const))
+const orderOf = (slug: string) => deptOrder.get(slug) ?? Number.MAX_SAFE_INTEGER
+
 /** (학번 × 학과) 데이터셋 전체 — 범용 무결성 스위트(R2)의 순회 대상. */
 export const DATASETS: Dataset[] = Object.entries(setModules)
   .map(([path, sets]) => {
@@ -133,7 +143,10 @@ export const DATASETS: Dataset[] = Object.entries(setModules)
     if (!rules) fail(`${file} 의 추가전공 규칙(additional-major-rules-${key}.json)이 없다`)
     return { year, slug, sets, bundle: { catalog, rules } }
   })
-  .sort((a, b) => (a.slug === b.slug ? a.year - b.year : a.slug.localeCompare(b.slug)))
+  .sort(
+    (a, b) =>
+      orderOf(a.slug) - orderOf(b.slug) || a.year - b.year || a.slug.localeCompare(b.slug),
+  )
 
 for (const { year, slug, sets, bundle } of DATASETS) {
   const departments = new Set(Object.values(sets).map((s) => s.department))

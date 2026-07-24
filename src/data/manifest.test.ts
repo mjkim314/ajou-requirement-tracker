@@ -20,6 +20,21 @@ import { findDepartment } from './ajou-departments.js'
 import { GE_CATALOG_YEARS } from './merge.js'
 
 describe('매니페스트 파일 구성', () => {
+  it('src/data 의 모든 JSON 이 세 규약 glob 중 하나에 걸린다 — 규약 밖 파일 0', () => {
+    // prefix 오타(catalogg- 등)나 규약 밖 이름은 매니페스트가 조용히 무시하게 되므로,
+    // 디렉터리 전체 열거와 매니페스트 열거를 대조해 잡는다.
+    const allJson = Object.keys(import.meta.glob('./*.json'))
+      .map((p) => p.split('/').pop()!)
+      .sort()
+    expect(allJson).toEqual(MANIFEST_FILES.map((f) => f.file).sort())
+  })
+
+  it('세트 노출 순서가 학과 큐레이션 순서를 따른다(첫 항목 = SW 2021 심화)', () => {
+    // Object.values(requirementSetRegistry) 순서가 세트 전환 모달의 "기본 제공" 목록
+    // 순서다. registry 재구성이 순서를 조용히 바꾸지 못하게 첫 항목을 고정한다.
+    expect(Object.keys(requirementSetRegistry)[0]).toBe('rs_2021_sw_advanced')
+  })
+
   it('데이터셋(학번×학과)마다 세트·카탈로그·추가전공 규칙 3종이 전부 있다 — 고아 파일 0', () => {
     const byKind = (kind: string) =>
       new Set(

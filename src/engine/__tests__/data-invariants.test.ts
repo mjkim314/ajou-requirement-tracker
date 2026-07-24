@@ -132,7 +132,11 @@ interface CatalogCase {
   id: string
   kind: 'dept' | 'ge'
   catalog: CatalogEntry[]
-  /** 참조(선수과목 등) 해석 범위 — 학과 카탈로그는 그 학번 교양까지 포함(합성과 동일). */
+  /**
+   * 참조(선수과목 등) 해석 범위 — 학과 카탈로그는 그 학번 교양까지 포함.
+   * 합성(catalogFor) 결과의 상한이다: 합성은 이름 충돌 교양 항목을 버리므로
+   * 이 집합이 합성 결과보다 약간 넓다(선수과목 검사에는 상한이 안전한 방향).
+   */
   refKeys: Set<string>
 }
 
@@ -191,6 +195,10 @@ const ruleCases: RuleCase[] = DATASETS.map((d) => ({
 const isNonEmptyString = (v: unknown): boolean => typeof v === 'string' && v.trim().length > 0
 const isFiniteNumber = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v)
 
+/** 중복된 값 목록 — 유일성 검사 실패 시 "몇 개"가 아니라 "무엇이" 중복인지 보여준다. */
+const duplicatesOf = (items: string[]): string[] =>
+  [...new Set(items.filter((x, i) => items.indexOf(x) !== i))].sort()
+
 const GRADING_TYPES = new Set(['ABCDF', 'ABF', 'ABCF', 'PF'])
 const BUCKET_GROUPS = new Set([
   'university_required',
@@ -238,7 +246,7 @@ describe.each(catalogCases.map((c) => [c.id, c] as const))('카탈로그 %s', (_
   const keys = new Set(c.catalog.map((e) => e.courseKey))
 
   it('A-01 courseKey 유일', () => {
-    expect(keys.size).toBe(c.catalog.length)
+    expect(duplicatesOf(c.catalog.map((e) => e.courseKey))).toEqual([])
   })
 
   it('A-02 필수 필드 스키마(courseKey·name·credits·defaultBucket, 배열 필드 원소)', () => {
@@ -326,7 +334,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
   const generalElective = set.buckets.filter((b) => b.group === 'general_elective')
 
   it('B-01 버킷 id 유일 · group 유효 · minCredits 숫자', () => {
-    expect(bucketIds.size).toBe(set.buckets.length)
+    expect(duplicatesOf(set.buckets.map((b) => b.id))).toEqual([])
     for (const b of set.buckets) {
       expect(BUCKET_GROUPS.has(b.group), `${b.id}: group '${b.group}'`).toBe(true)
       expect(isFiniteNumber(b.minCredits) && b.minCredits >= 0, `${b.id}: minCredits`).toBe(true)
@@ -338,7 +346,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
   })
 
   it('B-03 합성 카탈로그(학과+교양) courseKey 유일', () => {
-    expect(mergedKeys.size).toBe(merged.length)
+    expect(duplicatesOf(merged.map((e) => e.courseKey))).toEqual([])
   })
 
   it('B-04 합성 전 과목의 defaultBucket 이 세트 버킷에 존재(미채택 버킷은 선언된 것만)', () => {
@@ -365,7 +373,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
     for (const b of set.buckets) {
       const groups = b.choiceGroups ?? []
       const groupIds = new Set(groups.map((g) => g.id))
-      expect(groupIds.size, `${b.id}: choiceGroup id 중복`).toBe(groups.length)
+      expect(duplicatesOf(groups.map((g) => g.id)), `${b.id}: choiceGroup id 중복`).toEqual([])
       for (const g of groups) {
         const missing = g.courses.filter((key) => !mergedKeys.has(key))
         expect(missing, `${b.id}/${g.id}: 카탈로그에 없는 키`).toEqual([])
@@ -385,9 +393,13 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
       if (b.overflowTo != null) {
         expect(bucketIds.has(b.overflowTo), `${b.id}.overflowTo '${b.overflowTo}'`).toBe(true)
       }
+      if (b.creditCap != null) {
+        // 버킷 상한도 이월 배선 없이는 엔진(aggregate)이 조용히 무시한다 — 작성 실수로 간주.
+        expect(b.overflowTo != null, `${b.id}: creditCap 에 overflowTo 없음`).toBe(true)
+      }
     }
     const cgs = set.courseGroups ?? []
-    expect(new Set(cgs.map((g) => g.id)).size, 'courseGroup id 중복').toBe(cgs.length)
+    expect(duplicatesOf(cgs.map((g) => g.id)), 'courseGroup id 중복').toEqual([])
     for (const g of cgs) {
       const missing = g.courses.filter((key) => !mergedKeys.has(key))
       expect(missing, `courseGroups/${g.id}: 카탈로그에 없는 키`).toEqual([])
@@ -399,8 +411,9 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
       }
       if (g.creditCap != null) {
         // 상한만 있고 배선이 없으면 엔진이 조용히 무시한다 — 데이터 작성 실수로 간주.
-        expect(g.capBucket, `courseGroups/${g.id}: creditCap 에 capBucket 없음`).not.toBeNull()
-        expect(g.overflowTo, `courseGroups/${g.id}: creditCap 에 overflowTo 없음`).not.toBeNull()
+        // (undefined 도 잡아야 하므로 != null 로 검사 — toBeNull 은 undefined 를 통과시킨다.)
+        expect(g.capBucket != null, `courseGroups/${g.id}: creditCap 에 capBucket 없음`).toBe(true)
+        expect(g.overflowTo != null, `courseGroups/${g.id}: creditCap 에 overflowTo 없음`).toBe(true)
       }
     }
   })
@@ -416,7 +429,11 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
     }
     // 합성 카탈로그 기준: 첫 영역 버킷(merge.ts 의 areaPolicyOf 와 동일한 선택 규칙)
     const policyBucket = areaBuckets[0]
-    if (!policyBucket) return
+    if (!policyBucket) {
+      // 영역 버킷이 없는 세트에 제외 영역 선언이 남아 있으면 죽은 데이터 — 정리 강제.
+      expect(EXCLUDED_AREAS[set.id] ?? []).toEqual([])
+      return
+    }
     const accepted = new Set((policyBucket.areas ?? []).map((a) => a.id))
     const fallbackId = generalElective[0]?.id
     const excluded = new Set<string>()
@@ -435,7 +452,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
 
   it('B-09 비교과: id 유일 · type 유효 · 그룹 키 존재 · level 스케일 정합', () => {
     const reqs = set.nonCurricular
-    expect(new Set(reqs.map((r) => r.id)).size).toBe(reqs.length)
+    expect(duplicatesOf(reqs.map((r) => r.id))).toEqual([])
     for (const r of reqs) {
       expect(REQUIREMENT_TYPES.has(r.type), `${r.id}: type '${r.type}'`).toBe(true)
       if (r.pick != null) expect(r.pick >= 1, `${r.id}: pick`).toBe(true)
@@ -461,7 +478,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
 
   it('B-10 equivalents: to 존재 · 의도된 dangling from 만 허용', () => {
     const eqs = set.equivalents ?? []
-    expect(new Set(eqs.map((e) => e.id)).size).toBe(eqs.length)
+    expect(duplicatesOf(eqs.map((e) => e.id))).toEqual([])
     const dangling: string[] = []
     for (const eq of eqs) {
       expect(EQUIVALENT_TYPES.has(eq.type), `${eq.id}: type`).toBe(true)
@@ -495,7 +512,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
 
   it('B-13 recognitionCaps 구조', () => {
     const caps = set.recognitionCaps ?? []
-    expect(new Set(caps.map((c) => c.id)).size).toBe(caps.length)
+    expect(duplicatesOf(caps.map((c) => c.id))).toEqual([])
     for (const cap of caps) {
       expect(cap.states.length, `${cap.id}: states 비어 있음`).toBeGreaterThan(0)
       for (const st of cap.states) expect(COURSE_STATES.has(st), `${cap.id}: state '${st}'`).toBe(true)
@@ -523,7 +540,7 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
 
 describe.each(ruleCases.map((r) => [r.id, r] as const))('추가전공 규칙 %s', (_id, r) => {
   it('C-01 id 유일 · type 유효 · 수치 필드 숫자', () => {
-    expect(new Set(r.rules.map((x) => x.id)).size).toBe(r.rules.length)
+    expect(duplicatesOf(r.rules.map((x) => x.id))).toEqual([])
     for (const rule of r.rules) {
       expect(AM_TYPES.has(rule.type), `${rule.id}: type '${rule.type}'`).toBe(true)
       expect(isNonEmptyString(rule.name) && isNonEmptyString(rule.typeLabel), `${rule.id}`).toBe(true)

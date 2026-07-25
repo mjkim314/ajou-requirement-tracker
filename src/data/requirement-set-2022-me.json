@@ -10,16 +10,16 @@
     "department": "기계공학과",
     "trackType": "accredited",
     "totalCredits": 128,
-    "minGPA": 2.0,
+    "minGPA": 2,
     "gradePoints": {
       "A+": 4.5,
-      "A0": 4.0,
+      "A0": 4,
       "B+": 3.5,
-      "B0": 3.0,
+      "B0": 3,
       "C+": 2.5,
-      "C0": 2.0,
+      "C0": 2,
       "D+": 1.5,
-      "D0": 1.0,
+      "D0": 1,
       "F": 0
     },
     "buckets": [
@@ -28,18 +28,14 @@
         "label": "아주희망",
         "group": "university_required",
         "minCredits": 1,
-        "requiredCourses": [
-          "GE-AJOU-HOPE"
-        ]
+        "requiredCourses": ["GE-AJOU-HOPE"]
       },
       {
         "id": "ajou_character",
         "label": "아주인성",
         "group": "university_required",
         "minCredits": 1,
-        "requiredCourses": [
-          "GE-AJOU-CHARACTER"
-        ]
+        "requiredCourses": ["GE-AJOU-CHARACTER"]
       },
       {
         "id": "english",
@@ -47,19 +43,14 @@
         "shortLabel": "영어",
         "group": "university_required",
         "minCredits": 6,
-        "requiredCourses": [
-          "GE-ENGLISH-1",
-          "GE-ENGLISH-2"
-        ]
+        "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"]
       },
       {
         "id": "writing",
         "label": "글쓰기",
         "group": "university_required",
         "minCredits": 3,
-        "requiredCourses": [
-          "GE-WRITING"
-        ]
+        "requiredCourses": ["GE-WRITING"]
       },
       {
         "id": "area_liberal",
@@ -69,21 +60,9 @@
         "minCredits": 9,
         "minDistinctAreas": 3,
         "areas": [
-          {
-            "id": "hist_phil",
-            "label": "역사와 철학",
-            "minCourses": 1
-          },
-          {
-            "id": "human_soc",
-            "label": "인간과 사회",
-            "minCourses": 1
-          },
-          {
-            "id": "nat_sci",
-            "label": "자연과 과학",
-            "minCourses": 1
-          }
+          { "id": "hist_phil", "label": "역사와 철학", "minCourses": 1 },
+          { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 },
+          { "id": "nat_sci", "label": "자연과 과학", "minCourses": 1 }
         ],
         "choiceGroups": [
           {
@@ -123,12 +102,7 @@
         "label": "수학",
         "group": "department_required",
         "minCredits": 12,
-        "requiredCourses": [
-          "MATH-1",
-          "MATH-2",
-          "MATH-ENG-A",
-          "MATH-ENG-E"
-        ]
+        "requiredCourses": ["MATH-1", "MATH-2", "MATH-ENG-A", "MATH-ENG-E"]
       },
       {
         "id": "science_basic",
@@ -150,10 +124,7 @@
         "label": "전산학",
         "group": "department_required",
         "minCredits": 6,
-        "requiredCourses": [
-          "ME-NUMERICAL",
-          "ME-PYTHON-PROG"
-        ]
+        "requiredCourses": ["ME-NUMERICAL", "ME-PYTHON-PROG"]
       },
       {
         "id": "major_required",
@@ -216,111 +187,35 @@
         "appliesWhen": null,
         "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 개정 2025.11.24.) [별표1] 공과대학 행 — 기계공학과는 공대 10개 학과 병합셀에 속하며 소프트웨어학과와 값이 같다. 12종 중 1개 충족. 같은 규칙 제2조1항은 면제 11유형(특수교육대상·체육특기·재외국민및외국인특별전형·특례편입·학사편입·군위탁·학석사연계 진학확정·의과대학·간호학사특별과정 편입·중증장애·재직자전형)을 두지만, 앱의 면제 항목은 전공 이수원칙 예외(majorPolicy.exemptions)만 다루므로 어학인증 면제는 미반영이다",
         "alternatives": [
-          {
-            "id": "toeic",
-            "label": "TOEIC",
-            "type": "score",
-            "min": 730
-          },
-          {
-            "id": "new_teps",
-            "label": "NEW TEPS",
-            "type": "score",
-            "min": 329
-          },
-          {
-            "id": "teps",
-            "label": "TEPS",
-            "type": "score",
-            "min": 605
-          },
-          {
-            "id": "toefl_pbt",
-            "label": "TOEFL PBT",
-            "type": "score",
-            "min": 534
-          },
-          {
-            "id": "toefl_cbt",
-            "label": "TOEFL CBT",
-            "type": "score",
-            "min": 200
-          },
-          {
-            "id": "toefl_ibt",
-            "label": "TOEFL iBT",
-            "type": "score",
-            "min": 72
-          },
-          {
-            "id": "gtelp_2",
-            "label": "G-TELP Level 2",
-            "type": "score",
-            "min": 67
-          },
-          {
-            "id": "gtelp_3",
-            "label": "G-TELP Level 3",
-            "type": "score",
-            "min": 89
-          },
-          {
-            "id": "ielts",
-            "label": "IELTS",
-            "type": "score",
-            "min": 5.5
-          },
+          { "id": "toeic", "label": "TOEIC", "type": "score", "min": 730 },
+          { "id": "new_teps", "label": "NEW TEPS", "type": "score", "min": 329 },
+          { "id": "teps", "label": "TEPS", "type": "score", "min": 605 },
+          { "id": "toefl_pbt", "label": "TOEFL PBT", "type": "score", "min": 534 },
+          { "id": "toefl_cbt", "label": "TOEFL CBT", "type": "score", "min": 200 },
+          { "id": "toefl_ibt", "label": "TOEFL iBT", "type": "score", "min": 72 },
+          { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
+          { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
+          { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
           {
             "id": "toeic_sp",
             "label": "TOEIC Speaking",
             "type": "level",
             "min": "Lv.5",
-            "scale": [
-              "Lv.1",
-              "Lv.2",
-              "Lv.3",
-              "Lv.4",
-              "Lv.5",
-              "Lv.6",
-              "Lv.7",
-              "Lv.8"
-            ]
+            "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"]
           },
           {
             "id": "toeic_sp_new",
             "label": "TOEIC Speaking(신 스케일)",
             "type": "level",
             "min": "IM1",
-            "scale": [
-              "NL",
-              "NM",
-              "NH",
-              "IL",
-              "IM1",
-              "IM2",
-              "IM3",
-              "IH",
-              "AL"
-            ]
+            "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL"]
           },
           {
             "id": "opic",
             "label": "OPIc",
             "type": "level",
             "min": "IL",
-            "scale": [
-              "NL",
-              "NM",
-              "NH",
-              "IL",
-              "IM1",
-              "IM2",
-              "IM3",
-              "IH",
-              "AL",
-              "AM",
-              "AH"
-            ]
+            "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL", "AM", "AH"]
           }
         ]
       },
@@ -357,11 +252,7 @@
       {
         "id": "ug_research",
         "label": "학부연구프로젝트",
-        "courses": [
-          "ME-UG-RESEARCH-1",
-          "ME-UG-RESEARCH-2",
-          "ME-UG-RESEARCH-3"
-        ],
+        "courses": ["ME-UG-RESEARCH-1", "ME-UG-RESEARCH-2", "ME-UG-RESEARCH-3"],
         "creditCap": 0,
         "capBucket": "major_elective",
         "overflowTo": "general_elective",
@@ -387,29 +278,16 @@
       {
         "id": "cap_recognized_credits",
         "label": "교환·인정학점 합산 상한",
-        "states": [
-          "transferred",
-          "credited"
-        ],
+        "states": ["transferred", "credited"],
         "maxRatioOfTotal": 0.5,
         "sourceNote": "학칙 제45조2항: 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내(128학점 기준 64학점). 현장실습수업 운영규칙 제7조2항의 산업현장실습 통산 18학점 상한이 실무적으로 더 엄격하게 걸린다"
       }
     ],
     "majorPolicy": {
-      "satisfiedBy": [
-        "accredited_track",
-        "additional_major"
-      ],
+      "satisfiedBy": ["accredited_track", "additional_major"],
       "minAdditionalMajorCount": 1,
-      "requiredWhen": {
-        "field": "trackType",
-        "op": "neq",
-        "value": "accredited"
-      },
-      "exemptions": [
-        "dual_degree",
-        "linked_masters"
-      ]
+      "requiredWhen": { "field": "trackType", "op": "neq", "value": "accredited" },
+      "exemptions": ["dual_degree", "linked_masters"]
     },
     "source": {
       "document": "2022 아주대학교 요람 · 공과대학 기계공학과",
@@ -441,16 +319,16 @@
     "department": "기계공학과",
     "trackType": "general",
     "totalCredits": 128,
-    "minGPA": 2.0,
+    "minGPA": 2,
     "gradePoints": {
       "A+": 4.5,
-      "A0": 4.0,
+      "A0": 4,
       "B+": 3.5,
-      "B0": 3.0,
+      "B0": 3,
       "C+": 2.5,
-      "C0": 2.0,
+      "C0": 2,
       "D+": 1.5,
-      "D0": 1.0,
+      "D0": 1,
       "F": 0
     },
     "buckets": [
@@ -459,18 +337,14 @@
         "label": "아주희망",
         "group": "university_required",
         "minCredits": 1,
-        "requiredCourses": [
-          "GE-AJOU-HOPE"
-        ]
+        "requiredCourses": ["GE-AJOU-HOPE"]
       },
       {
         "id": "ajou_character",
         "label": "아주인성",
         "group": "university_required",
         "minCredits": 1,
-        "requiredCourses": [
-          "GE-AJOU-CHARACTER"
-        ]
+        "requiredCourses": ["GE-AJOU-CHARACTER"]
       },
       {
         "id": "english",
@@ -478,19 +352,14 @@
         "shortLabel": "영어",
         "group": "university_required",
         "minCredits": 6,
-        "requiredCourses": [
-          "GE-ENGLISH-1",
-          "GE-ENGLISH-2"
-        ]
+        "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"]
       },
       {
         "id": "writing",
         "label": "글쓰기",
         "group": "university_required",
         "minCredits": 3,
-        "requiredCourses": [
-          "GE-WRITING"
-        ]
+        "requiredCourses": ["GE-WRITING"]
       },
       {
         "id": "area_liberal",
@@ -500,21 +369,9 @@
         "minCredits": 9,
         "minDistinctAreas": 3,
         "areas": [
-          {
-            "id": "hist_phil",
-            "label": "역사와 철학",
-            "minCourses": 1
-          },
-          {
-            "id": "human_soc",
-            "label": "인간과 사회",
-            "minCourses": 1
-          },
-          {
-            "id": "nat_sci",
-            "label": "자연과 과학",
-            "minCourses": 1
-          }
+          { "id": "hist_phil", "label": "역사와 철학", "minCourses": 1 },
+          { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 },
+          { "id": "nat_sci", "label": "자연과 과학", "minCourses": 1 }
         ]
       },
       {
@@ -523,21 +380,14 @@
         "shortLabel": "SW필수",
         "group": "department_required",
         "minCredits": 3,
-        "requiredCourses": [
-          "ME-PYTHON-PROG"
-        ]
+        "requiredCourses": ["ME-PYTHON-PROG"]
       },
       {
         "id": "math",
         "label": "수학",
         "group": "department_required",
         "minCredits": 12,
-        "requiredCourses": [
-          "MATH-1",
-          "MATH-2",
-          "MATH-ENG-A",
-          "MATH-ENG-E"
-        ]
+        "requiredCourses": ["MATH-1", "MATH-2", "MATH-ENG-A", "MATH-ENG-E"]
       },
       {
         "id": "science_basic",
@@ -559,9 +409,7 @@
         "label": "전산학(SW)",
         "group": "department_required",
         "minCredits": 3,
-        "requiredCourses": [
-          "ME-NUMERICAL"
-        ]
+        "requiredCourses": ["ME-NUMERICAL"]
       },
       {
         "id": "major_required",
@@ -618,111 +466,35 @@
         "appliesWhen": null,
         "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 개정 2025.11.24.) [별표1] 공과대학 행 — 기계공학과는 공대 10개 학과 병합셀에 속하며 소프트웨어학과와 값이 같다. 12종 중 1개 충족. 같은 규칙 제2조1항은 면제 11유형(특수교육대상·체육특기·재외국민및외국인특별전형·특례편입·학사편입·군위탁·학석사연계 진학확정·의과대학·간호학사특별과정 편입·중증장애·재직자전형)을 두지만, 앱의 면제 항목은 전공 이수원칙 예외(majorPolicy.exemptions)만 다루므로 어학인증 면제는 미반영이다",
         "alternatives": [
-          {
-            "id": "toeic",
-            "label": "TOEIC",
-            "type": "score",
-            "min": 730
-          },
-          {
-            "id": "new_teps",
-            "label": "NEW TEPS",
-            "type": "score",
-            "min": 329
-          },
-          {
-            "id": "teps",
-            "label": "TEPS",
-            "type": "score",
-            "min": 605
-          },
-          {
-            "id": "toefl_pbt",
-            "label": "TOEFL PBT",
-            "type": "score",
-            "min": 534
-          },
-          {
-            "id": "toefl_cbt",
-            "label": "TOEFL CBT",
-            "type": "score",
-            "min": 200
-          },
-          {
-            "id": "toefl_ibt",
-            "label": "TOEFL iBT",
-            "type": "score",
-            "min": 72
-          },
-          {
-            "id": "gtelp_2",
-            "label": "G-TELP Level 2",
-            "type": "score",
-            "min": 67
-          },
-          {
-            "id": "gtelp_3",
-            "label": "G-TELP Level 3",
-            "type": "score",
-            "min": 89
-          },
-          {
-            "id": "ielts",
-            "label": "IELTS",
-            "type": "score",
-            "min": 5.5
-          },
+          { "id": "toeic", "label": "TOEIC", "type": "score", "min": 730 },
+          { "id": "new_teps", "label": "NEW TEPS", "type": "score", "min": 329 },
+          { "id": "teps", "label": "TEPS", "type": "score", "min": 605 },
+          { "id": "toefl_pbt", "label": "TOEFL PBT", "type": "score", "min": 534 },
+          { "id": "toefl_cbt", "label": "TOEFL CBT", "type": "score", "min": 200 },
+          { "id": "toefl_ibt", "label": "TOEFL iBT", "type": "score", "min": 72 },
+          { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
+          { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
+          { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
           {
             "id": "toeic_sp",
             "label": "TOEIC Speaking",
             "type": "level",
             "min": "Lv.5",
-            "scale": [
-              "Lv.1",
-              "Lv.2",
-              "Lv.3",
-              "Lv.4",
-              "Lv.5",
-              "Lv.6",
-              "Lv.7",
-              "Lv.8"
-            ]
+            "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"]
           },
           {
             "id": "toeic_sp_new",
             "label": "TOEIC Speaking(신 스케일)",
             "type": "level",
             "min": "IM1",
-            "scale": [
-              "NL",
-              "NM",
-              "NH",
-              "IL",
-              "IM1",
-              "IM2",
-              "IM3",
-              "IH",
-              "AL"
-            ]
+            "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL"]
           },
           {
             "id": "opic",
             "label": "OPIc",
             "type": "level",
             "min": "IL",
-            "scale": [
-              "NL",
-              "NM",
-              "NH",
-              "IL",
-              "IM1",
-              "IM2",
-              "IM3",
-              "IH",
-              "AL",
-              "AM",
-              "AH"
-            ]
+            "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL", "AM", "AH"]
           }
         ]
       }
@@ -768,29 +540,16 @@
       {
         "id": "cap_recognized_credits",
         "label": "교환·인정학점 합산 상한",
-        "states": [
-          "transferred",
-          "credited"
-        ],
+        "states": ["transferred", "credited"],
         "maxRatioOfTotal": 0.5,
         "sourceNote": "학칙 제45조2항: 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내(128학점 기준 64학점). 현장실습수업 운영규칙 제7조2항의 산업현장실습 통산 18학점 상한이 실무적으로 더 엄격하게 걸린다"
       }
     ],
     "majorPolicy": {
-      "satisfiedBy": [
-        "accredited_track",
-        "additional_major"
-      ],
+      "satisfiedBy": ["accredited_track", "additional_major"],
       "minAdditionalMajorCount": 1,
-      "requiredWhen": {
-        "field": "trackType",
-        "op": "neq",
-        "value": "accredited"
-      },
-      "exemptions": [
-        "dual_degree",
-        "linked_masters"
-      ]
+      "requiredWhen": { "field": "trackType", "op": "neq", "value": "accredited" },
+      "exemptions": ["dual_degree", "linked_masters"]
     },
     "source": {
       "document": "2022 아주대학교 요람 · 공과대학 기계공학과",

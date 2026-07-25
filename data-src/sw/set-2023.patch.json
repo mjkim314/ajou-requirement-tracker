@@ -1,0 +1,143 @@
+{
+  "trunk": {
+    "requirementVersion": "2023-sw-advanced-v1",
+    "id": "rs_2023_sw_advanced",
+    "name": "2023 소프트웨어학과 · 심화과정",
+    "admissionYearFrom": 2023,
+    "admissionYearTo": 2023,
+    "buckets": {
+      "major_required": {
+        "requiredCourses": [
+          "SW-PROGRAMMING",
+          "SW-DISCRETE-MATH",
+          "SW-AI-INTRO",
+          "SW-DIGITAL-CIRCUIT",
+          "SW-OOP",
+          "SW-DATA-STRUCT",
+          "SW-COMP-ARCH",
+          "SW-ALGORITHM",
+          "SW-SYS-PROGRAMMING",
+          "SW-NETWORK",
+          "SW-OS"
+        ]
+      }
+    },
+    "nonCurricular": {
+      "english_cert": {
+        "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 2025.11.24 개정) [별표1] 소프트웨어학과 행 — NEW TEPS·IELTS 포함 11종. 2023 요람 졸업요건 표는 8종(TOEIC/TEPS/TOEFL/G-TELP/TOEIC SP/OPIc) 게재"
+      },
+      "major_ability": { "sourceNote": "컴퓨터프로그래밍및실습 ABF(1학년 전공진입제) 등 2회" },
+      "industry_project": {
+        "groups": {
+          "intensive": {
+            "label": "집중교육과목군",
+            "courses": [
+              "SW-IT-INTENSIVE-1",
+              "SW-IT-INTENSIVE-2",
+              "SW-AI-INTENSIVE-1",
+              "SW-AI-INTENSIVE-2"
+            ]
+          },
+          "field": {
+            "courses": [
+              "SW-FIELD-1",
+              "SW-FIELD-2",
+              "SW-FIELD-3",
+              "SW-FIELD-4",
+              "SW-FIELD-5",
+              "SW-FIELD-6"
+            ]
+          },
+          "selfresearch": {
+            "id": "selfresearch",
+            "label": "자기주도연구과목군",
+            "courses": ["SW-SELF-RESEARCH-1", "SW-SELF-RESEARCH-2"]
+          }
+        },
+        "sourceNote": "집중교육/자기주도프로젝트/현장실습/창업실습/캡스톤디자인/자기주도연구 과목군 내 전체과목 중 2개 이상 선택 이수(2023 요람: 심화 2개 이상, 일반 1개 이상)"
+      },
+      "programming_cert": { "sourceNote": "TOPCIT 190점 이상 또는 자체 경시대회 점수 획득(2023 요람)" }
+    },
+    "equivalents": {
+      "eq_creative_to_ai": {
+        "id": "eq_creative_to_ai",
+        "type": "replaces",
+        "from": "SW-CREATIVE-SW-INTRO",
+        "to": "SW-AI-INTRO",
+        "direction": "bidirectional",
+        "creditPolicy": "useOriginal",
+        "effectiveFrom": 2023,
+        "note": "2023 개정으로 전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨. 구 교과 이수분(전과·편입·재수강)을 인공지능입문으로 상호 인정. from(창의소프트웨어입문)은 2023 카탈로그 밖 과목이라 의도된 dangling"
+      }
+    },
+    "courseGroups": {
+      "field_practice": {
+        "courses": [
+          "SW-FIELD-1",
+          "SW-FIELD-2",
+          "SW-FIELD-3",
+          "SW-FIELD-4",
+          "SW-FIELD-5",
+          "SW-FIELD-6",
+          "SW-STARTUP-1",
+          "SW-STARTUP-2",
+          "SW-STARTUP-FIELD-1",
+          "SW-STARTUP-FIELD-2"
+        ],
+        "creditCap": 12
+      }
+    },
+    "source": {
+      "document": "2023 아주대학교 요람 · 소프트웨어학과(소프트웨어및컴퓨터공학전공)",
+      "pages": "378-382",
+      "notes": [
+        "전공명 표기 '소프트웨어 및 컴퓨터공학 심화전공'. 학과 정체성은 소프트웨어학과(slug sw)로 고정. college는 소프트웨어융합대학",
+        "구성 현황: 대학필수 19 / 학과필수 20(SW커리어세미나1+수학12+기초과학7) / 전공 73(전필36+전선37), 일반선택 28로 총 140 — 2022와 동일",
+        "전공필수 11과목: 2022 대비 창의소프트웨어입문(SCE192)이 인공지능입문(SCE104)으로 교체(나머지 10과목 동일). 학점 합 36",
+        "산학프로젝트 인증 과목군 6종: 집중교육(IT집중교육1,2+AI집중교육1,2)·자기주도프로젝트·현장실습(SW현장실습1~6)·창업실습·캡스톤디자인·자기주도연구(신설). 2022 대비 AI집중교육·자기주도연구과목군 추가, 현장실습군에서 해외인턴십 제외",
+        "현장실습 과목군(SW현장실습1~6·창업실습1,2·창업현장실습1,2)은 전공선택 최대 12학점까지 인정(초과분 일반선택) — 2023 요람 명시(2022 세트의 6학점 미검증 값과 달리 요람 확정값)",
+        "평점표 A+ 4.5 만점 — 학칙 제46조6항(2026.05.22). minGPA 2.0 — 학칙 제50조3항",
+        "SCE411 학수번호 중복 해소: 고급컴퓨터구조가 SCE412로 이동, 모델링시뮬레이션만 SCE411"
+      ]
+    }
+  },
+  "tracks": {
+    "general": {
+      "requirementVersion": "2023-sw-general-v1",
+      "id": "rs_2023_sw_general",
+      "name": "2023 소프트웨어학과 · 일반과정",
+      "trackType": "general",
+      "buckets": { "major_elective": { "minCredits": 10 } },
+      "nonCurricular": {
+        "english_cert": {
+          "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 2025.11.24 개정) [별표1] 소프트웨어학과 행 — NEW TEPS·IELTS 포함 11종"
+        },
+        "major_ability": { "sourceNote": "$delete" },
+        "industry_project": {
+          "pick": 1,
+          "appliesWhen": null,
+          "sourceNote": "2023 요람 「2. 졸업요건 — 기타 졸업요건」: 일반과정 이수자는 1개 이상, 심화과정 이수자는 2개 이상 선택 이수 의무. 2021·2022 요람의 심화과정 한정 문구가 2023에는 없다. 종전 데이터는 심화 전용으로 게이팅돼 일반과정이 미검사였음 — R3b(2026-07-24) 정정."
+        },
+        "programming_cert": { "sourceNote": "$delete" }
+      },
+      "equivalents": {
+        "eq_creative_to_ai": {
+          "note": "2023 개정으로 전공필수가 창의소프트웨어입문에서 인공지능입문으로 교체됨. 구 교과 이수분을 인공지능입문으로 상호 인정"
+        }
+      },
+      "recognitionCaps": {
+        "cap_recognized_credits": {
+          "sourceNote": "학칙 제45조2항(2026.05.22 개정): 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내"
+        }
+      },
+      "source": {
+        "notes": [
+          "일반과정은 전공선택 최소 10학점 + 복수/부전공 1건 이상 필수(요람 명시)",
+          "전공명 표기 '소프트웨어 및 컴퓨터공학 일반전공'. 일반과정 전공 소계 46(전필36+전선10)",
+          "전공필수 11과목: 2022 대비 창의소프트웨어입문→인공지능입문 교체. 현장실습 12학점 상한은 2023 요람 명시값",
+          "평점표 A+ 4.5 만점 — 학칙 제46조6항. minGPA 2.0 — 학칙 제50조3항"
+        ]
+      }
+    }
+  }
+}

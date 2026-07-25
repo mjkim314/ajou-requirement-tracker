@@ -1,0 +1,178 @@
+{
+  "$remove": ["ME-CONV-PROG-1", "ME-PLASTICITY", "ME-ML-PRINCIPLES"],
+  "ME-PYTHON-PROG": {
+    "courseKey": "ME-PYTHON-PROG",
+    "name": "Python프로그래밍",
+    "aliases": ["융합프로그래밍1"],
+    "credits": 3,
+    "creditBreakdown": { "theory": 3 },
+    "defaultBucket": "computing",
+    "offeredSemesters": ["2-1"],
+    "note": "2021학번 계열별필수(SW)의 융합프로그래밍1을 대체 — 두 과목 모두 요람에 학수번호가 없어 동일 과목인지 확정 불가(별도 courseKey로 분리)"
+  },
+  "ME-NUMERICAL": {
+    "name": "수치해석과 기계학습",
+    "aliases": ["공학수치해석"],
+    "codes": ["MECH3312"],
+    "note": "2021학번 공학수치해석(MECH3311)이 2022학번부터 수치해석과 기계학습(MECH3312)으로 개편 — 과목개요 본문 동일"
+  },
+  "ME-STATICS": {
+    "name": "정역학",
+    "aliases": ["공업역학1"],
+    "codes": ["MECH104"],
+    "note": "2021학번 교육과정의 공업역학1(MECH112)이 2022학번부터 정역학(MECH104)으로 개칭 — 과목개요 본문 동일"
+  },
+  "ME-DYNAMICS": {
+    "name": "동역학",
+    "aliases": ["공업역학2"],
+    "codes": ["MECH2013"],
+    "note": "2021학번 교육과정의 공업역학2(MECH203)가 2022학번부터 동역학(MECH2013)으로 개칭 — 과목개요 본문 동일"
+  },
+  "ME-CONV-DESIGN-IP": {
+    "codes": ["MECH3620"],
+    "note": "학수번호 변경 MECH3615(2021) → MECH3620(2022), 과목명 동일"
+  },
+  "ME-LAB-ADVANCED": {
+    "codes": ["MECH4710"],
+    "note": "학수번호 변경 MECH378(2021) → MECH4710(2022), 과목명 동일"
+  },
+  "ME-CAPSTONE": { "codes": ["MECH479"], "note": "학수번호 변경 MECH474(2021) → MECH479(2022), 과목명 동일" },
+  "ME-NUMERICAL-HEAT": {
+    "courseKey": "ME-NUMERICAL-HEAT",
+    "name": "수치열전달",
+    "codes": ["MECH324"],
+    "credits": 3,
+    "creditBreakdown": { "theory": 3 },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": ["3-2"],
+    "note": "2022학번 신설(MECH324)"
+  },
+  "ME-ADV-NUMERICAL": {
+    "courseKey": "ME-ADV-NUMERICAL",
+    "name": "고급수치해석",
+    "codes": ["MECH325"],
+    "credits": 3,
+    "creditBreakdown": { "theory": 3 },
+    "defaultBucket": "major_elective",
+    "offeredSemesters": ["3-2"],
+    "note": "2022학번 신설(MECH325)"
+  },
+  "ME-AI-SYSTEM": {
+    "codes": ["MECH3015"],
+    "offeredSemesters": ["3-2"],
+    "note": "학수번호 변경 MECH408(2021) → MECH3015(2022), 과목명 동일 / 융합시스템공학과 인공지능시스템과 동일 학수번호 — 융합시스템공학과 개설분을 수강하면 기계공학과 과목으로 인정하지 않음(중복 수강 시 재수강 처리)"
+  },
+  "ME-HYBRID-MANUFACTURING": {
+    "codes": ["MECH4516"],
+    "note": "학수번호 변경 MECH4513(2021) → MECH4516(2022), 과목명 동일"
+  },
+  "ME-AUTONOMOUS-VEHICLE": {
+    "name": "자동차인공지능",
+    "aliases": ["자율주행자동차"],
+    "codes": ["MECH4424"],
+    "note": "2021학번 자율주행자동차(MECH4423)가 2022학번부터 자동차인공지능(MECH4424)으로 개칭 — 과목개요 본문 동일"
+  },
+  "ME-INTERN-1": {
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "ME-INTERN-2": {
+    "defaultBucket": "major_elective",
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "ME-INTERN-3": {
+    "defaultBucket": "major_elective",
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "ME-INTERN-4": {
+    "defaultBucket": "major_elective",
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "ME-INTERN-5": {
+    "defaultBucket": "major_elective",
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "ME-INTERN-6": {
+    "defaultBucket": "major_elective",
+    "note": "2022 요람은 공학인턴십1~6을 한 행으로 인쇄 — 과목별로 분리(각 3학점). 요람 과목개요에 학수번호 없음 — courseKey는 앱 내부 합성 키"
+  },
+  "$order": [
+    "MATH-1",
+    "MATH-2",
+    "MATH-ENG-A",
+    "MATH-ENG-E",
+    "SCI-PHYSICS-1",
+    "SCI-PHYSICS-LAB-1",
+    "SCI-CHEMISTRY",
+    "SCI-CHEMISTRY-LAB",
+    "SCI-PHYSICS-2",
+    "SCI-PHYSICS-LAB-2",
+    "ME-PYTHON-PROG",
+    "ME-NUMERICAL",
+    "ME-ADVENTURE-DESIGN",
+    "ME-DRAWING",
+    "ME-STATICS",
+    "ME-SOLID-MECH",
+    "ME-THERMO",
+    "ME-DYNAMICS",
+    "ME-FLUID-MECH",
+    "ME-LAB-BASIC",
+    "ME-CONV-DESIGN-IP",
+    "ME-LAB-ADVANCED",
+    "ME-CAPSTONE",
+    "ME-MATERIALS",
+    "ME-MANUFACTURING",
+    "ME-HEAT-TRANSFER",
+    "ME-VIBRATION",
+    "ME-MECHANISM-DESIGN",
+    "ME-MACHINE-DESIGN",
+    "ME-SYSTEM-DYNAMICS",
+    "ME-FEM",
+    "ME-ENGINE",
+    "ME-FLUID-POWER",
+    "ME-MEASUREMENT",
+    "ME-NUMERICAL-HEAT",
+    "ME-ADV-NUMERICAL",
+    "ME-APPLIED-SOLID",
+    "ME-REFRIGERATION",
+    "ME-MICROPROCESSOR",
+    "ME-AUTOMOTIVE",
+    "ME-VIBRATION-SIGNAL",
+    "ME-ROBOTICS",
+    "ME-SMART-SOUND",
+    "ME-AI-SYSTEM",
+    "ME-3D-PRINTING",
+    "ME-MOLD-DESIGN",
+    "ME-MOTOR-GENERATOR",
+    "ME-APPLIED-THERMO",
+    "ME-APPLIED-FLUID",
+    "ME-AUTO-CONTROL",
+    "ME-AUTO-ELECTRONICS",
+    "ME-VEHICLE-DESIGN",
+    "ME-MICRONANO-INTRO",
+    "ME-VEHICLE-POWERTRAIN-SW",
+    "ME-VIRTUAL-MANUFACTURING",
+    "ME-HYBRID-MANUFACTURING",
+    "ME-DIGITAL-CONTROL",
+    "ME-ENERGY",
+    "ME-CFD",
+    "ME-AUTONOMOUS-VEHICLE",
+    "ME-PLANT",
+    "ME-APPLIED-HEAT",
+    "ME-MICRONANO-APP",
+    "ME-BIO-ROBOT",
+    "ME-BIO-TRANSPORT",
+    "ME-STARTUP-1",
+    "ME-STARTUP-2",
+    "ME-STARTUP-FIELD-1",
+    "ME-STARTUP-FIELD-2",
+    "ME-INTERN-1",
+    "ME-INTERN-2",
+    "ME-INTERN-3",
+    "ME-INTERN-4",
+    "ME-INTERN-5",
+    "ME-INTERN-6",
+    "ME-UG-RESEARCH-1",
+    "ME-UG-RESEARCH-2",
+    "ME-UG-RESEARCH-3"
+  ]
+}

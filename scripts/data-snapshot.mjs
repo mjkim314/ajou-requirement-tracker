@@ -5,6 +5,7 @@
  * src/engine/__tests__/data-snapshot.test.ts 의 EXPECTED_HASHES 블록 형태로 출력한다.
  *
  * 데이터 산출물이 바뀌는 커밋은 이 스크립트 출력으로 EXPECTED_HASHES를 갱신해야 한다:
+ *   npm run data:build   # R4: data-src/ 를 고쳤으면 먼저 산출물 재생성
  *   node scripts/data-snapshot.mjs
  *
  * 정규화 규칙(테스트와 동일해야 한다 — 다르면 해시 불일치로 테스트가 실패한다):

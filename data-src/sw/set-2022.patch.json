@@ -1,0 +1,64 @@
+{
+  "trunk": {
+    "requirementVersion": "2022-sw-advanced-v1",
+    "id": "rs_2022_sw_advanced",
+    "name": "2022 소프트웨어학과 · 심화과정",
+    "admissionYearFrom": 2022,
+    "admissionYearTo": 2022,
+    "nonCurricular": {
+      "major_ability": { "sourceNote": "컴퓨터프로그래밍및실습 ABF(1학년 겨울) 등 2회" },
+      "industry_project": {
+        "groups": {
+          "selfproj": { "label": "자기주도프로젝트과목군" },
+          "field": {
+            "courses": [
+              "SW-FIELD-1",
+              "SW-FIELD-2",
+              "SW-FIELD-3",
+              "SW-FIELD-4",
+              "SW-FIELD-5",
+              "SW-FIELD-6",
+              "SW-INTERN-1",
+              "SW-INTERN-2"
+            ]
+          }
+        },
+        "sourceNote": "IT집중교육/자기주도프로젝트/현장실습/창업실습/캡스톤디자인 과목군 중 2개 이상 선택 이수(평가 ABCF제)"
+      }
+    },
+    "equivalents": { "$remove": ["eq_creative_to_ai", "eq_ds_ict", "eq_oss_ict"] },
+    "source": {
+      "document": "2022 아주대학교 요람 · 소프트웨어학과(소프트웨어및컴퓨터공학전공)",
+      "pages": "342-347",
+      "notes": [
+        "전공명 표기는 '소프트웨어 및 컴퓨터공학 심화전공'. 학과 정체성은 소프트웨어학과(slug sw)로 고정. college는 소프트웨어융합대학(정보통신대학이 개편된 명칭) — 요람 러닝헤더에 남은 '정보통신대학'은 옛 명칭 잔재",
+        "구성 현황: 대학필수 19 / 학과필수 20 / 전공 73(전필36+전선37), 일반선택 28로 총 140 — 2021과 동일",
+        "캡스톤디자인·IT집중교육1·2는 2022 편성표 기준 6학점(2021 미검증 3학점에서 정정), 임베디드소프트웨어는 3학점(2021 4학점에서 정정) — 카탈로그 note 참조",
+        "평점표 A+ 4.5 만점은 기본값 — 학번별 확인 필요",
+        "산학프로젝트 인증 현장실습과목군은 요람 p342 명시대로 SW현장실습1~6·해외인턴십1,2(8과목)로 한정. 창업현장실습·해외인턴십3~6은 인증 과목군 비포함(2021 세트에서 과다 포함했던 것을 2022 요람 근거로 정정)",
+        "현장실습 6학점 상한·이월(courseGroups.field_practice)은 창업실습·창업현장실습·해외인턴십 전체를 포함하는 통산 6학점 대상으로, 산학 인증 현장실습과목군(8과목)과는 별개 개념. 상한 멤버십 자체는 요람 명시 미확인(2021과 동일 규칙 유지)"
+      ]
+    }
+  },
+  "tracks": {
+    "general": {
+      "requirementVersion": "2022-sw-general-v1",
+      "id": "rs_2022_sw_general",
+      "name": "2022 소프트웨어학과 · 일반과정",
+      "trackType": "general",
+      "buckets": { "major_elective": { "minCredits": 10 } },
+      "nonCurricular": {
+        "major_ability": { "sourceNote": "$delete" },
+        "industry_project": { "sourceNote": "$delete" }
+      },
+      "source": {
+        "notes": [
+          "일반과정은 전공선택 최소 10학점 + 복수/부전공 1건 이상 필수(요람 명시)",
+          "전공명 표기 '소프트웨어 및 컴퓨터공학 일반전공'. 일반과정 전공 소계 46(전필36+전선10)",
+          "캡스톤디자인·IT집중교육1·2 6학점, 임베디드소프트웨어 3학점 정정은 카탈로그 note 참조",
+          "평점표 A+ 4.5 만점은 기본값 — 학번별 확인 필요"
+        ]
+      }
+    }
+  }
+}

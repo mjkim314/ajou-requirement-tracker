@@ -1,0 +1,36 @@
+{
+  "am_double": {
+    "sourceNote": "표준 복수전공: 총 36학점, 제1전공 중복 인정 최대 6학점. 전공별로 조정 가능. (2022 소프트웨어학과 요람 기준 — 대학 표준 규칙, 2021과 동일)"
+  },
+  "am_minor": {
+    "sourceNote": "표준 부전공: 총 21학점, 제1전공 중복 인정 최대 3학점. 이 21은 'SW 학생이 타 전공을 부전공'하는 축이다. '타 전공생이 SW를 부전공'하는 경우 2022 요람 편성표는 전필 36(제1전공 전필과목과 상동)으로 표기되며 전공학점 병합셀 표기가 학번마다 흔들려(verified:false) 별도 요건 세트로 만들지 않았다."
+  },
+  "am_linked_hsda": {
+    "sourceNote": "연계전공(복수전공 이수 기준): 총 36학점 이상, 제1전공 중복 최대 6학점, 융합 6학점 이상. 부전공 기준 이수 시 총 21학점·중복 3학점. 2022 요람에도 소프트웨어학과 연계전공으로 수록(상세 편성표 데이터화는 별도 연계전공 추출 대상)."
+  },
+  "am_linked_autosw": {
+    "sourceNote": "연계전공(복수전공 이수 기준): 총 36학점 이상, 제1전공 중복 최대 6학점. 2022 요람은 복수전공/부전공/융복합트랙 3형태 수록(상세 편성표·ASW 과목 데이터화는 별도 연계전공 추출 대상)."
+  },
+  "am_linked_ict": {
+    "id": "am_linked_ict",
+    "name": "ICT융합전공",
+    "type": "linked_major",
+    "typeLabel": "연계전공",
+    "totalMinCredits": 36,
+    "homeOverlapCap": 6,
+    "satisfiesMajorPolicy": true,
+    "sourceNote": "ICT융합전공은 S/W 비전공자가 제1전공 외에 이수하는 연계전공(복수/부전공으로만 운영). 소프트웨어학과 학생에게는 통상 해당되지 않으나 2022 요람 SW편에 수록되어 목록에 포함. 총 36학점·중복 6학점은 표준 연계전공 기준값(요람 상세 확인 대상)."
+  },
+  "am_micro": { "sourceNote": "마이크로전공 기본 9학점. 일반과정 추가전공 요건 충족 여부 미확인 → 기본 false." },
+  "$order": [
+    "am_double",
+    "am_minor",
+    "am_linked_hsda",
+    "am_linked_autosw",
+    "am_linked_ict",
+    "am_track",
+    "am_micro",
+    "am_self_designed",
+    "am_custom"
+  ]
+}

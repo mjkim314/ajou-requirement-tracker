@@ -1,0 +1,8 @@
+{
+  "slug": "me",
+  "college": "공과대학",
+  "department": "기계공학과",
+  "years": [2021, 2022],
+  "tracks": ["accredited", "general"],
+  "trunk": "accredited"
+}

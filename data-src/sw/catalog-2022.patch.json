@@ -1,0 +1,159 @@
+{
+  "$remove": ["SW-AI-INTRO"],
+  "SW-CAREER-SEMINAR": { "gradingType": "PF", "note": "과목개요상 pass-fail 운영" },
+  "SW-PROGRAMMING": {
+    "nameEn": "Computer Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 },
+    "note": "1학년 겨울 전공진입 ABF제 운영(전공 역량 인증 대상)"
+  },
+  "SW-DISCRETE-MATH": { "nameEn": "Discrete Mathematics" },
+  "SW-CREATIVE-SW-INTRO": {
+    "nameEn": "Introduction to Creative Software Development",
+    "creditBreakdown": { "design": 3 }
+  },
+  "SW-DIGITAL-CIRCUIT": { "nameEn": "Digital Circuits and Practice" },
+  "SW-OOP": {
+    "nameEn": "Object-oriented Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 }
+  },
+  "SW-DATA-STRUCT": {
+    "note": "SW 과목개요는 SCE205, 타 전공(자동차SW 등) 교차참조는 SCE202 → codes 배열로 수용. SCE203은 별개 과목(도메인분석및SW설계)이라 미포함",
+    "nameEn": "Data Structures and Practice"
+  },
+  "SW-COMP-ARCH": { "nameEn": "Computer Organization and Architecture" },
+  "SW-SYS-PROGRAMMING": {
+    "nameEn": "System Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 }
+  },
+  "SW-ALGORITHM": { "note": "같은 과목·두 학수번호(SCE231 주개설/SCE332 교차참조)", "nameEn": "Algorithms" },
+  "SW-NETWORK": { "nameEn": "Computer Networks" },
+  "SW-OS": { "nameEn": "Operating Systems" },
+  "SW-CAPSTONE": {
+    "credits": 6,
+    "note": "2022 교육과정표 확인: 설계 6학점 = 6학점(2021 세트에서 미검증 3학점으로 두었던 값을 2022 요람 근거로 6학점 정정)",
+    "creditBreakdown": { "design": 6 }
+  },
+  "SW-SELF-PROJECT": { "creditBreakdown": { "design": 2, "lab": 1 } },
+  "SW-IT-INTENSIVE-1": {
+    "credits": 6,
+    "note": "2022 교육과정표 확인: 이론2+실험실습4 = 6학점(2021 세트 미검증 3학점에서 6학점 정정)",
+    "creditBreakdown": { "theory": 2, "lab": 4 },
+    "prerequisites": ["SW-OOP"]
+  },
+  "SW-IT-INTENSIVE-2": {
+    "credits": 6,
+    "note": "2022 교육과정표 확인: 이론2+실험실습4 = 6학점(2021 세트 미검증 3학점에서 6학점 정정)",
+    "creditBreakdown": { "theory": 2, "lab": 4 },
+    "prerequisites": ["SW-OOP"]
+  },
+  "SW-IND-SEMINAR": { "creditBreakdown": { "theory": 1 } },
+  "SW-NET-SW-DESIGN": {
+    "creditBreakdown": { "theory": 1, "design": 2, "lab": 1 },
+    "prerequisites": ["SW-NETWORK"],
+    "note": "$delete"
+  },
+  "SW-IOT-SYS-DESIGN": {
+    "creditBreakdown": { "theory": 3, "lab": 1 },
+    "prerequisites": ["SW-OS"],
+    "note": "$delete"
+  },
+  "SW-WEB-SYS-DESIGN": {
+    "creditBreakdown": { "theory": 2, "design": 1, "lab": 1 },
+    "prerequisites": ["SW-OOP"],
+    "note": "$delete"
+  },
+  "SW-EMBEDDED": {
+    "credits": 3,
+    "note": "2022 교육과정표 확인: 3학점(2021 세트 부록 일괄 4학점에서 3학점 정정)",
+    "creditBreakdown": { "theory": 3 },
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  "SW-NET-SEC": {
+    "creditBreakdown": { "theory": 1.5, "lab": 1.5 },
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  "SW-DB": {
+    "nameEn": "Database",
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  "SW-INFO-SEC": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-SYS-SW": {
+    "name": "시스템소프트웨어보안",
+    "aliases": ["시스템소프트웨어"],
+    "note": "과목개요명 흔들림(시스템소프트웨어/시스템소프트웨어보안). 2022 편성표는 시스템소프트웨어보안",
+    "creditBreakdown": { "theory": 1.5, "lab": 1.5 }
+  },
+  "SW-OSS-INTRO": {
+    "nameEn": "Introduction to Open Source Software",
+    "creditBreakdown": { "theory": 1, "design": 2 },
+    "prerequisites": ["SW-OOP"]
+  },
+  "SW-ML": { "creditBreakdown": { "theory": 2, "lab": 1 }, "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-COMPILER": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-DATA-MINING": {
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  "SW-IT-ENGLISH": { "prerequisites": ["SW-PROGRAMMING"] },
+  "SW-COMP-THEORY": { "prerequisites": ["SW-DISCRETE-MATH"] },
+  "SW-SW-ENG": { "creditBreakdown": { "theory": 2, "lab": 1 }, "prerequisites": ["SW-OOP"] },
+  "SW-APP-SEC": {
+    "creditBreakdown": { "theory": 1.5, "lab": 1.5 },
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  "SW-CODING-1": { "creditBreakdown": { "theory": 1, "lab": 2 } },
+  "SW-CODING-2": { "creditBreakdown": { "theory": 1, "lab": 2 } },
+  "SW-MODEL-SIM": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-CV": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-MOBILE-NET": { "prerequisites": ["SW-NETWORK"] },
+  "SW-CG": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-SELF-RESEARCH-1": { "creditBreakdown": { "theory": 2, "lab": 1 } },
+  "SW-SELF-RESEARCH-2": { "creditBreakdown": { "design": 3 } },
+  "SW-DISTRIBUTED": { "prerequisites": ["SW-PROGRAMMING"] },
+  "SW-ADV-COMP-ARCH": { "prerequisites": ["SW-COMP-ARCH"] },
+  "SW-HCI": { "prerequisites": ["SW-ALGORITHM"] },
+  "SW-AI": { "prerequisites": ["SW-DATA-STRUCT"] },
+  "SW-FIELD-1": { "creditBreakdown": { "lab": 3 } },
+  "SW-FIELD-2": { "creditBreakdown": { "lab": 3 } },
+  "SW-FIELD-3": { "creditBreakdown": { "lab": 3 } },
+  "SW-FIELD-4": { "creditBreakdown": { "lab": 3 } },
+  "SW-FIELD-5": { "creditBreakdown": { "lab": 3 } },
+  "SW-FIELD-6": { "creditBreakdown": { "lab": 3 } },
+  "SW-STARTUP-1": { "creditBreakdown": { "lab": 3 } },
+  "SW-STARTUP-2": { "creditBreakdown": { "lab": 3 } },
+  "SW-STARTUP-FIELD-1": {
+    "creditBreakdown": { "lab": 3 },
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2022 요람 p342). 현장실습 6학점 상한(field_practice) 대상",
+    "courseGroups": "$delete"
+  },
+  "SW-STARTUP-FIELD-2": {
+    "creditBreakdown": { "lab": 3 },
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2022 요람 p342). 현장실습 6학점 상한(field_practice) 대상",
+    "courseGroups": "$delete"
+  },
+  "SW-INTERN-1": { "creditBreakdown": { "lab": 3 } },
+  "SW-INTERN-2": { "creditBreakdown": { "lab": 3 } },
+  "SW-INTERN-3": {
+    "note": "INF0401은 해외인턴십1·3에 중복 부여. 산학 인증 현장실습과목군 비포함(2022 요람 p342, 해외인턴십은 1·2만)",
+    "creditBreakdown": { "lab": 3 },
+    "courseGroups": "$delete"
+  },
+  "SW-INTERN-4": {
+    "note": "INF0402는 해외인턴십2·4에 중복 부여. 산학 인증 현장실습과목군 비포함(2022 요람 p342)",
+    "creditBreakdown": { "lab": 3 },
+    "courseGroups": "$delete"
+  },
+  "SW-INTERN-5": {
+    "note": "2022 과목개요는 코드를 'NF0407'로 인쇄(좁은 컬럼에서 선두 I 누락 추정, 해외인턴십1~4가 INF04xx라 INF0407로 판독). 산학 인증 현장실습과목군 비포함(2022 요람 p342)",
+    "creditBreakdown": { "lab": 3 },
+    "codes": ["INF0407"],
+    "courseGroups": "$delete"
+  },
+  "SW-INTERN-6": {
+    "note": "2022 과목개요는 코드를 'NF0408'로 인쇄(선두 I 누락 추정 → INF0408 판독). 산학 인증 현장실습과목군 비포함(2022 요람 p342)",
+    "creditBreakdown": { "lab": 3 },
+    "codes": ["INF0408"],
+    "courseGroups": "$delete"
+  }
+}

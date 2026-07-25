@@ -1,0 +1,31 @@
+{
+  "$remove": ["SW-NET-SEC", "SW-SYS-SW"],
+  "SW-CAREER-SEMINAR": { "note": "과목개요상 pass-fail 운영. 전과(전입)생·편입학생은 이수 의무 없음(2024 요람 유의사항)" },
+  "SW-AI-INTRO": {
+    "note": "창의소프트웨어입문(SCE192)을 대체한 전공필수(2023 개정 유지). 대체규칙 eq_creative_to_ai(effectiveFrom 2023)"
+  },
+  "SW-ALGORITHM": { "note": "$delete" },
+  "SW-ML": { "note": "$delete" },
+  "SW-INTELLIGENT-IOT": { "note": "2023 신규 유지. 2022 사물인터넷시스템설계(SCE316, 4학점)와는 별개 과목" },
+  "SW-DIGITAL-FORENSICS": { "note": "사이버보안학과 교차개설(SOS)" },
+  "SW-BLOCKCHAIN-IOT": { "note": "사이버보안학과 교차개설(SOS)" },
+  "SW-AI-INTENSIVE-1": { "note": "집중교육과목군(산학프로젝트 인증)" },
+  "SW-AI-INTENSIVE-2": { "note": "집중교육과목군(산학프로젝트 인증)" },
+  "SW-MODEL-SIM": { "note": "SCE411 단독(고급컴퓨터구조는 SCE412)" },
+  "SW-SELF-RESEARCH-1": { "note": "자기주도연구과목군(산학프로젝트 인증)" },
+  "SW-AI-COMPUTER-SYS": { "note": "$delete" },
+  "SW-AI-EMBEDDED": { "note": "$delete" },
+  "SW-AIOT-REALTIME": { "note": "$delete" },
+  "SW-AI-COMM-NET": { "note": "$delete" },
+  "SW-DIST-PARALLEL": { "note": "$delete" },
+  "SW-IND-SEMINAR": { "note": "$delete" },
+  "SW-ADV-COMP-ARCH": { "note": "$delete" },
+  "SW-HCI": { "note": "$delete" },
+  "SW-SELF-RESEARCH-2": { "note": "자기주도연구과목군(산학프로젝트 인증)" },
+  "SW-STARTUP-FIELD-1": {
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상"
+  },
+  "SW-STARTUP-FIELD-2": {
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상"
+  }
+}

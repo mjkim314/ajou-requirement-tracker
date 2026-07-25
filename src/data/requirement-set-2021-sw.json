@@ -10,12 +10,41 @@
     "department": "소프트웨어학과",
     "trackType": "advanced",
     "totalCredits": 140,
-    "minGPA": 2.0,
-    "gradePoints": { "A+": 4.5, "A0": 4.0, "B+": 3.5, "B0": 3.0, "C+": 2.5, "C0": 2.0, "D+": 1.5, "D0": 1.0, "F": 0 },
+    "minGPA": 2,
+    "gradePoints": {
+      "A+": 4.5,
+      "A0": 4,
+      "B+": 3.5,
+      "B0": 3,
+      "C+": 2.5,
+      "C0": 2,
+      "D+": 1.5,
+      "D0": 1,
+      "F": 0
+    },
     "buckets": [
-      { "id": "ajou_character", "label": "아주인성", "group": "university_required", "minCredits": 1, "requiredCourses": ["GE-AJOU-CHARACTER"] },
-      { "id": "english", "label": "영어", "shortLabel": "영어", "group": "university_required", "minCredits": 6, "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"] },
-      { "id": "writing", "label": "글쓰기", "group": "university_required", "minCredits": 3, "requiredCourses": ["GE-WRITING"] },
+      {
+        "id": "ajou_character",
+        "label": "아주인성",
+        "group": "university_required",
+        "minCredits": 1,
+        "requiredCourses": ["GE-AJOU-CHARACTER"]
+      },
+      {
+        "id": "english",
+        "label": "영어",
+        "shortLabel": "영어",
+        "group": "university_required",
+        "minCredits": 6,
+        "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"]
+      },
+      {
+        "id": "writing",
+        "label": "글쓰기",
+        "group": "university_required",
+        "minCredits": 3,
+        "requiredCourses": ["GE-WRITING"]
+      },
       {
         "id": "area_liberal",
         "label": "영역별교양",
@@ -29,7 +58,13 @@
           { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 }
         ]
       },
-      { "id": "sw_seminar", "label": "SW커리어세미나", "group": "department_required", "minCredits": 1, "requiredCourses": ["SW-CAREER-SEMINAR"] },
+      {
+        "id": "sw_seminar",
+        "label": "SW커리어세미나",
+        "group": "department_required",
+        "minCredits": 1,
+        "requiredCourses": ["SW-CAREER-SEMINAR"]
+      },
       {
         "id": "math",
         "label": "수학",
@@ -37,7 +72,12 @@
         "minCredits": 12,
         "requiredCourses": ["MATH-1", "MATH-2", "MATH-PROB-1"],
         "choiceGroups": [
-          { "id": "math_choice", "label": "확률및통계2 또는 선형대수1", "pick": 1, "courses": ["MATH-PROB-2", "MATH-LINEAR-1"] }
+          {
+            "id": "math_choice",
+            "label": "확률및통계2 또는 선형대수1",
+            "pick": 1,
+            "courses": ["MATH-PROB-2", "MATH-LINEAR-1"]
+          }
         ]
       },
       {
@@ -46,9 +86,25 @@
         "group": "department_required",
         "minCredits": 7,
         "choiceGroups": [
-          { "id": "sci_main", "label": "물리학 또는 생명과학", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"] },
-          { "id": "sci_lab", "label": "해당 실험", "pick": 1, "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"], "linkedTo": "sci_main" },
-          { "id": "sci_extra", "label": "물리학/생명과학/화학 중 택1", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"] }
+          {
+            "id": "sci_main",
+            "label": "물리학 또는 생명과학",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"]
+          },
+          {
+            "id": "sci_lab",
+            "label": "해당 실험",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"],
+            "linkedTo": "sci_main"
+          },
+          {
+            "id": "sci_extra",
+            "label": "물리학/생명과학/화학 중 택1",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"]
+          }
         ]
       },
       {
@@ -58,13 +114,33 @@
         "group": "major_required",
         "minCredits": 36,
         "requiredCourses": [
-          "SW-PROGRAMMING", "SW-DISCRETE-MATH", "SW-CREATIVE-SW-INTRO", "SW-DIGITAL-CIRCUIT",
-          "SW-OOP", "SW-DATA-STRUCT", "SW-COMP-ARCH", "SW-SYS-PROGRAMMING",
-          "SW-ALGORITHM", "SW-NETWORK", "SW-OS"
+          "SW-PROGRAMMING",
+          "SW-DISCRETE-MATH",
+          "SW-CREATIVE-SW-INTRO",
+          "SW-DIGITAL-CIRCUIT",
+          "SW-OOP",
+          "SW-DATA-STRUCT",
+          "SW-COMP-ARCH",
+          "SW-SYS-PROGRAMMING",
+          "SW-ALGORITHM",
+          "SW-NETWORK",
+          "SW-OS"
         ]
       },
-      { "id": "major_elective", "label": "전공선택", "shortLabel": "전공선택", "group": "major_elective", "minCredits": 37 },
-      { "id": "general_elective", "label": "일반선택", "shortLabel": "일반선택", "group": "general_elective", "minCredits": 28 }
+      {
+        "id": "major_elective",
+        "label": "전공선택",
+        "shortLabel": "전공선택",
+        "group": "major_elective",
+        "minCredits": 37
+      },
+      {
+        "id": "general_elective",
+        "label": "일반선택",
+        "shortLabel": "일반선택",
+        "group": "general_elective",
+        "minCredits": 28
+      }
     ],
     "nonCurricular": [
       {
@@ -85,8 +161,20 @@
           { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
           { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
           { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
-          { "id": "toeic_sp", "label": "TOEIC Speaking", "type": "level", "min": "Lv.5", "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"] },
-          { "id": "opic", "label": "OPIc", "type": "level", "min": "IL", "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"] }
+          {
+            "id": "toeic_sp",
+            "label": "TOEIC Speaking",
+            "type": "level",
+            "min": "Lv.5",
+            "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"]
+          },
+          {
+            "id": "opic",
+            "label": "OPIc",
+            "type": "level",
+            "min": "IL",
+            "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"]
+          }
         ]
       },
       {
@@ -106,9 +194,32 @@
         "pick": 2,
         "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
         "groups": [
-          { "id": "intensive", "label": "IT집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2"] },
+          {
+            "id": "intensive",
+            "label": "IT집중교육과목군",
+            "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2"]
+          },
           { "id": "selfproj", "label": "자기주도프로젝트", "courses": ["SW-SELF-PROJECT"] },
-          { "id": "field", "label": "현장실습과목군", "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2", "SW-INTERN-1", "SW-INTERN-2", "SW-INTERN-3", "SW-INTERN-4", "SW-INTERN-5", "SW-INTERN-6"] },
+          {
+            "id": "field",
+            "label": "현장실습과목군",
+            "courses": [
+              "SW-FIELD-1",
+              "SW-FIELD-2",
+              "SW-FIELD-3",
+              "SW-FIELD-4",
+              "SW-FIELD-5",
+              "SW-FIELD-6",
+              "SW-STARTUP-FIELD-1",
+              "SW-STARTUP-FIELD-2",
+              "SW-INTERN-1",
+              "SW-INTERN-2",
+              "SW-INTERN-3",
+              "SW-INTERN-4",
+              "SW-INTERN-5",
+              "SW-INTERN-6"
+            ]
+          },
           { "id": "startup", "label": "창업실습과목군", "courses": ["SW-STARTUP-1", "SW-STARTUP-2"] },
           { "id": "capstone", "label": "캡스톤디자인과목군", "courses": ["SW-CAPSTONE"] }
         ]
@@ -127,18 +238,83 @@
       }
     ],
     "equivalents": [
-      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
-      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
-      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" },
-      { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "note": "학번 개정으로 창의소프트웨어입문↔인공지능입문 상호 인정. 2021 세트에서는 활성(effectiveFrom 미지정) — 학과 확인 대기" },
-      { "id": "eq_ds_ict", "type": "sameAs", "from": "ICT-DATA-STRUCT", "to": "SW-DATA-STRUCT", "direction": "forward", "creditPolicy": "useOriginal", "note": "ICT융합전공 자료구조(ICT322) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동(ICT 교차 과목 추가 시 활성)" },
-      { "id": "eq_oss_ict", "type": "sameAs", "from": "ICT-OSS-INTRO", "to": "SW-OSS-INTRO", "direction": "forward", "creditPolicy": "useOriginal", "note": "ICT융합전공 오픈소스SW입문(ICT432) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동" }
+      {
+        "id": "eq_adv_english_1",
+        "type": "substitutable",
+        "from": "GE-ENGLISH-ADV-1",
+        "to": "GE-ENGLISH-1",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)"
+      },
+      {
+        "id": "eq_adv_english_2",
+        "type": "substitutable",
+        "from": "GE-ENGLISH-ADV-2",
+        "to": "GE-ENGLISH-2",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)"
+      },
+      {
+        "id": "eq_ajou_hope_sw",
+        "type": "substitutable",
+        "from": "GE-AJOU-HOPE",
+        "to": "SW-CAREER-SEMINAR",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정"
+      },
+      {
+        "id": "eq_creative_to_ai",
+        "type": "replaces",
+        "from": "SW-CREATIVE-SW-INTRO",
+        "to": "SW-AI-INTRO",
+        "direction": "bidirectional",
+        "creditPolicy": "useOriginal",
+        "note": "학번 개정으로 창의소프트웨어입문↔인공지능입문 상호 인정. 2021 세트에서는 활성(effectiveFrom 미지정) — 학과 확인 대기"
+      },
+      {
+        "id": "eq_ds_ict",
+        "type": "sameAs",
+        "from": "ICT-DATA-STRUCT",
+        "to": "SW-DATA-STRUCT",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "ICT융합전공 자료구조(ICT322) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동(ICT 교차 과목 추가 시 활성)"
+      },
+      {
+        "id": "eq_oss_ict",
+        "type": "sameAs",
+        "from": "ICT-OSS-INTRO",
+        "to": "SW-OSS-INTRO",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "ICT융합전공 오픈소스SW입문(ICT432) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동"
+      }
     ],
     "courseGroups": [
       {
         "id": "field_practice",
         "label": "현장실습 과목군",
-        "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2", "SW-STARTUP-1", "SW-STARTUP-2", "SW-INTERN-1", "SW-INTERN-2", "SW-INTERN-3", "SW-INTERN-4", "SW-INTERN-5", "SW-INTERN-6"],
+        "courses": [
+          "SW-FIELD-1",
+          "SW-FIELD-2",
+          "SW-FIELD-3",
+          "SW-FIELD-4",
+          "SW-FIELD-5",
+          "SW-FIELD-6",
+          "SW-STARTUP-FIELD-1",
+          "SW-STARTUP-FIELD-2",
+          "SW-STARTUP-1",
+          "SW-STARTUP-2",
+          "SW-INTERN-1",
+          "SW-INTERN-2",
+          "SW-INTERN-3",
+          "SW-INTERN-4",
+          "SW-INTERN-5",
+          "SW-INTERN-6"
+        ],
         "creditCap": 6,
         "capBucket": "major_elective",
         "overflowTo": "general_elective"
@@ -170,7 +346,6 @@
       ]
     }
   },
-
   "general": {
     "schemaVersion": 2,
     "requirementVersion": "2021-sw-general-v1",
@@ -182,12 +357,41 @@
     "department": "소프트웨어학과",
     "trackType": "general",
     "totalCredits": 140,
-    "minGPA": 2.0,
-    "gradePoints": { "A+": 4.5, "A0": 4.0, "B+": 3.5, "B0": 3.0, "C+": 2.5, "C0": 2.0, "D+": 1.5, "D0": 1.0, "F": 0 },
+    "minGPA": 2,
+    "gradePoints": {
+      "A+": 4.5,
+      "A0": 4,
+      "B+": 3.5,
+      "B0": 3,
+      "C+": 2.5,
+      "C0": 2,
+      "D+": 1.5,
+      "D0": 1,
+      "F": 0
+    },
     "buckets": [
-      { "id": "ajou_character", "label": "아주인성", "group": "university_required", "minCredits": 1, "requiredCourses": ["GE-AJOU-CHARACTER"] },
-      { "id": "english", "label": "영어", "shortLabel": "영어", "group": "university_required", "minCredits": 6, "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"] },
-      { "id": "writing", "label": "글쓰기", "group": "university_required", "minCredits": 3, "requiredCourses": ["GE-WRITING"] },
+      {
+        "id": "ajou_character",
+        "label": "아주인성",
+        "group": "university_required",
+        "minCredits": 1,
+        "requiredCourses": ["GE-AJOU-CHARACTER"]
+      },
+      {
+        "id": "english",
+        "label": "영어",
+        "shortLabel": "영어",
+        "group": "university_required",
+        "minCredits": 6,
+        "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"]
+      },
+      {
+        "id": "writing",
+        "label": "글쓰기",
+        "group": "university_required",
+        "minCredits": 3,
+        "requiredCourses": ["GE-WRITING"]
+      },
       {
         "id": "area_liberal",
         "label": "영역별교양",
@@ -201,7 +405,13 @@
           { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 }
         ]
       },
-      { "id": "sw_seminar", "label": "SW커리어세미나", "group": "department_required", "minCredits": 1, "requiredCourses": ["SW-CAREER-SEMINAR"] },
+      {
+        "id": "sw_seminar",
+        "label": "SW커리어세미나",
+        "group": "department_required",
+        "minCredits": 1,
+        "requiredCourses": ["SW-CAREER-SEMINAR"]
+      },
       {
         "id": "math",
         "label": "수학",
@@ -209,7 +419,12 @@
         "minCredits": 12,
         "requiredCourses": ["MATH-1", "MATH-2", "MATH-PROB-1"],
         "choiceGroups": [
-          { "id": "math_choice", "label": "확률및통계2 또는 선형대수1", "pick": 1, "courses": ["MATH-PROB-2", "MATH-LINEAR-1"] }
+          {
+            "id": "math_choice",
+            "label": "확률및통계2 또는 선형대수1",
+            "pick": 1,
+            "courses": ["MATH-PROB-2", "MATH-LINEAR-1"]
+          }
         ]
       },
       {
@@ -218,9 +433,25 @@
         "group": "department_required",
         "minCredits": 7,
         "choiceGroups": [
-          { "id": "sci_main", "label": "물리학 또는 생명과학", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"] },
-          { "id": "sci_lab", "label": "해당 실험", "pick": 1, "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"], "linkedTo": "sci_main" },
-          { "id": "sci_extra", "label": "물리학/생명과학/화학 중 택1", "pick": 1, "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"] }
+          {
+            "id": "sci_main",
+            "label": "물리학 또는 생명과학",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS", "SCI-BIOLOGY"]
+          },
+          {
+            "id": "sci_lab",
+            "label": "해당 실험",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS-LAB", "SCI-BIOLOGY-LAB"],
+            "linkedTo": "sci_main"
+          },
+          {
+            "id": "sci_extra",
+            "label": "물리학/생명과학/화학 중 택1",
+            "pick": 1,
+            "courses": ["SCI-PHYSICS", "SCI-BIOLOGY", "SCI-CHEMISTRY"]
+          }
         ]
       },
       {
@@ -230,13 +461,33 @@
         "group": "major_required",
         "minCredits": 36,
         "requiredCourses": [
-          "SW-PROGRAMMING", "SW-DISCRETE-MATH", "SW-CREATIVE-SW-INTRO", "SW-DIGITAL-CIRCUIT",
-          "SW-OOP", "SW-DATA-STRUCT", "SW-COMP-ARCH", "SW-SYS-PROGRAMMING",
-          "SW-ALGORITHM", "SW-NETWORK", "SW-OS"
+          "SW-PROGRAMMING",
+          "SW-DISCRETE-MATH",
+          "SW-CREATIVE-SW-INTRO",
+          "SW-DIGITAL-CIRCUIT",
+          "SW-OOP",
+          "SW-DATA-STRUCT",
+          "SW-COMP-ARCH",
+          "SW-SYS-PROGRAMMING",
+          "SW-ALGORITHM",
+          "SW-NETWORK",
+          "SW-OS"
         ]
       },
-      { "id": "major_elective", "label": "전공선택", "shortLabel": "전공선택", "group": "major_elective", "minCredits": 10 },
-      { "id": "general_elective", "label": "일반선택", "shortLabel": "일반선택", "group": "general_elective", "minCredits": 28 }
+      {
+        "id": "major_elective",
+        "label": "전공선택",
+        "shortLabel": "전공선택",
+        "group": "major_elective",
+        "minCredits": 10
+      },
+      {
+        "id": "general_elective",
+        "label": "일반선택",
+        "shortLabel": "일반선택",
+        "group": "general_elective",
+        "minCredits": 28
+      }
     ],
     "nonCurricular": [
       {
@@ -257,8 +508,20 @@
           { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
           { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
           { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
-          { "id": "toeic_sp", "label": "TOEIC Speaking", "type": "level", "min": "Lv.5", "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"] },
-          { "id": "opic", "label": "OPIc", "type": "level", "min": "IL", "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"] }
+          {
+            "id": "toeic_sp",
+            "label": "TOEIC Speaking",
+            "type": "level",
+            "min": "Lv.5",
+            "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"]
+          },
+          {
+            "id": "opic",
+            "label": "OPIc",
+            "type": "level",
+            "min": "IL",
+            "scale": ["NL", "NM", "NH", "IL", "IM", "IH", "AL"]
+          }
         ]
       },
       {
@@ -278,9 +541,32 @@
         "pick": 2,
         "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
         "groups": [
-          { "id": "intensive", "label": "IT집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2"] },
+          {
+            "id": "intensive",
+            "label": "IT집중교육과목군",
+            "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2"]
+          },
           { "id": "selfproj", "label": "자기주도프로젝트", "courses": ["SW-SELF-PROJECT"] },
-          { "id": "field", "label": "현장실습과목군", "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2", "SW-INTERN-1", "SW-INTERN-2", "SW-INTERN-3", "SW-INTERN-4", "SW-INTERN-5", "SW-INTERN-6"] },
+          {
+            "id": "field",
+            "label": "현장실습과목군",
+            "courses": [
+              "SW-FIELD-1",
+              "SW-FIELD-2",
+              "SW-FIELD-3",
+              "SW-FIELD-4",
+              "SW-FIELD-5",
+              "SW-FIELD-6",
+              "SW-STARTUP-FIELD-1",
+              "SW-STARTUP-FIELD-2",
+              "SW-INTERN-1",
+              "SW-INTERN-2",
+              "SW-INTERN-3",
+              "SW-INTERN-4",
+              "SW-INTERN-5",
+              "SW-INTERN-6"
+            ]
+          },
           { "id": "startup", "label": "창업실습과목군", "courses": ["SW-STARTUP-1", "SW-STARTUP-2"] },
           { "id": "capstone", "label": "캡스톤디자인과목군", "courses": ["SW-CAPSTONE"] }
         ]
@@ -299,18 +585,83 @@
       }
     ],
     "equivalents": [
-      { "id": "eq_adv_english_1", "type": "substitutable", "from": "GE-ENGLISH-ADV-1", "to": "GE-ENGLISH-1", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
-      { "id": "eq_adv_english_2", "type": "substitutable", "from": "GE-ENGLISH-ADV-2", "to": "GE-ENGLISH-2", "direction": "forward", "creditPolicy": "useOriginal", "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)" },
-      { "id": "eq_ajou_hope_sw", "type": "substitutable", "from": "GE-AJOU-HOPE", "to": "SW-CAREER-SEMINAR", "direction": "forward", "creditPolicy": "useOriginal", "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정" },
-      { "id": "eq_creative_to_ai", "type": "replaces", "from": "SW-CREATIVE-SW-INTRO", "to": "SW-AI-INTRO", "direction": "bidirectional", "creditPolicy": "useOriginal", "note": "학번 개정으로 창의소프트웨어입문↔인공지능입문 상호 인정. 2021 세트에서는 활성(effectiveFrom 미지정) — 학과 확인 대기" },
-      { "id": "eq_ds_ict", "type": "sameAs", "from": "ICT-DATA-STRUCT", "to": "SW-DATA-STRUCT", "direction": "forward", "creditPolicy": "useOriginal", "note": "ICT융합전공 자료구조(ICT322) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동(ICT 교차 과목 추가 시 활성)" },
-      { "id": "eq_oss_ict", "type": "sameAs", "from": "ICT-OSS-INTRO", "to": "SW-OSS-INTRO", "direction": "forward", "creditPolicy": "useOriginal", "note": "ICT융합전공 오픈소스SW입문(ICT432) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동" }
+      {
+        "id": "eq_adv_english_1",
+        "type": "substitutable",
+        "from": "GE-ENGLISH-ADV-1",
+        "to": "GE-ENGLISH-1",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정(교양_편제.md 교양필수 상세)"
+      },
+      {
+        "id": "eq_adv_english_2",
+        "type": "substitutable",
+        "from": "GE-ENGLISH-ADV-2",
+        "to": "GE-ENGLISH-2",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정(교양_편제.md 교양필수 상세)"
+      },
+      {
+        "id": "eq_ajou_hope_sw",
+        "type": "substitutable",
+        "from": "GE-AJOU-HOPE",
+        "to": "SW-CAREER-SEMINAR",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "아주희망(전공진로탐색)은 학과 지정 대체과목으로 운영 — 소프트웨어학과는 SW커리어세미나. 교양 카탈로그의 아주희망 이수분을 학과 세미나로 인정"
+      },
+      {
+        "id": "eq_creative_to_ai",
+        "type": "replaces",
+        "from": "SW-CREATIVE-SW-INTRO",
+        "to": "SW-AI-INTRO",
+        "direction": "bidirectional",
+        "creditPolicy": "useOriginal",
+        "note": "학번 개정으로 창의소프트웨어입문↔인공지능입문 상호 인정. 2021 세트에서는 활성(effectiveFrom 미지정) — 학과 확인 대기"
+      },
+      {
+        "id": "eq_ds_ict",
+        "type": "sameAs",
+        "from": "ICT-DATA-STRUCT",
+        "to": "SW-DATA-STRUCT",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "ICT융합전공 자료구조(ICT322) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동(ICT 교차 과목 추가 시 활성)"
+      },
+      {
+        "id": "eq_oss_ict",
+        "type": "sameAs",
+        "from": "ICT-OSS-INTRO",
+        "to": "SW-OSS-INTRO",
+        "direction": "forward",
+        "creditPolicy": "useOriginal",
+        "note": "ICT융합전공 오픈소스SW입문(ICT432) 동일 인정. from은 SW 카탈로그 밖이라 현재 미발동"
+      }
     ],
     "courseGroups": [
       {
         "id": "field_practice",
         "label": "현장실습 과목군",
-        "courses": ["SW-FIELD-1", "SW-FIELD-2", "SW-FIELD-3", "SW-FIELD-4", "SW-FIELD-5", "SW-FIELD-6", "SW-STARTUP-FIELD-1", "SW-STARTUP-FIELD-2", "SW-STARTUP-1", "SW-STARTUP-2", "SW-INTERN-1", "SW-INTERN-2", "SW-INTERN-3", "SW-INTERN-4", "SW-INTERN-5", "SW-INTERN-6"],
+        "courses": [
+          "SW-FIELD-1",
+          "SW-FIELD-2",
+          "SW-FIELD-3",
+          "SW-FIELD-4",
+          "SW-FIELD-5",
+          "SW-FIELD-6",
+          "SW-STARTUP-FIELD-1",
+          "SW-STARTUP-FIELD-2",
+          "SW-STARTUP-1",
+          "SW-STARTUP-2",
+          "SW-INTERN-1",
+          "SW-INTERN-2",
+          "SW-INTERN-3",
+          "SW-INTERN-4",
+          "SW-INTERN-5",
+          "SW-INTERN-6"
+        ],
         "creditCap": 6,
         "capBucket": "major_elective",
         "overflowTo": "general_elective"

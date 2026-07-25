@@ -4,13 +4,19 @@
   "version": "0.1.0",
   "type": "module",
   "description": "아주대 졸업요건 트래커",
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "data:build": "node scripts/build-data.ts",
+    "data:check": "node scripts/build-data.ts --check",
+    "data:backport": "node scripts/backport.ts"
   },
   "dependencies": {
     "react": "^19.2.0",

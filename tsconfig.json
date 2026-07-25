@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "types": ["vitest/globals"],
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": false

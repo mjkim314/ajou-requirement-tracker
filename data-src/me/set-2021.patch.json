@@ -1,0 +1,70 @@
+{
+  "tracks": {
+    "general": {
+      "requirementVersion": "2021-me-general-v1",
+      "id": "rs_2021_me_general",
+      "name": "2021 기계공학과 · 일반과정",
+      "trackType": "general",
+      "buckets": {
+        "area_liberal": {
+          "areas": {
+            "$remove": ["nat_sci"],
+            "lit_art": { "id": "lit_art", "label": "문학과 예술", "minCourses": 1 },
+            "$order": ["hist_phil", "lit_art", "human_soc"]
+          },
+          "choiceGroups": "$delete"
+        },
+        "sw_required": {
+          "id": "sw_required",
+          "label": "계열별필수(SW)",
+          "shortLabel": "SW필수",
+          "group": "department_required",
+          "minCredits": 3,
+          "requiredCourses": ["ME-CONV-PROG-1"]
+        },
+        "computing": { "label": "전산학(SW)", "minCredits": 3, "requiredCourses": ["ME-NUMERICAL"] },
+        "major_required": {
+          "minCredits": 15,
+          "requiredCourses": [
+            "ME-STATICS",
+            "ME-SOLID-MECH",
+            "ME-THERMO",
+            "ME-DYNAMICS",
+            "ME-FLUID-MECH"
+          ]
+        },
+        "major_elective": { "minCredits": 27 },
+        "general_elective": { "minCredits": 36 },
+        "$order": [
+          "ajou_hope",
+          "ajou_character",
+          "english",
+          "writing",
+          "area_liberal",
+          "sw_required",
+          "math",
+          "science_basic",
+          "computing",
+          "major_required",
+          "major_elective",
+          "general_elective"
+        ]
+      },
+      "nonCurricular": { "$remove": ["design_credits"] },
+      "courseGroups": { "$remove": ["ug_research"] },
+      "source": {
+        "notes": [
+          "총 졸업학점 128 · 최저평점 2.0 — 요람 「2. 졸업요건」과 학칙 제50조1항1호·3항3호로 교차확인",
+          "평점표는 학칙 제46조6항(개정 2024.01.18.)과 일치",
+          "어학인증은 어학졸업인증제 운영규칙 [별표1] 공과대학 행 12종 전체를 반영 — 요람 표는 구 TEPS 605와 (신)TOEIC Speaking IM1 두 열을 누락했고, 요람의 \"TEPS 329\"는 NEW TEPS다",
+          "전공 이수원칙 예외는 요람이 2종(복수학위·학석사연계)만 적었고 학사운영규칙 제20조4항(개정 2025.07.21.)은 6종을 규정한다 — 앱이 라벨을 가진 2종만 넣었고 나머지 4종(순수외국인 특별전형·정부초청 외국인 학부장학생·교직과정이수자·군위탁 편입학)은 미반영이라 해당자는 추가전공 필수가 잘못 표시된다. 단 교직과정은 학사운영규칙 [별표2]상 기계공학전공이 2007학년도 신입생까지만 운영해 2021·2022학번에는 해당 없음",
+          "전공선택 「최소 택3 필수」 — 요람 전공선택 표 첫 7행(기계재료학·생산제조공학·열전달·진동학·기구설계·기계설계·시스템동역학)에 걸린 병합셀 요건으로, 학점과 별개로 이 중 3과목 이상을 이수해야 한다. major_elective의 choiceGroups(core_elective_pick3)로 표현했다. 기초유한요소법부터는 병합셀 범위 밖이다",
+          "⚠ 학칙 부칙(2024.01.18.) 제3조2항: 기계공학전공 공학교육인증제 포기가 2025년 3월부터 전 학생에게 적용된다. 2025년 2월 졸업생까지만 인증과정에 해당하고, 2025년 8월 졸업생부터는 심화교육과정 또는 일반과정을 선택한다. 2021·2022학번도 소급 대상이라, 지금 재학 중인 학생은 사실상 인증과정을 마칠 수 없다. 그럼에도 인증과정 세트를 남긴 이유는 (1) 2025년 2월 이전 졸업자·수료자의 이력 확인, (2) 요람 원문 보존이며, 규정이 지정한 대체 경로인 **심화교육과정 세트는 2024학년도 이후 요람에 있어 미데이터화**다. 현재 재학생은 일반과정 세트를 쓰되 학과에 확인할 것",
+          "계열별필수(SW) 과목이 2021 융합프로그래밍1 → 2022 Python프로그래밍으로 바뀌었으나 두 과목 모두 요람에 학수번호가 없어 동일 과목 여부를 확정하지 못했다(별도 courseKey로 분리)",
+          "공학인턴십은 1(3학점)만 인증선택/전공선택으로 인정되고 2~6은 교양선택 — 카탈로그 defaultBucket으로 구분",
+          "요람 일반과정 편성표 총계의 이론 159.5·설계 28은 소계 합(이론 162.5·설계 25)과 어긋난다 — 이론 3학점이 설계로 잘못 옮겨 인쇄된 요람 자체의 오류로, 두 오차가 상쇄돼 합계 221과 실험실습 33.5는 일치한다. 2021 인증과정 총계와 2022 두 과정 총계는 소계 합과 완전히 일치하므로 오류는 이 한 줄뿐이며, 요건 숫자에는 영향이 없다"
+        ]
+      }
+    }
+  }
+}

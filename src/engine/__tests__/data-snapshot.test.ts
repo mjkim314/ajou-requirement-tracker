@@ -15,7 +15,7 @@ import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
 
 const UPDATE_HINT =
-  '데이터 산출물이 바뀌었으면 `node scripts/data-snapshot.mjs` 출력으로 EXPECTED_HASHES를 갱신해 커밋에 포함할 것.'
+  '데이터 산출물이 바뀌었으면 (R4: `data-src/` 수정 후 `npm run data:build` 먼저,) `node scripts/data-snapshot.mjs` 출력으로 EXPECTED_HASHES를 갱신해 커밋에 포함할 것.'
 
 /** 키 정렬 결정론 직렬화 — scripts/data-snapshot.mjs 와 동일한 규칙. */
 function stableStringify(value: unknown): string {

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 2,
+  "requirementVersion": "2021-me-accredited-v1",
+  "id": "rs_2021_me_accredited",
+  "name": "2021 기계공학과 · 공학인증과정",
+  "admissionYearFrom": 2021,
+  "admissionYearTo": 2021,
+  "college": "공과대학",
+  "department": "기계공학과",
+  "trackType": "accredited",
+  "totalCredits": 128,
+  "minGPA": 2,
+  "gradePoints": {
+    "A+": 4.5,
+    "A0": 4,
+    "B+": 3.5,
+    "B0": 3,
+    "C+": 2.5,
+    "C0": 2,
+    "D+": 1.5,
+    "D0": 1,
+    "F": 0
+  },
+  "buckets": [
+    {
+      "id": "ajou_hope",
+      "label": "아주희망",
+      "group": "university_required",
+      "minCredits": 1,
+      "requiredCourses": ["GE-AJOU-HOPE"]
+    },
+    { "$include": "ge/buckets-2021" },
+    {
+      "id": "area_liberal",
+      "label": "영역별교양",
+      "shortLabel": "영역별교양",
+      "group": "university_required",
+      "minCredits": 9,
+      "minDistinctAreas": 3,
+      "areas": [
+        { "id": "hist_phil", "label": "역사와 철학", "minCourses": 1 },
+        { "id": "human_soc", "label": "인간과 사회", "minCourses": 1 },
+        { "id": "nat_sci", "label": "자연과 과학", "minCourses": 1 }
+      ],
+      "choiceGroups": [
+        {
+          "id": "abeek_hist_phil",
+          "label": "역사와 철학 영역 · 학과 지정과목 택1",
+          "pick": 1,
+          "courses": [
+            "GE-HP-ETHICS-OF-CONTEMPORARY-SOCIETY",
+            "GE-HP-WESTERN-INTELLECTUAL-HISTORY",
+            "GE-HP-SCIENCE-AND-PHILOSOPHY"
+          ]
+        },
+        {
+          "id": "abeek_human_soc",
+          "label": "인간과 사회 영역 · 학과 지정과목 택1",
+          "pick": 1,
+          "courses": [
+            "GE-HS-CREATIVE-THINKING",
+            "GE-HS-SCIENCE-TECHNOLOGY-AND-LAW",
+            "GE-HS-FUTURE-REVOLUTION-AND-STARTUP"
+          ]
+        },
+        {
+          "id": "abeek_nat_sci",
+          "label": "자연과 과학 영역 · 학과 지정과목 택1",
+          "pick": 1,
+          "courses": [
+            "GE-NS-TECHNOLOGY-DEVELOPMENT-AND-SOCIETY",
+            "GE-NS-HISTORY-OF-SCIENCE",
+            "GE-NS-ENERGY-AND-SOCIETY"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math",
+      "label": "수학",
+      "group": "department_required",
+      "minCredits": 12,
+      "requiredCourses": ["MATH-1", "MATH-2", "MATH-ENG-A", "MATH-ENG-E"]
+    },
+    {
+      "id": "science_basic",
+      "label": "기초과학",
+      "shortLabel": "기초과학",
+      "group": "department_required",
+      "minCredits": 12,
+      "requiredCourses": [
+        "SCI-PHYSICS-1",
+        "SCI-PHYSICS-LAB-1",
+        "SCI-CHEMISTRY",
+        "SCI-CHEMISTRY-LAB",
+        "SCI-PHYSICS-2",
+        "SCI-PHYSICS-LAB-2"
+      ]
+    },
+    {
+      "id": "computing",
+      "label": "전산학",
+      "group": "department_required",
+      "minCredits": 6,
+      "requiredCourses": ["ME-NUMERICAL", "ME-CONV-PROG-1"]
+    },
+    {
+      "id": "major_required",
+      "label": "전공필수",
+      "shortLabel": "전필",
+      "group": "major_required",
+      "minCredits": 28,
+      "requiredCourses": [
+        "ME-ADVENTURE-DESIGN",
+        "ME-STATICS",
+        "ME-DRAWING",
+        "ME-SOLID-MECH",
+        "ME-THERMO",
+        "ME-DYNAMICS",
+        "ME-FLUID-MECH",
+        "ME-LAB-BASIC",
+        "ME-LAB-ADVANCED",
+        "ME-CONV-DESIGN-IP",
+        "ME-CAPSTONE"
+      ]
+    },
+    {
+      "id": "major_elective",
+      "label": "전공선택",
+      "shortLabel": "전공선택",
+      "group": "major_elective",
+      "minCredits": 32,
+      "choiceGroups": [
+        {
+          "id": "core_elective_pick3",
+          "label": "지정 7과목 중 최소 3과목",
+          "pick": 3,
+          "courses": [
+            "ME-MATERIALS",
+            "ME-MANUFACTURING",
+            "ME-HEAT-TRANSFER",
+            "ME-VIBRATION",
+            "ME-MECHANISM-DESIGN",
+            "ME-MACHINE-DESIGN",
+            "ME-SYSTEM-DYNAMICS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "general_elective",
+      "label": "일반선택",
+      "shortLabel": "일반선택",
+      "group": "general_elective",
+      "minCredits": 18
+    }
+  ],
+  "nonCurricular": [
+    {
+      "id": "english_cert",
+      "label": "외국어(영어) 공인 성적",
+      "shortLabel": "영어 인증",
+      "type": "alternatives",
+      "pick": 1,
+      "appliesWhen": null,
+      "sourceNote": "어학졸업인증제 운영규칙(3-3-7, 개정 2025.11.24.) [별표1] 공과대학 행 — 기계공학과는 공대 10개 학과 병합셀에 속하며 소프트웨어학과와 값이 같다. 12종 중 1개 충족. 같은 규칙 제2조1항은 면제 11유형(특수교육대상·체육특기·재외국민및외국인특별전형·특례편입·학사편입·군위탁·학석사연계 진학확정·의과대학·간호학사특별과정 편입·중증장애·재직자전형)을 두지만, 앱의 면제 항목은 전공 이수원칙 예외(majorPolicy.exemptions)만 다루므로 어학인증 면제는 미반영이다",
+      "alternatives": [
+        { "id": "toeic", "label": "TOEIC", "type": "score", "min": 730 },
+        { "id": "new_teps", "label": "NEW TEPS", "type": "score", "min": 329 },
+        { "id": "teps", "label": "TEPS", "type": "score", "min": 605 },
+        { "id": "toefl_pbt", "label": "TOEFL PBT", "type": "score", "min": 534 },
+        { "id": "toefl_cbt", "label": "TOEFL CBT", "type": "score", "min": 200 },
+        { "id": "toefl_ibt", "label": "TOEFL iBT", "type": "score", "min": 72 },
+        { "id": "gtelp_2", "label": "G-TELP Level 2", "type": "score", "min": 67 },
+        { "id": "gtelp_3", "label": "G-TELP Level 3", "type": "score", "min": 89 },
+        { "id": "ielts", "label": "IELTS", "type": "score", "min": 5.5 },
+        {
+          "id": "toeic_sp",
+          "label": "TOEIC Speaking",
+          "type": "level",
+          "min": "Lv.5",
+          "scale": ["Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5", "Lv.6", "Lv.7", "Lv.8"]
+        },
+        {
+          "id": "toeic_sp_new",
+          "label": "TOEIC Speaking(신 스케일)",
+          "type": "level",
+          "min": "IM1",
+          "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL"]
+        },
+        {
+          "id": "opic",
+          "label": "OPIc",
+          "type": "level",
+          "min": "IL",
+          "scale": ["NL", "NM", "NH", "IL", "IM1", "IM2", "IM3", "IH", "AL", "AM", "AH"]
+        }
+      ]
+    },
+    {
+      "id": "design_credits",
+      "label": "설계학점 12학점 이상 이수",
+      "shortLabel": "설계 12학점",
+      "type": "check",
+      "appliesWhen": null,
+      "sourceNote": "요람 인증과정 「• 설계 (12)학점 이상 이수」. 과목별 설계학점은 카탈로그 creditBreakdown.design에 있으나 엔진이 설계학점을 자동 집계하지 않아 직접 확인 항목으로 둔다. 인증필수 11과목만으로 설계 9학점이 확보되므로 인증선택에서 3학점 이상을 더 채워야 한다"
+    }
+  ],
+  "equivalents": [
+    {
+      "id": "eq_adv_english_1",
+      "type": "substitutable",
+      "from": "GE-ENGLISH-ADV-1",
+      "to": "GE-ENGLISH-1",
+      "direction": "forward",
+      "creditPolicy": "useOriginal",
+      "note": "다산학부대학 교양필수 — 고급영어1은 일정 수준 이상 학생이 수강 시 영어1 이수로 대체 인정"
+    },
+    {
+      "id": "eq_adv_english_2",
+      "type": "substitutable",
+      "from": "GE-ENGLISH-ADV-2",
+      "to": "GE-ENGLISH-2",
+      "direction": "forward",
+      "creditPolicy": "useOriginal",
+      "note": "다산학부대학 교양필수 — 고급영어2는 일정 수준 이상 학생이 수강 시 영어2 이수로 대체 인정"
+    }
+  ],
+  "courseGroups": [
+    {
+      "id": "ug_research",
+      "label": "학부연구프로젝트",
+      "courses": ["ME-UG-RESEARCH-1", "ME-UG-RESEARCH-2", "ME-UG-RESEARCH-3"],
+      "creditCap": 0,
+      "capBucket": "major_elective",
+      "overflowTo": "general_elective",
+      "note": "요람: 학부연구프로젝트 1·2·3은 공학교육인증 학생에게 교양 1학점으로 인정(일반과정은 전공선택 1학점)."
+    }
+  ],
+  "recognitionCaps": [
+    {
+      "id": "cap_recognized_credits",
+      "label": "교환·인정학점 합산 상한",
+      "states": ["transferred", "credited"],
+      "maxRatioOfTotal": 0.5,
+      "sourceNote": "학칙 제45조2항: 협정대학·현장실습 인정학점은 졸업학점의 1/2 이내(128학점 기준 64학점). 현장실습수업 운영규칙 제7조2항의 산업현장실습 통산 18학점 상한이 실무적으로 더 엄격하게 걸린다"
+    }
+  ],
+  "majorPolicy": {
+    "satisfiedBy": ["accredited_track", "additional_major"],
+    "minAdditionalMajorCount": 1,
+    "requiredWhen": { "field": "trackType", "op": "neq", "value": "accredited" },
+    "exemptions": ["dual_degree", "linked_masters"]
+  },
+  "source": {
+    "document": "2021 아주대학교 요람 · 공과대학 기계공학과",
+    "pages": "181-195",
+    "verified": false,
+    "notes": [
+      "총 졸업학점 128 · 최저평점 2.0 — 요람 「2. 졸업요건」과 학칙 제50조1항1호·3항3호로 교차확인",
+      "인증과정 영역별교양은 학과가 지정한 9과목(영역별 3과목)만 전문교양으로 인정된다 — choiceGroups로 표현했다. 지정 외 과목도 학점은 영역별교양에 집계되므로 진행률이 100%로 보여도 지정과목 택1이 미충족이면 요건은 미충족으로 판정된다",
+      "학부연구프로젝트1~3은 인증과정에서 교양 1학점으로 인정되어 전공선택에 잡히지 않도록 courseGroups(creditCap 0)로 전액 일반선택 이월 처리했다",
+      "평점표는 학칙 제46조6항(개정 2024.01.18.)과 일치",
+      "어학인증은 어학졸업인증제 운영규칙 [별표1] 공과대학 행 12종 전체를 반영 — 요람 표는 구 TEPS 605와 (신)TOEIC Speaking IM1 두 열을 누락했고, 요람의 \"TEPS 329\"는 NEW TEPS다",
+      "전공 이수원칙 예외는 요람이 2종(복수학위·학석사연계)만 적었고 학사운영규칙 제20조4항(개정 2025.07.21.)은 6종을 규정한다 — 앱이 라벨을 가진 2종만 넣었고 나머지 4종(순수외국인 특별전형·정부초청 외국인 학부장학생·교직과정이수자·군위탁 편입학)은 미반영이라 해당자는 추가전공 필수가 잘못 표시된다. 단 교직과정은 학사운영규칙 [별표2]상 기계공학전공이 2007학년도 신입생까지만 운영해 2021·2022학번에는 해당 없음",
+      "전공선택 「최소 택3 필수」 — 요람 전공선택 표 첫 7행(기계재료학·생산제조공학·열전달·진동학·기구설계·기계설계·시스템동역학)에 걸린 병합셀 요건으로, 학점과 별개로 이 중 3과목 이상을 이수해야 한다. major_elective의 choiceGroups(core_elective_pick3)로 표현했다. 기초유한요소법부터는 병합셀 범위 밖이다",
+      "⚠ 학칙 부칙(2024.01.18.) 제3조2항: 기계공학전공 공학교육인증제 포기가 2025년 3월부터 전 학생에게 적용된다. 2025년 2월 졸업생까지만 인증과정에 해당하고, 2025년 8월 졸업생부터는 심화교육과정 또는 일반과정을 선택한다. 2021·2022학번도 소급 대상이라, 지금 재학 중인 학생은 사실상 인증과정을 마칠 수 없다. 그럼에도 인증과정 세트를 남긴 이유는 (1) 2025년 2월 이전 졸업자·수료자의 이력 확인, (2) 요람 원문 보존이며, 규정이 지정한 대체 경로인 **심화교육과정 세트는 2024학년도 이후 요람에 있어 미데이터화**다. 현재 재학생은 일반과정 세트를 쓰되 학과에 확인할 것",
+      "계열별필수(SW) 과목이 2021 융합프로그래밍1 → 2022 Python프로그래밍으로 바뀌었으나 두 과목 모두 요람에 학수번호가 없어 동일 과목 여부를 확정하지 못했다(별도 courseKey로 분리)",
+      "공학인턴십은 1(3학점)만 인증선택/전공선택으로 인정되고 2~6은 교양선택 — 카탈로그 defaultBucket으로 구분",
+      "요람 일반과정 편성표 총계의 이론 159.5·설계 28은 소계 합(이론 162.5·설계 25)과 어긋난다 — 이론 3학점이 설계로 잘못 옮겨 인쇄된 요람 자체의 오류로, 두 오차가 상쇄돼 합계 221과 실험실습 33.5는 일치한다. 2021 인증과정 총계와 2022 두 과정 총계는 소계 합과 완전히 일치하므로 오류는 이 한 줄뿐이며, 요건 숫자에는 영향이 없다"
+    ]
+  }
+}

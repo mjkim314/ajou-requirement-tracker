@@ -131,6 +131,7 @@ localStorage  ← 나중에 서버로 바꿀 수 있게
 | 금지 | 대신 |
 |---|---|
 | 요건 숫자 하드코딩 | 요건 세트 JSON에서 읽기 |
+| **산출물 JSON(`src/data/*.json`) 직접 수정** | `data-src/` 수정 후 `npm run data:build` (R4 상속 모델 — `data-src/README.md`) |
 | 과목을 이름 문자열로 비교 | `courseKey`로 비교 |
 | 컴포넌트에서 localStorage 직접 호출 | Storage Adapter 경유 |
 | 계산 로직을 컴포넌트 안에 작성 | 엔진 모듈로 분리 |

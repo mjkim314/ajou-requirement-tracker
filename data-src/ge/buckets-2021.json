@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ajou_character",
+    "label": "아주인성",
+    "group": "university_required",
+    "minCredits": 1,
+    "requiredCourses": ["GE-AJOU-CHARACTER"]
+  },
+  {
+    "id": "english",
+    "label": "영어",
+    "shortLabel": "영어",
+    "group": "university_required",
+    "minCredits": 6,
+    "requiredCourses": ["GE-ENGLISH-1", "GE-ENGLISH-2"]
+  },
+  {
+    "id": "writing",
+    "label": "글쓰기",
+    "group": "university_required",
+    "minCredits": 3,
+    "requiredCourses": ["GE-WRITING"]
+  }
+]

@@ -1,5 +1,13 @@
 [
-  { "courseKey": "SW-CAREER-SEMINAR", "name": "SW커리어세미나", "credits": 1, "defaultBucket": "sw_seminar", "codes": ["SCE191"], "gradingType": "PF", "note": "과목개요상 pass-fail 운영. 전과(전입)생·편입학생은 이수 의무 없음(2024 요람 유의사항)" },
+  {
+    "courseKey": "SW-CAREER-SEMINAR",
+    "name": "SW커리어세미나",
+    "credits": 1,
+    "defaultBucket": "sw_seminar",
+    "codes": ["SCE191"],
+    "gradingType": "PF",
+    "note": "과목개요상 pass-fail 운영. 전과(전입)생·편입학생은 이수 의무 없음(2024 요람 유의사항)"
+  },
   { "courseKey": "MATH-1", "name": "수학1", "credits": 3, "defaultBucket": "math" },
   { "courseKey": "MATH-2", "name": "수학2", "credits": 3, "defaultBucket": "math" },
   { "courseKey": "MATH-PROB-1", "name": "확률및통계1", "credits": 3, "defaultBucket": "math" },
@@ -7,73 +15,576 @@
   { "courseKey": "MATH-LINEAR-1", "name": "선형대수1", "credits": 3, "defaultBucket": "math" },
   { "courseKey": "SCI-PHYSICS", "name": "물리학", "credits": 3, "defaultBucket": "science_basic" },
   { "courseKey": "SCI-BIOLOGY", "name": "생명과학", "credits": 3, "defaultBucket": "science_basic" },
-  { "courseKey": "SCI-PHYSICS-LAB", "name": "물리학실험", "credits": 1, "defaultBucket": "science_basic" },
-  { "courseKey": "SCI-BIOLOGY-LAB", "name": "생명과학실험", "credits": 1, "defaultBucket": "science_basic" },
+  {
+    "courseKey": "SCI-PHYSICS-LAB",
+    "name": "물리학실험",
+    "credits": 1,
+    "defaultBucket": "science_basic"
+  },
+  {
+    "courseKey": "SCI-BIOLOGY-LAB",
+    "name": "생명과학실험",
+    "credits": 1,
+    "defaultBucket": "science_basic"
+  },
   { "courseKey": "SCI-CHEMISTRY", "name": "화학", "credits": 3, "defaultBucket": "science_basic" },
-
-  { "courseKey": "SW-PROGRAMMING", "name": "컴퓨터프로그래밍및실습", "nameEn": "Computer Programming and Practice", "credits": 4, "creditBreakdown": { "theory": 3, "lab": 1 }, "defaultBucket": "major_required", "codes": ["SCE103"], "aliases": ["컴퓨터프로그래밍"], "gradingType": "ABF", "note": "1학년 겨울 전공진입 ABF제 운영(전공 역량 인증 대상)" },
-  { "courseKey": "SW-DISCRETE-MATH", "name": "이산수학", "nameEn": "Discrete Mathematics", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE141"] },
-  { "courseKey": "SW-AI-INTRO", "name": "인공지능입문", "nameEn": "Introduction to Artificial Intelligence", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE104"], "note": "창의소프트웨어입문(SCE192)을 대체한 전공필수(2023 개정 유지). 대체규칙 eq_creative_to_ai(effectiveFrom 2023)" },
-  { "courseKey": "SW-DIGITAL-CIRCUIT", "name": "디지털회로", "nameEn": "Digital Circuits and Practice", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE112"] },
-  { "courseKey": "SW-OOP", "name": "객체지향프로그래밍및실습", "nameEn": "Object-oriented Programming and Practice", "credits": 4, "creditBreakdown": { "theory": 3, "lab": 1 }, "defaultBucket": "major_required", "codes": ["SCE204"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-DATA-STRUCT", "name": "자료구조", "nameEn": "Data Structures and Practice", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE205"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-COMP-ARCH", "name": "컴퓨터구조", "nameEn": "Computer Organization and Architecture", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE212"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-ALGORITHM", "name": "알고리즘", "nameEn": "Algorithms", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE231"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-SYS-PROGRAMMING", "name": "시스템프로그래밍및실습", "nameEn": "System Programming and Practice", "credits": 4, "creditBreakdown": { "theory": 3, "lab": 1 }, "defaultBucket": "major_required", "codes": ["SCE214"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-NETWORK", "name": "컴퓨터네트워크", "nameEn": "Computer Networks", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE221"] },
-  { "courseKey": "SW-OS", "name": "운영체제", "nameEn": "Operating Systems", "credits": 3, "defaultBucket": "major_required", "codes": ["SCE213"], "prerequisites": ["SW-PROGRAMMING"] },
-
-  { "courseKey": "SW-NET-SW-DESIGN", "name": "네트워크소프트웨어", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE327"], "aliases": ["네트워크소프트웨어설계"], "prerequisites": ["SW-NETWORK"], "note": "2022 네트워크소프트웨어설계(SCE325, 4학점)에서 명칭·학수번호(SCE327)·학점(3) 개정" },
-  { "courseKey": "SW-COMP-COMM", "name": "컴퓨터통신", "nameEn": "Computer Communication", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE322"] },
-  { "courseKey": "SW-DB", "name": "데이터베이스", "nameEn": "Database", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE333"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-INFO-SEC", "name": "정보보호", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE334"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-OSS-INTRO", "name": "오픈소스SW입문", "nameEn": "Introduction to Open Source Software", "credits": 3, "creditBreakdown": { "theory": 1, "design": 2 }, "defaultBucket": "major_elective", "codes": ["SCE331"], "prerequisites": ["SW-OOP"] },
-  { "courseKey": "SW-ML", "name": "기계학습", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE3315"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-COMPILER", "name": "컴파일러", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE313"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-DATA-MINING", "name": "데이터마이닝", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE3313"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-IT-ENGLISH", "name": "IT전문영어", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE392"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-IT-INTENSIVE-1", "name": "IT집중교육1", "nameEn": "IT Intensive Programming 1", "credits": 6, "creditBreakdown": { "theory": 2, "lab": 4 }, "defaultBucket": "major_elective", "codes": ["SCE393"], "courseGroups": ["intensive"], "prerequisites": ["SW-OOP"] },
-  { "courseKey": "SW-IT-INTENSIVE-2", "name": "IT집중교육2", "credits": 6, "creditBreakdown": { "theory": 2, "lab": 4 }, "defaultBucket": "major_elective", "codes": ["SCE394"], "courseGroups": ["intensive"], "prerequisites": ["SW-OOP"] },
-  { "courseKey": "SW-SELF-PROJECT", "name": "자기주도프로젝트", "credits": 3, "creditBreakdown": { "design": 3 }, "defaultBucket": "major_elective", "codes": ["SCE395"], "courseGroups": ["selfproj"] },
-  { "courseKey": "SW-COMP-THEORY", "name": "계산이론", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE335"], "prerequisites": ["SW-DISCRETE-MATH"] },
-  { "courseKey": "SW-INTELLIGENT-IOT", "name": "지능형사물인터넷", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE3317"], "prerequisites": ["SW-OS"], "note": "2023 신규 유지. 2022 사물인터넷시스템설계(SCE316, 4학점)와는 별개 과목" },
-  { "courseKey": "SW-SW-ENG", "name": "소프트웨어공학", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE337"], "prerequisites": ["SW-OOP"] },
-  { "courseKey": "SW-DIGITAL-FORENSICS", "name": "디지털포렌식", "credits": 3, "creditBreakdown": { "theory": 1.5, "lab": 1.5 }, "defaultBucket": "major_elective", "codes": ["SOS338"], "prerequisites": ["SW-PROGRAMMING"], "note": "사이버보안학과 교차개설(SOS)" },
-  { "courseKey": "SW-WEB-SYS-DESIGN", "name": "웹시스템설계", "credits": 4, "creditBreakdown": { "theory": 2, "design": 1, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE338"], "prerequisites": ["SW-OOP"] },
-  { "courseKey": "SW-EMBEDDED", "name": "임베디드소프트웨어", "credits": 3, "creditBreakdown": { "theory": 3 }, "defaultBucket": "major_elective", "codes": ["SCE312"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-CRYPTO", "name": "현대암호이론및응용", "credits": 3, "defaultBucket": "major_elective", "codes": ["SOS252"] },
-  { "courseKey": "SW-CODING-1", "name": "실전코딩1", "credits": 3, "creditBreakdown": { "theory": 1, "lab": 2 }, "defaultBucket": "major_elective", "codes": ["SCE3310"] },
-  { "courseKey": "SW-CODING-2", "name": "실전코딩2", "credits": 3, "creditBreakdown": { "theory": 1, "lab": 2 }, "defaultBucket": "major_elective", "codes": ["SCE3311"] },
-  { "courseKey": "SW-BLOCKCHAIN-IOT", "name": "블록체인과 IoT", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SOS339"], "prerequisites": ["SW-PROGRAMMING"], "note": "사이버보안학과 교차개설(SOS)" },
-  { "courseKey": "SW-AI-INTENSIVE-1", "name": "AI집중교육1", "credits": 6, "creditBreakdown": { "theory": 4, "lab": 2 }, "defaultBucket": "major_elective", "codes": ["SCE3319"], "courseGroups": ["intensive"], "note": "집중교육과목군(산학프로젝트 인증)" },
-  { "courseKey": "SW-AI-INTENSIVE-2", "name": "AI집중교육2", "credits": 6, "creditBreakdown": { "theory": 4, "lab": 2 }, "defaultBucket": "major_elective", "codes": ["SCE3320"], "courseGroups": ["intensive"], "note": "집중교육과목군(산학프로젝트 인증)" },
-  { "courseKey": "SW-MODEL-SIM", "name": "모델링시뮬레이션", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE411"], "prerequisites": ["SW-DATA-STRUCT"], "note": "SCE411 단독(고급컴퓨터구조는 SCE412)" },
-  { "courseKey": "SW-CV", "name": "컴퓨터비젼", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE431"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-STARTUP-THEORY", "name": "SW창업론", "nameEn": "SW Business Start-up", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE492"] },
-  { "courseKey": "SW-MOBILE-NET", "name": "모바일네트워크", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE421"], "prerequisites": ["SW-NETWORK"] },
-  { "courseKey": "SW-CG", "name": "컴퓨터그래픽스", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE433"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-SELF-RESEARCH-1", "name": "자기주도연구1", "credits": 3, "creditBreakdown": { "design": 3 }, "defaultBucket": "major_elective", "codes": ["SCE493"], "courseGroups": ["selfresearch"], "note": "자기주도연구과목군(산학프로젝트 인증)" },
-  { "courseKey": "SW-DISTRIBUTED", "name": "분산시스템", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE435"], "prerequisites": ["SW-PROGRAMMING"] },
-  { "courseKey": "SW-AI-COMPUTER-SYS", "name": "인공지능컴퓨터시스템", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE401"] },
-  { "courseKey": "SW-AI-EMBEDDED", "name": "AI임베디드시스템", "credits": 3, "creditBreakdown": { "theory": 2, "lab": 1 }, "defaultBucket": "major_elective", "codes": ["SCE413"] },
-  { "courseKey": "SW-AIOT-REALTIME", "name": "AIoT실시간서비스설계", "credits": 3, "creditBreakdown": { "theory": 1.5, "design": 1.5 }, "defaultBucket": "major_elective", "codes": ["SCE414"] },
-  { "courseKey": "SW-AI-COMM-NET", "name": "AI통신네트워크", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE422"] },
-  { "courseKey": "SW-DIST-PARALLEL", "name": "분산병렬컴퓨팅", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE415"] },
-  { "courseKey": "SW-CAPSTONE", "name": "SW캡스톤디자인", "credits": 6, "creditBreakdown": { "design": 6 }, "defaultBucket": "major_elective", "codes": ["SCE491"], "courseGroups": ["capstone"] },
-  { "courseKey": "SW-IND-SEMINAR", "name": "SW산업세미나", "credits": 1, "creditBreakdown": { "theory": 1 }, "defaultBucket": "major_elective", "codes": ["SCE4921"] },
-  { "courseKey": "SW-ADV-COMP-ARCH", "name": "고급컴퓨터구조", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE412"], "prerequisites": ["SW-COMP-ARCH"] },
-  { "courseKey": "SW-HCI", "name": "인간과컴퓨터상호작용", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE436"], "prerequisites": ["SW-ALGORITHM"] },
-  { "courseKey": "SW-AI", "name": "인공지능", "credits": 3, "defaultBucket": "major_elective", "codes": ["SCE432"], "prerequisites": ["SW-DATA-STRUCT"] },
-  { "courseKey": "SW-SELF-RESEARCH-2", "name": "자기주도연구2", "credits": 3, "creditBreakdown": { "design": 3 }, "defaultBucket": "major_elective", "codes": ["SCE494"], "courseGroups": ["selfresearch"], "note": "자기주도연구과목군(산학프로젝트 인증)" },
-
-  { "courseKey": "SW-FIELD-1", "name": "SW현장실습1", "nameEn": "Field Practice 1", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE495"], "courseGroups": ["field"] },
-  { "courseKey": "SW-FIELD-2", "name": "SW현장실습2", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE496"], "courseGroups": ["field"] },
-  { "courseKey": "SW-FIELD-3", "name": "SW현장실습3", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE497"], "courseGroups": ["field"] },
-  { "courseKey": "SW-FIELD-4", "name": "SW현장실습4", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE498"], "courseGroups": ["field"] },
-  { "courseKey": "SW-FIELD-5", "name": "SW현장실습5", "nameEn": "Field Practice 5", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE4919"], "courseGroups": ["field"] },
-  { "courseKey": "SW-FIELD-6", "name": "SW현장실습6", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE4920"], "courseGroups": ["field"] },
-  { "courseKey": "SW-STARTUP-1", "name": "창업실습1", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE499"], "courseGroups": ["startup"] },
-  { "courseKey": "SW-STARTUP-2", "name": "창업실습2", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE4910"], "courseGroups": ["startup"] },
-  { "courseKey": "SW-STARTUP-FIELD-1", "name": "창업현장실습1", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE4911"], "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상" },
-  { "courseKey": "SW-STARTUP-FIELD-2", "name": "창업현장실습2", "credits": 3, "creditBreakdown": { "lab": 3 }, "defaultBucket": "major_elective", "codes": ["SCE4912"], "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상" }
+  {
+    "courseKey": "SW-PROGRAMMING",
+    "name": "컴퓨터프로그래밍및실습",
+    "credits": 4,
+    "defaultBucket": "major_required",
+    "codes": ["SCE103"],
+    "aliases": ["컴퓨터프로그래밍"],
+    "gradingType": "ABF",
+    "nameEn": "Computer Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 },
+    "note": "1학년 겨울 전공진입 ABF제 운영(전공 역량 인증 대상)"
+  },
+  {
+    "courseKey": "SW-DISCRETE-MATH",
+    "name": "이산수학",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE141"],
+    "nameEn": "Discrete Mathematics"
+  },
+  {
+    "courseKey": "SW-AI-INTRO",
+    "name": "인공지능입문",
+    "nameEn": "Introduction to Artificial Intelligence",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE104"],
+    "note": "창의소프트웨어입문(SCE192)을 대체한 전공필수(2023 개정 유지). 대체규칙 eq_creative_to_ai(effectiveFrom 2023)"
+  },
+  {
+    "courseKey": "SW-DIGITAL-CIRCUIT",
+    "name": "디지털회로",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE112"],
+    "nameEn": "Digital Circuits and Practice"
+  },
+  {
+    "courseKey": "SW-OOP",
+    "name": "객체지향프로그래밍및실습",
+    "credits": 4,
+    "defaultBucket": "major_required",
+    "codes": ["SCE204"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "nameEn": "Object-oriented Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 }
+  },
+  {
+    "courseKey": "SW-DATA-STRUCT",
+    "name": "자료구조",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE205"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "nameEn": "Data Structures and Practice"
+  },
+  {
+    "courseKey": "SW-COMP-ARCH",
+    "name": "컴퓨터구조",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE212"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "nameEn": "Computer Organization and Architecture"
+  },
+  {
+    "courseKey": "SW-ALGORITHM",
+    "name": "알고리즘",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE231"],
+    "prerequisites": ["SW-DATA-STRUCT"],
+    "nameEn": "Algorithms"
+  },
+  {
+    "courseKey": "SW-SYS-PROGRAMMING",
+    "name": "시스템프로그래밍및실습",
+    "credits": 4,
+    "defaultBucket": "major_required",
+    "codes": ["SCE214"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "nameEn": "System Programming and Practice",
+    "creditBreakdown": { "theory": 3, "lab": 1 }
+  },
+  {
+    "courseKey": "SW-NETWORK",
+    "name": "컴퓨터네트워크",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE221"],
+    "nameEn": "Computer Networks"
+  },
+  {
+    "courseKey": "SW-OS",
+    "name": "운영체제",
+    "credits": 3,
+    "defaultBucket": "major_required",
+    "codes": ["SCE213"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "nameEn": "Operating Systems"
+  },
+  {
+    "courseKey": "SW-NET-SW-DESIGN",
+    "name": "네트워크소프트웨어",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE327"],
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-NETWORK"],
+    "aliases": ["네트워크소프트웨어설계"],
+    "note": "2022 네트워크소프트웨어설계(SCE325, 4학점)에서 명칭·학수번호(SCE327)·학점(3) 개정"
+  },
+  {
+    "courseKey": "SW-COMP-COMM",
+    "name": "컴퓨터통신",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE322"],
+    "nameEn": "Computer Communication"
+  },
+  {
+    "courseKey": "SW-DB",
+    "name": "데이터베이스",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE333"],
+    "nameEn": "Database",
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-INFO-SEC",
+    "name": "정보보호",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE334"],
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-OSS-INTRO",
+    "name": "오픈소스SW입문",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE331"],
+    "nameEn": "Introduction to Open Source Software",
+    "creditBreakdown": { "theory": 1, "design": 2 },
+    "prerequisites": ["SW-OOP"]
+  },
+  {
+    "courseKey": "SW-ML",
+    "name": "기계학습",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3315"],
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-COMPILER",
+    "name": "컴파일러",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE313"],
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-DATA-MINING",
+    "name": "데이터마이닝",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3313"],
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-IT-ENGLISH",
+    "name": "IT전문영어",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE392"],
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  {
+    "courseKey": "SW-IT-INTENSIVE-1",
+    "name": "IT집중교육1",
+    "credits": 6,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE393"],
+    "courseGroups": ["intensive"],
+    "creditBreakdown": { "theory": 2, "lab": 4 },
+    "prerequisites": ["SW-OOP"],
+    "nameEn": "IT Intensive Programming 1"
+  },
+  {
+    "courseKey": "SW-IT-INTENSIVE-2",
+    "name": "IT집중교육2",
+    "credits": 6,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE394"],
+    "courseGroups": ["intensive"],
+    "creditBreakdown": { "theory": 2, "lab": 4 },
+    "prerequisites": ["SW-OOP"]
+  },
+  {
+    "courseKey": "SW-SELF-PROJECT",
+    "name": "자기주도프로젝트",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE395"],
+    "courseGroups": ["selfproj"],
+    "creditBreakdown": { "design": 3 }
+  },
+  {
+    "courseKey": "SW-COMP-THEORY",
+    "name": "계산이론",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE335"],
+    "prerequisites": ["SW-DISCRETE-MATH"]
+  },
+  {
+    "courseKey": "SW-INTELLIGENT-IOT",
+    "name": "지능형사물인터넷",
+    "credits": 3,
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3317"],
+    "prerequisites": ["SW-OS"],
+    "note": "2023 신규 유지. 2022 사물인터넷시스템설계(SCE316, 4학점)와는 별개 과목"
+  },
+  {
+    "courseKey": "SW-SW-ENG",
+    "name": "소프트웨어공학",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE337"],
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "prerequisites": ["SW-OOP"]
+  },
+  {
+    "courseKey": "SW-DIGITAL-FORENSICS",
+    "name": "디지털포렌식",
+    "credits": 3,
+    "creditBreakdown": { "theory": 1.5, "lab": 1.5 },
+    "defaultBucket": "major_elective",
+    "codes": ["SOS338"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "note": "사이버보안학과 교차개설(SOS)"
+  },
+  {
+    "courseKey": "SW-WEB-SYS-DESIGN",
+    "name": "웹시스템설계",
+    "credits": 4,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE338"],
+    "creditBreakdown": { "theory": 2, "design": 1, "lab": 1 },
+    "prerequisites": ["SW-OOP"]
+  },
+  {
+    "courseKey": "SW-EMBEDDED",
+    "name": "임베디드소프트웨어",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE312"],
+    "creditBreakdown": { "theory": 3 },
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  {
+    "courseKey": "SW-CRYPTO",
+    "name": "현대암호이론및응용",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SOS252"]
+  },
+  {
+    "courseKey": "SW-CODING-1",
+    "name": "실전코딩1",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3310"],
+    "creditBreakdown": { "theory": 1, "lab": 2 }
+  },
+  {
+    "courseKey": "SW-CODING-2",
+    "name": "실전코딩2",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3311"],
+    "creditBreakdown": { "theory": 1, "lab": 2 }
+  },
+  {
+    "courseKey": "SW-BLOCKCHAIN-IOT",
+    "name": "블록체인과 IoT",
+    "credits": 3,
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "defaultBucket": "major_elective",
+    "codes": ["SOS339"],
+    "prerequisites": ["SW-PROGRAMMING"],
+    "note": "사이버보안학과 교차개설(SOS)"
+  },
+  {
+    "courseKey": "SW-AI-INTENSIVE-1",
+    "name": "AI집중교육1",
+    "credits": 6,
+    "creditBreakdown": { "theory": 4, "lab": 2 },
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3319"],
+    "courseGroups": ["intensive"],
+    "note": "집중교육과목군(산학프로젝트 인증)"
+  },
+  {
+    "courseKey": "SW-AI-INTENSIVE-2",
+    "name": "AI집중교육2",
+    "credits": 6,
+    "creditBreakdown": { "theory": 4, "lab": 2 },
+    "defaultBucket": "major_elective",
+    "codes": ["SCE3320"],
+    "courseGroups": ["intensive"],
+    "note": "집중교육과목군(산학프로젝트 인증)"
+  },
+  {
+    "courseKey": "SW-MODEL-SIM",
+    "name": "모델링시뮬레이션",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE411"],
+    "note": "SCE411 단독(고급컴퓨터구조는 SCE412)",
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-CV",
+    "name": "컴퓨터비젼",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE431"],
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-STARTUP-THEORY",
+    "name": "SW창업론",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE492"],
+    "nameEn": "SW Business Start-up"
+  },
+  {
+    "courseKey": "SW-MOBILE-NET",
+    "name": "모바일네트워크",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE421"],
+    "prerequisites": ["SW-NETWORK"]
+  },
+  {
+    "courseKey": "SW-CG",
+    "name": "컴퓨터그래픽스",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE433"],
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-SELF-RESEARCH-1",
+    "name": "자기주도연구1",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE493"],
+    "creditBreakdown": { "design": 3 },
+    "courseGroups": ["selfresearch"],
+    "note": "자기주도연구과목군(산학프로젝트 인증)"
+  },
+  {
+    "courseKey": "SW-DISTRIBUTED",
+    "name": "분산시스템",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE435"],
+    "prerequisites": ["SW-PROGRAMMING"]
+  },
+  {
+    "courseKey": "SW-AI-COMPUTER-SYS",
+    "name": "인공지능컴퓨터시스템",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE401"]
+  },
+  {
+    "courseKey": "SW-AI-EMBEDDED",
+    "name": "AI임베디드시스템",
+    "credits": 3,
+    "creditBreakdown": { "theory": 2, "lab": 1 },
+    "defaultBucket": "major_elective",
+    "codes": ["SCE413"]
+  },
+  {
+    "courseKey": "SW-AIOT-REALTIME",
+    "name": "AIoT실시간서비스설계",
+    "credits": 3,
+    "creditBreakdown": { "theory": 1.5, "design": 1.5 },
+    "defaultBucket": "major_elective",
+    "codes": ["SCE414"]
+  },
+  {
+    "courseKey": "SW-AI-COMM-NET",
+    "name": "AI통신네트워크",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE422"]
+  },
+  {
+    "courseKey": "SW-DIST-PARALLEL",
+    "name": "분산병렬컴퓨팅",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE415"]
+  },
+  {
+    "courseKey": "SW-CAPSTONE",
+    "name": "SW캡스톤디자인",
+    "credits": 6,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE491"],
+    "courseGroups": ["capstone"],
+    "creditBreakdown": { "design": 6 }
+  },
+  {
+    "courseKey": "SW-IND-SEMINAR",
+    "name": "SW산업세미나",
+    "credits": 1,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4921"],
+    "creditBreakdown": { "theory": 1 }
+  },
+  {
+    "courseKey": "SW-ADV-COMP-ARCH",
+    "name": "고급컴퓨터구조",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE412"],
+    "prerequisites": ["SW-COMP-ARCH"]
+  },
+  {
+    "courseKey": "SW-HCI",
+    "name": "인간과컴퓨터상호작용",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE436"],
+    "prerequisites": ["SW-ALGORITHM"]
+  },
+  {
+    "courseKey": "SW-AI",
+    "name": "인공지능",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE432"],
+    "prerequisites": ["SW-DATA-STRUCT"]
+  },
+  {
+    "courseKey": "SW-SELF-RESEARCH-2",
+    "name": "자기주도연구2",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE494"],
+    "creditBreakdown": { "design": 3 },
+    "courseGroups": ["selfresearch"],
+    "note": "자기주도연구과목군(산학프로젝트 인증)"
+  },
+  {
+    "courseKey": "SW-FIELD-1",
+    "name": "SW현장실습1",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE495"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 },
+    "nameEn": "Field Practice 1"
+  },
+  {
+    "courseKey": "SW-FIELD-2",
+    "name": "SW현장실습2",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE496"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-FIELD-3",
+    "name": "SW현장실습3",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE497"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-FIELD-4",
+    "name": "SW현장실습4",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE498"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-FIELD-5",
+    "name": "SW현장실습5",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4919"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 },
+    "nameEn": "Field Practice 5"
+  },
+  {
+    "courseKey": "SW-FIELD-6",
+    "name": "SW현장실습6",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4920"],
+    "courseGroups": ["field"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-STARTUP-1",
+    "name": "창업실습1",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE499"],
+    "courseGroups": ["startup"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-STARTUP-2",
+    "name": "창업실습2",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4910"],
+    "courseGroups": ["startup"],
+    "creditBreakdown": { "lab": 3 }
+  },
+  {
+    "courseKey": "SW-STARTUP-FIELD-1",
+    "name": "창업현장실습1",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4911"],
+    "creditBreakdown": { "lab": 3 },
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상"
+  },
+  {
+    "courseKey": "SW-STARTUP-FIELD-2",
+    "name": "창업현장실습2",
+    "credits": 3,
+    "defaultBucket": "major_elective",
+    "codes": ["SCE4912"],
+    "creditBreakdown": { "lab": 3 },
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2024 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 12학점 상한(field_practice) 대상"
+  }
 ]

@@ -1,0 +1,198 @@
+{
+  "SW-CAREER-SEMINAR": {
+    "note": "2025 요람에서 이수구분이 대학필수(아주희망 대체)에서 전공기초(전기)로 이동. 과목개요상 pass-fail 운영. 전과(전입)생·편입학생은 이수 의무 없음(2025 요람 유의사항)",
+    "nameEn": "Software Career Seminar"
+  },
+  "MATH-1": { "note": "2025 요람 BSM 수학. 확률및통계는 BSM이 아니라 전공기초로 분리됨" },
+  "MATH-PROB-1": { "defaultBucket": "major_basic", "note": "2025 요람에서 BSM 수학 → 전공기초(전기)로 이동" },
+  "MATH-PROB-2": { "defaultBucket": "major_basic", "note": "전공기초 택1(선형대수1과 택일)" },
+  "MATH-LINEAR-1": { "defaultBucket": "major_basic", "note": "전공기초 택1(확률및통계2와 택일)" },
+  "SW-PROGRAMMING": { "note": "1학년 전공진입 ABF제 운영(전공 역량 인증 대상)" },
+  "SW-AI-INTRO": { "note": "$delete" },
+  "SW-SYS-PROGRAMMING": {
+    "name": "시스템프로그래밍",
+    "credits": 3,
+    "nameEn": "System Programming",
+    "creditBreakdown": { "lab": "$delete" },
+    "aliases": ["시스템프로그래밍및실습"],
+    "note": "2024 '시스템프로그래밍및실습' 4학점(이론3+실습1)에서 2025 '시스템프로그래밍' 3학점(이론3)으로 명칭·학점 개정. 학수번호 SCE214는 동일"
+  },
+  "SW-DIGITAL-CIRCUIT": {
+    "defaultBucket": "major_elective",
+    "note": "2024까지 전공필수. 2025 요람에서 전공선택으로 이동(전필 11과목 36학점 → 10과목 32학점)"
+  },
+  "SW-NET-SW-DESIGN": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "nameEn": "Network Software",
+    "note": "$delete"
+  },
+  "SW-DB": { "creditBreakdown": { "design": 1, "lab": "$delete" } },
+  "SW-INFO-SEC": { "nameEn": "Introduction to Information Security" },
+  "SW-OSS-INTRO": {
+    "prerequisites": ["SW-PROGRAMMING"],
+    "note": "2025 요람 선수과목표·권장이수순서표 모두 선수과목이 컴퓨터프로그래밍및실습(2024는 객체지향프로그래밍및실습)"
+  },
+  "SW-ML": { "creditBreakdown": { "design": 1, "lab": "$delete" }, "nameEn": "Machine Learning" },
+  "SW-COMPILER": { "nameEn": "Compilers" },
+  "SW-DATA-MINING": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "nameEn": "Data Mining"
+  },
+  "SW-IT-ENGLISH": {
+    "prerequisites": ["GE-ENGLISH"],
+    "nameEn": "IT Professional English",
+    "note": "2025 요람 선수과목표상 선수과목은 '영어'(교양필수 CENG105)"
+  },
+  "SW-IT-INTENSIVE-1": { "creditBreakdown": { "design": 4, "lab": "$delete" } },
+  "SW-IT-INTENSIVE-2": {
+    "creditBreakdown": { "design": 4, "lab": "$delete" },
+    "nameEn": "IT Intensive Programming 2"
+  },
+  "SW-SELF-PROJECT": { "nameEn": "Undergraduate Project", "prerequisites": ["SW-OOP"] },
+  "SW-COMP-THEORY": { "nameEn": "Theory of Computation" },
+  "SW-INTELLIGENT-IOT": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "nameEn": "Artificial Intelligence of Things",
+    "note": "$delete"
+  },
+  "SW-SW-ENG": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "nameEn": "Software Engineering"
+  },
+  "SW-DIGITAL-FORENSICS": { "nameEn": "Digital Forensics" },
+  "SW-WEB-SYS-DESIGN": {
+    "credits": 3,
+    "creditBreakdown": { "theory": 3, "design": "$delete", "lab": "$delete" },
+    "nameEn": "Design of Web Service Systems",
+    "note": "2024 4학점(이론2+설계1+실습1)에서 2025 3학점(이론3)으로 개정"
+  },
+  "SW-EMBEDDED": { "nameEn": "Embedded Software" },
+  "SW-CRYPTO": {
+    "nameEn": "Modern Cryptography and Applications",
+    "aliases": ["현대 암호이론 및 응용"],
+    "note": "사이버보안학과 교차개설(SOS)"
+  },
+  "SW-CODING-1": { "nameEn": "Practical Coding 1" },
+  "SW-CODING-2": { "nameEn": "Practical Coding 2" },
+  "SW-BLOCKCHAIN-IOT": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "note": "사이버보안학과 교차개설(SOS). 2025 요람 선수과목표 표기는 '블록체인과loT'(소문자 L 오타)",
+    "nameEn": "Blockchain and IoT",
+    "aliases": ["블록체인과loT"]
+  },
+  "SW-AI-INTENSIVE-1": { "nameEn": "AI Intensive Class 1" },
+  "SW-AI-INTENSIVE-2": { "nameEn": "AI Intensive Class 2" },
+  "SW-MODEL-SIM": { "nameEn": "Modeling and Simulations" },
+  "SW-CV": { "nameEn": "Computer Vision", "aliases": ["컴퓨터비전"] },
+  "SW-MOBILE-NET": { "nameEn": "Mobile Communication Networks" },
+  "SW-CG": { "nameEn": "Computer Graphics" },
+  "SW-SELF-RESEARCH-1": { "nameEn": "Undergraduate Research 1" },
+  "SW-DISTRIBUTED": { "nameEn": "Distributed Systems" },
+  "SW-AI-COMPUTER-SYS": { "nameEn": "Computer Systems for Artificial Intelligence" },
+  "SW-AI-EMBEDDED": {
+    "creditBreakdown": { "design": 1, "lab": "$delete" },
+    "nameEn": "AI Embedded Systems"
+  },
+  "SW-AIOT-REALTIME": { "nameEn": "AIoT Real-time Service Design" },
+  "SW-AI-COMM-NET": { "nameEn": "AI Communications and Networks" },
+  "SW-DIST-PARALLEL": { "nameEn": "Distributed and Parallel Computing" },
+  "SW-CAPSTONE": {
+    "creditBreakdown": { "lab": 6, "design": "$delete" },
+    "nameEn": "Software Capstone Design"
+  },
+  "SW-IND-SEMINAR": { "nameEn": "Software Industry Seminar" },
+  "SW-ADV-COMP-ARCH": { "nameEn": "Advanced Computer Organization and Architecture" },
+  "SW-HCI": { "nameEn": "Human Computer Interaction" },
+  "SW-AI": { "nameEn": "Artificial Intelligence" },
+  "SW-SELF-RESEARCH-2": { "nameEn": "Undergraduate Research 2" },
+  "SW-FIELD-2": { "nameEn": "Field Practice 2" },
+  "SW-FIELD-3": { "nameEn": "Field Practice 3" },
+  "SW-FIELD-4": { "nameEn": "Field Practice 4" },
+  "SW-FIELD-6": { "nameEn": "Field Practice 6" },
+  "SW-STARTUP-1": { "nameEn": "Startup Practice 1" },
+  "SW-STARTUP-2": { "nameEn": "Startup Practice 2" },
+  "SW-STARTUP-FIELD-1": {
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2025 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 6학점 상한(field_practice) 대상",
+    "nameEn": "Startup Field Practice 1"
+  },
+  "SW-STARTUP-FIELD-2": {
+    "note": "산학프로젝트 인증 현장실습과목군 비포함(2025 요람: 현장실습과목군은 SW현장실습1~6). 현장실습 6학점 상한(field_practice) 대상",
+    "nameEn": "Startup Field Practice 2"
+  },
+  "$order": [
+    "SW-CAREER-SEMINAR",
+    "MATH-1",
+    "MATH-2",
+    "MATH-PROB-1",
+    "MATH-PROB-2",
+    "MATH-LINEAR-1",
+    "SCI-PHYSICS",
+    "SCI-BIOLOGY",
+    "SCI-PHYSICS-LAB",
+    "SCI-BIOLOGY-LAB",
+    "SCI-CHEMISTRY",
+    "SW-PROGRAMMING",
+    "SW-DISCRETE-MATH",
+    "SW-AI-INTRO",
+    "SW-OOP",
+    "SW-DATA-STRUCT",
+    "SW-COMP-ARCH",
+    "SW-ALGORITHM",
+    "SW-SYS-PROGRAMMING",
+    "SW-NETWORK",
+    "SW-OS",
+    "SW-DIGITAL-CIRCUIT",
+    "SW-NET-SW-DESIGN",
+    "SW-COMP-COMM",
+    "SW-DB",
+    "SW-INFO-SEC",
+    "SW-OSS-INTRO",
+    "SW-ML",
+    "SW-COMPILER",
+    "SW-DATA-MINING",
+    "SW-IT-ENGLISH",
+    "SW-IT-INTENSIVE-1",
+    "SW-IT-INTENSIVE-2",
+    "SW-SELF-PROJECT",
+    "SW-COMP-THEORY",
+    "SW-INTELLIGENT-IOT",
+    "SW-SW-ENG",
+    "SW-DIGITAL-FORENSICS",
+    "SW-WEB-SYS-DESIGN",
+    "SW-EMBEDDED",
+    "SW-CRYPTO",
+    "SW-CODING-1",
+    "SW-CODING-2",
+    "SW-BLOCKCHAIN-IOT",
+    "SW-AI-INTENSIVE-1",
+    "SW-AI-INTENSIVE-2",
+    "SW-MODEL-SIM",
+    "SW-CV",
+    "SW-STARTUP-THEORY",
+    "SW-MOBILE-NET",
+    "SW-CG",
+    "SW-SELF-RESEARCH-1",
+    "SW-DISTRIBUTED",
+    "SW-AI-COMPUTER-SYS",
+    "SW-AI-EMBEDDED",
+    "SW-AIOT-REALTIME",
+    "SW-AI-COMM-NET",
+    "SW-DIST-PARALLEL",
+    "SW-CAPSTONE",
+    "SW-IND-SEMINAR",
+    "SW-ADV-COMP-ARCH",
+    "SW-HCI",
+    "SW-AI",
+    "SW-SELF-RESEARCH-2",
+    "SW-FIELD-1",
+    "SW-FIELD-2",
+    "SW-FIELD-3",
+    "SW-FIELD-4",
+    "SW-FIELD-5",
+    "SW-FIELD-6",
+    "SW-STARTUP-1",
+    "SW-STARTUP-2",
+    "SW-STARTUP-FIELD-1",
+    "SW-STARTUP-FIELD-2"
+  ]
+}

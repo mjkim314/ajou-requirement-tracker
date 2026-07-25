@@ -309,9 +309,10 @@ function BucketBar({ bucket }: { bucket: BucketResult }) {
       <div
         className="h-2 overflow-hidden rounded-full bg-line-2"
         role="progressbar"
-        aria-valuenow={bucket.earned}
         aria-valuemin={0}
-        aria-valuemax={bucket.required}
+        aria-valuemax={100}
+        aria-valuenow={pct}
+        aria-valuetext={`${bucket.earned} / ${bucket.required}학점`}
         aria-label={`${bucket.label} 진행률`}
       >
         <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />

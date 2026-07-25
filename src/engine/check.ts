@@ -301,6 +301,17 @@ function evalRequirement(
     }
     case 'courseGroupPick': {
       const pick = req.pick ?? 1
+      // 선택 단위가 과목(pickUnit: 'course')이면 전 과목군 합집합에서 이수한
+      // 서로 다른 과목 수를 센다(2024~ SW 요람: "과목군 내의 전체과목 중 N개").
+      if (req.pickUnit === 'course') {
+        const hit = new Set<string>()
+        for (const group of req.groups ?? []) {
+          for (const key of group.courses) {
+            if (earnedCourseKeys.has(key)) hit.add(key)
+          }
+        }
+        return hit.size >= pick
+      }
       let groupsHit = 0
       for (const group of req.groups ?? []) {
         if (group.courses.some((c) => earnedCourseKeys.has(c))) groupsHit++
@@ -346,15 +357,28 @@ export function checkAdditionalMajors(
   const results: AdditionalMajorResult[] = []
   const counting = resolved.filter(include)
 
+  // 유형 태그('micro_degree' 등)는 같은 유형의 "첫 활성 규칙"에만 귀속시킨다.
+  // 같은 유형 인스턴스가 여럿일 때 유형 태그 과목이 전 인스턴스에 팬아웃되면
+  // 9학점 한 세트로 마이크로전공 2개가 동시에 완성된 것처럼 보여 countsByType
+  // (전공 이수원칙)이 오충족된다. 규칙 id 태그는 명시 귀속이라 그대로 둔다.
+  const firstActiveOfType = new Map<string, string>()
+  for (const am of profile.additionalMajors) {
+    if (!am.active) continue
+    const rule = rules[am.ruleId]
+    if (!rule) continue
+    if (!firstActiveOfType.has(rule.type)) firstActiveOfType.set(rule.type, rule.id)
+  }
+
   for (const am of profile.additionalMajors) {
     if (!am.active) continue
     const rule = rules[am.ruleId]
     if (!rule) continue
 
-    // 이 전공으로 인정되는 과목: countsToward에 ruleId 또는 type이 들어간 것
+    // 이 전공으로 인정되는 과목: countsToward에 ruleId(명시) 또는 type(첫 활성 규칙만)
+    const typeTagAllowed = firstActiveOfType.get(rule.type) === rule.id
     const tagged = counting.filter((rc) => {
       const tags = rc.course.countsToward ?? []
-      return tags.includes(rule.id) || tags.includes(rule.type)
+      return tags.includes(rule.id) || (typeTagAllowed && tags.includes(rule.type))
     })
 
     // 제1전공과 중복되는 과목(countsToward에 'primary'도 포함) → 상한 적용 대상

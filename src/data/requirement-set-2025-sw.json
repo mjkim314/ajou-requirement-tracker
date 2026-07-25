@@ -135,8 +135,9 @@
         "shortLabel": "산학프로젝트",
         "type": "courseGroupPick",
         "pick": 2,
+        "pickUnit": "course",
         "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
-        "sourceNote": "6개 과목군 내 전체과목 중 심화과정 2개 이상 선택 이수(2025 요람). 같은 문장이 '일반과정 이수자는 1개 이상'도 규정하나 항목이 '심화과정 추가 졸업요건' 하위에 있어 2021~2024와 동일하게 심화과정에만 적용",
+        "sourceNote": "6개 과목군 내 전체과목 중 심화과정 2개 이상 선택 이수(2025 요람). 같은 문장이 '일반과정 이수자는 1개 이상'도 규정하나 항목이 '심화과정 추가 졸업요건' 하위에 있어 심화과정에만 적용(헤더 우선 해석). ⚠ 2023·2024 요람은 과정 한정 헤더가 없어 일반과정 1개 이상을 활성화(R3b) — 2025~의 헤더-본문 모순은 학과 확인 대기(데이터_정정_백로그 #4 남은 판단)",
         "groups": [
           { "id": "intensive", "label": "집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2", "SW-AI-INTENSIVE-1", "SW-AI-INTENSIVE-2"] },
           { "id": "selfproj", "label": "자기주도프로젝트과목군", "courses": ["SW-SELF-PROJECT"] },
@@ -348,6 +349,7 @@
         "shortLabel": "산학프로젝트",
         "type": "courseGroupPick",
         "pick": 2,
+        "pickUnit": "course",
         "appliesWhen": { "field": "trackType", "op": "eq", "value": "advanced" },
         "groups": [
           { "id": "intensive", "label": "집중교육과목군", "courses": ["SW-IT-INTENSIVE-1", "SW-IT-INTENSIVE-2", "SW-AI-INTENSIVE-1", "SW-AI-INTENSIVE-2"] },

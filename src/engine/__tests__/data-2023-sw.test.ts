@@ -360,6 +360,20 @@ describe('B. 심화 대표 성적표 (2023 SW)', () => {
     expect(r.verdict).toBe('not_graduatable')
     expect(r.buckets.find((b) => b.id === 'major_required')?.satisfied).toBe(false)
   })
+
+  it('B-08 심화 산학 인증은 과목군 단위(2023 요람: "과목군 중 2개") — 같은 군 2과목이면 미충족', () => {
+    // 2024부터 요람이 "과목군 내의 전체과목 중"으로 바뀌어 과목 단위가 되지만,
+    // 2023은 과목군 단위 문구 유지 → pickUnit 미지정(기본 group).
+    const courses = [
+      ...baseCourses().filter((c) => !['SW-CAPSTONE', 'SW-SELF-PROJECT'].includes(c.courseKey ?? '')),
+      mk('SW-IT-INTENSIVE-1', { credits: 6 }),
+      mk('SW-IT-INTENSIVE-2', { credits: 6 }),
+    ]
+    const r = evaluate({ ...base, courses })
+    const ip = r.nonCurricular.find((n) => n.id === 'industry_project')
+    expect(ip?.active).toBe(true)
+    expect(ip?.satisfied).toBe(false)
+  })
 })
 
 describe('B. 일반 대표 성적표 (2023 SW)', () => {

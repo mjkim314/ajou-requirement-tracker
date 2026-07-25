@@ -71,9 +71,9 @@ const EXPECTED_HASHES: Record<string, string> = {
   'requirement-set-2022-me.json': 'ada435de41f3e0bdf09221de5d0aeb3ccf44277e85a5aeb70e5e409c982de119',
   'requirement-set-2022-sw.json': '35b8e6d7d16163bf580af710ba3c1ae8c589dabc5039b3f7475768983b1e5fa1',
   'requirement-set-2023-sw.json': '80f79908561caf8ba9f44d199a129fd4e34b48fd03e875565c257224ff829dee',
-  'requirement-set-2024-sw.json': '8cf1e6d0378717f1aa5e1f885d8c11cc1a4123bbf86fca691a24bb8417ea015f',
-  'requirement-set-2025-sw.json': 'f6254ae644459a8cf4de38e4a1d1074787c1e784fb157be013f80422c97433ed',
-  'requirement-set-2026-sw.json': '2e894830c2df7c82b3b8ad8324a3f2f4312ef1cef648daeb5b968e85a67c8458',
+  'requirement-set-2024-sw.json': 'e9ecb3afec127e6f7d8d8897c9a298a5c3d0b20cfdc3863ec010ef9717a4e9a3',
+  'requirement-set-2025-sw.json': 'abd9412ca5b41dfafb67294b3621a0789ec61f6a8d3525fabcd0eed8d2fc9de9',
+  'requirement-set-2026-sw.json': '83938f0f6f49a2a0d31f70e1f23b4f7da866a3a2827952f51380d68f36d84128',
 }
 
 describe('R0 데이터 산출물 스냅샷', () => {

@@ -21,7 +21,12 @@ import {
   semesterOptions,
   type OnboardingDraft,
 } from './model'
-import { additionalMajorRules2021Sw, catalog2022Sw, requirementSetRegistry } from '../../data/index'
+import {
+  additionalMajorRules2021Sw,
+  additionalMajorRules2025Sw,
+  catalog2022Sw,
+  requirementSetRegistry,
+} from '../../data/index'
 import { bundleFor, resolveInput, resolveReqSet } from '../dataSources'
 import { emptyPersistedState, type PersistedState } from '../../storage/schema'
 import { evaluate } from '../../engine/index'
@@ -124,6 +129,29 @@ describe('단계 검증', () => {
     )
     expect(
       majorPolicyWarning(draftFor({ trackType: 'general', additionalMajors: [dbl] }), general),
+    ).toBeNull()
+  })
+
+  it('majorPolicyWarning — countsByType 경로(마이크로 2개, 2025~)는 경고하지 않는다', () => {
+    const general2025 = requirementSetRegistry['rs_2025_sw_general']!
+    const micro = (inst: string) =>
+      makeAdditionalMajorDraft(
+        additionalMajorRules2025Sw.find((r) => r.id === 'am_micro')!,
+        inst,
+      )
+    // 마이크로 1개: satisfiesMajorPolicy=false + 유형 개수 미달 → 경고
+    expect(
+      majorPolicyWarning(
+        draftFor({ trackType: 'general', additionalMajors: [micro('am-m1')] }),
+        general2025,
+      ),
+    ).not.toBeNull()
+    // 마이크로 2개: countsByType { micro_degree: 2 } 충족 방향 → 경고 없음
+    expect(
+      majorPolicyWarning(
+        draftFor({ trackType: 'general', additionalMajors: [micro('am-m1'), micro('am-m2')] }),
+        general2025,
+      ),
     ).toBeNull()
   })
 })

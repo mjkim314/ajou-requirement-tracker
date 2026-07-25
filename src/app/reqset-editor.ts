@@ -399,6 +399,7 @@ export function changeRequirementType(
     } else if (type === 'courseGroupPick') {
       keep.pick = r.pick ?? 1
       keep.groups = r.groups ?? []
+      if (r.pickUnit) keep.pickUnit = r.pickUnit // 선택 단위(과목/과목군) 보존
     }
     return keep
   })

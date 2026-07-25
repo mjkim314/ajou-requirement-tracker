@@ -403,6 +403,12 @@ export function majorPolicyWarning(d: OnboardingDraft, reqSet: RequirementSet | 
   if (d.additionalMajors.length === 0) return null
   const anySatisfies = d.additionalMajors.some((am) => am.satisfiesMajorPolicy)
   if (anySatisfies) return null
+  // countsByType 대안 경로(2025~ "마이크로전공 2개 이상") — 유형별 최소 개수를
+  // 채우도록 골랐다면 경고하지 않는다(이수 완성 여부는 이후 엔진 판정이 본다).
+  const byType = Object.entries(reqSet?.majorPolicy?.countsByType ?? {}).some(
+    ([type, n]) => n > 0 && d.additionalMajors.filter((am) => am.type === type).length >= n,
+  )
+  if (byType) return null
   return '고른 추가 전공이 전공이수원칙(복수/부전공 1건)을 충족하지 않을 수 있어요. 요건 확인에서 다시 살펴보세요.'
 }
 

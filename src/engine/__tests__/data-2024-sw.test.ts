@@ -331,6 +331,30 @@ describe('B. 심화 대표 성적표 (2024 SW)', () => {
     const r = evaluate({ ...base, courses })
     expect(r.verdict).toBe('graduatable_after_current')
   })
+
+  it('B-08 산학 인증 선택 단위는 과목(2024 요람: "전체과목 중 2개") — 같은 과목군 2과목도 충족', () => {
+    // 캡스톤·자기주도프로젝트 대신 IT집중교육 1·2(같은 집중교육과목군)만 이수해도
+    // pickUnit: 'course'라 과목 2개로 충족한다(과목군 단위였다면 1군뿐이라 미충족).
+    const courses = [
+      ...baseCourses().filter((c) => !['SW-CAPSTONE', 'SW-SELF-PROJECT'].includes(c.courseKey ?? '')),
+      mk('SW-IT-INTENSIVE-1', { credits: 6 }),
+      mk('SW-IT-INTENSIVE-2', { credits: 6 }),
+    ]
+    const r = evaluate({ ...base, courses })
+    expect(r.nonCurricular.find((n) => n.id === 'industry_project')?.satisfied).toBe(true)
+  })
+
+  it('B-08b 산학 과목 1개뿐이면 심화(pick 2) 미충족 — 음성 회귀', () => {
+    const courses = [
+      ...baseCourses().filter((c) => !['SW-CAPSTONE', 'SW-SELF-PROJECT'].includes(c.courseKey ?? '')),
+      mk('SW-IT-INTENSIVE-1', { credits: 6 }),
+    ]
+    const r = evaluate({ ...base, courses })
+    const ip = r.nonCurricular.find((n) => n.id === 'industry_project')
+    expect(ip?.active).toBe(true)
+    expect(ip?.satisfied).toBe(false)
+    expect(r.verdict).toBe('not_graduatable')
+  })
 })
 
 describe('B. 일반 대표 성적표 (2024 SW)', () => {

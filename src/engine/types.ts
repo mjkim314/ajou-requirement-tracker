@@ -145,6 +145,11 @@ export interface Requirement {
   groups?: RequirementGroup[]
   /** alternatives/courseGroupPick에서 충족해야 하는 개수. */
   pick?: number
+  /**
+   * courseGroupPick 선택 단위. 'group'(기본)=과목이 있는 과목군 수,
+   * 'course'=서로 다른 과목 수(2024~ SW 요람 "과목군 내의 전체과목 중 N개").
+   */
+  pickUnit?: 'group' | 'course'
   /** 조건이 거짓이면 항목 자체가 비활성(미충족 아님). null이면 항상 적용. */
   appliesWhen?: Condition | null
   helpText?: string

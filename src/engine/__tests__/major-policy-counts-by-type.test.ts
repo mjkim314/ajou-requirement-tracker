@@ -161,4 +161,17 @@ describe('countsByType — 통합(2025 SW general)', () => {
     expect(r.majorPolicy.satisfied).toBe(false)
     expect(r.blockers.some((b) => b.category === 'major_policy')).toBe(true)
   })
+
+  it('유형 태그 팬아웃 가드 — 같은 9학점(type 태그)으로 인스턴스 2개가 동시 완성되지 않는다', () => {
+    // countsToward에 규칙 id 없이 유형 문자열('micro_degree')만 적힌 과목(구버전·수동 편집)은
+    // 같은 유형의 첫 활성 규칙에만 귀속된다 — 마이크로전공 1개 분량으로 2개 완성 오판 방지.
+    const courses = [1, 2, 3].map((i) =>
+      mk(null, { nameSnapshot: `마이크로${i}`, credits: 3, countsToward: ['micro_degree'] })
+    )
+    const r = run(['am_micro', 'am_micro_2'], courses)
+    const sat = r.additionalMajors.filter((m) => m.satisfied)
+    expect(sat.map((m) => m.id)).toEqual(['am_micro']) // 첫 활성 규칙만
+    expect(r.majorPolicy.satisfied).toBe(false)
+    expect(r.blockers.some((b) => b.category === 'major_policy')).toBe(true)
+  })
 })

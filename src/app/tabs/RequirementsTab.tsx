@@ -233,6 +233,8 @@ interface CategoryGroup {
   required: number
   rate: number
   satisfied: boolean
+  /** 하위 영역의 암묵 이월 사유 — 접힌 상태에서도 "충족인데 바가 덜 찬" 이유를 설명한다. */
+  notes: string[]
 }
 
 /**
@@ -257,14 +259,18 @@ function groupByCategory(buckets: BucketResult[]): CategoryGroup[] {
       const list = byGroup.get(group)!
       const earned = list.reduce((s, b) => s + b.earned, 0)
       const required = list.reduce((s, b) => s + b.required, 0)
+      // 바 폭은 암묵 이월(carriedIn)을 포함해 계산 — satisfied(하위 b.satisfied 합)와
+      // 기준을 맞춘다. earned 텍스트는 실귀속 학점 유지(SubBucket과 동일 표시 규약).
+      const counted = list.reduce((s, b) => s + b.earned + b.carriedIn, 0)
       return {
         group,
         label: GROUP_LABEL[group] ?? group,
         buckets: list,
         earned,
         required,
-        rate: required > 0 ? Math.min(earned / required, 1) : 1,
+        rate: required > 0 ? Math.min(counted / required, 1) : 1,
         satisfied: list.every((b) => b.satisfied),
+        notes: list.flatMap((b) => b.notes),
       }
     })
 }
@@ -385,6 +391,9 @@ function CategoryRow({
 
       {!open && !cat.satisfied && unmet > 0 && (
         <p className="mt-1.5 text-[11px] text-ink-3">{unmet}개 영역 남음 · 펼쳐서 확인</p>
+      )}
+      {!open && cat.notes.length > 0 && (
+        <p className="mt-1.5 text-[11px] leading-relaxed text-ink-3">{cat.notes.join(' · ')}</p>
       )}
 
       {open && (

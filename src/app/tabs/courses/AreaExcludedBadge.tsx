@@ -24,7 +24,8 @@ export function AreaExcludedBadge({ areaId, compact }: { areaId: string; compact
 
 /** 폼·툴팁에서 쓰는 한 줄 설명. */
 export function areaExcludedHint(areaId: string): string {
-  return `${topicParticle(areaLabel(areaId))} 이 요건 세트가 인정하는 영역별교양 영역이 아니에요. 학점은 일반선택으로 집계돼요.`
+  // 폴백 버킷 label은 세트마다 달라 여기서 단정하지 않는다 — "잔여 학점" 개념어 사용(R3a 문구와 통일).
+  return `${topicParticle(areaLabel(areaId))} 이 요건 세트가 인정하는 영역별교양 영역이 아니에요. 학점은 잔여(일반선택) 학점으로 집계돼요.`
 }
 
 /** 한국어 주제 조사(은/는)를 받침 유무로 붙인다 — "자연과 과학은(는)" 같은 표기를 피한다. */

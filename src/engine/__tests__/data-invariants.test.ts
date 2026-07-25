@@ -456,6 +456,11 @@ describe.each(setCases.map((s) => [s.setId, s] as const))('요건 세트 %s', (_
     for (const r of reqs) {
       expect(REQUIREMENT_TYPES.has(r.type), `${r.id}: type '${r.type}'`).toBe(true)
       if (r.pick != null) expect(r.pick >= 1, `${r.id}: pick`).toBe(true)
+      // pickUnit(R3 후속): courseGroupPick 전용, 'group'|'course'만 허용.
+      if (r.pickUnit != null) {
+        expect(['group', 'course'].includes(r.pickUnit), `${r.id}: pickUnit '${r.pickUnit}'`).toBe(true)
+        expect(r.type, `${r.id}: pickUnit은 courseGroupPick 전용`).toBe('courseGroupPick')
+      }
       for (const g of r.groups ?? []) {
         const missing = g.courses.filter((key) => !mergedKeys.has(key))
         expect(missing, `${r.id}/${g.id}: 카탈로그에 없는 키`).toEqual([])

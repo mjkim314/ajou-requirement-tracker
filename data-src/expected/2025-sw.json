@@ -1,0 +1,29 @@
+{
+  "description": "2025 소프트웨어학과 요람 기대값",
+  "totalCredits": 128,
+  "minGPA": 2,
+  "buckets": {
+    "ajou_character": 1,
+    "english": 3,
+    "writing": 3,
+    "ajou_sangsang": 3,
+    "area_liberal": 12,
+    "sw_seminar": 1,
+    "math": 6,
+    "science_basic": 7,
+    "major_basic": 6,
+    "major_required": 32,
+    "major_elective": 32,
+    "general_elective": 22
+  },
+  "trackOverrides": {
+    "general": {
+      "major_elective": 10,
+      "general_elective": 44
+    }
+  },
+  "majorRequiredCount": 10,
+  "catalogCount": 74,
+  "choiceGroupCount": 5,
+  "nonCurricularCount": 4
+}

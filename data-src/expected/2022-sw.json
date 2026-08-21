@@ -1,0 +1,26 @@
+{
+  "description": "2022 소프트웨어학과 요람 기대값",
+  "totalCredits": 140,
+  "minGPA": 2,
+  "buckets": {
+    "ajou_character": 1,
+    "english": 6,
+    "writing": 3,
+    "area_liberal": 9,
+    "sw_seminar": 1,
+    "math": 12,
+    "science_basic": 7,
+    "major_required": 36,
+    "major_elective": 37,
+    "general_elective": 28
+  },
+  "trackOverrides": {
+    "general": {
+      "major_elective": 10
+    }
+  },
+  "majorRequiredCount": 11,
+  "catalogCount": 74,
+  "choiceGroupCount": 4,
+  "nonCurricularCount": 4
+}

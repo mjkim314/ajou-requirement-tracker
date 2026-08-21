@@ -1,0 +1,31 @@
+{
+  "description": "2022 기계공학과 요람 기대값",
+  "totalCredits": 128,
+  "minGPA": 2,
+  "buckets": {
+    "ajou_hope": 1,
+    "ajou_character": 1,
+    "english": 6,
+    "writing": 3,
+    "area_liberal": 9,
+    "math": 12,
+    "science_basic": 12,
+    "computing": 6,
+    "major_required": 28,
+    "major_elective": 32,
+    "general_elective": 18
+  },
+  "trackOverrides": {
+    "general": {
+      "sw_required": 3,
+      "computing": 3,
+      "major_required": 15,
+      "major_elective": 27,
+      "general_elective": 36
+    }
+  },
+  "majorRequiredCount": 11,
+  "catalogCount": 78,
+  "choiceGroupCount": 4,
+  "nonCurricularCount": 2
+}

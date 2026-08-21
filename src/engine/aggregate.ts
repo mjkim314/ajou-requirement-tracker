@@ -76,6 +76,15 @@ export interface AggContext {
   satisfiedKeys: Set<string>
   /** 포함 과목의 courseKey 집합(choiceGroup 소속 판정). */
   earnedCourseKeys: Set<string>
+  /**
+   * 이수 과목 → 카탈로그가 태그한 과목군 id (courseGroupPick 판정용).
+   *
+   * 과목군 멤버십이 요건 세트의 `groups[].courses` 목록에만 있으면, 그 세트가 만들어진
+   * 뒤에 같은 과목군으로 신설된 과목이 영영 안 세어진다(2021 세트의 IT집중교육과목군에
+   * 2023 신설 AI집중교육이 없는 사례). 카탈로그 태그를 함께 보면 자동으로 따라온다.
+   * 추가전공 판정(checkAdditionalMajors)은 이미 이 태그를 쓴다.
+   */
+  earnedCourseGroups: Map<string, readonly string[]>
   /** 영역별교양: bucketId → (area → 서로 다른 과목 수). 귀속된 영역 기준으로만 센다. */
   areaCountsByBucket: Map<string, Map<string, number>>
   /** 이월로 발생한 경고 문구. */
@@ -114,6 +123,7 @@ export function buildContext(
   const bucketEarned = new Map<string, number>()
   const satisfiedKeys = new Set<string>()
   const earnedCourseKeys = new Set<string>()
+  const earnedCourseGroups = new Map<string, readonly string[]>()
   // bucketId → (area → 과목 집합). 귀속된 영역 기준으로만 센다(override로 다른 영역에 간 과목은 제외).
   const areaSeenByBucket = new Map<string, Map<string, Set<string>>>()
 
@@ -122,7 +132,11 @@ export function buildContext(
   for (const rc of included) {
     bucketEarned.set(rc.bucketId, (bucketEarned.get(rc.bucketId) ?? 0) + rc.course.credits)
     for (const k of rc.effectiveKeys) satisfiedKeys.add(k)
-    if (rc.courseKey) earnedCourseKeys.add(rc.courseKey)
+    if (rc.courseKey) {
+      earnedCourseKeys.add(rc.courseKey)
+      const groups = rc.catalog?.courseGroups
+      if (groups?.length) earnedCourseGroups.set(rc.courseKey, groups)
+    }
     // 영역별교양 area 집계 — 이 과목이 실제로 귀속된 bucket 안에서만 센다
     const area = rc.catalog?.area
     if (area && rc.courseKey) {
@@ -230,6 +244,7 @@ export function buildContext(
     totalEarned,
     satisfiedKeys,
     earnedCourseKeys,
+    earnedCourseGroups,
     areaCountsByBucket,
     overflowWarnings,
     implicitCarry,

@@ -244,7 +244,9 @@ export function checkNonCurricular(
   reqSet: RequirementSet,
   state: NonCurricularState,
   profile: Profile,
-  earnedCourseKeys: Set<string>
+  earnedCourseKeys: Set<string>,
+  /** 이수 과목 → 카탈로그가 태그한 과목군 id. 없으면 세트의 목록만 본다. */
+  earnedCourseGroups: Map<string, readonly string[]> = new Map()
 ): NonCurricularResult[] {
   return reqSet.nonCurricular.map((req) => {
     const active = evalCondition(req.appliesWhen, profile)
@@ -258,7 +260,7 @@ export function checkNonCurricular(
       }
     }
     const st = state[req.id] ?? {}
-    const satisfied = evalRequirement(req, st, earnedCourseKeys)
+    const satisfied = evalRequirement(req, st, earnedCourseKeys, earnedCourseGroups)
     return {
       id: req.id,
       label: req.label,
@@ -272,7 +274,8 @@ export function checkNonCurricular(
 function evalRequirement(
   req: Requirement,
   st: NonCurricularState[string],
-  earnedCourseKeys: Set<string>
+  earnedCourseKeys: Set<string>,
+  earnedCourseGroups: Map<string, readonly string[]>
 ): boolean {
   switch (req.type) {
     case 'check':
@@ -300,21 +303,45 @@ function evalRequirement(
       return satisfiedCount >= pick
     }
     case 'courseGroupPick': {
+      // 사용자 확인 우선 — 학과가 인정해 준 건은 과목만으로 판정할 수 없다.
+      // (과목군이 학번 뒤에 신설·개편되거나, 요람 밖 과목으로 인정받는 경우가 있다.)
+      // done===false는 "아직 안 함"이지 "인정 안 됨"이 아니므로 부정 신호로 쓰지 않는다.
+      if (st.done === true) return true
+
       const pick = req.pick ?? 1
+
+      /**
+       * 이수 과목에 카탈로그가 붙인 과목군 태그 집합.
+       * 과목군 멤버십이 세트의 `groups[].courses`에만 있으면 세트가 만들어진 뒤 같은
+       * 과목군으로 신설된 과목이 영영 안 세어진다(2021 세트의 IT집중교육과목군에
+       * 2023 신설 AI집중교육이 없는 사례). 추가전공 판정은 이미 이 태그를 쓴다.
+       */
+      const earnedTags = new Set<string>()
+      for (const [key, tags] of earnedCourseGroups) {
+        if (!earnedCourseKeys.has(key)) continue
+        for (const t of tags) earnedTags.add(t)
+      }
+
       // 선택 단위가 과목(pickUnit: 'course')이면 전 과목군 합집합에서 이수한
       // 서로 다른 과목 수를 센다(2024~ SW 요람: "과목군 내의 전체과목 중 N개").
       if (req.pickUnit === 'course') {
+        const groupIds = new Set((req.groups ?? []).map((g) => g.id))
         const hit = new Set<string>()
         for (const group of req.groups ?? []) {
           for (const key of group.courses) {
             if (earnedCourseKeys.has(key)) hit.add(key)
           }
         }
+        for (const [key, tags] of earnedCourseGroups) {
+          if (earnedCourseKeys.has(key) && tags.some((t) => groupIds.has(t))) hit.add(key)
+        }
         return hit.size >= pick
       }
+
       let groupsHit = 0
       for (const group of req.groups ?? []) {
-        if (group.courses.some((c) => earnedCourseKeys.has(c))) groupsHit++
+        const hit = group.courses.some((c) => earnedCourseKeys.has(c)) || earnedTags.has(group.id)
+        if (hit) groupsHit++
       }
       return groupsHit >= pick
     }

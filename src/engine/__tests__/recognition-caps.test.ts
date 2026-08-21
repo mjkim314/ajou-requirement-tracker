@@ -6,8 +6,14 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { evaluate } from '../index.js'
-import type { Course, RecognitionCap, RequirementSet } from '../types.js'
+import { checkNonCurricular, evaluate } from '../index.js'
+import type {
+  Course,
+  Profile,
+  RecognitionCap,
+  Requirement,
+  RequirementSet,
+} from '../types.js'
 import { CATALOG } from './fixtures/catalog.js'
 import { ADVANCED_SET } from './fixtures/reqsets.js'
 import { advancedProfile, mk } from './fixtures/builders.js'
@@ -96,5 +102,67 @@ describe('recognitionCaps', () => {
     expect(capped.verdict).toBe(base.verdict)
     expect(capped.credits.earned).toBe(base.credits.earned)
     expect(capped.blockers.map((b) => b.category)).toEqual(base.blockers.map((b) => b.category))
+  })
+})
+
+// ────────────────────────────────────────────────────────────
+
+/**
+ * 산학프로젝트(courseGroupPick) — 과목군 멤버십의 두 출처와 수동 확인.
+ *
+ * 실제 성적증명서 사례: 2021학번이 2025-2에 AI집중교육1·2를 이수. 2021 세트의
+ * `intensive` 그룹 목록에는 IT집중교육1·2만 있지만, 카탈로그가 AI집중교육에도
+ * `courseGroups: ['intensive']`를 붙여 둔다. 세트 목록만 보면 영영 안 세어진다.
+ */
+describe('courseGroupPick — 과목군 태그 · 수동 확인', () => {
+  const REQ: Requirement = {
+    id: 'industry_project',
+    label: '산학프로젝트 인증',
+    type: 'courseGroupPick',
+    pick: 2,
+    groups: [
+      { id: 'intensive', label: '집중교육과목군', courses: ['IT-1', 'IT-2'] },
+      { id: 'capstone', label: '캡스톤디자인과목군', courses: ['CAP'] },
+    ],
+  }
+  const SET = { nonCurricular: [REQ] } as unknown as RequirementSet
+  const PROFILE = { trackType: 'advanced' } as unknown as Profile
+
+  const run = (keys: string[], tags: [string, string[]][] = [], state = {}) =>
+    checkNonCurricular(SET, state, PROFILE, new Set(keys), new Map(tags))[0]!.satisfied
+
+  it('세트 목록에 있는 과목은 그대로 센다', () => {
+    expect(run(['IT-1', 'CAP'])).toBe(true)
+    expect(run(['IT-1', 'IT-2'])).toBe(false) // 같은 군 2과목 = 1군
+  })
+
+  it('세트 목록에 없어도 카탈로그가 그 과목군으로 태그하면 센다', () => {
+    // AI집중교육1이 intensive 태그만 갖고 있어도 집중교육과목군이 충족된다
+    expect(run(['AI-1', 'CAP'], [['AI-1', ['intensive']]])).toBe(true)
+  })
+
+  it('태그가 있어도 이수하지 않은 과목은 세지 않는다', () => {
+    expect(run(['CAP'], [['AI-1', ['intensive']]])).toBe(false)
+  })
+
+  it('요건에 없는 과목군 태그는 무시한다', () => {
+    // selfresearch 군은 이 요건에 없다 → 세지 않는다
+    expect(run(['CAP', 'SR-1'], [['SR-1', ['selfresearch']]])).toBe(false)
+  })
+
+  it('pickUnit=course도 태그를 센다', () => {
+    const byCourse = { ...REQ, pickUnit: 'course' as const }
+    const set = { nonCurricular: [byCourse] } as unknown as RequirementSet
+    const r = checkNonCurricular(
+      set, {}, PROFILE, new Set(['AI-1', 'AI-2']),
+      new Map([['AI-1', ['intensive']], ['AI-2', ['intensive']]]),
+    )
+    expect(r[0]!.satisfied).toBe(true) // 같은 군 2과목 = 과목 2개
+  })
+
+  it('학과 인정 수동 표시는 과목 판정을 건너뛴다', () => {
+    expect(run([], [], { industry_project: { done: true } })).toBe(true)
+    // done:false는 "아직 안 함"이지 "인정 안 됨"이 아니다 — 자동 충족을 끄지 않는다
+    expect(run(['IT-1', 'CAP'], [], { industry_project: { done: false } })).toBe(true)
   })
 })

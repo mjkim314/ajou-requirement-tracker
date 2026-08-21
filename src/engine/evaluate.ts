@@ -161,7 +161,13 @@ export function evaluate(input: EvaluationInput): EvaluationResult {
   const bucketWarnings = bucketChecks.flatMap((c) => c.warnings)
 
   const gpa = checkGPA(resolved, reqSet)
-  const nonCurr = checkNonCurricular(reqSet, nonCurricularState, profile, current.satisfiedKeys)
+  const nonCurr = checkNonCurricular(
+    reqSet,
+    nonCurricularState,
+    profile,
+    current.satisfiedKeys,
+    current.earnedCourseGroups
+  )
 
   const rulesMap: Record<string, AdditionalMajorRule> = {}
   for (const r of additionalMajorRules) rulesMap[r.id] = r
@@ -173,7 +179,13 @@ export function evaluate(input: EvaluationInput): EvaluationResult {
   for (const b of reqSet.buckets) {
     projBucketSatisfied.set(b.id, checkBucket(b, projected, index.byKey).result.satisfied)
   }
-  const projNonCurr = checkNonCurricular(reqSet, nonCurricularState, profile, projected.satisfiedKeys)
+  const projNonCurr = checkNonCurricular(
+    reqSet,
+    nonCurricularState,
+    profile,
+    projected.satisfiedKeys,
+    projected.earnedCourseGroups
+  )
   // 전공 이수원칙도 수강중 과목 포함으로 재판정(이번 학기 추가전공 완성 케이스)
   const projAdditional = checkAdditionalMajors(
     profile,

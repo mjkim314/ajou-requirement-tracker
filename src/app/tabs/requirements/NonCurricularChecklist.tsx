@@ -48,7 +48,8 @@ function progressOf(active: boolean, satisfied: boolean, entry: Entry): Progress
 /**
  * 비교과 요건 체크리스트(요건 탭 읽기 화면). 요건 유형별로 정확히 입력받아
  * 엔진(checkNonCurricular)과 동일한 기준으로 판정한다 — 진행 상태는 evaluate() 결과를 그대로 쓴다.
- * 과목으로 자동 판정되는 항목(courseGroupPick)은 읽기 전용으로 상태만 보여준다.
+ * 과목으로 자동 판정되는 항목(courseGroupPick)은 안내 + "학과에서 인정받았어요" 수동 표시를 함께 둔다
+ * — 과목군이 학번 뒤에 개편되거나 요람 밖 과목으로 인정받는 경우가 있어 자동 판정만으로는 막힌다.
  */
 export function NonCurricularChecklist({ requirements, results, state, onChange }: Props) {
   const resultById = new Map(results.map((r) => [r.id, r]))
@@ -165,23 +166,38 @@ function RequirementInput({ req, entry, onEntry, onAlt, onRemoveAlt }: InputProp
 
     case 'courseGroupPick':
       return (
-        <div className="rounded-block bg-bg-soft px-3 py-2.5 text-[11.5px] leading-relaxed text-ink-3">
-          <div className="flex items-start gap-1.5">
-            <Icon name="auto_awesome" className="mt-px shrink-0 text-[14px] text-blue" />
-            <p>
-              과목군에서 {req.pick ?? 1}개 이수하면 충족돼요. <b className="text-ink-2">과목 탭</b>에
-              해당 과목을 입력하면 자동으로 반영됩니다.
-            </p>
-          </div>
-          {(req.groups ?? []).length > 0 && (
-            <div className="mt-1.5 flex flex-wrap gap-1">
-              {(req.groups ?? []).map((g) => (
-                <span key={g.id} className="rounded-chip bg-surface px-1.5 py-0.5 text-[10.5px] font-medium text-ink-3">
-                  {g.label}
-                </span>
-              ))}
+        <div className="flex flex-col gap-2">
+          <div className="rounded-block bg-bg-soft px-3 py-2.5 text-[11.5px] leading-relaxed text-ink-3">
+            <div className="flex items-start gap-1.5">
+              <Icon name="auto_awesome" className="mt-px shrink-0 text-[14px] text-blue" />
+              <p>
+                {req.pickUnit === 'course'
+                  ? `과목군 안의 과목을 ${req.pick ?? 1}개 이수하면 충족돼요.`
+                  : `과목군에서 ${req.pick ?? 1}개 이수하면 충족돼요.`}{' '}
+                <b className="text-ink-2">과목 탭</b>에 해당 과목을 입력하면 자동으로 반영됩니다.
+              </p>
             </div>
-          )}
+            {(req.groups ?? []).length > 0 && (
+              <div className="mt-1.5 flex flex-wrap gap-1">
+                {(req.groups ?? []).map((g) => (
+                  <span key={g.id} className="rounded-chip bg-surface px-1.5 py-0.5 text-[10.5px] font-medium text-ink-3">
+                    {g.label}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          {/*
+            과목군은 학번 뒤에 신설·개편되고, 요람에 없는 과목으로 인정받는 경우도 있다.
+            자동 판정만 두면 학과에서 인정받고도 앱에 알릴 방법이 없어 계속 미충족으로 남는다.
+            (체크하면 엔진이 과목 판정을 건너뛰고 충족으로 본다.)
+          */}
+          <ToggleRow
+            checked={entry.done === true}
+            onChange={(v) => onEntry({ done: v || undefined })}
+            label="학과에서 인정받았어요"
+            hint="요람에 없는 과목이나 나중에 생긴 과목군으로 인정받았다면 직접 표시하세요."
+          />
         </div>
       )
 
@@ -405,12 +421,15 @@ function ToggleRow({
   checked,
   onChange,
   label,
+  hint,
 }: {
   checked: boolean
   onChange: (v: boolean) => void
   label: string
+  /** 버튼 아래 한 줄 설명. 언제 켜야 하는지 애매한 항목에만 붙인다. */
+  hint?: string
 }) {
-  return (
+  const button = (
     <button
       type="button"
       role="switch"
@@ -432,5 +451,12 @@ function ToggleRow({
       </span>
       {label}
     </button>
+  )
+  if (!hint) return button
+  return (
+    <div className="flex flex-col items-start gap-1">
+      {button}
+      <p className="text-[11px] leading-relaxed text-muted-2">{hint}</p>
+    </div>
   )
 }

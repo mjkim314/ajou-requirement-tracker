@@ -8,7 +8,7 @@
 
 **다음 작업** — 데이터 생산 라인 개편 **R0~R7** (이 문서 하단 「개편 로드맵」). 근거·측정치는 `개선_방향_제안.md`. **R3 완료 전에는 신규 학과·학번 데이터화를 착수하지 않는다.**
 
-> **개편 진행** — **R0·R1·R2·R3·R4·R5 완료**(R5: 2026-07-28 — 요람 기대값 명세 8건 + 범용 비교기 `data-expected.test.ts` + 합성 성적표 생성기 `synthetic-transcript.ts` + 전 번들 3-verdict 판정 전이 테스트 `synthetic-transcript.test.ts` + `scripts/build-data.ts` 가드, 1112테스트·typecheck·data:check·build 통과). 백로그 4·5·10·11·14 ✅, 미결 해석 3건은 백로그 #4 「남은 판단」. **데이터화 재개 가능**(권장 순서: ai → sec → media → ddc → me 2023~2026 → ee → mgmt). **R5 완료 후 신규 데이터화는 새 라인(패치 + 기대값) 사용 강제**. 다음 개편 단계는 **R6**(티어제 커버리지).
+> **개편 진행** — **R0·R1·R2·R3·R4·R5 완료**(R5: 2026-07-28 — 요람 기대값 명세 8건 + 범용 비교기 `data-expected.test.ts` + 합성 성적표 생성기 `synthetic-transcript.ts` + 전 번들 3-verdict 판정 전이 테스트 `synthetic-transcript.test.ts` + `scripts/build-data.ts` 가드. **R5b: 2026-08-21** — 초판 기대값이 산출물 역산본(순환검증)이었음을 발견해 SW 6학번 요람 블라인드 판독본으로 교체, 인쇄 소계 검산·`source.method` 강제로 재발 차단. 1152테스트·typecheck·data:check·build 통과). 백로그 4·5·10·11·14·17 ✅, 미결 해석 3건은 백로그 #4 「남은 판단」, 신규 #16(일반과정 잔여학점 규칙). **데이터화 재개 가능**(권장 순서: ai → sec → media → ddc → me 2023~2026 → ee → mgmt). **R5 완료 후 신규 데이터화는 새 라인(패치 + 기대값) 사용 강제 — 기대값은 반드시 요람 판독(`blind-yoram`), 산출물 역산 금지**. 다음 개편 단계는 **R6**(티어제 커버리지).
 
 ---
 
@@ -435,6 +435,19 @@ scripts/build-data.ts           node 직접 실행(Node 26 type stripping, 신�
 > - `scripts/build-data.ts`에서 `expected/` 폴더 제외 가드
 > - 1112개 테스트, `npm run typecheck`, `npm run data:check`, `npm run build` 모두 통과.
 > - **효과**: 이후 신규 건 데이터 추가 시 학번별 TS 테스트 작성 0줄, `data-src/expected/{학번}-{slug}.json` 작성만으로 자동 검증.
+
+### R5b. 순환검증 해소 — 요람 직접 판독으로 교체 ✅ 완료 (2026-08-21)
+
+R5 초판의 `expected/` 8건은 **요람이 아니라 산출물에서 역산된 것**이었다(전 필드가 `src/data`와 100% 일치, README가 언급한 `scripts/extract-expected.mjs` 부재, expected mtime이 산출물보다 나중). 그 상태에서 비교기 64건은 "산출물과 산출물이 같다"만 보증했다 — 요건 숫자가 틀려도 전부 초록이었다.
+
+- **블라인드 판독** — SW 2021~2026 학번별 단독 요람 PDF를 `pdftotext -layout`으로 추출해 학번당 1에이전트가 판독. **산출물·기존 기대값 열람 금지**를 프롬프트로 강제해 기존 값에 끌려가는 것을 차단.
+- **결과: 전 6학번의 학점 수치가 요람과 일치.** 값은 맞았고 증명이 없었던 것. 전공필수 과목 목록도 6학번 전부 일치(개수 11/11/11/11/10/9).
+- **순환 재발 차단** — 명세에 `source.method`(`blind-yoram` / `derived-from-output`) 선언을 테스트가 강제. `blind-yoram`은 요람이 **개별 칸과 별도로 인쇄한 그룹 소계**(`printedSubtotals`)를 함께 싣고, 비교기가 *개별 학점 합 = 인쇄 소계* 를 검산한다 → 역산본으로는 통과 불가. `catalogCount` 등 요람 인쇄값이 아닌 카운트는 `regressionOnly`로 격리.
+- `majorRequiredCourses` 신설 — courseKey를 카탈로그 과목명으로 풀어 요람 목록과 집합 비교(개수만 맞고 과목이 다른 경우를 잡음).
+- ME 2021·2022는 `derived-from-output`으로 명시 표기 — **요람 대조 전**임을 파일이 스스로 밝힌다.
+- 가드 실효성 확인: 산출물을 틀리게 바꾸고 기대값을 거기서 역산해도 소계 검산이 실패함을 실측. **단, 소계는 그룹 합만 구속하고 그룹 내 배분은 못 잡는다**(README에 명시).
+- 부수 발견 2건 → 백로그 **#16**(일반과정 `general_elective` 학번 간 규칙 불일치 — 판단 필요) · **#17**(부전공 전공학점: 2023·2024 요람은 36을 명시 인쇄 ✅ / 2021·2022는 여전히 확정 불가).
+- 1152개 테스트(비교기 64→104), typecheck·`data:check`·build 통과. 산출물(`src/data`) 무변경.
 
 ---
 

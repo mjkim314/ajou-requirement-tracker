@@ -1,5 +1,12 @@
 {
-  "description": "2024 소프트웨어학과 요람 기대값",
+  "description": "2024 소프트웨어학과 요람 기대값 — 요람 인쇄면 직접 판독",
+  "source": {
+    "document": "Docs/요람/소프트웨어융합대학/2024년도_소프트웨어융합대학_소프트웨어학과.pdf",
+    "section": "1. 졸업 이수학점 및 구성 현황 / 2. 졸업요건",
+    "method": "blind-yoram",
+    "verifiedOn": "2026-08-21",
+    "note": "pdftotext -layout 판독. 판독 시 산출물(src/data)·기존 기대값 미열람 — 순환검증 차단."
+  },
   "totalCredits": 140,
   "minGPA": 2,
   "buckets": {
@@ -14,13 +21,76 @@
     "major_elective": 37,
     "general_elective": 28
   },
+  "printedSubtotals": [
+    {
+      "label": "대학필수",
+      "credits": 19,
+      "raw": "(소계 : 19)",
+      "buckets": [
+        "ajou_character",
+        "english",
+        "writing",
+        "area_liberal"
+      ]
+    },
+    {
+      "label": "학과필수",
+      "credits": 20,
+      "raw": "(소계 : 20)",
+      "buckets": [
+        "sw_seminar",
+        "math",
+        "science_basic"
+      ]
+    },
+    {
+      "label": "전공",
+      "credits": 73,
+      "raw": "표 머리글에는 전공 소계가 인쇄되지 않고, 각 행의 '소계' 열에 인쇄됨 — 심화과정 행 = 73 (일반 46 / 복수전공 46 / 부전공 36)",
+      "buckets": [
+        "major_required",
+        "major_elective"
+      ]
+    }
+  ],
+  "residualBucket": "general_elective",
   "trackOverrides": {
     "general": {
       "major_elective": 10
     }
   },
+  "trackSubtotals": {
+    "general": {
+      "전공": {
+        "credits": 46,
+        "buckets": [
+          "major_required",
+          "major_elective"
+        ]
+      }
+    }
+  },
   "majorRequiredCount": 11,
-  "catalogCount": 74,
-  "choiceGroupCount": 4,
-  "nonCurricularCount": 4
+  "majorRequiredCourses": [
+    "컴퓨터프로그래밍및실습",
+    "이산수학",
+    "인공지능입문",
+    "디지털회로",
+    "객체지향프로그래밍및실습",
+    "자료구조",
+    "컴퓨터구조",
+    "알고리즘",
+    "시스템프로그래밍및실습",
+    "컴퓨터네트워크",
+    "운영체제"
+  ],
+  "regressionOnly": {
+    "note": "요람 인쇄값 아님 — 산출물 스냅샷(구조 회귀 방지용). 요람 대조는 위 필드만.",
+    "catalogCount": 74,
+    "choiceGroupCount": 4,
+    "nonCurricularCount": 4
+  },
+  "notes": [
+    "일반과정 잔여학점(general_elective)은 요람 인쇄값이 아니다 — 복수/부전공 1건 이상이 필수인데 그 학점이 구성현황표에 없어 총학점−소계합으로 유도할 수 없다. 따라서 이 명세는 일반과정 잔여학점을 단정하지 않는다."
+  ]
 }

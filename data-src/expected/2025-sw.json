@@ -1,5 +1,12 @@
 {
-  "description": "2025 소프트웨어학과 요람 기대값",
+  "description": "2025 소프트웨어학과 요람 기대값 — 요람 인쇄면 직접 판독",
+  "source": {
+    "document": "Docs/요람/소프트웨어융합대학/2025학년도_소프트웨어융합대학_소프트웨어학과.pdf",
+    "section": "1. 졸업 이수학점 및 구성 현황 / 2. 졸업요건",
+    "method": "blind-yoram",
+    "verifiedOn": "2026-08-21",
+    "note": "pdftotext -layout 판독. 판독 시 산출물(src/data)·기존 기대값 미열람 — 순환검증 차단."
+  },
   "totalCredits": 128,
   "minGPA": 2,
   "buckets": {
@@ -8,22 +15,93 @@
     "writing": 3,
     "ajou_sangsang": 3,
     "area_liberal": 12,
-    "sw_seminar": 1,
     "math": 6,
     "science_basic": 7,
+    "sw_seminar": 1,
     "major_basic": 6,
     "major_required": 32,
     "major_elective": 32,
     "general_elective": 22
   },
+  "printedSubtotals": [
+    {
+      "label": "대학필수",
+      "credits": 22,
+      "raw": "( 소계 : 22 )",
+      "buckets": [
+        "ajou_character",
+        "english",
+        "writing",
+        "ajou_sangsang",
+        "area_liberal"
+      ]
+    },
+    {
+      "label": "BSM",
+      "credits": 13,
+      "raw": "( 소계 : 13 )",
+      "buckets": [
+        "math",
+        "science_basic"
+      ]
+    },
+    {
+      "label": "전공기초",
+      "credits": 7,
+      "raw": "( 소계 : 7 )",
+      "buckets": [
+        "sw_seminar",
+        "major_basic"
+      ]
+    },
+    {
+      "label": "전공",
+      "credits": 64,
+      "raw": "( 소계: 64/42 )",
+      "buckets": [
+        "major_required",
+        "major_elective"
+      ]
+    }
+  ],
+  "residualBucket": "general_elective",
   "trackOverrides": {
     "general": {
-      "major_elective": 10,
-      "general_elective": 44
+      "major_elective": 10
+    }
+  },
+  "trackSubtotals": {
+    "general": {
+      "전공": {
+        "credits": 42,
+        "buckets": [
+          "major_required",
+          "major_elective"
+        ]
+      }
     }
   },
   "majorRequiredCount": 10,
-  "catalogCount": 74,
-  "choiceGroupCount": 5,
-  "nonCurricularCount": 4
+  "majorRequiredCourses": [
+    "컴퓨터프로그래밍및실습(4)",
+    "이산수학(3)",
+    "인공지능입문(3)",
+    "객체지향프로그래밍 및 실습(4)",
+    "자료구조(3)",
+    "컴퓨터구조(3)",
+    "알고리즘(3)",
+    "시스템프로그래밍(3)",
+    "컴퓨터네트워크(3)",
+    "운영체제(3)"
+  ],
+  "regressionOnly": {
+    "note": "요람 인쇄값 아님 — 산출물 스냅샷(구조 회귀 방지용). 요람 대조는 위 필드만.",
+    "catalogCount": 74,
+    "choiceGroupCount": 5,
+    "nonCurricularCount": 4
+  },
+  "notes": [
+    "sw_seminar = 1 — 편성표 230행 전기 SW커리어세미나 1학점",
+    "일반과정 잔여학점(general_elective)은 요람 인쇄값이 아니다 — 복수/부전공 1건 이상이 필수인데 그 학점이 구성현황표에 없어 총학점−소계합으로 유도할 수 없다. 따라서 이 명세는 일반과정 잔여학점을 단정하지 않는다."
+  ]
 }

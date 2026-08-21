@@ -1,5 +1,12 @@
 {
   "description": "2021 기계공학과 요람 기대값",
+  "source": {
+    "document": "Docs/요람/공과대학/ (기계공학과)",
+    "section": "미확인",
+    "method": "derived-from-output",
+    "verifiedOn": null,
+    "note": "⚠ 요람 대조 전. 값이 산출물에서 역산된 것이라 이 파일과 산출물의 일치는 정확성의 근거가 되지 않는다(순환). SW와 같은 blind-yoram 판독으로 교체 대기."
+  },
   "totalCredits": 128,
   "minGPA": 2,
   "buckets": {

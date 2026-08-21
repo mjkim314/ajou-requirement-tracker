@@ -19,7 +19,7 @@
 import type { CatalogEntry, RequirementSet } from '../engine/types.js'
 import { findFallbackBucketId } from '../engine/resolve.js'
 import { normalizeText } from '../engine/normalize.js'
-import { geCatalogByYear, geYears } from './index.js'
+import { bundlesByDepartment, geCatalogByYear, geYears } from './index.js'
 
 /** 다산학부대학 영역별교양 영역 이름. 세트에서 제외된 영역도 화면에 이름을 보여줘야 해서 여기 둔다. */
 export const GE_AREA_LABEL: Record<string, string> = {
@@ -105,6 +105,45 @@ export const LEGACY_GE_PLACEHOLDERS: CatalogEntry[] = [
 }))
 
 /**
+ * 입학연도 **이후에 신설된 학과 과목**을 모은다.
+ *
+ * 카탈로그는 학번별로 그 해 편제를 담지만, 학생은 재학 중 신설된 과목도 듣는다.
+ * (실제 사례: 2021학번이 2025-2에 AI집중교육1·2(각 6학점, 전공선택)를 이수 — 2023년
+ * 신설이라 2021 카탈로그에 없다.) 이걸 보충하지 않으면 그 과목이 courseKey 미해석으로
+ * 남아 **일반선택으로 떨어지고 전공선택이 12학점 미달로 잡힌다.**
+ *
+ * 입학연도 항목이 항상 이긴다 — 여기서 오는 것은 그 해에 **없던** 과목뿐이다.
+ * 학점·영역이 학번 사이에 바뀐 과목은 입학연도 정의가 그대로 유지된다.
+ *
+ * **교양은 여기서 다루지 않는다.** 교양 카탈로그는 학번별 편제를 고정하는 것이
+ * 설계 의도이고(`geCatalogForYear`), 이후 학번에 신설된 영역별교양 과목을 옛 학번
+ * 학생에게 어떻게 귀속할지는 요람이 답을 주지 않는 정책 판단이다 — 백로그 #18.
+ */
+export function laterYearDeptCatalogs(
+  department: string | null | undefined,
+  admissionYear: number | null | undefined,
+): CatalogEntry[] {
+  if (!department || admissionYear == null || !Number.isFinite(admissionYear)) return []
+  const byYear = bundlesByDepartment[department]
+  if (!byYear) return []
+
+  const out: CatalogEntry[] = []
+  for (const y of Object.keys(byYear)
+    .map(Number)
+    .filter((y) => y > admissionYear)
+    .sort((a, b) => a - b)) {
+    for (const e of byYear[y]!.catalog) out.push(tagSupplement(e, y))
+  }
+  return out
+}
+
+/** 보충 항목 표시 — 화면이 "입학연도 이후 신설"을 안내할 근거. */
+function tagSupplement(entry: CatalogEntry, year: number): CatalogEntry {
+  const reason = `${year}학년도 편제에서 보충 — 입학연도 카탈로그에 없는 과목.`
+  return { ...entry, note: entry.note ? `${reason} / ${entry.note}` : reason }
+}
+
+/**
  * 교양 + 학과 카탈로그를 합친다.
  *
  * - courseKey 중복: 학과가 이긴다(학과 카탈로그가 그 과목의 정본).
@@ -112,11 +151,14 @@ export const LEGACY_GE_PLACEHOLDERS: CatalogEntry[] = [
  *   같은 이름이 두 개 뜨고, 이름으로 해석할 때 중복 후보(ambiguous)가 된다.
  * - 제외 영역 과목: defaultBucket을 일반선택으로 돌리고 note에 사유를 남긴다.
  *   area 태그는 지우지 않는다(화면이 "영역별교양 미인정"을 붙일 근거).
+ * - `supplements`(입학연도 이후 신설 과목): 맨 뒤에, 이미 있는 키·이름은 건너뛴다.
+ *   **입학연도 정의가 항상 이긴다.** 이 세트에 없는 영역을 가리키면 일반선택으로 돌린다.
  */
 export function mergeCatalogs(
   deptCatalog: CatalogEntry[],
   geCatalog: CatalogEntry[],
   set: RequirementSet | null,
+  supplements: CatalogEntry[] = [],
 ): CatalogEntry[] {
   const deptKeys = new Set(deptCatalog.map((e) => e.courseKey))
   const deptNames = new Set(deptCatalog.map((e) => normalizeText(e.name)))
@@ -136,6 +178,18 @@ export function mergeCatalogs(
     out.push(applyAreaPolicy(entry, policy, fallbackBucketId, fallbackLabel))
   }
 
+  // 입학연도 이후 신설 과목. 이미 있는 키·이름은 건너뛴다(입학연도 정의 우선).
+  const bucketIds = set ? new Set(set.buckets.map((b) => b.id)) : null
+  const seenNames = new Set([...deptNames, ...geCatalog.map((e) => normalizeText(e.name))])
+  for (const entry of supplements) {
+    if (seen.has(entry.courseKey) || seenNames.has(normalizeText(entry.name))) continue
+    seen.add(entry.courseKey)
+    seenNames.add(normalizeText(entry.name))
+    out.push(
+      applyAreaPolicy(remapUnknownBucket(entry, bucketIds, fallbackBucketId, fallbackLabel), policy, fallbackBucketId, fallbackLabel),
+    )
+  }
+
   // 옛 자리표시자는 맨 뒤에. 같은 키가 이미 있으면(있을 리 없지만) 건너뛴다.
   for (const entry of LEGACY_GE_PLACEHOLDERS) {
     if (seen.has(entry.courseKey)) continue
@@ -144,6 +198,28 @@ export function mergeCatalogs(
   }
 
   return out
+}
+
+/**
+ * 보충 과목이 이 세트에 없는 영역을 가리키면 일반선택으로 돌린다.
+ * 학번 사이에 영역 구성이 바뀌기 때문이다(2025~ 신설 `major_basic`·`ajou_sangsang`,
+ * 2026 `ai_literacy`는 2021 세트에 없다). 돌리지 않아도 엔진이 5순위에서 걸러 같은
+ * 결과가 되지만, 여기서 사유를 남겨야 화면이 왜 일반선택인지 말해줄 수 있다.
+ */
+function remapUnknownBucket(
+  entry: CatalogEntry,
+  bucketIds: Set<string> | null,
+  fallbackBucketId: string | undefined,
+  fallbackLabel: string,
+): CatalogEntry {
+  if (!bucketIds || bucketIds.has(entry.defaultBucket)) return entry
+  if (!fallbackBucketId) return entry
+  const reason = `이 요건 세트에 없는 영역(${entry.defaultBucket}) — ${fallbackLabel}(으)로 집계.`
+  return {
+    ...entry,
+    defaultBucket: fallbackBucketId,
+    note: entry.note ? `${entry.note} / ${reason}` : reason,
+  }
 }
 
 /**
@@ -170,11 +246,21 @@ function applyAreaPolicy(
   }
 }
 
-/** 학번·요건 세트에 맞는 최종 카탈로그(학과 + 교양). */
+/**
+ * 학번·요건 세트에 맞는 최종 카탈로그(학과 + 교양 + 입학연도 이후 신설 과목).
+ *
+ * 신설 과목 보충은 `set.department`가 있어야 동작한다(어느 학과의 이후 학번을 볼지
+ * 알아야 하므로). 커스텀 세트로 학과가 비어 있으면 보충 없이 입학연도 편제만 쓴다.
+ */
 export function catalogFor(
   deptCatalog: CatalogEntry[],
   admissionYear: number | null | undefined,
   set: RequirementSet | null,
 ): CatalogEntry[] {
-  return mergeCatalogs(deptCatalog, geCatalogForYear(admissionYear), set)
+  return mergeCatalogs(
+    deptCatalog,
+    geCatalogForYear(admissionYear),
+    set,
+    laterYearDeptCatalogs(set?.department, admissionYear),
+  )
 }

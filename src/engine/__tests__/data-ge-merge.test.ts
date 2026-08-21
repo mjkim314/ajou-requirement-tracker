@@ -274,3 +274,53 @@ describe('D. 구버전 임시 교양 과목', () => {
     }
   })
 })
+
+// ────────────────────────────────────────────────────────────
+
+/**
+ * E. 입학연도 이후 신설 학과 과목 보충 (merge.ts laterYearDeptCatalogs).
+ *
+ * 실제 성적증명서에서 나온 사례 — 2021학번이 2025-2에 AI집중교육1·2(각 6학점,
+ * 전공선택)를 이수했는데 2023년 신설이라 2021 카탈로그에 없었다. 보충 전에는
+ * courseKey 미해석으로 일반선택에 떨어져 전공선택이 12학점 미달로 잡혔다.
+ */
+describe('E. 입학연도 이후 신설 학과 과목 보충', () => {
+  it('E-01 2023 신설 전공선택이 2021 학번 카탈로그에 들어온다', () => {
+    const e = MERGED.find((x) => x.courseKey === 'SW-AI-INTENSIVE-1')
+    expect(e, 'AI집중교육1이 보충돼야 한다').toBeDefined()
+    expect(e!.credits).toBe(6)
+    expect(e!.defaultBucket).toBe('major_elective')
+    expect(e!.note ?? '').toContain('보충')
+  })
+
+  it('E-02 보충 과목이 전공선택으로 집계된다(일반선택으로 새지 않는다)', () => {
+    const before = bucketOf([], 'major_elective').earned
+    const b = bucketOf(
+      [
+        { ...mk('SW-AI-INTENSIVE-1'), credits: 6 },
+        { ...mk('SW-AI-INTENSIVE-2'), credits: 6 },
+      ],
+      'major_elective',
+    )
+    expect(b.earned - before).toBe(12)
+  })
+
+  it('E-03 입학연도 정의가 이긴다 — 이후 학번에서 바뀐 값이 덮어쓰지 않는다', () => {
+    // SW-PROGRAMMING은 전 학번에 있다. 2021 정의(전공필수)가 유지돼야 한다.
+    const own = catalog2021Sw.find((x) => x.courseKey === 'SW-PROGRAMMING')!
+    const merged = MERGED.find((x) => x.courseKey === 'SW-PROGRAMMING')!
+    expect(merged.credits).toBe(own.credits)
+    expect(merged.defaultBucket).toBe(own.defaultBucket)
+    expect(merged.note ?? '').not.toContain('보충')
+  })
+
+  it('E-04 최신 학번은 보충할 것이 없다', () => {
+    const latest = catalogFor(catalog2024Sw, 2026, reqSet2024SwAdvanced)
+    expect(latest.filter((e) => (e.note ?? '').includes('보충'))).toHaveLength(0)
+  })
+
+  it('E-05 교양은 보충하지 않는다 — 학번별 편제 고정(백로그 #19)', () => {
+    const keys = new Set(MERGED.map((e) => e.courseKey))
+    expect(keys.has('GE-AJOU-SANGSANG-HEALTH'), '2025 신설 교양은 2021에 안 들어온다').toBe(false)
+  })
+})

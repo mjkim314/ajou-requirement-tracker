@@ -8,7 +8,7 @@
 
 **다음 작업** — 데이터 생산 라인 개편 **R0~R7** (이 문서 하단 「개편 로드맵」). 근거·측정치는 `개선_방향_제안.md`. **R3 완료 전에는 신규 학과·학번 데이터화를 착수하지 않는다.**
 
-> **개편 진행** — **R0·R1·R2·R3 완료**(R3: 2026-07-24~25, 커밋 5건 — R3a 암묵 이월 / R3b 산학 인증 2023·2024 정정(요람 원문 확인으로 범위 축소: 2021·2022는 심화 전용이 맞음) / R3c 문구 중립화+`courseGroups[].note` / R3d `countsByType` / R3 후속: 5렌즈 적대적 리뷰 확정 7건 반영 — 유형 태그 팬아웃 가드·`pickUnit`(2024~ 산학 과목 단위)·카테고리 집계 carriedIn·aria·온보딩 경고). 백로그 4·5·10·11·14 ✅, 미결 해석 3건은 백로그 #4 「남은 판단」. 전체 **932 테스트**·타입체크·빌드 통과. **데이터화 재개 가능**(권장 순서: ai → sec → media → ddc → me 2023~2026 → ee → mgmt). **R4 완료**(2026-07-25: 상속(패치) 모델 — `data-src/` 소스↔`src/data/` 산출물 분리, `data:build`/`data:check` 바이트 게이트, 역이식 SW6+ME2+GE6, 998테스트). 신규 데이터화는 **가능하면 `data-src/` 패치로**(README 참조); R5 완료 후엔 새 라인 강제. 다음 개편 단계는 **R5**(요람 기대값 명세 + 판정 시나리오 생성).
+> **개편 진행** — **R0·R1·R2·R3·R4·R5 완료**(R5: 2026-07-28 — 요람 기대값 명세 8건 + 범용 비교기 `data-expected.test.ts` + 합성 성적표 생성기 `synthetic-transcript.ts` + 전 번들 3-verdict 판정 전이 테스트 `synthetic-transcript.test.ts` + `scripts/build-data.ts` 가드, 1112테스트·typecheck·data:check·build 통과). 백로그 4·5·10·11·14 ✅, 미결 해석 3건은 백로그 #4 「남은 판단」. **데이터화 재개 가능**(권장 순서: ai → sec → media → ddc → me 2023~2026 → ee → mgmt). **R5 완료 후 신규 데이터화는 새 라인(패치 + 기대값) 사용 강제**. 다음 개편 단계는 **R6**(티어제 커버리지).
 
 ---
 
@@ -425,17 +425,16 @@ scripts/build-data.ts           node 직접 실행(Node 26 type stripping, 신�
 
 ---
 
-## R5. 요람 기대값 명세 + 판정 시나리오 생성
+## R5. 요람 기대값 명세 + 판정 시나리오 생성 ✅ 완료
 
-**목표** 건당 검증 산출물을 "TS 수백 줄"에서 "기대값 JSON 수십 줄"로.
-
-**만들 것**
-
-- `data-src/expected/{학번}-{slug}.json` — 요람 인쇄면 소계: 총학점·버킷별 minCredits·전필 수·카탈로그 수·creditBreakdown 소계·영역 구성. 범용 비교기 테스트 1개가 전 번들 대조
-- 합성 성적표 생성기 — 세트에서 만점 성적표 생성 → `graduatable`, 전필 1개 제거 → `not_graduatable`, 수강중 전환 → `graduatable_after_current`. 전 번들 자동 적용, 수제 성적표는 SW·ME 대표만 유지
-- `yoram-extract` 스킬 문서(§3·§5·§6)를 새 라인 기준으로 갱신 — 산출물 = 패치 + 기대값 블록
-
-**완료 기준** — 기존 SW·ME 번들로 역검증(현행 테스트 기대값과 일치). 이후 신규 건에서 학번별 테스트 파일을 만들지 않는다.
+> **상태: 완료 (2026-07-28).**
+> - `data-src/expected/` 기대값 명세 8건 (SW 2021~2026 6건, ME 2021~2022 2건) + `README.md` 작성
+> - 범용 기대값 비교기 `src/engine/__tests__/data-expected.test.ts` (64개 테스트) — DATASETS 매니페스트 순회로 신규 번들 추가 시 테스트 코드 0줄
+> - 합성 성적표 생성기 `src/engine/__tests__/synthetic-transcript.ts`
+> - 범용 판정 전이 자동 검증 `src/engine/__tests__/synthetic-transcript.test.ts` (48개 테스트) — 전 번들 × 전 트랙 (graduatable / not_graduatable / graduatable_after_current)
+> - `scripts/build-data.ts`에서 `expected/` 폴더 제외 가드
+> - 1112개 테스트, `npm run typecheck`, `npm run data:check`, `npm run build` 모두 통과.
+> - **효과**: 이후 신규 건 데이터 추가 시 학번별 TS 테스트 작성 0줄, `data-src/expected/{학번}-{slug}.json` 작성만으로 자동 검증.
 
 ---
 

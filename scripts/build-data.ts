@@ -100,7 +100,7 @@ const isEnoent = (e: unknown): boolean => (e as ErrnoException)?.code === 'ENOEN
 /** data-src 전체를 열거해 산출물과 소비 소스를 만든다(순수: 파일시스템 읽기만, 쓰기 없음). */
 export function buildAll(): BuildResult {
   const slugs = readdirSync(SRC, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
+    .filter((d) => d.isDirectory() && d.name !== 'expected')
     .map((d) => d.name)
     .sort()
 
@@ -220,7 +220,7 @@ export function buildOutputs(): Output[] {
 export function listSourceFiles(): string[] {
   const out: string[] = []
   for (const d of readdirSync(SRC, { withFileTypes: true })) {
-    if (!d.isDirectory()) continue
+    if (!d.isDirectory() || d.name === 'expected') continue
     for (const f of listDir(d.name)) if (f.endsWith('.json')) out.push(relPath(d.name, f))
   }
   return out.sort()
